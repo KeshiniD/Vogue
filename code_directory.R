@@ -25,6 +25,56 @@ data <- read.delim(file.path("completesummaryR.txt"))
 #fixed headers
 names(data)[names(data)=="X"] <- "Participants" #rename function does not work for quoted names
 
+#rename
+dplyr::rename
+data2 <- dplyr::rename(data, Participants = X, 
+                       "Lactobacillus crispatus" = Lactobacillus.crispatus, 
+                       "Lactobacillus iners" = Lactobacillus.iners, 
+                       "Lactobacillus gasseri" = Lactobacillus.gasseri, 
+                       "Lactobacillus jensenii" = Lactobacillus.jensenii, 
+                       "Gardnerella vaginalis Group C" = Gardnerella.vaginalis.Group.C, 
+                       "Gardnerella vaginalis Group A" = Gardnerella.vaginalis.Group.A,
+                       "Gardnerella vaginalis Group B" = Gardnerella.vaginalis.Group.B,
+                       "Gardnerella vaginalis Group D" = Gardnerella.vaginalis.Group.D,
+                       "Megasphaera sp. genomosp. type 1" = Megasphaera.sp..genomosp..type.1, 
+                       "Escherichia coli" = Escherichia.coli,"Prevotella timonensis" = Prevotella.timonensis, 
+                       "Clostridia sp. BVAB2" = Clostridia.sp...probably.BVAB2., 
+                       "Clostridium genomosp. BVAB3" = Clostridium.genomosp..BVAB3, 
+                       "Atopobium vaginae" = Atopobium.vaginae, "Other Clostridia" = Other.Clostridia, 
+                       "Other Bacteroidetes" = Other.Bacteroidetes, "Other Proteobacteria" = Other.Proteobacteria,
+                       "Other Actinobacteria" = Other.Actinobacteria, "Other Firmicutes" = Other.Firmicutes, 
+                       "Nugent Score" = Nugent.score, "Amsel's Criteria" = Amsels, 
+                       "Martial Status" = Martial.Status, "Highest Education Level" = Highest.Education.Level, 
+                       "Current or chronic conditions" = Current.or.chronic.conditions...y.1..n.0., 
+                       "History of Genital Infections" = Genital.Infections..y.1..n.0., 
+                       "Number of BV episodes (past 2 months)" = BV..number.of.episodes.2.months., 
+                       "Number of BV episodes (past year)" = BV..number.of.episodes.year., 
+                       "Number of BV episodes (lifetime)" = BV..number.of.episodes.lifetime., 
+                       "Number of Yeast episodes (past two months)" = Yeast..2months., 
+                       "Number of Yeast episodes (past year)" = Yeast..year., 
+                       "Number of Yeast episodes (lifetime)" = Yeast..lifetime.,
+                       "Number of UTI episodes (past two months)" = UTI..2months., 
+                       "Number of UTI episodes (past year)" = UTI..year., 
+                       "Number of UTI episodes (lifetime)" = UTI..lifetime, "Trichomoniasis" = Trich,
+                       "Number of Genital Warts episodes (past two months)" = Genital.Warts..2months., 
+                       "Number of Gential warts episodes (past year)" = Genital.Warts..year., 
+                       "Number of Genital Warts episodes (lifetime)" = Genital.Warts..lifetime, 
+                       "History of Genital Herpes" = Genital.Herpes, 
+                       "Number of Chlamydia episodes (past two months)" = Chlamydia..2months., 
+                       "Number of Chlamydia episodes (past year)" = Chlamydia..year., 
+                       "Number of Chlamydia episodes (lifetime)" = Chlamydia..lifetime, 
+                       "History of Gonorrhea" = Gonorrhea, "History of Syphilis" = Syphilis, 
+                       "Antimicrobial Use (past 3 months)" = Antimicrobial.Use..y.1..n.0., 
+                       "(Non)Prescription Use (past 2 months)" = X.Non..Prescription.Use..y.1..n.0., 
+                       "Frequency of Menstrual Period" = Freq.Menstrual.Period, "Tampon Usage" = Tampon.Use, 
+                       "Pregnancy History (Gravida)" = Pregnancy.History..g., 
+                       "Pregnancy History (Term)" = Pregnancy.History..term., 
+                       "Pregnancy History (Spontaneous Abortion)" = Pregnancy.History..sa., 
+                       "Pregnancy History (Terminated Abortion)" = Pregnancy.History..ta., 
+                       "Pregnancy History (Livebirth)" = Pregnancy.History..l., 
+                       "Pregnancy History (Preterm)" = Pregnancy.History..p., 
+                       "Presence of Symptoms" = Symptoms..y.1..n.0., ) 
+
 #make plot for bacteria
 ggplot(data, aes(x=Participants, y=Other)) + 
   geom_bar(stat = "identity") + aes(fill=Participants) + coord_flip()
@@ -106,6 +156,3 @@ Coverage(vmbtbl2, Estimator = Turing)
 install.packages("epitools", dependencies = TRUE)
 library(epitools)
 
-#rename
-dplyr::rename
-dplyr::rename(df, people = x)
