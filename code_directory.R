@@ -81,7 +81,11 @@ data2 <- dplyr::rename(data, Participants = X,
                        "Douche Product Usage" = Use.of.douche.products..y.1..n.0., 
                        "Use in past 48 hours" = Used.in.the.past.48.hours, "Feminine Hygenie Product Usage" = Use.of.feminine.wipes.or.genital.deodrant..y.1..n.0., 
                        "Form of Contraception" = Form.of.contraception, "Sexual Partners" = Sexual.Partners, 
-                       "" = ) 
+                       "NUmber of partners (past two months)" = Number.of.partners.in.past.2.months, 
+                       "NUmber of partners (past year)" = Number.of.partners.in.past.year, 
+                       "Vaginal Intercourse (past 48 hours)" = Vaginal.intercourse.in.past.48.hours..y.1..n.0., 
+                       "Frequency of Oral Sex" = Freq.oral.sex, "Oral Sex (past 48 hours)" = oral.sex.in.past.48.hours..y.1..n.0., 
+                       "Frequency of Anal Sex" = Freq.anal.sex, ) 
 
 #make plot for bacteria
 ggplot(data, aes(x=Participants, y=Other)) + 
