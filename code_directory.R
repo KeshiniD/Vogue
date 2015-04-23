@@ -73,7 +73,15 @@ data2 <- dplyr::rename(data, Participants = X,
                        "Pregnancy History (Terminated Abortion)" = Pregnancy.History..ta., 
                        "Pregnancy History (Livebirth)" = Pregnancy.History..l., 
                        "Pregnancy History (Preterm)" = Pregnancy.History..p., 
-                       "Presence of Symptoms" = Symptoms..y.1..n.0., ) 
+                       "Presence of Symptoms" = Symptoms..y.1..n.0., 
+                       "Abnormal Discharge" = abnormal.discharge..y.1..n.0., 
+                       "Abnormal Odor" = abnormal.odor..y.1..n.0., "Irritation/Discomfort" = irritation.or.discomfort..y.1..n.0., 
+                       "Other symptoms" = Other, 
+                       "How often pain experienced during vaginal intercourse" = pain.during.vaginal.intercourse..how.often., 
+                       "Douche Product Usage" = Use.of.douche.products..y.1..n.0., 
+                       "Use in past 48 hours" = Used.in.the.past.48.hours, "Feminine Hygenie Product Usage" = Use.of.feminine.wipes.or.genital.deodrant..y.1..n.0., 
+                       "Form of Contraception" = Form.of.contraception, "Sexual Partners" = Sexual.Partners, 
+                       "" = ) 
 
 #make plot for bacteria
 ggplot(data, aes(x=Participants, y=Other)) + 
