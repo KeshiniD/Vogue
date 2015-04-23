@@ -1,18 +1,26 @@
-#installed vegan package for data analysis
+#installed packages for data analysis
 install.packages("vegan", dependencies = TRUE)
+install.packages("plyr", dependencies = TRUE)
+install.packages("dplyr", dependencies = TRUE)
+install.packages("tidyr", dependencies = TRUE)
+install.packages("entropart", dependencies = TRUE)
+install.packages("epitools", dependencies = TRUE)
+
+#load packages
+library(vegan)
+library(plyr)
+##suppresses start up messages
+suppressPackageStartupMessages(library(dplyr)) 
+library(ggplot2)
+library(tidyr)
+library(knitr)
+library(assertthat)
+library(entropart)
+library(epitools)
 
 #loaded datasets
 metadata <- read.delim(file.path("completemetadataR.txt"))
 data <- read.delim(file.path("completesummaryR.txt"))
-
-#loaded packages
-library(plyr)
-suppressPackageStartupMessages(library(dplyr)) #suppresses the start up messages
-library(ggplot2)
-library(knitr)
-library(assertthat)
-library(vegan)
-library(tidyr)
 
 #fixed headers
 names(data)[names(data)=="X"] <- "Participants" #rename function does not work for quoted names
@@ -97,3 +105,7 @@ Coverage(vmbtbl2, Estimator = Turing)
 #odds ratio
 install.packages("epitools", dependencies = TRUE)
 library(epitools)
+
+#rename
+dplyr::rename
+dplyr::rename(df, people = x)
