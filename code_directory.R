@@ -133,6 +133,8 @@ ggplot(data = vmb, aes(x = Participants, y = Species.Percentage, fill = Bacteria
 
 #Shannon Diversity
 library(vegan)
+
+#works but shouldn't use numbers
 vmb2 <- data[2:22] # just have the bacterial species
 H <- diversity(vmb2) #shannon for individuals
 View(H)
@@ -141,8 +143,30 @@ vmb_untidy2 <- vmb_untidy[3] # Shannon for entire cohort
 H2 <- diversity(vmb_untidy2)
 View(H2)
 
+#with dplyr
+H2 <- data %>% #individuals
+    select(Lactobacillus.crispatus, Lactobacillus.iners, Lactobacillus.gasseri, 
+         Lactobacillus.jensenii, Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.A, 
+         Gardnerella.vaginalis.Group.B, Gardnerella.vaginalis.Group.D, 
+         Megasphaera.sp.genomosp.type.1, Escherichia.coli, Prevotella.timonensis, Clostridia.sp.BVAB2, 
+         Clostridium.genomosp.BVAB3, Atopobium.vaginae, Anaerobes, Other.Clostridia, 
+         Other.Bacteroidetes, Other.Proteobacteria, Other.Actinobacteria, Other.Firmicutes, Other) 
+F <- diversity(H2)
+View(F)
+F2 <- dplyr::rename(F, ShannonDiveristy = X)
+
+#cohort
+#first need to make new table with total counts for each bacterial species
+H3 <- data2 %>% 
+  select (Bacteria, Counts) %>% #WORKED!!!! for cohort
+  group_by(Bacteria) %>%
+  summarize(TotalCounts = sum(Counts)) %>%
+  select (TotalCounts) #stay in for diversity,can remove to see bac
+F3 <- diversity(B)
+View(F3)
+
 #Pielou's eveness
-J <- H/log(specnumber(vmb2)) # for individuals
+J <- F/log(specnumber(H2)) # for individuals
 View(J)
 
 J2 <- H2/log(specnumber(vmb_untidy2)) #not working for entire cohort
