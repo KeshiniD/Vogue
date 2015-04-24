@@ -28,21 +28,21 @@ names(data)[names(data)=="X"] <- "Participants"
 #rename function does not work with spaces unless quoted
 dplyr::rename
 data <- dplyr::rename(data, Participants = X, 
-                       "Lactobacillus crispatus" = Lactobacillus.crispatus, 
-                       "Lactobacillus iners" = Lactobacillus.iners, 
-                       "Lactobacillus gasseri" = Lactobacillus.gasseri, 
-                       "Lactobacillus jensenii" = Lactobacillus.jensenii, 
-                       "Gardnerella vaginalis Group C" = Gardnerella.vaginalis.Group.C, 
-                       "Gardnerella vaginalis Group A" = Gardnerella.vaginalis.Group.A,
-                       "Gardnerella vaginalis Group B" = Gardnerella.vaginalis.Group.B,
-                       "Gardnerella vaginalis Group D" = Gardnerella.vaginalis.Group.D,
-                       "Megasphaera sp. genomosp. type 1" = Megasphaera.sp..genomosp..type.1, 
-                       "Escherichia coli" = Escherichia.coli,"Prevotella timonensis" = Prevotella.timonensis, 
-                       "Clostridia sp. BVAB2" = Clostridia.sp...probably.BVAB2., 
-                       "Clostridium genomosp. BVAB3" = Clostridium.genomosp..BVAB3, 
-                       "Atopobium vaginae" = Atopobium.vaginae, "Other Clostridia" = Other.Clostridia, 
-                       "Other Bacteroidetes" = Other.Bacteroidetes, "Other Proteobacteria" = Other.Proteobacteria,
-                       "Other Actinobacteria" = Other.Actinobacteria, "Other Firmicutes" = Other.Firmicutes, 
+                       #"Lactobacillus crispatus" = Lactobacillus.crispatus, 
+                       #"Lactobacillus iners" = Lactobacillus.iners, 
+                       #"Lactobacillus gasseri" = Lactobacillus.gasseri, 
+                       #"Lactobacillus jensenii" = Lactobacillus.jensenii, 
+                       #"Gardnerella vaginalis Group C" = Gardnerella.vaginalis.Group.C, 
+                       #"Gardnerella vaginalis Group A" = Gardnerella.vaginalis.Group.A,
+                       #"Gardnerella vaginalis Group B" = Gardnerella.vaginalis.Group.B,
+                       #"Gardnerella vaginalis Group D" = Gardnerella.vaginalis.Group.D,
+                       "Megasphaera.sp.genomosp.type.1" = Megasphaera.sp..genomosp..type.1, 
+                       #"Escherichia coli" = Escherichia.coli,"Prevotella timonensis" = Prevotella.timonensis, 
+                       "Clostridia.sp.BVAB2" = Clostridia.sp...probably.BVAB2., 
+                       "Clostridium.genomosp.BVAB3" = Clostridium.genomosp..BVAB3, 
+                       #"Atopobium vaginae" = Atopobium.vaginae, "Other Clostridia" = Other.Clostridia, 
+                       #"Other Bacteroidetes" = Other.Bacteroidetes, "Other Proteobacteria" = Other.Proteobacteria,
+                       #"Other Actinobacteria" = Other.Actinobacteria, "Other Firmicutes" = Other.Firmicutes, 
                        "Nugent Score" = Nugent.score, "Amsel's Criteria" = Amsels, 
                        "Marital Status" = Marital.Status, "Highest Education Level" = Highest.Education.Level, 
                        "Current or chronic conditions" = Current.or.chronic.conditions...y.1..n.0., 
@@ -104,21 +104,21 @@ vmb <- data[1:22] # selects certain columns, [1:22,] would select for rows
 #should avoid using numbers though
 
 # new column for bacteria and counts
-##cannot use renamed columns for this function, rename after...have to figure it out
-vmb <-
+##cannot use renamed columns for this function if spaces exist in renamed col
+data2 <-
   gather(data, key = 'Bacteria', value = 'Counts', Lactobacillus.crispatus, Lactobacillus.iners, Lactobacillus.gasseri, 
          Lactobacillus.jensenii, Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.A, 
          Gardnerella.vaginalis.Group.B, Gardnerella.vaginalis.Group.D, 
-         Megasphaera.sp..genomosp..type.1, Escherichia.coli, Prevotella.timonensis, Clostridia.sp...probably.BVAB2., 
-         Clostridium.genomosp..BVAB3, Atopobium.vaginae, Anaerobes, Other.Clostridia, 
+         Megasphaera.sp.genomosp.type.1, Escherichia.coli, Prevotella.timonensis, Clostridia.sp.BVAB2, 
+         Clostridium.genomosp.BVAB3, Atopobium.vaginae, Anaerobes, Other.Clostridia, 
          Other.Bacteroidetes, Other.Proteobacteria, Other.Actinobacteria, Other.Firmicutes, Other)
 
 # subset of bacterial data and percentages
-vmb2 <- tbl_df(vmb) %>% # finally got the percentages correct
-  group_by(X) %>%
-  select(X, Bacteria, Counts) %>%
-  mutate(PC = Counts/(sum(Counts))*100) %>% # can either have % or decimal
-  arrange(X)
+vmb <- tbl_df(data2) %>% # finally got the percentages correct
+  group_by(Participants) %>%
+  select(Participants, Bacteria, Counts) %>%
+  mutate(Species.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
+  arrange(Participants)
 
 #make stacked plot
 barplot(as.matrix(vmb)) #not exactly what I want
@@ -126,11 +126,8 @@ prop <-  prop.table(vmb, margin = 2)
 barplot(prop, col = heat.colors(length(rownames(prop))), width = 2) #heatchart but doesn't work
 
 #need to rearrange data and then plot with following code
-ggplot(data = vmb2, aes(x = X, y = Counts, fill = Bacteria)) + 
-  geom_bar(stat = "identity") + coord_flip()
-
-#same code as previously mentioned and works great!
-ggplot(data = vmb2, aes(x = X, y = PC, fill = Bacteria)) + 
+##code works great!
+ggplot(data = vmb, aes(x = Participants, y = Species.Percentage, fill = Bacteria)) + 
   geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion")
 # need to fix colours, category names and legend size
 
