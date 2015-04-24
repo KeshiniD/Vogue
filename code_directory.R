@@ -162,14 +162,14 @@ H3 <- data2 %>%
   group_by(Bacteria) %>%
   summarize(TotalCounts = sum(Counts)) %>%
   select (TotalCounts) #stay in for diversity,can remove to see bac
-F3 <- diversity(B)
+F3 <- diversity(H3)
 View(F3)
 
 #Pielou's eveness
 J <- F/log(specnumber(H2)) # for individuals
 View(J)
 
-J2 <- H2/log(specnumber(vmb_untidy2)) #not working for entire cohort
+J2 <- F3/log(specnumber(H3)) #not working for entire cohort
 View(J2)
 
 #rarefraction curves
