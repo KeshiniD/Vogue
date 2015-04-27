@@ -5,6 +5,8 @@ install.packages("dplyr", dependencies = TRUE)
 install.packages("tidyr", dependencies = TRUE)
 install.packages("entropart", dependencies = TRUE)
 install.packages("epitools", dependencies = TRUE)
+install.packages("ggtree", dependencies = TRUE)
+
 
 #load packages
 library(vegan)
@@ -173,10 +175,27 @@ J2 <- F3/log(specnumber(H3)) #not working for entire cohort
 View(J2)
 
 #rarefraction curves
+H2 <- data %>% #same code as above, need in this format
+select(Lactobacillus.crispatus, Lactobacillus.iners, Lactobacillus.gasseri, 
+       Lactobacillus.jensenii, Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.A, 
+       Gardnerella.vaginalis.Group.B, Gardnerella.vaginalis.Group.D, 
+       Megasphaera.sp.genomosp.type.1, Escherichia.coli, Prevotella.timonensis, Clostridia.sp.BVAB2, 
+       Clostridium.genomosp.BVAB3, Atopobium.vaginae, Anaerobes, Other.Clostridia, 
+       Other.Bacteroidetes, Other.Proteobacteria, Other.Actinobacteria, Other.Firmicutes, Other) 
+##all the codes work, need to understand it
+quantile(rowSums(H2))
+rowSums(H2)
+Srar <- rarefy(H2, min(rowSums(H2)))
+View(Srar)
+S2 <- rarefy(H2, 2)
+View(S2)
+all(rank(Srar) == rank(S2)) #same output as vegan doc
+range(diversity(H2, "simp") - (S2 -1))
+
 
 #Good's coverage
-install.packages("entropart", dependencies = TRUE)
-library(entropart)
+## need entropart package
+
 data(Paracou618) #example
 Ns <- Paracou618.MC$Ns
 Coverage(Ns)
@@ -188,6 +207,4 @@ vmbtbl2 <- vmbtbl[2:3]
 Coverage(vmbtbl2, Estimator = Turing)
 
 #odds ratio
-install.packages("epitools", dependencies = TRUE)
-library(epitools)
-
+## needs epitools package
