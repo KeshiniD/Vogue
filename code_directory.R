@@ -203,6 +203,7 @@ rrarefy(H2, sample = 20) #set to integer
 drarefy(H2, sample = 5) #set to integer
 rarecurve(H2, step = 1, sample = 2, xlab = "Sample Size", ylab = "Species",
           label = TRUE) # will plot, set sample and step to integer
+#need to figure out colours
 fisher.alpha(H2, MARGIN = 1)
 specnumber(H2, groups, MARGIN = 1) #error
 
@@ -213,13 +214,9 @@ data(Paracou618) #example
 Ns <- Paracou618.MC$Ns
 Coverage(Ns)
 
-Coverage(vmb_untidy2) #trying to apply it to own data
-View(Ns)
-
-vmbtbl2 <- vmbtbl[2:3] 
-Coverage(vmbtbl2, Estimator = Turing)
+Ns <- H3$TotalCounts#apply to own data
+Coverage(Ns, Estimator = Turing) #Ns has to be numeric vector
+View(Paracou618)
 
 #odds ratio
 ## needs epitools package
-
-
