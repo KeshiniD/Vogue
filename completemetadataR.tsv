@@ -3,12 +3,12 @@ Vogue1B2.1.01	2	2	20	22.1	Caucasian	Single	Highschool	0	1	chronic	chronic	chroni
 Vogue1B2.1.06	4	3	22	20.4	Caucasian	Single	some post-secondary	0	1	2	5	8	0	2	2	3	6	12	0	0	0	0	0	0	0	0	0	0	1	1	Regular	"every period, exclusively"	0	0	0	0	0	0	1	1	1	1		80%	0	0	0	0	H	Male	1	2	1	weekly	1	monthly	0	other	0	past	2/3 drinks	0
 Vogue1B2.1.07	4	2	42	18.5	Caucasian	Married/Common Law	some post-secondary	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	Regular	"every period, part of the time"	9	4	0	1	4	4	1	0	0	1		100%	0	0	0	0	S	Male	1	1	0	monthly	0	never	0	other	0	past	occassional	current
 Vogue1B2.1.08	6	0	28	15.5	Asian	Single	post-secondary	0	1	1	1	20	1	2	20	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	Regular	"every period, exclusively"	4	4	0	0	0	4	1	1	0	0		0%	0	0	0	0	B	Male	1	1	1	monthly	1	never	0	never	0	past	2/3 drinks	0
-Vogue1B2.1.10	7		31	20.2	Asian	Married/Common Law	post-secondary	0	1	1	1	2	0	1	4	0	0	0	0	0	0	0	0	0	0	0	0	0	NA	NA	Regular	sometimes but not for every period	0	0	0	0	0	0	1	1	0	0		NA	0	0	0	0		NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA	NA
+Vogue1B2.1.10	7		31	20.2	Asian	Married/Common Law	post-secondary	0	1	1	1	2	0	1	4	0	0	0	0	0	0	0	0	0	0	0	0	0			Regular	sometimes but not for every period	0	0	0	0	0	0	1	1	0	0			0	0	0	0														
 Vogue1B2.1.11	5	2	24	18.8	Caucasian	Single	some post-secondary	1	1	1	10	10	1	10	10	1	3	6	0	0	0	0	0	0	0	0	0	0	0	1	Altered by contraception	never	0	0	0	0	0	0	1	1	0	1		0%	0	0	0	0	None	Male	1	1	0	monthly	0	never	0	monthly	0	past	2/3 drinks	0
-Vogue1B2.1.12	4	1	21	21.3	Caucasian	Single	did not complete highschool	1	1	0	3	10	2	8	20	0	1	3	0	0	0	0	0	0	1	1	0	0	NA	0	Regular	"every period, part of the time"	2	0	0	2	0	0	1	1	0	1		100%	0	0	0	0	NA	Male	0	1	0	never	0	never	0	never	0	past	occassional	0
+Vogue1B2.1.12	4	1	21	21.3	Caucasian	Single	did not complete highschool	1	1	0	3	10	2	8	20	0	1	3	0	0	0	0	0	0	1	1	0	0		0	Regular	"every period, part of the time"	2	0	0	2	0	0	1	1	0	1		100%	0	0	0	0	NA	Male	0	1	0	never	0	never	0	never	0	past	occassional	0
 Vogue1B2.1.13	0	0	37	20	South Asian	Married/Common Law	post-secondary	1	1	0	0	1	1	1	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	Regular	never	2	2	0	0	0	2	1	1	0	0		0%	0	0	0	0	B	Male	1	1	1	never	0	never	0	never	0	0	2/3 drinks	0
-Vogue1B2.1.21	6		33	30.5	Caucasian	Single	some post-secondary	1	1	0	2	2	0	0	2	yes	NA	NA	0	0	0	0	0	0	0	0	0	0	1	1	Regular	"every period, exclusively"	3	1	0	2	0	1	1	1	1	0		0%	0	0	0	0	NA	Male	0	2	0	other (on occasion)	0	never	0	monthly	0	past&current	2/3 drinks	past
-Vogue1B2.1.23	2	1	32	22.5	Asian	Other	post-secondary	1	1	0	1	1	2	9	9	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Regular	never	0	0	0	0	0	0	1	0	0	0	itchiness	0%	0	0	0	0	None	Male	1	2	0	monthly	0	weekly	0	never	0	0	0	0
+Vogue1B2.1.21	6		33	30.5	Caucasian	Single	some post-secondary	1	1	0	2	2	0	0	2	yes			0	0	0	0	0	0	0	0	0	0	1	1	Regular	"every period, exclusively"	3	1	0	2	0	1	1	1	1	0		0%	0	0	0	0	NA	Male	0	2	0	other (on occasion)	0	never	0	monthly	0	past&current	2/3 drinks	past
+Vogue1B2.1.23	4	1	32	22.5	Asian	Other	post-secondary	1	1	0	1	1	2	9	9	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Regular	never	0	0	0	0	0	0	1	0	0	0	itchiness	0%	0	0	0	0	None	Male	1	2	0	monthly	0	weekly	0	never	0	0	0	0
 Vogue1B2.1.26	8	3	21	21.3	Caucasian	Single	Highschool	0	1	1	2	3	2	10	20	0	1	10	0	0	0	1	0	1	1	2	0	0	1	0	Regular	"every period, exclusively"	0	0	0	0	0	0	1	1	0	1		0%	0	0	0	0	B	Male	2	4	1	monthly	0	never	0	monthly	0	past	occassional	0
 Vogue1B2.1.28	4		39	31.2	Aboriginal	Other	some post-secondary	1	1	0	0	0	3	6	15	0	0	1	0	0	0	1	0	0	0	1	0	0	1	1	Regular	sometimes but not for every period	1	1	0	0	0	1	1	0	0	1		0%	0	0	0	0	S	Male	3	0	0	other ( used to be once a month)	0	other	0	other	0	past&current	occassional	past
 Vogue1B2.1.29	4	1	31	23.7	Caucasian	Married/Common Law	post-secondary	1	1	0	0	0	1	5	20	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	Regular	"every period, part of the time"	2	2	0	0	0	2	1	0	0	1		0%	0	0	0	0	H	Male	1	1	0	monthly	0	never	0	never	0	past	occassional	past
@@ -17,3 +17,24 @@ Vogue1B2.1.38	8		29	27.5	Asian	Married/Common Law	post-secondary	1	1	0	0	0	2	7	1
 Vogue1B2.1.50	4	2	28	18.3	Asian	Married/Common Law	post-secondary	0	1	0	2	5	2	8	20	0	0	2	0	0	0	0	0	0	0	0	0	0	1	1	Regular	sometimes but not for every period	3	2	0	0	1	2	1	1	0	1		70%	0	0	0	0	None	Male	1	1	0	other (not in the last couple of years)	0	never	0	other	0	0	0	current
 Vogue1B2.1.52	6	3	45	22.5	Asian	Other	some post-secondary	1	1	0	0	0	0	2	10	1	3	10	0	0	0	0	0	0	0	0	0	0	1	1	Altered by contraception	"every period, part of the time"	8	4	1	2	1	5	1	1	1	0		100%	1	1	1	0	S	Male	1	1	0	other (1-2 times per week; 3-6 times per month)	0	other	0	other	0	0	occassional	0
 Vogue1B2.1.56	8	4	43	30	Caucasian	Other	post-secondary	1	1	chronic	chronic	chronic	chronic	chronic	chronic	0	0	1	0	0	0	0	0	0	0	1	0	0	1	0	Regular	"every period, exclusively"	0	0	0	0	0	0	1	1	1	1	Ripping and tearing leads to bleeding	100%	0	0	0	0	None	Male	1	1	0	weekly	0	never	0	never	0	past&current	occassional	current
+																																																														
+																																																														
+																																																														
+																																																														
+																																																														
+																																																														
+																																																														
+																																																														
+																																																														
+																																																														
+								  																																																						
+																																																														
+																																																														
+																																																														
+																																																														
+																																																														
+																																																														
+																																																														
+																																																														
+																																																														
+																																																														

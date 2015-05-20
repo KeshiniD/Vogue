@@ -6,7 +6,7 @@ install.packages("tidyr", dependencies = TRUE)
 install.packages("entropart", dependencies = TRUE)
 install.packages("epitools", dependencies = TRUE)
 install.packages("ggtree", dependencies = TRUE)
-
+browseVignettes("ggtree")#for doc
 
 #load packages
 library(vegan)
@@ -207,7 +207,7 @@ rarecurve(H2, step = 1, sample = 2, xlab = "Sample Size", ylab = "Species",
 fisher.alpha(H2, MARGIN = 1)
 specnumber(H2, groups, MARGIN = 1) #error
 
-#Good's coverage
+#Good's coverage; need to figure this out
 ## need entropart package
 
 data(Paracou618) #example
@@ -216,7 +216,16 @@ Coverage(Ns)
 
 Ns <- H3$TotalCounts#apply to own data
 Coverage(Ns, Estimator = Turing) #Ns has to be numeric vector
-View(Paracou618)
+Coverage(Ns)
 
 #odds ratio
 ## needs epitools package
+tapw <- c("Lowest", "Intermediate", "Highest") #example
+outc <- c("Case", "Control")
+dat <- matrix(c(2, 29, 35, 64, 12, 6),3,2,byrow=TRUE)
+dimnames(dat) <- list("Tap water exposure" = tapw, "Outcome" = outc)
+oddsratio(dat, rev="c")
+oddsratio.midp(dat, rev="c")
+oddsratio.fisher(dat, rev="c")
+oddsratio.wald(dat, rev="c")
+oddsratio.small(dat, rev="c")
