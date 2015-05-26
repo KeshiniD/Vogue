@@ -24,6 +24,9 @@ library(epitools)
 metadata <- read.delim(file.path("completemetadataR.tsv"))
 data <- read.delim(file.path("completesummaryR.tsv"))
 
+# if have random NA for participants
+data <-  data[c(1:11), ]
+
 #fixed headers
 names(data)[names(data)=="X"] <- "Participants" 
 
@@ -155,7 +158,7 @@ H2 <- data %>% #individuals
          Other.Bacteroidetes, Other.Proteobacteria, Other.Actinobacteria, Other.Firmicutes, Other) 
 F <- diversity(H2)
 View(F)
-F2 <- dplyr::rename(F, ShannonDiveristy = X)
+F2 <- dplyr::rename(F, ShannonDiveristy = X)#need to set X
 
 #cohort
 #first need to make new table with total counts for each bacterial species
@@ -172,6 +175,7 @@ J <- F/log(specnumber(H2)) # for individuals
 View(J)
 
 J2 <- F3/log(specnumber(H3)) #not working for entire cohort
+#specnumber want number of species and we can manually enter 21 to get J2
 View(J2)
 
 #rarefraction curves
