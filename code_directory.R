@@ -196,9 +196,9 @@ View(S2)
 all(rank(Srar) == rank(S2)) #same output as vegan doc
 range(diversity(H2, "simp") - (S2 -1))
 
-#plots curve but error in lengths
+#plots curve but error in lengths; not as nice as rarecurve()
 source("http://www.jennajacobs.org/R/rarefaction.txt")
-emend.rare<-rarefaction(H2, col=F)
+emend.rare<-rarefaction(H2, color=TRUE, legend = TRUE)
 
 #trying to plot; understand arguments
 diversity(H2, index = "shannon", MARGIN = 1, base = exp(1)) #also calc Shannon
@@ -206,8 +206,13 @@ rarefy(H2, sample = 2, se = FALSE, MARGIN = 1) #set sample to integer (should be
 rrarefy(H2, sample = 20) #set to integer
 drarefy(H2, sample = 5) #set to integer
 rarecurve(H2, step = 1, sample = 2, xlab = "Sample Size", ylab = "Species",
-          label = TRUE) # will plot, set sample and step to integer
-#need to figure out colours
+          label = TRUE, col = col, xlim=c(0,15000)) # will plot, set sample and step to integer
+#need to figure out colours; done
+col <- c("black", "darkred", "forestgreen", "orange", "blue", "yellow", 
+         "hotpink", "red", "grey", "purple", "white")
+#need to figure out legend (do not think there is one)
+# can alter x-axis to see some samples more distinctly 
+
 fisher.alpha(H2, MARGIN = 1)
 specnumber(H2, groups, MARGIN = 1) #error
 
