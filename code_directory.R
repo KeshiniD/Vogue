@@ -260,3 +260,6 @@ oddsratio.wald(dat, rev="c")
 oddsratio.small(dat, rev="c")
 
 
+f <- vmb$Participants
+a <- split(vmb, f)#need to get this into a vector (the split frames)
+
