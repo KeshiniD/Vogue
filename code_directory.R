@@ -174,9 +174,15 @@ View(F3)
 J <- F/log(specnumber(H2)) # for individuals
 View(J)
 
-J2 <- F3/log(specnumber(H3)) #not working for entire cohort
+J2 <- F3/log(specnumber(H3, MARGIN = 1)) #not working for entire cohort
 #specnumber want number of species and we can manually enter 21 to get J2
+#fixed it with below code, and can be used for diversity
 View(J2)
+
+# want to sum up all bacteria in one row, with bacteria as columns
+# can then use this in specnumber() and then pielou for cohort
+h4 <- colSums(H2)
+H5 <-  t(h4)
 
 #rarefraction curves
 H2 <- data %>% #same code as above, need in this format
@@ -214,7 +220,7 @@ col <- c("black", "darkred", "forestgreen", "orange", "blue", "yellow",
 # can alter x-axis to see some samples more distinctly 
 
 fisher.alpha(H2, MARGIN = 1)
-specnumber(H2, groups, MARGIN = 1) #error
+specnumber(H2, MARGIN = 1) #error for works for H5
 
 #Good's coverage; need to figure this out
 ## need entropart package
@@ -238,3 +244,5 @@ oddsratio.midp(dat, rev="c")
 oddsratio.fisher(dat, rev="c")
 oddsratio.wald(dat, rev="c")
 oddsratio.small(dat, rev="c")
+
+
