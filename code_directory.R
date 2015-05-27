@@ -220,7 +220,7 @@ col <- c("black", "darkred", "forestgreen", "orange", "blue", "yellow",
 # can alter x-axis to see some samples more distinctly 
 
 fisher.alpha(H2, MARGIN = 1)
-specnumber(H2, MARGIN = 1) #error for works for H5
+specnumber(H2, MARGIN = 1) #works for H5
 
 #Good's coverage; need to figure this out
 ## need entropart package
@@ -231,7 +231,21 @@ Coverage(Ns)
 
 Ns <- H3$TotalCounts#apply to own data
 Coverage(Ns, Estimator = Turing) #Ns has to be numeric vector
-Coverage(Ns)
+Coverage(Ns) # is value correct; value could be for entire cohort
+
+#individuals
+Ns <- H2
+Coverage(Ns, Estimator = Turing) #Ns has to be numeric vector
+Coverage(Ns) #default Zhaung
+#may have to do separate manually and calculate each
+vmb2 <- vmb %>%
+  select ()
+#the way you aren't suppose to do it
+vmb2 <- vmb[c(1:21), ]
+vmb3 <- vmb2[2:3]
+Ns <- vmb3$Counts
+Coverage(Ns, Estimator = "Turing") #works
+
 
 #odds ratio
 ## needs epitools package
