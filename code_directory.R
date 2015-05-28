@@ -305,5 +305,24 @@ mytable <- table(Age, Sex)
 mytable
 
 attach(data) #works 
-mytable <- table(abnormal.discharge..y.1..n.0., Use.of.douche.products..y.1..n.0.) 
+mytable <- table(abnormal.discharge..y.1..n.0., Use.of.feminine.wipes.or.genital.deodrant..y.1..n.0.) 
 mytable
+margin.table(mytable, 1) # A frequencies (summed over B) AD over douche
+margin.table(mytable, 2) # B frequencies (summed over A) douche over AD
+prop.table(mytable) # cell percentages
+prop.table(mytable, 1) # row percentages 
+prop.table(mytable, 2) #column percentages
+
+# for 3-way table
+mytable <- table(abnormal.discharge..y.1..n.0., 
+                 Use.of.feminine.wipes.or.genital.deodrant..y.1..n.0., 
+                 Genital.Infections..y.1..n.0.) 
+ftable(mytable)
+summary(mytable) #chi-squared
+#table() ignored NA values, if want use exclude=NULL and works
+
+#Fisher's and Chisquared
+#can only use both for 2x2 matrix
+chisq.test(mytable)
+fisher.test(mytable) #gives odds ratio
+mantelhaen.test(mytable) #only use when counts greater than 1 in each cell
