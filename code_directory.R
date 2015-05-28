@@ -237,15 +237,22 @@ Coverage(Ns) # is value correct; value could be for entire cohort
 Ns <- H2
 Coverage(Ns, Estimator = Turing) #Ns has to be numeric vector
 Coverage(Ns) #default Zhaung
-#may have to do separate manually and calculate each
-vmb2 <- vmb %>%
-  select ()
+
 #the way you aren't suppose to do it
 vmb2 <- vmb[c(1:21), ]
 vmb3 <- vmb2[2:3]
 Ns <- vmb3$Counts
 Coverage(Ns, Estimator = "Turing") #works
 
+#may have to do separate manually and calculate each
+f <- vmb$Participants
+a <- split(vmb, f)#need to get this into a vector (the split frames)
+# this subsets data based on participants :)
+newdata <- vmb[ which(vmb$Participants=='Vogue1B2.1.29'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+Coverage(Ns, Estimator = "Turing") 
+#insert each participant for coverage
 
 #odds ratio
 ## needs epitools package
@@ -260,6 +267,4 @@ oddsratio.wald(dat, rev="c")
 oddsratio.small(dat, rev="c")
 
 
-f <- vmb$Participants
-a <- split(vmb, f)#need to get this into a vector (the split frames)
 
