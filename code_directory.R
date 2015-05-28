@@ -273,7 +273,7 @@ dat <- matrix(c(64, 1601, 69, 0, 0, 0),2,3,byrow=TRUE)
 dimnames(dat) <- list("Lacto presence" = t, "Outcome" = o)
 oddsratio(dat, rev="c")
 
-#adjusted odds ratio
+#adjusted odds ratio example
 install.packages("PredictABEL", dependencies = TRUE)
 library(PredictABEL)
 data(ExampleData)
@@ -290,6 +290,20 @@ cGenPredCat <- c(0)
 riskmodel <- fitLogRegModel(data=ExampleData, cOutcome=cOutcome,
                             cNonGenPreds=cNonGenPred, cNonGenPredsCat=cNonGenPredCat,
                             cGenPreds=cGenPred, cGenPredsCat=cGenPredCat)
-
+#categorize variables (ie 19-25 = 1 etc.)
 # obtain multivariate OR(95% CI) for all predictors of the fitted model
 ORmultivariate(riskModel=riskmodel, filename="multiOR.txt")
+
+#Contingency Tables
+attach(data)
+#can just give names, since used attach()
+mytable <- table(data$Ethnicity,data$Martial.Status) #do it this way, and lengths dif
+mytable
+
+attach(ExampleData) # seems to work only with 0,1 categories
+mytable <- table(Age, Sex)
+mytable
+
+attach(data) #works 
+mytable <- table(abnormal.discharge..y.1..n.0., Use.of.douche.products..y.1..n.0.) 
+mytable
