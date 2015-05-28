@@ -326,3 +326,15 @@ summary(mytable) #chi-squared
 chisq.test(mytable)
 fisher.test(mytable) #gives odds ratio
 mantelhaen.test(mytable) #only use when counts greater than 1 in each cell
+
+#for visualizing relationships among categorical data 
+#(e.g. mosaic and association plots).
+install.packages("vcd", dependencies = TRUE) #can do more stats with this
+library(vcd) #odds ratio becomes masked if used...
+assocstats(mytable)
+kappa(mytable) 
+
+#for correspondence analysis (visually exploring relationships 
+#between rows and columns in contingency tables).
+install.packages("ca", dependencies = TRUE)
+library(ca) 
