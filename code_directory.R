@@ -338,3 +338,7 @@ kappa(mytable)
 #between rows and columns in contingency tables).
 install.packages("ca", dependencies = TRUE)
 library(ca) 
+
+#Bray-Curtis
+install.packages("ecodist", dependencies = TRUE)
+library(ecodist)
