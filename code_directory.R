@@ -28,10 +28,10 @@ data <- read.delim(file.path("completesummaryR.tsv"))
 data <-  data[c(1:11), ]
 
 #fixed headers
-names(data)[names(data)=="X"] <- "Participants" 
+names(data)[names(data)== "X"] <- "Participants"
 
-#rename function does not work with spaces unless quoted
-dplyr::rename
+#rename funtion does not work with spaces unless quoted
+dplyr::rename()
 data <- dplyr::rename(data, Participants = X, 
                        #"Lactobacillus crispatus" = Lactobacillus.crispatus, 
                        #"Lactobacillus iners" = Lactobacillus.iners, 
@@ -266,5 +266,30 @@ oddsratio.fisher(dat, rev="c")
 oddsratio.wald(dat, rev="c")
 oddsratio.small(dat, rev="c")
 
+# the zeros are probably a problem
+t <- c("lacto", "no lacto")
+o <- c("no", "inter", "yes")
+dat <- matrix(c(64, 1601, 69, 0, 0, 0),2,3,byrow=TRUE)
+dimnames(dat) <- list("Lacto presence" = t, "Outcome" = o)
+oddsratio(dat, rev="c")
 
+#adjusted odds ratio
+install.packages("PredictABEL", dependencies = TRUE)
+library(PredictABEL)
+data(ExampleData)
+# specify column number of outcome variable
+cOutcome <- 2
+# specify column numbers of non-genetic predictors
+cNonGenPred <- c(3:10)
+# specify column numbers of non-genetic predictors that are categorical
+cNonGenPredCat <- c(6:8)
+# specify column numbers of genetic predictors
+cGenPred <- c(11,13:16)
+# specify column numbers of genetic predictors that are categorical
+cGenPredCat <- c(0)
+riskmodel <- fitLogRegModel(data=ExampleData, cOutcome=cOutcome,
+                            cNonGenPreds=cNonGenPred, cNonGenPredsCat=cNonGenPredCat,
+                            cGenPreds=cGenPred, cGenPredsCat=cGenPredCat)
 
+# obtain multivariate OR(95% CI) for all predictors of the fitted model
+ORmultivariate(riskModel=riskmodel, filename="multiOR.txt")
