@@ -21,7 +21,7 @@ vmb2 <- tbl_df(vmb) %>%
   arrange(domain)
 
 #write to file
-write.table(vmb2, "virome_ratios.tsv", sep = " ", row.names = FALSE, 
+write.table(vmb2, "virome_ratios.tsv", sep = "\t", row.names = FALSE, 
             quote = FALSE)
 
 
