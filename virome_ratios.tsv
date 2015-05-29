@@ -1,8 +1,8 @@
-domain,TotalCounts
-Archaea,308
-Bacteria,2455923
-Eukaryota,121636
-other sequences,1660
-unassigned,94517
-unclassified sequences,396
-Viruses,72
+domain Ratio
+Archaea 4.27777777777778
+Bacteria 34110.0416666667
+Eukaryota 1689.38888888889
+other sequences 23.0555555555556
+unassigned 1312.73611111111
+unclassified sequences 5.5
+Viruses 1

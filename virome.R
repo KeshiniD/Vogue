@@ -13,7 +13,15 @@ vmb <- tbl_df(data) %>%
   summarize(TotalCounts = sum(abundance)) %>%
   arrange(domain)
 
+#ratio column
+min <- min(vmb$TotalCounts)
+vmb2 <- tbl_df(vmb) %>% 
+  group_by(domain) %>%
+  summarize(Ratio = TotalCounts/min) %>% 
+  arrange(domain)
+
 #write to file
-write.table(vmb, "virome_ratios.tsv", sep = ",", row.names = FALSE, 
+write.table(vmb2, "virome_ratios.tsv", sep = " ", row.names = FALSE, 
             quote = FALSE)
+
 
