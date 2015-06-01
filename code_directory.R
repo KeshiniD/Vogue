@@ -365,3 +365,5 @@ vmb2 <- tbl_df(data) %>%
           Other.Bacteroidetes, Other.Proteobacteria, Other.Actinobacteria, Other.Firmicutes, Other) %>%
   summarize()
 a <- sweep(vmb2, 1, (rowSums(vmb2))/100, '/') # does it for us
+vare.dist <- vegdist(a) #works!
+str(vare.dist)
