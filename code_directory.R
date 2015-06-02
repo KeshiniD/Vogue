@@ -363,13 +363,31 @@ vare.dist <- vegdist(a) #works!
 str(vare.dist)
 summary(vare.dist)
 
+#different distance matrix; euclidean
+d <- dist(as.matrix(vmb2)) #gives dif dendrogram
+
 #clustering
 library(stats)
+#works makes a dendrogram
 hclust(vare.dist, method = "complete", members = NULL)
-w <- hclust(vare.dist, method = "complete", members = NULL) #not sure what this is
-w
-
-plot(w, labels = NULL, hang = 0.1, check = TRUE, #works
-     axes = TRUE, frame.plot = FALSE, ann = TRUE,
+w <- hclust(vare.dist, method = "complete", members = NULL) #method: dif clustering methods
+plot(w, labels = NULL, hang = 0.1, check = TRUE, #hang changes length of bars
+     axes = TRUE, frame.plot = FALSE, ann = TRUE,#ann is labels
      main = "Cluster Dendrogram",
      sub = NULL, xlab = NULL, ylab = "Height")
+rect.hclust(w, k=8, border="red") #puts red border around samples
+
+#example
+mydata <- scale(vmb2)
+wss <- (nrow(mydata)-1)*sum(apply(mydata,2,var))
+for (i in 1:11) wss[i] <- sum(kmeans(mydata, #doesnt work
+                                     centers=i)$withinss)
+plot(wss, type="b", xlab="Number of Clusters",#works but ??
+     ylab="Within groups sum of squares")
+
+#validating cluster solutions
+install.packages("fpc", dependencies = TRUE)
+library(fpc)
+cluster.stats(mydata, fit1$cluster, fit2$cluster) #??
+
+
