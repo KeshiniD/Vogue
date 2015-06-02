@@ -348,22 +348,17 @@ vegdist(x, method="bray", binary=FALSE, diag=FALSE, upper=FALSE,
 #example
 data(varespec)
 vare.dist <- vegdist(varespec)
-#want bacterial species in decimals
-# subset of bacterial data and percentages
-vmb <- tbl_df(data2) %>% 
-  group_by(Participants) %>%
-  select(Participants, Bacteria, Counts) %>%
-  mutate(Species.Percentage = Counts/(sum(Counts))) %>% #want as decimal
-  arrange(Participants)
-# need to make it look like example
-vmb2 <- tbl_df(data) %>%
+
+#want bacterial species in decimals;need to make it look like example
+#subset in decimals; relative abundance
+vmb2 <- tbl_df(data) %>% #subset
     select (Lactobacillus.crispatus, Lactobacillus.iners, Lactobacillus.gasseri, 
           Lactobacillus.jensenii, Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.A, 
           Gardnerella.vaginalis.Group.B, Gardnerella.vaginalis.Group.D, 
           Megasphaera.sp.genomosp.type.1, Escherichia.coli, Prevotella.timonensis, Clostridia.sp.BVAB2, 
           Clostridium.genomosp.BVAB3, Atopobium.vaginae, Anaerobes, Other.Clostridia, 
           Other.Bacteroidetes, Other.Proteobacteria, Other.Actinobacteria, Other.Firmicutes, Other) %>%
-  summarize()
-a <- sweep(vmb2, 1, (rowSums(vmb2))/100, '/') # does it for us
+a <- sweep(vmb2, 1, (rowSums(vmb2))/100, '/') # calculates for us
 vare.dist <- vegdist(a) #works!
 str(vare.dist)
+summary(vare.dist)
