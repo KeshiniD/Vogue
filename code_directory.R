@@ -362,3 +362,14 @@ a <- sweep(vmb2, 1, (rowSums(vmb2))/100, '/') # calculates for us
 vare.dist <- vegdist(a) #works!
 str(vare.dist)
 summary(vare.dist)
+
+#clustering
+library(stats)
+hclust(vare.dist, method = "complete", members = NULL)
+w <- hclust(vare.dist, method = "complete", members = NULL) #not sure what this is
+w
+
+plot(w, labels = NULL, hang = 0.1, check = TRUE, #works
+     axes = TRUE, frame.plot = FALSE, ann = TRUE,
+     main = "Cluster Dendrogram",
+     sub = NULL, xlab = NULL, ylab = "Height")
