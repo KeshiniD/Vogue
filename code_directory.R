@@ -361,7 +361,7 @@ vmb2 <- tbl_df(data) %>% #subset
           Megasphaera.sp.genomosp.type.1, Escherichia.coli, Prevotella.timonensis, Clostridia.sp.BVAB2, 
           Clostridium.genomosp.BVAB3, Atopobium.vaginae, Anaerobes, Other.Clostridia, 
           Other.Bacteroidetes, Other.Proteobacteria, Other.Actinobacteria, Other.Firmicutes, Other)
-a <- sweep(vmb2, 1, (rowSums(vmb2))/100, '/') # calculates for us
+a<- sweep(vmb2, 1, (rowSums(vmb2))/100, '/') # calculates for us
 vare.dist <- vegdist(a) #works!
 str(vare.dist)
 summary(vare.dist)
@@ -449,8 +449,23 @@ heatmap(m_matrix, Rowv=dendcompletem, Colv=NA, scale="column")
 #figure out what is the difference between these three versions
 #version 1 and 3 are the same essentially; visually 
 
-#different heat maps
+#different heat maps; enhanced
 #may allow for more control over aspects
 install.packages("gplots", dependencies = TRUE)
 library(gplots)
-heatmap.2(m_matrix, Rowv=dendcompletem, Colv=TRUE, scale="column")
+heatmap.2(m_matrix, Rowv=dendcompletem, Colv=TRUE, distfun=dist2, hclustfun=hclust2, 
+          scale="column", trace="none", dendrogram="row")
+
+#want to calculate dendrogram differently
+hclust2 <- function(m_matrix, method="average", ...)
+  hclust(m_matrix, method=method, ...)
+dist2 <- function(m_matrix, ...)
+  as.dist(1-cor(t(m_matrix), method="pearson")) #pearson, kendall or spearman
+heatmap.2(m_matrix, Rowv=dendcompletem, Colv=TRUE, distfun=dist2, 
+          hclustfun=hclust2, scale="column", trace="none", 
+          dendrogram="row", density.info = "none")
+#realize that light means lots, and darker means none
+#density.info = histogram/density plot
+#key = legend
+dist2 <- function(m_matrix, ...) #bray function for heatmap
+vegdist(sweep(m_matrix, 1, (rowSums(m_matrix))/100, '/'))
