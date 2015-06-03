@@ -457,13 +457,13 @@ heatmap.2(m_matrix, Rowv=dendcompletem, Colv=TRUE, distfun=dist2, hclustfun=hclu
           scale="column", trace="none", dendrogram="row")
 
 #want to calculate dendrogram differently
-hclust2 <- function(m_matrix, method="average", ...)
+hclust2 <- function(m_matrix, method="complete", ...)
   hclust(m_matrix, method=method, ...)
 dist2 <- function(m_matrix, ...)
   as.dist(1-cor(t(m_matrix), method="pearson")) #pearson, kendall or spearman
 heatmap.2(m_matrix, Rowv=dendcompletem, Colv=TRUE, distfun=dist2, 
           hclustfun=hclust2, scale="column", trace="none", 
-          dendrogram="row", density.info = "none")
+          dendrogram="both", density.info = "none")
 #realize that light means lots, and darker means none
 #density.info = histogram/density plot
 #key = legend
