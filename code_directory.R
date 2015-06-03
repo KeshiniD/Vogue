@@ -369,7 +369,7 @@ d <- dist(as.matrix(vmb2)) #gives dif dendrogram
 #clustering
 library(stats)
 #works makes a dendrogram
-hclust(vare.dist, method = "complete", members = NULL)
+hclust(vare.dist, method = "complete", members = NULL) #wards or average deemed best
 w <- hclust(vare.dist, method = "complete", members = NULL) #method: dif clustering methods
 plot(w, labels = NULL, hang = 0.1, check = TRUE, #hang changes length of bars
      axes = TRUE, frame.plot = FALSE, ann = TRUE,#ann is labels
@@ -390,4 +390,13 @@ install.packages("fpc", dependencies = TRUE)
 library(fpc)
 cluster.stats(mydata, fit1$cluster, fit2$cluster) #??
 
+#ggtree example
+nwk <- system.file("extdata", "sample.nwk", package="ggtree")
+x <- readLines(nwk)
+cat(substring(x, 1, 56), "\n", substring(x, 57), "\n")
+tree <- read.tree(nwk)
+ggplot(tree, aes(x, y)) + geom_tree() + theme_tree() + xlab("") + ylab("")
+ggtree(tree, color="steelblue", size=0.5, linetype="dotted")
 
+library("gridExtra") #for added features
+#how does data need to be formatted??!!
