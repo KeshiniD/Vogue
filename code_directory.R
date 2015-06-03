@@ -426,8 +426,22 @@ vmb2 <- tbl_df(data) %>% #bacteria subset
           Other.Bacteroidetes, Other.Proteobacteria, Other.Actinobacteria, Other.Firmicutes, Other)
 plot_heatmap(vmb2)
 
-#heat maps works!!
+#heat maps works!! verison 1
 install.packages("Matrix", dependencies = TRUE)
 m_matrix <- data.matrix(vmb2)
 library(Matrix)
 heatmap(m_matrix, Colv=NA, scale="column")
+
+#dif dendrogram heatmap version 2
+cor_t <- cor(t(m_matrix))
+distancet <- as.dist(cor_t)
+hclust_complete <- hclust(distancet, method = "complete")
+dendcomplete <- as.dendrogram(hclust_complete)
+heatmap(m_matrix, Rowv=dendcomplete, Colv=NA, scale="column")
+
+#version 3
+distancem <- dist(m_matrix)
+hclust_completem <- hclust(distancem, method = "complete")
+dendcompletem <- as.dendrogram(hclust_completem)
+heatmap(m_matrix, Rowv=dendcompletem, Colv=NA, scale="column")
+#figure out what is the difference between these three versions
