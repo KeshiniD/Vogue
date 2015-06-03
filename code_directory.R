@@ -433,6 +433,7 @@ library(Matrix)
 heatmap(m_matrix, Colv=NA, scale="column")
 
 #dif dendrogram heatmap version 2
+#not for me
 cor_t <- cor(t(m_matrix))
 distancet <- as.dist(cor_t)
 hclust_complete <- hclust(distancet, method = "complete")
@@ -441,7 +442,15 @@ heatmap(m_matrix, Rowv=dendcomplete, Colv=NA, scale="column")
 
 #version 3
 distancem <- dist(m_matrix)
-hclust_completem <- hclust(distancem, method = "complete")
+# determining how dendrogram should be ordered
+hclust_completem <- hclust(distancem, method = "complete") #ward.D, ward.D2 or average
 dendcompletem <- as.dendrogram(hclust_completem)
 heatmap(m_matrix, Rowv=dendcompletem, Colv=NA, scale="column")
 #figure out what is the difference between these three versions
+#version 1 and 3 are the same essentially; visually 
+
+#different heat maps
+#may allow for more control over aspects
+install.packages("gplots", dependencies = TRUE)
+library(gplots)
+heatmap.2(m_matrix, Rowv=dendcompletem, Colv=TRUE, scale="column")
