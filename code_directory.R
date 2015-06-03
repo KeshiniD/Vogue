@@ -409,6 +409,7 @@ source("http://bioconductor.org/biocLite.R")
 biocLite("phyloseq")
 library(phyloseq)
 theme_set(theme_bw()) #what does this do?
+#also could use ggphylo
 
 #example
 data("GlobalPatterns")
@@ -469,3 +470,11 @@ heatmap.2(m_matrix, Rowv=dendcompletem, Colv=TRUE, distfun=dist2,
 #key = legend
 dist2 <- function(m_matrix, ...) #bray function for heatmap
 vegdist(sweep(m_matrix, 1, (rowSums(m_matrix))/100, '/'))
+
+
+#make_otu_table and then this is a phylo object
+#and can be used in phyloseq, ggphylo and ggtree
+install.packages("qiimer", dependencies = TRUE)
+library(qiimer)
+make_otu_table(m_matrix, sample_ids = NULL)
+m_matrix
