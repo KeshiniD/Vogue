@@ -5,8 +5,10 @@ install.packages("dplyr", dependencies = TRUE)
 install.packages("tidyr", dependencies = TRUE)
 install.packages("entropart", dependencies = TRUE)
 install.packages("epitools", dependencies = TRUE)
-install.packages("ggtree", dependencies = TRUE)
-browseVignettes("ggtree")#for doc
+install.packages("ggtree", dependencies = TRUE) #may not work so use following:
+source("http://bioconductor.org/biocLite.R")
+biocLite("ggtree")
+upbrowseVignettes("ggtree")#for doc
 
 #load packages
 library(vegan)
@@ -19,6 +21,7 @@ library(knitr)
 library(assertthat)
 library(entropart)
 library(epitools)
+library(ggtree)
 
 #loaded datasets, tsv form puts them in nice tables
 metadata <- read.delim(file.path("completemetadataR.tsv"))
@@ -357,7 +360,7 @@ vmb2 <- tbl_df(data) %>% #subset
           Gardnerella.vaginalis.Group.B, Gardnerella.vaginalis.Group.D, 
           Megasphaera.sp.genomosp.type.1, Escherichia.coli, Prevotella.timonensis, Clostridia.sp.BVAB2, 
           Clostridium.genomosp.BVAB3, Atopobium.vaginae, Anaerobes, Other.Clostridia, 
-          Other.Bacteroidetes, Other.Proteobacteria, Other.Actinobacteria, Other.Firmicutes, Other) %>%
+          Other.Bacteroidetes, Other.Proteobacteria, Other.Actinobacteria, Other.Firmicutes, Other)
 a <- sweep(vmb2, 1, (rowSums(vmb2))/100, '/') # calculates for us
 vare.dist <- vegdist(a) #works!
 str(vare.dist)
@@ -377,7 +380,7 @@ plot(w, labels = NULL, hang = 0.1, check = TRUE, #hang changes length of bars
      sub = NULL, xlab = NULL, ylab = "Height")
 rect.hclust(w, k=8, border="red") #puts red border around samples
 
-#example
+#dif clustering example
 mydata <- scale(vmb2)
 wss <- (nrow(mydata)-1)*sum(apply(mydata,2,var))
 for (i in 1:11) wss[i] <- sum(kmeans(mydata, #doesnt work
@@ -399,4 +402,32 @@ ggplot(tree, aes(x, y)) + geom_tree() + theme_tree() + xlab("") + ylab("")
 ggtree(tree, color="steelblue", size=0.5, linetype="dotted")
 
 library("gridExtra") #for added features
-#how does data need to be formatted??!!
+#how does data need to be formatted for ggtree??!!
+
+#phyloseq
+source("http://bioconductor.org/biocLite.R")
+biocLite("phyloseq")
+library(phyloseq)
+theme_set(theme_bw()) #what does this do?
+
+#example
+data("GlobalPatterns")
+#these call for 300 most abundant bacteria taxa
+gpt <- subset_taxa(GlobalPatterns, Kingdom=="Bacteria") 
+gpt <- prune_taxa(names(sort(taxa_sums(gpt),TRUE)[1:300]), gpt)
+plot_heatmap(gpt, sample.label="SampleType")
+
+vmb2 <- tbl_df(data) %>% #bacteria subset 
+  select (Lactobacillus.crispatus, Lactobacillus.iners, Lactobacillus.gasseri, 
+          Lactobacillus.jensenii, Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.A, 
+          Gardnerella.vaginalis.Group.B, Gardnerella.vaginalis.Group.D, 
+          Megasphaera.sp.genomosp.type.1, Escherichia.coli, Prevotella.timonensis, Clostridia.sp.BVAB2, 
+          Clostridium.genomosp.BVAB3, Atopobium.vaginae, Anaerobes, Other.Clostridia, 
+          Other.Bacteroidetes, Other.Proteobacteria, Other.Actinobacteria, Other.Firmicutes, Other)
+plot_heatmap(vmb2)
+
+#heat maps works!!
+install.packages("Matrix", dependencies = TRUE)
+m_matrix <- data.matrix(vmb2)
+library(Matrix)
+heatmap(m_matrix, Colv=NA, scale="column")
