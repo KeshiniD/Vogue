@@ -478,3 +478,12 @@ install.packages("qiimer", dependencies = TRUE)
 library(qiimer)
 make_otu_table(m_matrix, sample_ids = NULL)
 m_matrix
+
+#
+data(GlobalPatterns)
+a <- otu_table(GlobalPatterns)
+head(a)
+a <- otu_table(m_matrix, taxa_are_rows=TRUE) #works
+head(a)
+str(a)
+plot_richness(a)# I am soooo smart :)
