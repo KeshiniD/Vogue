@@ -483,7 +483,14 @@ m_matrix
 data(GlobalPatterns)
 a <- otu_table(GlobalPatterns)
 head(a)
-a <- otu_table(m_matrix, taxa_are_rows=TRUE) #works
+a <- otu_table(m_matrix, taxa_are_rows=TRUE) #works; need transpose
 head(a)
 str(a)
 plot_richness(a)# I am soooo smart :)
+plot_tree(a) #needs workd
+plot_heatmap(a) #so prettY!!!!
+plot_bar(a)
+physeq = prune_taxa(taxa_names(a)[1:50], a) #make tree with phy_tree
+phy_tree(physeq)
+tree <- read.tree(a) #ggtree
+ggplot(tree, aes(x, y)) + geom_tree() + theme_tree() + xlab("") + ylab("")
