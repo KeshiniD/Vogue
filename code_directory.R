@@ -496,4 +496,12 @@ tree <- read.tree(a) #ggtree
 ggplot(tree, aes(x, y)) + geom_tree() + theme_tree() + xlab("") + ylab("")
 
 
+#all works fine
 data$Trich <- mapvalues(data$Trich, from = c("0"), to = c("no"))# works
+#different example with yes and no
+data$abnormal.discharge..y.1..n.0. <- mapvalues(data$abnormal.discharge..y.1..n.0., from = c("0", "1"), to = c("no", "yes"))# works
+#with NA
+data$oral.sex.in.past.48.hours..y.1..n.0. <- mapvalues(data$oral.sex.in.past.48.hours..y.1..n.0., from = c("0", "1"), to = c("no", "yes"))# works
+
+
+
