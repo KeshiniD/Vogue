@@ -494,3 +494,6 @@ physeq = prune_taxa(taxa_names(a)[1:50], a) #make tree with phy_tree
 phy_tree(physeq)
 tree <- read.tree(a) #ggtree
 ggplot(tree, aes(x, y)) + geom_tree() + theme_tree() + xlab("") + ylab("")
+
+
+data$Trich <- mapvalues(data$Trich, from = c("0"), to = c("no"))# works
