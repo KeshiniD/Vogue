@@ -503,5 +503,7 @@ data$abnormal.discharge..y.1..n.0. <- mapvalues(data$abnormal.discharge..y.1..n.
 #with NA
 data$oral.sex.in.past.48.hours..y.1..n.0. <- mapvalues(data$oral.sex.in.past.48.hours..y.1..n.0., from = c("0", "1"), to = c("no", "yes"))# works
 
+install.packages("installr") # install 
+installr::updateR() # updating R.
 
 
