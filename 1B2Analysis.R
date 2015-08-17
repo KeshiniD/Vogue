@@ -6,13 +6,9 @@ olddata  <- olddata %>%
           Vogue1B2.01.11, Vogue1B2.01.12, Vogue1B2.01.15, Vogue1B2.01.19, 
           Vogue1B2.01.21, Vogue1B2.01.23, Vogue1B2.01.28, Vogue1B2.01.29)
                       
-data2a <- nwdata %>%
-  aggregate(TOTAL.frequency~Simple.name, nwdata, FUN=sum) %>%
-  arrange(Group)
-
 data2a <-aggregate(TOTAL.frequency~Simple.name,nwdata,FUN=sum) #only total frew
 
-data2 <- ddply(nwdata,"Simple.name",numcolwise(sum)) #everything
+data2 <- ddply(nwdata,c("Simple.name", "Group"),numcolwise(sum)) #everything
 
 #write to file
 write.table(data2, "new1B2.csv", sep = ",", row.names = FALSE, quote = FALSE)
@@ -61,5 +57,6 @@ write.table(olddata, "1_291B2.csv", sep = ",", row.names = FALSE, quote = FALSE)
          Pseudomonas fluorescens, Ralstonia pickettii, 
          Serratia proteamaculans, Shigella sonnei)
 
-#merge olddata and data2
+#merge olddata and data2 (1B2-01 to -29 and -26 to -64)
 total <- merge(data2, olddata, by="Simple.name")
+total  <- merge(data2, olddata, c("Simple.name","Group"))
