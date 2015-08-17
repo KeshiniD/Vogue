@@ -58,5 +58,16 @@ write.table(olddata, "1_291B2.csv", sep = ",", row.names = FALSE, quote = FALSE)
          Serratia proteamaculans, Shigella sonnei)
 
 #merge olddata and data2 (1B2-01 to -29 and -26 to -64)
-total <- merge(data2, olddata, by="Simple.name")
-total  <- merge(data2, olddata, c("Simple.name","Group"))
+data2 <- dplyr::rename(data2, Total.Frequency = TOTAL.frequency)
+total <- merge(data2, olddata, by="Simple.name", all = TRUE)
+
+#this one merges the data frame 
+zz<-join(data2, olddata, type="full")
+zz[is.na(zz)] <- 0
+
+#aggregates the like observations from merged data frame
+dataall <- ddply(zz,c("Simple.name", "Group"),numcolwise(sum)) #everything
+
+#write this data to file
+write.table(dataall, "complete1B2data.csv", sep = ",", row.names = FALSE, quote = FALSE)
+
