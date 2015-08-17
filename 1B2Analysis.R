@@ -71,3 +71,6 @@ dataall <- ddply(zz,c("Simple.name", "Group"),numcolwise(sum)) #everything
 #write this data to file
 write.table(dataall, "complete1B2data.csv", sep = ",", row.names = FALSE, quote = FALSE)
 
+#grouped based on baccteria labels
+data <- read.csv(file.path("complete1B2data.csv"))
+cdata <- ddply(data,"Group",numcolwise(sum))
