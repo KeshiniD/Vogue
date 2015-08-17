@@ -1,11 +1,19 @@
 nwdata <- read.delim(file.path("1B2_26_64.txt"))
-
+olddata <- read.delim(file.path ("1B2data_part1.txt"))
+olddata  <- olddata %>%
+  select (Simple.name, Group, Total.Frequency, Vogue1B2.01.01, Vogue1B2.01.06, 
+          Vogue1B2.01.07, Vogue1B2.01.08, Vogue1B2.01.09, Vogue1B2.01.10, 
+          Vogue1B2.01.11, Vogue1B2.01.12, Vogue1B2.01.15, Vogue1B2.01.19, 
+          Vogue1B2.01.21, Vogue1B2.01.23, Vogue1B2.01.28, Vogue1B2.01.29)
+                      
 data2 <- aggregate(TOTAL.frequency~Simple.name,nwdata,FUN=sum) #only total frew
 
 data2 <- ddply(nwdata,"Simple.name",numcolwise(sum)) #everything
 
 #write to file
 write.table(data2, "new1B2.csv", sep = ",", row.names = FALSE, quote = FALSE)
+write.table(nwdata, "1B2_26_64.csv", sep = ",", row.names = FALSE, quote = FALSE)
+write.table(olddata, "1_291B2.csv", sep = ",", row.names = FALSE, quote = FALSE)
   
 #all bacteria
          Actinobacteria sp., 
