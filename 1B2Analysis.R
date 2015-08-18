@@ -22,13 +22,25 @@ rownames(data2) <- data2[,1]
 data2[,1] <- NULL
 
 data3 <- as.data.frame(t(data2))
+write.table(data3, "1B2.csv", sep = ",", row.names = FALSE, quote = FALSE)
+data <- read.csv(file.path("1B2.csv"))
 
 #bac counts
-data2 <-
-  gather(data, key = 'Bacteria', value = 'Counts', Actinobacteria sp., Lactobacillus.crispatus, Lactobacillus.iners, Lactobacillus.gasseri, 
-         Lactobacillus.jensenii, Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.A, 
-         Gardnerella.vaginalis.Group.B, Gardnerella.vaginalis.Group.D, 
-         Megasphaera.sp.genomosp.type.1, Escherichia.coli, Prevotella.timonensis, Clostridia.sp.BVAB2, 
-         Clostridium.genomosp.BVAB3, Atopobium.vaginae, Anaerobes, Other.Clostridia, 
-         Other.Bacteroidetes, Other.Proteobacteria, Other.Actinobacteria, Other.Firmicutes, Other)
+data4 <-
+  gather(data, key = 'Bacteria', value = 'Counts', Lactobacillus.crispatus, 
+         Lactobacillus.gasseri, Lactobacillus.iners, Lactobacillus.jensenii, 
+         Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
+         Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
+         Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
+         Clostridium.genomosp..BVAB3, Escherichia.coli, 
+         Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
+         Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
+         Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
+         Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
+         Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
 
+vmb2 <- tbl_df(data4) %>% # finally got the percentages correct
+  group_by(Participants) %>%
+  select(Participants, Bacteria, Counts) %>%
+  mutate(Species.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
+  arrange(Participants)
