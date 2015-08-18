@@ -44,3 +44,8 @@ vmb2 <- tbl_df(data4) %>% # finally got the percentages correct
   select(Participants, Bacteria, Counts) %>%
   mutate(Species.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Participants)
+
+#bar plot
+ggplot(data = vmb2, aes(x = Participants, y = Species.Percentage, fill = Bacteria)) + 
+  geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion")
+
