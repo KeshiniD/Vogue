@@ -46,12 +46,12 @@ vmb2 <- tbl_df(data4) %>% # finally got the percentages correct
   arrange(Participants)
 
 #bar plot with custom colors
-jColors <- c('blue', 'deepskyblue4', 'cornflowerblue', 'deepskyblue3', 'green', 
-             'forestgreen', 'greenyellow', 'green4', 'darkgoldenrod1', 
-             'mediumorchid2', 'firebrick', 'firebrick1', 'aquamarine2', 'gray33',
-             'gray', 'pink', 'orange', 'purple', 'plum', 'black', 'tomato', 
-             'peru', 'orchid', 'mediumvioletred', 'coral', 'darkorange', 
-             'deeppink')
+jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green', 
+             'forestgreen', 'palegreen', 'green3', 'darkgoldenrod1', 
+             'purple', 'mediumorchid2', 'plum', 'firebrick', 'firebrick1', 
+             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
+             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
+             'lavender', 'rosybrown2', 'deeppink')
 
 ggplot(data = vmb2, aes(x = Participants, y = Species.Percentage, fill = Bacteria)) + 
   geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion") +
