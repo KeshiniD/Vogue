@@ -66,3 +66,42 @@ metadata <- read.delim(file.path("completemetadataR.txt"))
 metadata <-  metadata[c(1:26), ]
 metadata <- dplyr::rename(metadata, Participants = X)
 total<-join(metadata, data, type="full")
+
+write.table(total, "1B2metabac.csv", sep = ",", row.names = FALSE, quote = FALSE)
+
+##REDO EVERYTHING TO ORGANIZE BARPLOT VIA NUGENT SCORES
+#bac counts
+data4 <-
+  gather(total, key = 'Bacteria', value = 'Counts', Lactobacillus.crispatus, 
+         Lactobacillus.gasseri, Lactobacillus.iners, Lactobacillus.jensenii, 
+         Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
+         Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
+         Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
+         Clostridium.genomosp..BVAB3, Escherichia.coli, 
+         Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
+         Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
+         Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
+         Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
+         Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
+
+
+vmb2 <- tbl_df(data4) %>%
+  group_by(Participants) %>%
+  select(Participants, Bacteria, Counts, Nugent.score) %>%
+  mutate(Species.Percentage = Counts/(sum(Counts))*100) %>%
+  arrange(Participants)# can either have % or decimal
+ 
+
+#bar plot with custom colors
+jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green', 
+             'palegreen', 'forestgreen', 'green3', 'darkgoldenrod1', 
+             'purple', 'mediumorchid2', 'plum', 'firebrick', 'firebrick1', 
+             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
+             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
+             'lavender', 'rosybrown2', 'deeppink')
+
+#trying to plot via nugent score
+ggplot(data = vmb2, aes(x = Participants, y = Species.Percentage, fill = Bacteria)) + 
+  geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion") +  scale_fill_manual(values=jColors) + 
+  ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") 
+
