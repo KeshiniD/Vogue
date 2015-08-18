@@ -55,6 +55,14 @@ jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green',
 
 ggplot(data = vmb2, aes(x = Participants, y = Species.Percentage, fill = Bacteria)) + 
   geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion") +
-  scale_fill_manual(values=jColors)
+  scale_fill_manual(values=jColors) + 
+  ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis")
 
 colors()
+
+
+#merge bac with metadata
+metadata <- read.delim(file.path("completemetadataR.txt"))
+metadata <-  metadata[c(1:26), ]
+metadata <- dplyr::rename(metadata, Participants = X)
+total<-join(metadata, data, type="full")
