@@ -70,7 +70,7 @@ View(J)
 write.table(J, "1B2_individual_Pielou.csv", sep = ",", row.names = FALSE, quote = FALSE)
 Piel <- read.csv(file.path("1B2_individual_Pielou.csv"))
 
-J2 <- F3/log(specnumber(H3, MARGIN = 1)) #not working for entire cohort
+J2 <- F2/log(specnumber(H2, MARGIN = 1)) #not working for entire cohort
 #specnumber want number of species and we can manually enter 21 to get J2
 #fixed it with below code, and can be used for diversity
 View(J2)
@@ -79,6 +79,12 @@ View(J2)
 # can then use this in specnumber() and then pielou for cohort
 h4 <- colSums(H2)
 H5 <-  t(h4)
+J2 <- F2/log(H5) 
+View(J2)
+
+#write data to file (altered headings and called back)
+write.table(J2, "1B2_cohort_Pielou.csv", sep = ",", row.names = FALSE, quote = FALSE)
+cPiel <- read.csv(file.path("1B2_cohort_Pielou.csv"))
 
 #rarefraction curves
 H2 <- data %>% #same code as above, need in this format
