@@ -23,6 +23,7 @@ data2[,1] <- NULL
 
 data3 <- as.data.frame(t(data2))
 write.table(data3, "1B2.csv", sep = ",", row.names = FALSE, quote = FALSE)
+#write to file, edit headers and call back
 data <- read.csv(file.path("1B2.csv"))
 
 #bac counts
@@ -69,7 +70,7 @@ total<-join(metadata, data, type="full")
 
 #write to file and call back
 write.table(total, "1B2metabac.csv", sep = ",", row.names = FALSE, quote = FALSE)
-total <- read.csv(file.path("1B2metabac.csv"))
+total2 <- read.csv(file.path("1B2metabac.csv")) #getting messed up in this step 
 
 
 ##REDO EVERYTHING TO ORGANIZE BARPLOT VIA NUGENT SCORES
