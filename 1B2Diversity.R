@@ -311,8 +311,11 @@ y2 <- as.data.frame(y)
 z2 <- as.data.frame(z)
 
 #merge
-
+list.of.data.frames <- cbind(a2, b2, c2, d2, e2, f2, g2, h2, i2, j2, k2, 
+                             l2, m2, n2, o2, p2, q2, r2, s2, t2, u2, v2, 
+                             w2, x2, y2, z2)
 
 #write
-write.table(zz, "1B2_individual_Good.csv", sep = ",", row.names = FALSE, quote = FALSE)
+write.table(zz, "1B2_individual_Good.csv", sep = ",", row.names = FALSE, 
+            quote = FALSE)
 data <- read.csv(file.path("1B2_individual_Good.csv"))
