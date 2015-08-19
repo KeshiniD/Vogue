@@ -46,8 +46,8 @@ vmb2 <- tbl_df(data4) %>% # finally got the percentages correct
   arrange(Participants)
 
 #bar plot with custom colors
-jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green', 
-             'forestgreen', 'palegreen', 'green3', 'darkgoldenrod1', 
+jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
+             'forestgreen', 'palegreen', 'green', 'darkgoldenrod1', 
              'purple', 'mediumorchid2', 'plum', 'firebrick', 'firebrick1', 
              'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
              'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
