@@ -1,8 +1,19 @@
 #Shannon Diversity
 library(vegan)
+library(plyr)
+##suppresses start up messages
+suppressPackageStartupMessages(library(dplyr)) 
+library(ggplot2)
+library(tidyr)
+library(knitr)
+library(entropart)
+library(epitools)
 
-# just have the bacterial species
-vmb4 <- total %>%
+#call for data
+data <- read.csv(file.path("1B2.csv"))
+
+#just have the bacterial species
+bac <- data %>%
   select(Lactobacillus.crispatus, Lactobacillus.gasseri, 
          Lactobacillus.iners, Lactobacillus.jensenii, 
          Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
@@ -15,29 +26,12 @@ vmb4 <- total %>%
          Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
          Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
 
-H <- diversity(vmb4) #shannon for individuals
+H <- diversity(bac) #shannon for individuals
 View(H)
 
-# Shannon for entire cohort (wrong)
-H2 <- diversity(H)
-View(H2)
-
-#with dplyr
-H2 <- total %>% #individuals
-  select(Lactobacillus.crispatus, Lactobacillus.gasseri, 
-         Lactobacillus.iners, Lactobacillus.jensenii, 
-         Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
-         Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
-         Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
-         Clostridium.genomosp..BVAB3, Escherichia.coli, 
-         Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
-         Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
-         Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
-         Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
-         Other.Prevotella, Other.Proteobacteria, Other.Streptococcus) 
-F <- diversity(H2)
-View(F)
-F2 <- dplyr::rename(F, ShannonDiveristy = X)#need to set X
+#write data to file (altered headings and called back)
+write.table(H, "1B2_individual_diversity.csv", sep = ",", row.names = FALSE, quote = FALSE)
+div <- read.csv(file.path("1B2_individual_diversity.csv"))
 
 #cohort
 #first need to make new table with total counts for each bacterial species
