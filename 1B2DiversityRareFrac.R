@@ -35,13 +35,32 @@ div <- read.csv(file.path("1B2_individual_diversity.csv"))
 
 #cohort
 #first need to make new table with total counts for each bacterial species
-H3 <- vmb2 %>% 
+#bac counts
+data2 <-
+  gather(data, key = 'Bacteria', value = 'Counts', Lactobacillus.crispatus, 
+         Lactobacillus.gasseri, Lactobacillus.iners, Lactobacillus.jensenii, 
+         Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
+         Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
+         Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
+         Clostridium.genomosp..BVAB3, Escherichia.coli, 
+         Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
+         Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
+         Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
+         Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
+         Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
+
+#then use in diversity
+H2 <- data2 %>% 
   select (Bacteria, Counts) %>% #WORKED!!!! for cohort
   group_by(Bacteria) %>%
   summarize(TotalCounts = sum(Counts)) %>%
   select (TotalCounts) #stay in for diversity,can remove to see bac
-F3 <- diversity(H3)
-View(F3)
+F2 <- diversity(H2)
+View(F2)
+
+#write data to file (altered headings and called back)
+write.table(F2, "1B2_cohort_diversity.csv", sep = ",", row.names = FALSE, quote = FALSE)
+cdiv <- read.csv(file.path("1B2_cohort_diversity.csv"))
 
 #Pielou's eveness
 J <- F/log(specnumber(H2)) # for individuals
