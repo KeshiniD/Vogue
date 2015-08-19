@@ -87,34 +87,232 @@ write.table(J2, "1B2_cohort_Pielou.csv", sep = ",", row.names = FALSE, quote = F
 cPiel <- read.csv(file.path("1B2_cohort_Pielou.csv"))
 
 
-#Good's coverage; need to figure this out
+#Good's coverage; need to figure this out for cohort
 ## need entropart package
 
-data(Paracou618) #example
+#example
+data(Paracou618) 
 Ns <- Paracou618.MC$Ns
 Coverage(Ns)
 
-Ns <- H3$TotalCounts#apply to own data
+#apply to own data
+#same as above
+#bac counts
+data2 <-
+  gather(data, key = 'Bacteria', value = 'Counts', Lactobacillus.crispatus, 
+         Lactobacillus.gasseri, Lactobacillus.iners, Lactobacillus.jensenii, 
+         Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
+         Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
+         Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
+         Clostridium.genomosp..BVAB3, Escherichia.coli, 
+         Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
+         Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
+         Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
+         Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
+         Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
+#total counts
+H2 <- data2 %>% 
+  select (Bacteria, Counts) %>% 
+  group_by(Bacteria) %>%
+  summarize(TotalCounts = sum(Counts)) %>%
+  select (TotalCounts)
+
+Ns <- H2$TotalCounts
 Coverage(Ns, Estimator = Turing) #Ns has to be numeric vector
-Coverage(Ns) # is value correct; value could be for entire cohort
+Coverage(Ns) # is value correct; value could be for entire cohort?
 
 #individuals
-Ns <- H2
-Coverage(Ns, Estimator = Turing) #Ns has to be numeric vector
-Coverage(Ns) #default Zhaung
-
-#the way you aren't suppose to do it
-vmb2 <- vmb[c(1:21), ]
-vmb3 <- vmb2[2:3]
-Ns <- vmb3$Counts
-Coverage(Ns, Estimator = "Turing") #works
-
 #may have to do separate manually and calculate each
-f <- vmb$Participants
-a <- split(vmb, f)#need to get this into a vector (the split frames)
+f <- data2$Participants
+a <- split(data2, f)#need to get this into a vector (the split frames)
 # this subsets data based on participants :)
-newdata <- vmb[ which(vmb$Participants=='Vogue1B2.1.29'), ]
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.01'), ]
 #does this work for below coverage function? YES!
 Ns <- newdata$Counts
-Coverage(Ns, Estimator = "Turing") 
+a <- Coverage(Ns, Estimator = "Turing") 
 #insert each participant for coverage
+
+#Vogue 01-06
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.06'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+b <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-07
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.07'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+c <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-08
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.08'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+d <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-09
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.09'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+e <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-10
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.10'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+f <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-11
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.11'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+g <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-12
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.12'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+h <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-15
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.15'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+i <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-19
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.19'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+j <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-21
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.21'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+k <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-23
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.23'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+l <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-26
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.26'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+m <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-28
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.28'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+n <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-29
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.29'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+o <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-35
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.35'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+p <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-37
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.37'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+q <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-38
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.38'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+r <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-50
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.50'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+s <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-52
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.52'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+t <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-56
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.56'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+u <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-58
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.58'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+v <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-61
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.61'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+w <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-62
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.62'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+x <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-63
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.63'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+y <- Coverage(Ns, Estimator = "Turing") 
+
+#Vogue 01-64
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.64'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+
+#turn all variables into data.frame, join data.frames and write into fill
+#edit file and call back
+a2 <- as.data.frame(a)
+b2 <- as.data.frame(b)
+c2 <- as.data.frame(c)
+d2 <- as.data.frame(d)
+e2 <- as.data.frame(e)
+f2 <- as.data.frame(f)
+g2 <- as.data.frame(g)
+h2 <- as.data.frame(h)
+i2 <- as.data.frame(i)
+j2 <- as.data.frame(j)
+k2 <- as.data.frame(k)
+l2 <- as.data.frame(l)
+m2 <- as.data.frame(m)
+n2 <- as.data.frame(n)
+o2 <- as.data.frame(o)
+p2 <- as.data.frame(p)
+q2 <- as.data.frame(q)
+r2 <- as.data.frame(r)
+s2 <- as.data.frame(s)
+t2 <- as.data.frame(t)
+u2 <- as.data.frame(u)
+v2 <- as.data.frame(v)
+w2 <- as.data.frame(w)
+x2 <- as.data.frame(x)
+y2 <- as.data.frame(y)
+z2 <- as.data.frame(z)
+
+#merge
+
+
+#write
+write.table(zz, "1B2_individual_Good.csv", sep = ",", row.names = FALSE, quote = FALSE)
+data <- read.csv(file.path("1B2_individual_Good.csv"))
