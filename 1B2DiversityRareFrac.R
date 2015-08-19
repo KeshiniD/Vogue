@@ -63,8 +63,12 @@ write.table(F2, "1B2_cohort_diversity.csv", sep = ",", row.names = FALSE, quote 
 cdiv <- read.csv(file.path("1B2_cohort_diversity.csv"))
 
 #Pielou's eveness
-J <- F/log(specnumber(H2)) # for individuals
+J<- H/log(specnumber(bac)) # for individuals
 View(J)
+
+#write data to file (altered headings and called back)
+write.table(J, "1B2_individual_Pielou.csv", sep = ",", row.names = FALSE, quote = FALSE)
+Piel <- read.csv(file.path("1B2_individual_Pielou.csv"))
 
 J2 <- F3/log(specnumber(H3, MARGIN = 1)) #not working for entire cohort
 #specnumber want number of species and we can manually enter 21 to get J2
