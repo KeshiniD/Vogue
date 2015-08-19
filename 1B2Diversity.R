@@ -281,8 +281,7 @@ newdata <- data2[ which(data2$Participants=='Vogue1B2.01.64'), ]
 #does this work for below coverage function? YES!
 Ns <- newdata$Counts
 
-#turn all variables into data.frame, join data.frames and write into fill
-#edit file and call back
+#turn all variables into data.frame, join data.frames and write into file
 a2 <- as.data.frame(a)
 b2 <- as.data.frame(b)
 c2 <- as.data.frame(c)
@@ -314,8 +313,24 @@ z2 <- as.data.frame(z)
 list.of.data.frames <- cbind(a2, b2, c2, d2, e2, f2, g2, h2, i2, j2, k2, 
                              l2, m2, n2, o2, p2, q2, r2, s2, t2, u2, v2, 
                              w2, x2, y2, z2)
+#edit headers
+list.of.data.frames <- dplyr::rename(list.of.data.frames, Vogue1B2.01.01 = a, 
+                                     Vogue1B2.01.06 = b, Vogue1B2.01.07 = c, 
+                                     Vogue1B2.01.08 = d, Vogue1B2.01.09 = e, 
+                                     Vogue1B2.01.10 = f, Vogue1B2.01.11 = g, 
+                                     Vogue1B2.01.12 = h, Vogue1B2.01.15 = i, 
+                                     Vogue1B2.01.19 = j, Vogue1B2.01.21 = k, 
+                                     Vogue1B2.01.23 = l, Vogue1B2.01.26 = m, 
+                                     Vogue1B2.01.28 = n, Vogue1B2.01.29 = o, 
+                                     Vogue1B2.01.35 = p, Vogue1B2.01.37 = q, 
+                                     Vogue1B2.01.38 = r, Vogue1B2.01.50 = s, 
+                                     Vogue1B2.01.52 = t, Vogue1B2.01.56 = u, 
+                                     Vogue1B2.01.58 = v, Vogue1B2.01.61 = w, 
+                                     Vogue1B2.01.62 = x, Vogue1B2.01.63 = y, 
+                                     Vogue1B2.01.64 = z) 
+#when transpose and write to file lose 'Participant' IDs
+#list.of.data.frames <- as.data.frame(t(list.of.data.frames))
 
 #write
-write.table(zz, "1B2_individual_Good.csv", sep = ",", row.names = FALSE, 
-            quote = FALSE)
-data <- read.csv(file.path("1B2_individual_Good.csv"))
+write.table(list.of.data.frames, "1B2_individual_Good.csv", sep = ",", row.names = FALSE, quote = FALSE)
+Good <- read.csv(file.path("1B2_individual_Good.csv"))
