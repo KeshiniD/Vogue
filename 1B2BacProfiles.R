@@ -69,9 +69,9 @@ metadata <- dplyr::rename(metadata, Participants = X)
 total<-join(metadata, data, type="full")
 
 #write to file and call back
-write.table(total, "1B2metabac.csv", sep = ",", row.names = FALSE, quote = FALSE)
+write.csv(total, "1B2metabac.csv", row.names = FALSE)
 total2 <- read.csv(file.path("1B2metabac.csv")) #getting messed up in this step 
-
+#fixed
 
 ##REDO EVERYTHING TO ORGANIZE BARPLOT VIA NUGENT SCORES
 #tried to facet_wrap & facet_grid but did not appear in tidy fashion
