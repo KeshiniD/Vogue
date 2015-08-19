@@ -39,7 +39,7 @@ data4 <-
          Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
          Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
 
-vmb2 <- tbl_df(data4) %>% # finally got the percentages correct
+vmb <- tbl_df(data4) %>% # finally got the percentages correct
   group_by(Participants) %>%
   select(Participants, Bacteria, Counts) %>%
   mutate(Species.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
@@ -53,7 +53,7 @@ jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3',
              'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
              'lavender', 'rosybrown2', 'deeppink')
 
-ggplot(data = vmb2, aes(x = Participants, y = Species.Percentage, fill = Bacteria)) + 
+ggplot(data = vmb, aes(x = Participants, y = Species.Percentage, fill = Bacteria)) + 
   geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion") +
   scale_fill_manual(values=jColors) + 
   ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis")
@@ -67,10 +67,14 @@ metadata <-  metadata[c(1:26), ]
 metadata <- dplyr::rename(metadata, Participants = X)
 total<-join(metadata, data, type="full")
 
+#write to file and call back
 write.table(total, "1B2metabac.csv", sep = ",", row.names = FALSE, quote = FALSE)
+total <- read.csv(file.path("1B2metabac.csv"))
+
 
 ##REDO EVERYTHING TO ORGANIZE BARPLOT VIA NUGENT SCORES
-#bac counts
+#tried to facet_wrap & facet_grid but did not appear in tidy fashion
+#bac counts (same as above)
 data4 <-
   gather(total, key = 'Bacteria', value = 'Counts', Lactobacillus.crispatus, 
          Lactobacillus.gasseri, Lactobacillus.iners, Lactobacillus.jensenii, 
@@ -84,7 +88,7 @@ data4 <-
          Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
          Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
 
-
+#same as above but select Nugent score
 vmb2 <- tbl_df(data4) %>%
   group_by(Participants) %>%
   select(Participants, Bacteria, Counts, Nugent.score) %>%
@@ -104,4 +108,4 @@ jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green',
 ggplot(data = vmb2, aes(x = Participants, y = Species.Percentage, fill = Bacteria)) + 
   geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion") +  scale_fill_manual(values=jColors) + 
   ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") 
-
+# + facet_grid(Nugent.score ~ ., scales = "free", space = "free", )
