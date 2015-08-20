@@ -26,11 +26,12 @@ total$Nugent.score <- factor(total$Nugent.score)
 
 #odds ratio code
 mylogit <- glm(formula = Nugent.score ~ Symptoms..y.1..n.0. + 
-                 abnormal.discharge..y.1..n.0., data = total, 
+                 abnormal.discharge..y.1..n.0., Number.partners.in.past.year, data = total, 
                family = binomial(link = "logit"))
 mylogit <- glm(formula = Nugent.score ~ Symptoms..y.1..n.0. + 
                  abnormal.discharge..y.1..n.0., data = total, 
                family = binomial) #gives same results thus far
+#na in data is ok
 
 mylogit
 confint(mylogit) #CI intervals
@@ -52,10 +53,23 @@ oddsratio.midp(dat, rev="c")
 oddsratio.fisher(dat, rev="c")
 oddsratio.wald(dat, rev="c")
 oddsratio.small(dat, rev="c")
+riskratio(dat)
 
 # the zeros are probably a problem
 t <- c("lacto", "no lacto")
 o <- c("no", "inter", "yes")
-dat <- matrix(c(64, 1601, 69, 0, 0, 0),2,3,byrow=TRUE)
+dat <- matrix(c(64, 1601, 69, 1, 2, 3),2,3,byrow=TRUE)
 dimnames(dat) <- list("Lacto presence" = t, "Outcome" = o)
 oddsratio(dat, rev="c")
+riskratio(dat)
+
+attach(total)
+#can just give names, since used attach()
+mytable <- table(total$Ethnicity,total$Martial.Status) #do it this way, and lengths dif
+mytable
+
+
+#reassign to binary codes
+total2 <- model.matrix(~Ethnicity -1 , data=total)
+total3 <- model.matrix(~Nugent.score -1 , data=total)
+#might be away to look at things that cannot be set into single column binary
