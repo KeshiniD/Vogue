@@ -24,6 +24,7 @@ library(assertthat)
 library(entropart)
 library(epitools)
 library(ggtree)
+library(epiR)
 
 #loaded datasets, tsv form puts them in nice tables
 metadata <- read.delim(file.path("completemetadataR.tsv"))
