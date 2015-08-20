@@ -9,6 +9,8 @@ install.packages("ggtree", dependencies = TRUE) #may not work so use following:
 source("http://bioconductor.org/biocLite.R")
 biocLite("ggtree")
 upbrowseVignettes("ggtree")#for doc
+install.packages("epiR", dependencies = TRUE)
+
 
 #load packages
 library(vegan)
