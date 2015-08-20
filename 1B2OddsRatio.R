@@ -18,25 +18,6 @@ library(PredictABEL) #for adjusted odds ratio
 #call for entire 1B2 data
 total <- read.csv(file.path("1B2metabac.csv"))
 
-#oddsratio example
-tapw <- c("Lowest", "Intermediate", "Highest") 
-outc <- c("Case", "Control")
-dat <- matrix(c(2, 29, 35, 64, 12, 6),3,2,byrow=TRUE)
-dimnames(dat) <- list("Tap water exposure" = tapw, "Outcome" = outc)
-oddsratio(dat, rev="c")
-oddsratio.midp(dat, rev="c")
-oddsratio.fisher(dat, rev="c")
-oddsratio.wald(dat, rev="c")
-oddsratio.small(dat, rev="c")
-
-#manually pulled numbers for lacto and nugent score table
-# the zeros are probably a problem
-t <- c("lacto", "no lacto")
-o <- c("no", "inter", "yes")
-dat <- matrix(c(64, 1601, 69, 0, 0, 0),2,3,byrow=TRUE)
-dimnames(dat) <- list("Lacto presence" = t, "Outcome" = o)
-oddsratio(dat, rev="c")
-
 #adjusted odds ratio example
 install.packages("PredictABEL", dependencies = TRUE)
 library(PredictABEL)
@@ -72,9 +53,12 @@ cGenPred <- c(0)
 cGenPredCat <- c(0)
 
 #Odss Ratio figured out. Need to put data into categories
+#data has to be in factor form
 total$Symptoms..y.1..n.0. <- factor(total$Symptoms..y.1..n.0.)
 total$abnormal.discharge..y.1..n.0. <- factor(total$abnormal.discharge..y.1..n.0.)
 total$Nugent.score <- factor(total$Nugent.score)
+
+#odds ratio code
 mylogit <- glm(formula = Nugent.score ~ Symptoms..y.1..n.0. + 
                  abnormal.discharge..y.1..n.0., data = total, 
                family = binomial(link = "logit"))
