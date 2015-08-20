@@ -71,5 +71,15 @@ mytable
 
 #reassign to binary codes
 total2 <- model.matrix(~Ethnicity -1 , data=total)
-total3 <- model.matrix(~Nugent.score -1 , data=total)
+total3 <- model.matrix(~Other.Bacteria -1 , data=total) 
+#doesn't work with bacteria
 #might be away to look at things that cannot be set into single column binary
+
+
+total$Sexual.Partners[total$Sexual.Partners=='Male']<-'m'
+#make numbers into categories
+total$Nugent.score[Nugent.score > 6] <- "0"
+total$Nugent.score[Nugent.score > 3 & Nugent.score <= 6] <- "1"
+total$Nugent.score[Nugent.score <= 3] <- "2"
+total <- rename(total$Sexual.Partners, c("Male" = "0", "Female" = "1"))
+total$Sexual.Partners <- as.character(total$Sexual.Partners)
