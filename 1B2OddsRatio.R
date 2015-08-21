@@ -20,7 +20,7 @@ total <- read.csv(file.path("1B2metabac.csv"))
 
 #rename headers
 #rename funtion does not work with spaces unless quoted
-data <- dplyr::rename(data, Participants = X, 
+total <- dplyr::rename(total,
                       #"Lactobacillus crispatus" = Lactobacillus.crispatus, 
                       #"Lactobacillus iners" = Lactobacillus.iners, 
                       #"Lactobacillus gasseri" = Lactobacillus.gasseri, 
@@ -31,7 +31,7 @@ data <- dplyr::rename(data, Participants = X,
                       #"Gardnerella vaginalis Group D" = Gardnerella.vaginalis.Group.D,
                       "Megasphaera.sp.genomosp.type.1" = Megasphaera.sp..genomosp..type.1, 
                       #"Escherichia coli" = Escherichia.coli,"Prevotella timonensis" = Prevotella.timonensis, 
-                      "Clostridia.sp.BVAB2" = Clostridia.sp...probably.BVAB2., 
+                      "Clostridia.sp.BVAB2" = Clostridia.sp..BVAB2, 
                       "Clostridium.genomosp.BVAB3" = Clostridium.genomosp..BVAB3, 
                       #"Atopobium vaginae" = Atopobium.vaginae, "Other Clostridia" = Other.Clostridia, 
                       #"Other Bacteroidetes" = Other.Bacteroidetes, "Other Proteobacteria" = Other.Proteobacteria,
@@ -48,11 +48,16 @@ data <- dplyr::rename(data, Participants = X,
                       "Number of Yeast episodes (lifetime)" = Yeast..lifetime.,
                       "Number of UTI episodes (past two months)" = UTI..2.months., 
                       "Number of UTI episodes (past year)" = UTI..year., 
-                      "Number of UTI episodes (lifetime)" = UTI..lifetime., "Trichomoniasis" = Trich,
+                      "Number of UTI episodes (lifetime)" = UTI..lifetime., 
+                      "Number of Trichomoniasis episodes (past two months)" = Trich..2.months.,
+                      "Number of Trichomoniasis episodes (past year)" = Trich..year., 
+                      "Number of Trichomoniasis episodes (lifetime)" = Trich..lifetime., 
                       "Number of Genital Warts episodes (past two months)" = Genital.Warts..2months., 
                       "Number of Gential warts episodes (past year)" = Genital.Warts..year., 
                       "Number of Genital Warts episodes (lifetime)" = Genital.Warts..lifetime., 
-                      "History of Genital Herpes" = Genital.Herpes, 
+                      "Number of Genital Herpes episodes (past two months)" = Genital.Herpes..2months., 
+                      "Number of Gential Herpes episodes (past year)" = Genital.Herpes..year., 
+                      "Number of Genital Herpes episodes (lifetime)" = Genital.Herpes..lifetime.,  
                       "Number of Chlamydia episodes (past two months)" = Chlamydia..2.months., 
                       "Number of Chlamydia episodes (past year)" = Chlamydia..year., 
                       "Number of Chlamydia episodes (lifetime)" = Chlamydia..lifetime., 
@@ -87,9 +92,6 @@ data <- dplyr::rename(data, Participants = X,
                       "Sex Toy Use (past 48 hours)" = use.in.past.48.hours..y.1..n.0., 
                       "Illicit Substance Use" = use.of.drugs..y.1..n.0., "Alcohol Use" = alcohol.use..y.1..n.0., 
                       "Smoking (Current or Past)" = smoker..current.or.in.past...y.1..n.0.) 
-
-
-
 
 #Odss Ratio figured out. Need to put data into categories
 #data has to be in factor form
