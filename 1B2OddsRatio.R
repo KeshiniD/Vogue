@@ -98,11 +98,11 @@ total <- dplyr::rename(total,
 total$Symptoms..y.1..n.0. <- factor(total$Symptoms..y.1..n.0.)
 total$abnormal.discharge..y.1..n.0. <- factor(total$abnormal.discharge..y.1..n.0.)
 total$Nugent.score <- factor(total$Nugent.score)
+total$Sexual.Partners  <- factor(total$Sexual.Partners)
 
-#odds ratio code
+#odds ratio code #sexual.partners mucks it up
 mylogit <- glm(formula = Nugent.score ~ Symptoms..y.1..n.0. + 
-                 abnormal.discharge..y.1..n.0., Number.partners.in.past.year, data = total, 
-               family = binomial(link = "logit"))
+                 abnormal.discharge..y.1..n.0. + Sexual.Partners, data = total, family = binomial(link = "logit"))
 mylogit <- glm(formula = Nugent.score ~ Symptoms..y.1..n.0. + 
                  abnormal.discharge..y.1..n.0., data = total, 
                family = binomial) #gives same results thus far
