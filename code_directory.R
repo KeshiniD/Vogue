@@ -7,7 +7,7 @@ install.packages("entropart", dependencies = TRUE)
 install.packages("epitools", dependencies = TRUE)
 install.packages("ggtree", dependencies = TRUE) #may not work so use following:
 source("http://bioconductor.org/biocLite.R")
-biocLite("ggtree")
+biocLite("ggtree") #need to update R to 3.1.2 to work
 upbrowseVignettes("ggtree")#for doc
 install.packages("epiR", dependencies = TRUE)
 
