@@ -109,9 +109,9 @@ mylogit <- glm(formula = Nugent.score ~ Symptoms..y.1..n.0. +
                  abnormal.discharge..y.1..n.0., data = total, 
                family = binomial) #gives same results thus far
 #na in data is ok
-mylogit <- glm(formula = Symptoms..y.1..n.0. ~ Nugent.score + Age, data = total, 
+mylogit <- glm(formula = Symptoms..y.1..n.0. ~ Nugent.score + Ethnicity + Age + Lactobacillus.iners, data = total, 
                family = binomial)
-
+mylogit <- glm(formula = Symptoms..y.1..n.0. ~ Sexual.Partners, data = total, family = binomial)
 mylogit
 confint(mylogit) #CI intervals
 exp(cbind(OR = coef(mylogit), confint(mylogit))) #ORs and CIs
@@ -172,3 +172,6 @@ kable(a)
 #3x3 table
 a <- xtabs(~Nugent.score + Ethnicity + Marital.Status , data = total)
 a <- as.data.frame(a)
+
+# trying to get new columns for category variables (done)
+total$newColumn <- mapply(as.factor, total$Sexual.Partners)
