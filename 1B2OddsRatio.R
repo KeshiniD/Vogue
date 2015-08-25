@@ -118,6 +118,31 @@ detach(total)
 #convert Amsels.cat from character into factor
 total$Amsels.cat <- factor(total$Amsels.cat)
 
+#Age
+attach(total)
+total$Age.cat[Age < 20] <- "1" 
+total$Age.cat[Age >= 20 & Age <=29] <- "2"
+total$Age.cat[Age >= 30 & Age <=39] <- "3"
+total$Age.cat[Age >= 40] <- "4" 
+detach(total)
+
+#convert Age.cat from character into factor
+total$Age.cat <- factor(total$Age.cat)
+
+#BMI
+attach(total)
+total$Age.cat[Age < 20] <- "1" 
+total$Age.cat[Age >= 20 & Age <=29] <- "2"
+total$Age.cat[Age >= 30 & Age <=39] <- "3"
+total$Age.cat[Age >= 40] <- "4" 
+detach(total)
+
+#convert Age.cat from character into factor
+total$Age.cat <- factor(total$Age.cat)
+
+
+
+
 #data has to be in factor form
 #not necessarily (only if you want it to be treated at category)
 total$Symptoms..y.1..n.0. <- factor(total$Symptoms..y.1..n.0.)
