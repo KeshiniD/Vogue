@@ -95,10 +95,12 @@ total <- dplyr::rename(total,
 
 #Odss Ratio figured out. Need to put data into categories
 #data has to be in factor form
+#not necessarily (only if you want it to be treated at category)
 total$Symptoms..y.1..n.0. <- factor(total$Symptoms..y.1..n.0.)
 total$abnormal.discharge..y.1..n.0. <- factor(total$abnormal.discharge..y.1..n.0.)
 total$Nugent.score <- factor(total$Nugent.score)
 total$Sexual.Partners  <- factor(total$Sexual.Partners)
+total$Age <- factor(total$Age)
 
 #odds ratio code #sexual.partners mucks it up
 mylogit <- glm(formula = Nugent.score ~ Symptoms..y.1..n.0. + 
@@ -107,6 +109,8 @@ mylogit <- glm(formula = Nugent.score ~ Symptoms..y.1..n.0. +
                  abnormal.discharge..y.1..n.0., data = total, 
                family = binomial) #gives same results thus far
 #na in data is ok
+mylogit <- glm(formula = Symptoms..y.1..n.0. ~ Nugent.score + Age, data = total, 
+               family = binomial)
 
 mylogit
 confint(mylogit) #CI intervals
@@ -162,3 +166,9 @@ total$Sexual.Partners <- as.character(total$Sexual.Partners)
 total$Sexual.Partners[total$Sexual.Partners=='Male'] <- '0'
 total$Sexual.Partners[total$Sexual.Partners=='Female'] <- '1'
 
+#2x2contingency table
+a <- xtabs(~Nugent.score + Ethnicity , data = total)
+kable(a)
+#3x3 table
+a <- xtabs(~Nugent.score + Ethnicity + Marital.Status , data = total)
+a <- as.data.frame(a)
