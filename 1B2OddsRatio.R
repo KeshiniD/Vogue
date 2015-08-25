@@ -93,7 +93,31 @@ total <- dplyr::rename(total,
                       "Illicit Substance Use" = use.of.drugs..y.1..n.0., "Alcohol Use" = alcohol.use..y.1..n.0., 
                       "Smoking (Current or Past)" = smoker..current.or.in.past...y.1..n.0.) 
 
-#Odss Ratio figured out. Need to put data into categories
+#Odss Ratio 
+#Need to put data into categories
+# trying to get new columns for category variables (done)
+attach(total)
+total$Nugent.score.cat[Nugent.score > 6] <- "2" #positive
+total$Nugent.score.cat[Nugent.score > 3 & Nugent.score <= 6] <- "1" #intermediate
+total$Nugent.score.cat[Nugent.score <= 3] <- "0" #negative
+detach(total)
+
+#OR (but then need to sort into categories)(will not use this)
+total$Nugent.score.cat <- mapply(as.factor, total$Nugent.score)
+
+#convert Nugent.score.cat from character into factor
+total$Nugent.score.cat <- factor(total$Nugent.score.cat)
+
+#apply this code to the rest of our variables
+
+#Amsels
+attach(total)
+total$Amsels.cat[Amsels < 4] <- "0" #negative
+total$Amsels.cat[Amsels = 4] <- "1" #positive
+detach(total)
+#convert Amsels.cat from character into factor
+total$Amsels.cat <- factor(total$Amsels.cat)
+
 #data has to be in factor form
 #not necessarily (only if you want it to be treated at category)
 total$Symptoms..y.1..n.0. <- factor(total$Symptoms..y.1..n.0.)
@@ -101,6 +125,8 @@ total$abnormal.discharge..y.1..n.0. <- factor(total$abnormal.discharge..y.1..n.0
 total$Nugent.score <- factor(total$Nugent.score)
 total$Sexual.Partners  <- factor(total$Sexual.Partners)
 total$Age <- factor(total$Age)
+
+
 
 #odds ratio code #sexual.partners mucks it up
 mylogit <- glm(formula = Nugent.score ~ Symptoms..y.1..n.0. + 
@@ -119,46 +145,16 @@ exp(coef(mylogit)) #only ORs
 summary(mylogit)# for really nice table
 #cannot convert glm into data.frame
 
-#above is binary data, below may be able to deal with non-binary data
-
-#odds ratio
-## needs epitools package
-tapw <- c("Lowest", "Intermediate", "Highest") #example
-outc <- c("Case", "Control")
-dat <- matrix(c(2, 29, 35, 64, 12, 6),3,2,byrow=TRUE)
-dimnames(dat) <- list("Tap water exposure" = tapw, "Outcome" = outc)
-oddsratio(dat, rev="c")
-oddsratio.midp(dat, rev="c")
-oddsratio.fisher(dat, rev="c")
-oddsratio.wald(dat, rev="c")
-oddsratio.small(dat, rev="c")
-riskratio(dat)
-
-# the zeros are probably a problem
-t <- c("lacto", "no lacto")
-o <- c("no", "inter", "yes")
-dat <- matrix(c(64, 1601, 69, 1, 2, 3),2,3,byrow=TRUE)
-dimnames(dat) <- list("Lacto presence" = t, "Outcome" = o)
-oddsratio(dat, rev="c")
-riskratio(dat)
-
-attach(total)
-#can just give names, since used attach()
-mytable <- table(total$Ethnicity,total$Martial.Status) #do it this way, and lengths dif
-mytable
-
-
 #reassign to binary codes
 total2 <- model.matrix(~Ethnicity -1 , data=total)
 total3 <- model.matrix(~Other.Bacteria -1 , data=total) 
 #doesn't work with bacteria
 #might be away to look at things that cannot be set into single column binary
 
-
 #make numbers into categories
-total$Nugent.score[Nugent.score > 6] <- "0"
-total$Nugent.score[Nugent.score > 3 & Nugent.score <= 6] <- "1"
-total$Nugent.score[Nugent.score <= 3] <- "2"
+total$Nugent.score.cat[Nugent.score > 6] <- "0"
+total$Nugent.score.cat[Nugent.score > 3 & Nugent.score <= 6] <- "1"
+total$Nugent.score.cat[Nugent.score <= 3] <- "2"
 total <- rename(total$Sexual.Partners, c("Male" = "0", "Female" = "1"))
 
 #needs to be character to reassign value
@@ -173,5 +169,3 @@ kable(a)
 a <- xtabs(~Nugent.score + Ethnicity + Marital.Status , data = total)
 a <- as.data.frame(a)
 
-# trying to get new columns for category variables (done)
-total$newColumn <- mapply(as.factor, total$Sexual.Partners)
