@@ -84,5 +84,20 @@ total$Highest.Education.Level.cat[total$Highest.Education.Level.cat=='some post-
 total$Highest.Education.Level.cat[total$Highest.Education.Level.cat=='post-secondary'] <- '4'
 total$Highest.Education.Level.cat[total$Highest.Education.Level.cat=='graduate degree'] <- '5'
 
-#convert Ethnicity.cat from character into factor
+#convert Highest.Education.Level.cat from character into factor
 total$Highest.Education.Level.cat <- factor(total$Highest.Education.Level.cat)
+
+#convert integers into factors
+#Current or Chronic conditions
+# yes-1, no-0
+total$Current.or.chronic.conditions...y.1..n.0. <- factor(total$Current.or.chronic.conditions...y.1..n.0.)
+
+#convert integers into factors
+#Gential infection history
+# yes-1, no-0
+total$Genital.Infections..y.1..n.0. <- factor(total$Genital.Infections..y.1..n.0.)
+
+#convert factor into numeric
+#BV episodes in the last 2 months
+total$BV..number.of.episodes.2.months. <- as.numeric(total$BV..number.of.episodes.2.months.)
+
