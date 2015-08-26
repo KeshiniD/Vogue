@@ -299,16 +299,38 @@ total$Freq.sex.toy.use.cat <- factor(total$Freq.sex.toy.use.cat)
 # yes-1, no-0
 total$use.in.past.48.hours..y.1..n.0. <- factor(total$use.in.past.48.hours..y.1..n.0.)
 
+#History of Illicit Substance use
+#needs to be character to reassign value
+total$use.of.drugs..y.1..n.0.cat <- mapply(as.character, total$use.of.drugs..y.1..n.0.)
+#create categories
+total$use.of.drugs..y.1..n.0.cat[total$use.of.drugs..y.1..n.0.cat=='0'] <- '0' #never used
+total$use.of.drugs..y.1..n.0.cat[total$use.of.drugs..y.1..n.0.cat=='past'] <- '1'
+total$use.of.drugs..y.1..n.0.cat[total$use.of.drugs..y.1..n.0.cat=='current'] <- '2'
 
+#convert use.of.drugs..y.1..n.0.cat from character into factor
+total$use.of.drugs..y.1..n.0.cat <- factor(total$use.of.drugs..y.1..n.0.cat)
 
+#Alcohol use
+#needs to be character to reassign value
+total$alcohol.use..y.1..n.0.cat <- mapply(as.character, total$alcohol.use..y.1..n.0.)
+#create categories
+total$alcohol.use..y.1..n.0.cat[total$alcohol.use..y.1..n.0.cat=='0'] <- '0' #doesn't drink
+total$alcohol.use..y.1..n.0.cat[total$alcohol.use..y.1..n.0.cat=='occassional'] <- '1'
+total$alcohol.use..y.1..n.0.cat[total$alcohol.use..y.1..n.0.cat=='2/3 drinks'] <- '2'
 
+#convert alcohol.use..y.1..n.0.cat from character into factor
+total$alcohol.use..y.1..n.0.cat <- factor(total$alcohol.use..y.1..n.0.cat)
 
+#Smoking
+#needs to be character to reassign value
+total$smoker..current.or.in.past...y.1..n.0.cat <- mapply(as.character, total$smoker..current.or.in.past...y.1..n.0.)
+#create categories
+total$smoker..current.or.in.past...y.1..n.0.cat[total$smoker..current.or.in.past...y.1..n.0.cat=='0'] <- '0' #never smoked
+total$smoker..current.or.in.past...y.1..n.0.cat[total$smoker..current.or.in.past...y.1..n.0.cat=='past'] <- '1'
+total$smoker..current.or.in.past...y.1..n.0.cat[total$smoker..current.or.in.past...y.1..n.0.cat=='current'] <- '2'
 
-
-
-
-
-
+#convert smoker..current.or.in.past...y.1..n.0.cat from character into factor
+total$smoker..current.or.in.past...y.1..n.0.cat <- factor(total$smoker..current.or.in.past...y.1..n.0.cat)
 
 #data isn't accurate for symptoms so created new column to separate symptoms
 #seen in past 2 weeks and past 48 hours and which symptoms
