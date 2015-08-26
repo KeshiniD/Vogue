@@ -145,4 +145,47 @@ total$UTI..2.months.[total$UTI..2.months.=='yes'] <- ''
 #character to numeric creates NA in blank spaces
 total$UTI..2.months. <- as.integer(total$UTI..2.months.)
 
+#Trich episodes in lifetime
+total$Trich..lifetime. <- mapply(as.character, total$Trich..lifetime.)
+total$Trich..lifetime.[total$Trich..lifetime.=='chronic'] <- ''
+#character to numeric creates NA in blank spaces
+total$Trich..lifetime. <- as.integer(total$Trich..lifetime.)
+
+#convert integers into factors
+#Antimicrobial use in the past 3 months
+# yes-1, no-0
+total$Antimicrobial.Use..y.1..n.0. <- factor(total$Antimicrobial.Use..y.1..n.0.)
+
+#convert integers into factors
+#(non)Prescription use in the past 2 months
+# yes-1, no-0
+total$X.Non..Prescription..y.1..n.0. <- factor(total$X.Non..Prescription..y.1..n.0.)
+
+#Frequency of Menstrual Period
+#needs to be character to reassign value
+total$Freq.of.Menstrual.Period.cat <- mapply(as.character, total$Freq.of.Menstrual.Period)
+#create categories
+total$Freq.of.Menstrual.Period.cat[total$Freq.of.Menstrual.Period.cat=='Regular'] <- '1'
+total$Freq.of.Menstrual.Period.cat[total$Freq.of.Menstrual.Period.cat=='Altered by contraception'] <- '2'
+total$Freq.of.Menstrual.Period.cat[total$Freq.of.Menstrual.Period.cat=='No'] <- '3'
+
+#convert Freq.of.Menstrual.Period.cat from character into factor
+total$Freq.of.Menstrual.Period.cat <- factor(total$Freq.of.Menstrual.Period.cat)
+
+#Frequency of Tampon Use
+#needs to be character to reassign value
+total$Tampon.Use.cat <- mapply(as.character, total$Tampon.Use)
+#create categories
+total$Tampon.Use.cat[total$Tampon.Use.cat=='never'] <- '1'
+total$Tampon.Use.cat[total$Tampon.Use.cat=='sometimes but not for every period'] <- '2'
+total$Tampon.Use.cat[total$Tampon.Use.cat=='every period, part of the time'] <- '3'
+total$Tampon.Use.cat[total$Tampon.Use.cat=='every period, exclusively'] <- '4'
+
+#convert Freq.of.Menstrual.Period.cat from character into factor
+total$Tampon.Use.cat <- factor(total$Tampon.Use.cat)
+
+#convert integers into factors
+#Symptoms
+# yes-1, no-0
+total$X.Non..Prescription..y.1..n.0. <- factor(total$X.Non..Prescription..y.1..n.0.)
 
