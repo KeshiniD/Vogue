@@ -106,3 +106,43 @@ total$BV..number.of.episodes.2.months.[total$BV..number.of.episodes.2.months.=='
 #character to numeric creates NA in blank spaces
 total$BV..number.of.episodes.2.months. <- as.integer(total$BV..number.of.episodes.2.months.)
 
+#BV episodes in the last year
+total$BV..number.of.episodes.year. <- mapply(as.character, total$BV..number.of.episodes.year.)
+total$BV..number.of.episodes.year.[total$BV..number.of.episodes.year.=='chronic'] <- ''
+total$BV..number.of.episodes.year.[total$BV..number.of.episodes.year.=='unsure'] <- ''
+#character to numeric creates NA in blank spaces
+total$BV..number.of.episodes.year. <- as.integer(total$BV..number.of.episodes.year.)
+
+#BV episodes in lifetime
+total$BV..number.of.episodes.lifetime. <- mapply(as.character, total$BV..number.of.episodes.lifetime.)
+total$BV..number.of.episodes.lifetime.[total$BV..number.of.episodes.lifetime.=='chronic'] <- ''
+total$BV..number.of.episodes.lifetime.[total$BV..number.of.episodes.lifetime.=='unsure'] <- ''
+#character to numeric creates NA in blank spaces
+total$BV..number.of.episodes.lifetime. <- as.integer(total$BV..number.of.episodes.lifetime.)
+
+#Yeast episodes in the last 2 months
+total$Yeast..2months. <- mapply(as.character, total$Yeast..2months.)
+total$Yeast..2months.[total$Yeast..2months.=='chronic'] <- ''
+#character to numeric creates NA in blank spaces
+total$Yeast..2months. <- as.integer(total$Yeast..2months.)
+
+#Yeast episodes in the last year
+total$Yeast..year. <- mapply(as.character, total$Yeast..year.)
+total$Yeast..year.[total$Yeast..year.=='chronic'] <- ''
+#character to numeric creates NA in blank spaces
+total$Yeast..year. <- as.integer(total$Yeast..year.)
+
+#Yeast episodes in lifetime
+total$Yeast..lifetime. <- mapply(as.character, total$Yeast..lifetime.)
+total$Yeast..lifetime.[total$Yeast..lifetime.=='chronic'] <- ''
+total$Yeast..lifetime.[total$Yeast..lifetime.=='unk'] <- ''
+#character to numeric creates NA in blank spaces
+total$Yeast..lifetime. <- as.integer(total$Yeast..lifetime.)
+
+#UTI episodes in the last 2 months
+total$UTI..2.months. <- mapply(as.character, total$UTI..2.months.)
+total$UTI..2.months.[total$UTI..2.months.=='yes'] <- ''
+#character to numeric creates NA in blank spaces
+total$UTI..2.months. <- as.integer(total$UTI..2.months.)
+
+
