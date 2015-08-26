@@ -189,3 +189,72 @@ total$Tampon.Use.cat <- factor(total$Tampon.Use.cat)
 # yes-1, no-0
 total$X.Non..Prescription..y.1..n.0. <- factor(total$X.Non..Prescription..y.1..n.0.)
 
+#data isn't accurate for symptoms so created new column to separate symptoms
+#seen in past 2 weeks and past 48 hours and which symptoms
+#add new column for presence of symptoms in 2 weeks
+total[,"Presence.Symptoms.2wks"]  <- c(1,1,1,1,1,1,1,1,1,0,1,0,1,1,1,1,0,1,
+                                       1,1,1,1,1,1,1,1)
+#convert numeric into factor
+# yes-1, no-0
+total$Presence.Symptoms.2wks <- factor(total$Presence.Symptoms.2wks)
+
+#add new column for presence of abnormal discharge in 2 weeks
+total[,"Abnormal.discharge.2wks"]  <- c(1,1,0,1,0,1,1,1,1,0,1,0,0,0,0,1,0,1,
+                                        1,1,1,1,1,1,1,1)
+#convert numeric into factor
+# yes-1, no-0
+total$Abnormal.discharge.2wks <- factor(total$Abnormal.discharge.2wks)
+
+#add new column for presence of abnormal odor in 2 weeks
+total[,"Abnormal.odor.2wks"]  <- c(0,1,0,0,0,0,0,0,1,0,1,0,1,0,0,1,0,0,0,1,
+                                   1,0,0,0,0,1)
+#convert numeric into factor
+# yes-1, no-0
+total$Abnormal.odor.2wks <- factor(total$Abnormal.odor.2wks)
+
+#add new column for presence of irritation/discomfort in 2 weeks
+total[,"Irritation.Discomfort.2wks"]  <- c(1,1,1,0,1,0,1,1,0,0,"",0,1,1,1,1,
+                                           0,1,1,0,1,1,1,1,1,1)
+#convert numeric into factor
+# yes-1, no-0
+total$Irritation.Discomfort.2wks <- factor(total$Irritation.Discomfort.2wks)
+
+#add new column for presence of other symptoms in 2 weeks
+total[,"Other.Symptoms.2wks"]  <- c(0,0,0,0,0,0,0,1,0,0,"",0,0,0,0,1,0,0,0,
+                                    0,1,0,1,1,1,1)
+#convert numeric into factor
+# yes-1, no-0
+total$Other.Symptoms.2wks <- factor(total$Other.Symptoms.2wks)
+
+#add new column for presence of symptoms in 48 hrs
+total[,"Presence.Symptoms.48hrs"]  <- c(1,1,1,0,1,1,1,1,1,0,"",1,0,1,1,1,0,
+                                        1,1,0,1,1,1,1,1,1)
+#convert numeric into factor
+# yes-1, no-0
+total$Presence.Symptoms.48hrs <- factor(total$Presence.Symptoms.48hrs)
+
+#add new column for presence of abnormal discharge in 48 hrs
+total[,"Abnormal.discharge.48hrs"]  <- c(1,1,0,0,0,1,1,1,1,0,"",0,0,0,0,1,0,
+                                         1,1,"",1,1,1,1,1,1)
+#convert numeric into factor
+# yes-1, no-0
+total$Abnormal.discharge.48hrs <- factor(total$Abnormal.discharge.48hrs)
+
+#add new column for presence of abnormal odor in 48 hrs
+total[,"Abnormal.odor.48hrs"]  <- c(0,1,0,0,0,0,0,0,1,0,"",0,0,0,0,1,0,0,0,
+                                    "",1,0,0,1,0,1)
+#convert numeric into factor
+# yes-1, no-0
+total$Abnormal.odor.48hrs <- factor(total$Abnormal.odor.48hrs)
+
+#add new column for presence of irritation/discomfort in 48 hrs
+total[,"Irritation.Discomfort.48hrs"]  <- c()
+#convert numeric into factor
+# yes-1, no-0
+total$Irritation.Discomfort.48hrs <- factor(total$Irritation.Discomfort.48hrs)
+
+#add new column for presence of other symptoms in 48 hrs
+total[,"Other.Symptoms.48hrs"]  <- c()
+#convert numeric into factor
+# yes-1, no-0
+total$Other.Symptoms.48hrs <- factor(total$Other.Symptoms.48hrs)
