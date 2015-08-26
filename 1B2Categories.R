@@ -184,10 +184,49 @@ total$Tampon.Use.cat[total$Tampon.Use.cat=='every period, exclusively'] <- '4'
 #convert Freq.of.Menstrual.Period.cat from character into factor
 total$Tampon.Use.cat <- factor(total$Tampon.Use.cat)
 
+#create new column because % sign is making column into factor
+#How often is pain experienced during vaginal intercourse (%)
+total[,"How.often.pain.experienced.during.vaginal.intercourse.percentage"]  <- c(
+  100,80,100,0,0,"",0,100,85,100,0,0,0,0,0,80,70,0,70,100,100,0,100,0,100,20)
+
+#character into integer
+total$How.often.pain.experienced.during.vaginal.intercourse.percentage <- as.integer(total$How.often.pain.experienced.during.vaginal.intercourse.percentage)
+
+#remove old column
+total$pain.during.vaginal.intercourse..how.often. <- NULL
+
 #convert integers into factors
-#Symptoms
+#Do you use Douche products
 # yes-1, no-0
-total$X.Non..Prescription..y.1..n.0. <- factor(total$X.Non..Prescription..y.1..n.0.)
+total$Use.of.douche.products..y.1..n.0. <- factor(total$Use.of.douche.products..y.1..n.0.)
+
+#convert integers into factors
+#Use of Douche products in past 48hrs
+# yes-1, no-0
+total$Used.in.the.past.48.hours <- factor(total$Used.in.the.past.48.hours)
+
+#convert integers into factors
+#Do you use feminine wipes and/or genital deodrant products
+# yes-1, no-0
+total$Use.of.feminine.wipes.or.genital.deodrant..y.1..n.0. <- factor(total$Use.of.feminine.wipes.or.genital.deodrant..y.1..n.0.)
+
+#convert integers into factors
+#Use of feminine wipes and/or genital deodrant products in past 48hrs
+# yes-1, no-0
+total$Used.in.past.48.hours <- factor(total$Used.in.past.48.hours)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #data isn't accurate for symptoms so created new column to separate symptoms
 #seen in past 2 weeks and past 48 hours and which symptoms
