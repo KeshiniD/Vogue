@@ -97,7 +97,12 @@ total$Current.or.chronic.conditions...y.1..n.0. <- factor(total$Current.or.chron
 # yes-1, no-0
 total$Genital.Infections..y.1..n.0. <- factor(total$Genital.Infections..y.1..n.0.)
 
-#convert factor into numeric
+#convert factor into numeric 
 #BV episodes in the last 2 months
-total$BV..number.of.episodes.2.months. <- as.numeric(total$BV..number.of.episodes.2.months.)
+#convert to character so can set 'unsure' and 'chronic' values to NA
+total$BV..number.of.episodes.2.months. <- mapply(as.character, total$BV..number.of.episodes.2.months.)
+total$BV..number.of.episodes.2.months.[total$BV..number.of.episodes.2.months.=='chronic'] <- ''
+total$BV..number.of.episodes.2.months.[total$BV..number.of.episodes.2.months.=='unsure'] <- ''
+#character to numeric creates NA in blank spaces
+total$BV..number.of.episodes.2.months. <- as.integer(total$BV..number.of.episodes.2.months.)
 
