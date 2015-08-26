@@ -248,13 +248,23 @@ total[,"Abnormal.odor.48hrs"]  <- c(0,1,0,0,0,0,0,0,1,0,"",0,0,0,0,1,0,0,0,
 total$Abnormal.odor.48hrs <- factor(total$Abnormal.odor.48hrs)
 
 #add new column for presence of irritation/discomfort in 48 hrs
-total[,"Irritation.Discomfort.48hrs"]  <- c()
+total[,"Irritation.Discomfort.48hrs"]  <- c(1,1,1,0,1,0,1,1,0,0,0,0,0,1,1,1,
+                                            0,1,1,0,1,1,1,1,1,1)
 #convert numeric into factor
 # yes-1, no-0
 total$Irritation.Discomfort.48hrs <- factor(total$Irritation.Discomfort.48hrs)
 
 #add new column for presence of other symptoms in 48 hrs
-total[,"Other.Symptoms.48hrs"]  <- c()
+total[,"Other.Symptoms.48hrs"]  <- c(0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,
+                                     0,1,0,1,1,1,1)
 #convert numeric into factor
 # yes-1, no-0
 total$Other.Symptoms.48hrs <- factor(total$Other.Symptoms.48hrs)
+
+#remove the initial less specific symptoms columns
+total$Symptoms..y.1..n.0. <- NULL
+total$abnormal.odor..y.1..n.0. <- NULL
+total$abnormal.discharge..y.1..n.0. <- NULL
+total$irritation.or.discomfort..y.1..n.0. <- NULL
+total$other <- NULL
+
