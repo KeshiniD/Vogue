@@ -181,7 +181,7 @@ total$Tampon.Use.cat[total$Tampon.Use.cat=='sometimes but not for every period']
 total$Tampon.Use.cat[total$Tampon.Use.cat=='every period, part of the time'] <- '3'
 total$Tampon.Use.cat[total$Tampon.Use.cat=='every period, exclusively'] <- '4'
 
-#convert Freq.of.Menstrual.Period.cat from character into factor
+#convert Tampon.Use.cat from character into factor
 total$Tampon.Use.cat <- factor(total$Tampon.Use.cat)
 
 #create new column because % sign is making column into factor
@@ -215,7 +215,89 @@ total$Use.of.feminine.wipes.or.genital.deodrant..y.1..n.0. <- factor(total$Use.o
 # yes-1, no-0
 total$Used.in.past.48.hours <- factor(total$Used.in.past.48.hours)
 
+#Contraception
+#needs to be character to reassign value
+total$Form.of.contraception.cat <- mapply(as.character, total$Form.of.contraception)
+#create categories
+total$Form.of.contraception.cat[total$Form.of.contraception.cat==''] <- '1' #NA #have to do first otherwise ? blank turns into 1
+total$Form.of.contraception.cat[total$Form.of.contraception.cat=='?'] <- ''
+total$Form.of.contraception.cat[total$Form.of.contraception.cat=='None'] <- '2'
+total$Form.of.contraception.cat[total$Form.of.contraception.cat=='B'] <- '3'#barrier (condoms, copperIUD)
+total$Form.of.contraception.cat[total$Form.of.contraception.cat=='B/none'] <- '3'#barrier (condoms, copperIUD)
+total$Form.of.contraception.cat[total$Form.of.contraception.cat=='B (copper IUD)'] <- '3'#barrier (condoms, copperIUD)
+total$Form.of.contraception.cat[total$Form.of.contraception.cat=='H'] <- '4'#hormonal
+total$Form.of.contraception.cat[total$Form.of.contraception.cat=='S'] <- '5'#surgical sterilization
+total$Form.of.contraception.cat[total$Form.of.contraception.cat=='B/H'] <- '6'#multiple forms
 
+#convert Form.of.contraception.cat from character into factor
+total$Form.of.contraception.cat <- factor(total$Form.of.contraception.cat)
+
+#Sexual Partners
+#needs to be character to reassign value
+total$Sexual.Partners.cat <- mapply(as.character, total$Sexual.Partners)
+#create categories
+total$Sexual.Partners.cat[total$Sexual.Partners.cat=='Male'] <- '0'
+total$Sexual.Partners.cat[total$Sexual.Partners.cat=='Female'] <- '1'
+
+#convert Sexual.Partners.cat from character into factor
+total$Sexual.Partners.cat <- factor(total$Sexual.Partners.cat)
+
+#convert integers into factors
+#vaginal intercourse in the past 48 hours
+# yes-1, no-0
+total$Vaginal.intercourse.in.past.48.hours..y.1..n.0. <- factor(total$Vaginal.intercourse.in.past.48.hours..y.1..n.0.)
+
+#Frequency of Oral Sex
+#needs to be character to reassign value
+total$Freq.oral.sex.cat <- mapply(as.character, total$Freq.oral.sex)
+#create categories
+total$Freq.oral.sex.cat[total$Freq.oral.sex.cat=='never'] <- '0'
+total$Freq.oral.sex.cat[total$Freq.oral.sex.cat=='weekly'] <- '1'
+total$Freq.oral.sex.cat[total$Freq.oral.sex.cat=='twice a month'] <- '2'
+total$Freq.oral.sex.cat[total$Freq.oral.sex.cat=='monthly'] <- '3'
+total$Freq.oral.sex.cat[total$Freq.oral.sex.cat=='other'] <- '4'
+
+#convert Freq.oral.sex.cat from character into factor
+total$Freq.oral.sex.cat <- factor(total$Freq.oral.sex.cat)
+
+#convert integers into factors
+#Oral sex in the past 48 hours
+# yes-1, no-0
+total$oral.sex.in.past.48.hours..y.1..n.0. <- factor(total$oral.sex.in.past.48.hours..y.1..n.0.)
+
+#Frequency of Anal Sex
+#needs to be character to reassign value
+total$Freq.anal.sex.cat <- mapply(as.character, total$Freq.anal.sex)
+#create categories
+total$Freq.anal.sex.cat[total$Freq.anal.sex.cat=='never'] <- '0'
+total$Freq.anal.sex.cat[total$Freq.anal.sex.cat=='weekly'] <- '1'
+total$Freq.anal.sex.cat[total$Freq.anal.sex.cat=='monthly'] <- '2'
+total$Freq.anal.sex.cat[total$Freq.anal.sex.cat=='other'] <- '3'
+
+#convert Freq.anal.sex.cat from character into factor
+total$Freq.anal.sex.cat <- factor(total$Freq.anal.sex.cat)
+
+#convert integers into factors
+#Anal sex in the past 48 hours
+# yes-1, no-0
+total$anal.sex.in.past.48.hours..y.1..n.0. <- factor(total$anal.sex.in.past.48.hours..y.1..n.0.)
+
+#Frequency of Sex Toy Use
+#needs to be character to reassign value
+total$Freq.sex.toy.use.cat <- mapply(as.character, total$Freq.sex.toy.use)
+#create categories
+total$Freq.sex.toy.use.cat[total$Freq.sex.toy.use.cat=='never'] <- '0'
+total$Freq.sex.toy.use.cat[total$Freq.sex.toy.use.cat=='weekly'] <- '1'
+total$Freq.sex.toy.use.cat[total$Freq.sex.toy.use.cat=='monthly'] <- '2'
+total$Freq.sex.toy.use.cat[total$Freq.sex.toy.use.cat=='other'] <- '3'
+
+#convert Freq.sex.toy.use.cat from character into factor
+total$Freq.sex.toy.use.cat <- factor(total$Freq.sex.toy.use.cat)
+
+#convert integers into factors
+#Sex toy use in the past 48 hours
+# yes-1, no-0
+total$use.in.past.48.hours..y.1..n.0. <- factor(total$use.in.past.48.hours..y.1..n.0.)
 
 
 
