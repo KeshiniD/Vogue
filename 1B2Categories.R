@@ -435,3 +435,69 @@ total$Gonorrhea.ever[Gonorrhea > 0] <- "1" #yes
 detach(total)
 #convert Gonorrhea.ever from character into factor
 total$Gonorrhea.ever <- factor(total$Gonorrhea.ever)
+
+#Bac STI (Gonorrhea or Chlamydia); yes-1, no-0
+attach(total)
+total$Bac.STI.ever[Chlamydia..lifetime. <= 0] <- "0" #no
+total$Bac.STI.ever[Chlamydia..lifetime. > 0] <- "1" #yes
+detach(total)
+#convert Bac.STI.ever from character into factor
+total$Bac.STI.ever <- factor(total$Bac.STI.ever)
+
+#Herpes in lifetime (yes-1, no-0)
+attach(total)
+total$Herpes.ever[Genital.Herpes..lifetime. <= 0] <- "0" #no
+total$Herpes.ever[Genital.Herpes..lifetime. > 0] <- "1" #yes
+detach(total)
+#convert Herpes.ever from character into factor
+total$Herpes.ever <- factor(total$Herpes.ever)
+
+#Genital warts in lifetime (yes-1, no-0)
+attach(total)
+total$Genwarts.ever[Genital.Warts..lifetime. <= 0] <- "0" #no
+total$Genwarts.ever[Genital.Warts..lifetime. > 0] <- "1" #yes
+detach(total)
+#convert Genwarts.ever from character into factor
+total$Genwarts.ever <- factor(total$Genwarts.ever)
+
+##STI all (HSV, HPV, gonorrhea, chlamydia,trichomonas) (yes-1, no-1)
+#NEED TO DO
+
+#Cat. for number of sexual partners in the last 2 months
+attach(total)
+total$Number.partners.in.past.2.months.cat[Number.partners.in.past.2.months <= 0] <- "0" # 0 partners
+total$Number.partners.in.past.2.months.cat[Number.partners.in.past.2.months <= 1 & Number.partners.in.past.2.months >= 1] <- "1" #1 partner
+total$Number.partners.in.past.2.months.cat[Number.partners.in.past.2.months >= 2] <- "2"#2 or more partners
+detach(total)
+
+#convert Number.partners.in.past.2.months.cat from character into factor
+total$Number.partners.in.past.2.months.cat <- factor(total$Number.partners.in.past.2.months.cat)
+
+#Shannon's diversity
+shannon <- read.csv(file.path("1B2_individual_diversity.csv"))
+total<-join(shannon, total, type="full")
+#added Shannon's diversity into table 
+
+#Pain or discomfort during intercourse (yes-1, no-0)
+attach(total)
+total$any.sx.pain[How.often.pain.experienced.during.vaginal.intercourse.percentage <= 0] <- "0" #no
+total$any.sx.pain[How.often.pain.experienced.during.vaginal.intercourse.percentage > 0] <- "1" #yes
+detach(total)
+#convert any.sx.pain from character into factor
+total$any.sx.pain <- factor(total$any.sx.pain)
+
+#Pain or discomfort during intercourse 50+ (yes-1, no-0)
+attach(total)
+total$sx.pain.50.over[How.often.pain.experienced.during.vaginal.intercourse.percentage < 50] <- "0" #no
+total$sx.pain.50.over[How.often.pain.experienced.during.vaginal.intercourse.percentage >= 50] <- "1" #yes
+detach(total)
+#convert sx.pain.50.over from character into factor
+total$sx.pain.50.over <- factor(total$sx.pain.50.over)
+
+#Pain or discomfort during intercourse 100 (yes-1, no-0)
+attach(total)
+total$sx.pain.100[How.often.pain.experienced.during.vaginal.intercourse.percentage < 100] <- "0" #no
+total$sx.pain.100[How.often.pain.experienced.during.vaginal.intercourse.percentage >= 100] <- "1" #yes
+detach(total)
+#convert sx.pain.100 from character into factor
+total$sx.pain.100 <- factor(total$sx.pain.100)
