@@ -507,3 +507,14 @@ detach(total)
 #convert sx.pain.100 from character into factor
 total$sx.pain.100 <- factor(total$sx.pain.100)
 
+#Hormonal contraception (yes-1, no-0)
+attach(total)
+total$contraception.H[Contraception.cat == '4'] <- '1' #yes
+total$contraception.H[Contraception.cat == '6'] <- '1' #yes
+total$contraception.H[Contraception.cat == '1'] <- '0' #no
+total$contraception.H[Contraception.cat == '2'] <- '0' #no
+total$contraception.H[Contraception.cat == '3'] <- '0' #no
+total$contraception.H[Contraception.cat == '5'] <- '0' #no
+detach(total)
+#convert contraception.H from character into factor
+total$contraception.H <- factor(total$contraception.H)
