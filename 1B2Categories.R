@@ -411,3 +411,27 @@ total$abnormal.discharge..y.1..n.0. <- NULL
 total$irritation.or.discomfort..y.1..n.0. <- NULL
 total$other <- NULL
 
+##creating new columns based on 1A data dictionary
+#Live birth ever (yes-1, no-0)
+attach(total)
+total$Preg.livebirth.ever[Pregnancy.History..l. <= 0] <- "0" #no
+total$Preg.livebirth.ever[Pregnancy.History..l. > 0] <- "1" #yes
+detach(total)
+#convert Preg.livebirth.ever from character into factor
+total$Preg.livebirth.ever <- factor(total$Preg.livebirth.ever)
+
+#Chlamydia ever (yes-1, no-0)
+attach(total)
+total$Chlamydia.ever[Chlamydia..lifetime. <= 0] <- "0" #no
+total$Chlamydia.ever[Chlamydia..lifetime. > 0] <- "1" #yes
+detach(total)
+#convert Chlamydia.ever from character into factor
+total$Chlamydia.ever <- factor(total$Chlamydia.ever)
+
+#Gonorrhea ever (yes-1, no-0)
+attach(total)
+total$Gonorrhea.ever[Gonorrhea <= 0] <- "0" #no
+total$Gonorrhea.ever[Gonorrhea > 0] <- "1" #yes
+detach(total)
+#convert Gonorrhea.ever from character into factor
+total$Gonorrhea.ever <- factor(total$Gonorrhea.ever)
