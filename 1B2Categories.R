@@ -509,12 +509,56 @@ total$sx.pain.100 <- factor(total$sx.pain.100)
 
 #Hormonal contraception (yes-1, no-0)
 attach(total)
-total$contraception.H[Contraception.cat == '4'] <- '1' #yes
-total$contraception.H[Contraception.cat == '6'] <- '1' #yes
 total$contraception.H[Contraception.cat == '1'] <- '0' #no
 total$contraception.H[Contraception.cat == '2'] <- '0' #no
 total$contraception.H[Contraception.cat == '3'] <- '0' #no
+total$contraception.H[Contraception.cat == '4'] <- '1' #yes
 total$contraception.H[Contraception.cat == '5'] <- '0' #no
+total$contraception.H[Contraception.cat == '6'] <- '1' #yes
 detach(total)
 #convert contraception.H from character into factor
 total$contraception.H <- factor(total$contraception.H)
+
+#Subject surgical sterlization (yes-1, no-0)
+attach(total)
+total$contraception.S.S[Contraception.cat == '1'] <- '0' #no
+total$contraception.S.S[Contraception.cat == '2'] <- '0' #no
+total$contraception.S.S[Contraception.cat == '3'] <- '0' #no
+total$contraception.S.S[Contraception.cat == '4'] <- '0' #n0
+total$contraception.S.S[Contraception.cat == '5'] <- '1' #yes
+total$contraception.S.S[Contraception.cat == '6'] <- '0' #no
+detach(total)
+#convert contraception.S.S from character into factor
+total$contraception.S.S <- factor(total$contraception.S.S)
+
+#Partner surgical sterilization (yes-1, no-0)
+#cannot obtain for existing data, created new column
+total[,"contraception.S.P"]  <- c(0,0,0,0,0,"",0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+                                  0,0,0,0,0,0)
+#convert numeric into factor
+# yes-1, no-0
+total$contraception.S.P <- factor(total$contraception.S.P)
+
+#BarrierS (yes-1, no-0)
+#cannot obtain for existing data, created new column
+
+#Male condoms
+total[,"contraception.B.M"]  <- c(0,0,0,1,0,"",0,0,1,0,0,0,1,0,0,1,1,0,0,0,
+                                  0,0,0,0,0,0)
+#convert numeric into factor
+# yes-1, no-0
+total$contraception.B.M <- factor(total$contraception.B.M)
+
+#Female condoms
+total[,"contraception.B.F"]  <- c(0,0,0,0,0,"",0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+                                  0,0,0,0,0,0)
+#convert numeric into factor
+# yes-1, no-0
+total$contraception.B.F <- factor(total$contraception.B.F)
+
+#Copper IUDs
+total[,"contraception.C.IUD"]  <- c(0,0,0,0,0,"",0,0,0,1,0,0,0,0,0,0,0,0,0,0,
+                                    0,0,0,0,0,0)
+#convert numeric into factor
+# yes-1, no-0
+total$contraception.C.IUD <- factor(total$contraception.C.IUD)
