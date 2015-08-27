@@ -215,22 +215,27 @@ total$Use.of.feminine.wipes.or.genital.deodrant..y.1..n.0. <- factor(total$Use.o
 # yes-1, no-0
 total$Used.in.past.48.hours <- factor(total$Used.in.past.48.hours)
 
-#Contraception
-#needs to be character to reassign value
-total$Form.of.contraception.cat <- mapply(as.character, total$Form.of.contraception)
-#create categories
-total$Form.of.contraception.cat[total$Form.of.contraception.cat==''] <- '1' #NA #have to do first otherwise ? blank turns into 1
-total$Form.of.contraception.cat[total$Form.of.contraception.cat=='?'] <- ''
-total$Form.of.contraception.cat[total$Form.of.contraception.cat=='None'] <- '2'
-total$Form.of.contraception.cat[total$Form.of.contraception.cat=='B'] <- '3'#barrier (condoms, copperIUD)
-total$Form.of.contraception.cat[total$Form.of.contraception.cat=='B/none'] <- '3'#barrier (condoms, copperIUD)
-total$Form.of.contraception.cat[total$Form.of.contraception.cat=='B (copper IUD)'] <- '3'#barrier (condoms, copperIUD)
-total$Form.of.contraception.cat[total$Form.of.contraception.cat=='H'] <- '4'#hormonal
-total$Form.of.contraception.cat[total$Form.of.contraception.cat=='S'] <- '5'#surgical sterilization
-total$Form.of.contraception.cat[total$Form.of.contraception.cat=='B/H'] <- '6'#multiple forms
+#realized that contraception column isn't accurate so here's the correction
+total[,"Contraception"]  <- c("H", "H", "S", "B", "None", "?", "H", "NA", 
+                              "B", "B", "H", "None", "B", "S", "H", "B", 
+                              "B/H", "H", "None", "S", "None", "None", "NA",
+                              "H", "None", "None")
+total$Form.of.contraception <- NULL
 
-#convert Form.of.contraception.cat from character into factor
-total$Form.of.contraception.cat <- factor(total$Form.of.contraception.cat)
+#Contraception
+#already character, need to make new category
+total$Contraception.cat <- mapply(as.character, total$Contraception)
+#create categories
+total$Contraception.cat[total$Contraception.cat=='?'] <- ''
+total$Contraception.cat[total$Contraception.cat=='NA'] <- '1' #NA #have to do first otherwise ? blank turns into 1
+total$Contraception.cat[total$Contraception.cat=='None'] <- '2'
+total$Contraception.cat[total$Contraception.cat=='B'] <- '3'#barrier (condoms, copperIUD)
+total$Contraception.cat[total$Contraception.cat=='H'] <- '4'#hormonal
+total$Contraception.cat[total$Contraception.cat=='S'] <- '5'#surgical sterilization (subject or partner)
+total$Contraception.cat[total$Contraception.cat=='B/H'] <- '6'#multiple forms
+
+#convert Contraception.cat from character into factor
+total$Contraception.cat <- factor(total$Contraception.cat)
 
 #Sexual Partners
 #needs to be character to reassign value
@@ -501,3 +506,4 @@ total$sx.pain.100[How.often.pain.experienced.during.vaginal.intercourse.percenta
 detach(total)
 #convert sx.pain.100 from character into factor
 total$sx.pain.100 <- factor(total$sx.pain.100)
+
