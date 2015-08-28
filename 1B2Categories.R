@@ -644,10 +644,15 @@ total <- total%>%
 
 #weeks since LMP cat
 attach(total)
-total$weeks.since.LMP.cat[weeks.since.LMP > 0] <- "1" #underweight
-total$weeks.since.LMP.cat[weeks.since.LMP >= 18.5 & weeks.since.LMP <=24.9] <- "2" #normal weight
-total$weeks.since.LMP.cat[weeks.since.LMP >= 25 & weeks.since.LMP <=29.9] <- "3" #overweight
-total$weeks.since.LMP.cat[weeks.since.LMP >= 30] <- "4" #obesity
+total$weeks.since.LMP.cat[weeks.since.LMP <= 1] <- "1" #
+total$weeks.since.LMP.cat[weeks.since.LMP >1 & weeks.since.LMP <=2] <- "2" 
+total$weeks.since.LMP.cat[weeks.since.LMP >2 & weeks.since.LMP <=3] <- "3" 
+total$weeks.since.LMP.cat[weeks.since.LMP >3 & weeks.since.LMP <=4] <- "4" 
+total$weeks.since.LMP.cat[weeks.since.LMP >4 & weeks.since.LMP <=5] <- "5" 
+total$weeks.since.LMP.cat[weeks.since.LMP >5 & weeks.since.LMP <=6] <- "6" 
+total$weeks.since.LMP.cat[weeks.since.LMP >6 & weeks.since.LMP <=7] <- "7" 
+total$weeks.since.LMP.cat[weeks.since.LMP >7 & weeks.since.LMP <=8] <- "8" 
+total$weeks.since.LMP.cat[weeks.since.LMP >8] <- "9" 
 detach(total)
 
 #convert weeks.since.LMP.cat from character into factor
