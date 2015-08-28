@@ -539,26 +539,77 @@ total[,"contraception.S.P"]  <- c(0,0,0,0,0,"",0,0,0,0,0,0,0,0,0,0,0,0,0,1,
 # yes-1, no-0
 total$contraception.S.P <- factor(total$contraception.S.P)
 
-#BarrierS (yes-1, no-0)
+##BarrierS (yes-1, no-0)
 #cannot obtain for existing data, created new column
-
 #Male condoms
 total[,"contraception.B.M"]  <- c(0,0,0,1,0,"",0,0,1,0,0,0,1,0,0,1,1,0,0,0,
                                   0,0,0,0,0,0)
 #convert numeric into factor
 # yes-1, no-0
 total$contraception.B.M <- factor(total$contraception.B.M)
-
 #Female condoms
 total[,"contraception.B.F"]  <- c(0,0,0,0,0,"",0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                                   0,0,0,0,0,0)
 #convert numeric into factor
 # yes-1, no-0
 total$contraception.B.F <- factor(total$contraception.B.F)
-
 #Copper IUDs
 total[,"contraception.C.IUD"]  <- c(0,0,0,0,0,"",0,0,0,1,0,0,0,0,0,0,0,0,0,0,
                                     0,0,0,0,0,0)
 #convert numeric into factor
 # yes-1, no-0
 total$contraception.C.IUD <- factor(total$contraception.C.IUD)
+
+##Types of Hormonal contraception
+#Progestin pill
+total[,"HContr.Progestin.pill"]  <- c(0,0,0,0,0,"",0,0,0,0,1,0,0,0,0,0,0,0,
+                                      0,0,0,0,0,1,0,0)
+#convert numeric into factor
+# yes-1, no-0
+total$HContr.Progestin.pill <- factor(total$HContr.Progestin.pill)
+
+#Combination pill
+total[,"HContr.Combination.pill"]  <- c(1,1,0,0,0,"",0,0,0,0,0,0,0,0,1,0,0,
+                                        1,0,0,0,0,0,0,0,0)
+#convert numeric into factor
+# yes-1, no-0
+total$HContr.Combination.pill <- factor(total$HContr.Combination.pill)
+
+#Nuvaring
+total[,"HContr.nuvaring"]  <- c(0,0,0,0,0,"",0,0,0,0,0,0,0,0,0,0,0,
+                                        0,0,0,0,0,0,0,0,0)
+#convert numeric into factor
+# yes-1, no-0
+total$HContr.nuvaring <- factor(total$HContr.nuvaring)
+
+#Mirena
+total[,"HContr.mirena"]  <- c(0,0,0,0,0,"",1,0,0,0,0,0,0,0,0,0,1,
+                                0,0,0,0,0,0,0,0,0)
+#convert numeric into factor
+# yes-1, no-0
+total$HContr.mirena <- factor(total$HContr.mirena)
+
+#Depoprovera
+total[,"HContr.depoprovera"]  <- c(0,0,0,0,0,"",0,0,0,0,0,0,0,0,0,0,0,
+                                0,0,0,0,0,0,0,0,0)
+#convert numeric into factor
+# yes-1, no-0
+total$HContr.depoprovera <- factor(total$HContr.depoprovera)
+
+#Orthoevra
+total[,"HContr.orthoevra"]  <- c(0,0,0,0,0,"",0,0,0,0,0,0,0,0,0,0,0,
+                                   0,0,0,0,0,0,0,0,0)
+#convert numeric into factor
+# yes-1, no-0
+total$HContr.orthoevra <- factor(total$HContr.orthoevra)
+
+#Type of hormonal contraception
+attach(total)
+total$contr_type[HContr.Combination.pill == '1'] <- '1' #estrogen/progestin
+total$contr_type[HContr.Progestin.pill == '1'] <- '2' #progestin
+total$contr_type[contraception.C.IUD == '1'] <- '3' #copper IUD
+total$contr_type[Contraception.cat == '0'] <- '0' #no #figure this out
+detach(total)
+
+#convert contr_type from character into factor
+total$contr_type <- factor(total$contr_type)
