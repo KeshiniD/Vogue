@@ -478,6 +478,16 @@ detach(total)
 #convert Number.partners.in.past.2.months.cat from character into factor
 total$Number.partners.in.past.2.months.cat <- factor(total$Number.partners.in.past.2.months.cat)
 
+#Cat. for number of sexual partners in the last year
+attach(total)
+total$Number.partners.in.past.year.cat[Number.partners.in.past.year <= 0] <- "0" # 0 partners
+total$Number.partners.in.past.year.cat[Number.partners.in.past.year <= 1 & Number.partners.in.past.2.months >= 1] <- "1" #1 partner
+total$Number.partners.in.past.year.cat[Number.partners.in.past.year >= 2] <- "2"#2 or more partners
+detach(total)
+
+#convert Number.partners.in.past.year.cat from character into factor
+total$Number.partners.in.past.year.cat <- factor(total$Number.partners.in.past.year.cat)
+
 #Shannon's diversity
 shannon <- read.csv(file.path("1B2_individual_diversity.csv"))
 total<-join(shannon, total, type="full")

@@ -20,6 +20,7 @@ total <- read.csv(file.path("1B2metbac_v2.csv"))
 
 #rename headers
 #rename funtion does not work with spaces unless quoted
+#did not use yet
 total <- dplyr::rename(total,
                       #"Lactobacillus crispatus" = Lactobacillus.crispatus, 
                       #"Lactobacillus iners" = Lactobacillus.iners, 
@@ -143,6 +144,7 @@ total$Bac.STI.ever <- factor(total$Bac.STI.ever)
 total$Herpes.ever <- factor(total$Herpes.ever)
 total$Genwarts.ever <- factor(total$Genwarts.ever)
 total$Number.partners.in.past.2.months.cat <- factor(total$Number.partners.in.past.2.months.cat)
+total$Number.partners.in.past.year.cat <- factor(total$Number.partners.in.past.year.cat)
 total$any.sx.pain <- factor(total$any.sx.pain)
 total$sx.pain.50.over <- factor(total$sx.pain.50.over)
 total$sx.pain.100 <- factor(total$sx.pain.100)
@@ -163,15 +165,41 @@ total$condoms.48h <- factor(total$condoms.48h)
 total$probiotics.2.months <- factor(total$probiotics.2.months)
 total$weeks.since.LMP.cat <- factor(total$weeks.since.LMP.cat)
 
-#odds ratio code #sexual.partners mucks it up
+#odds ratio code
 #na in data is ok
-#just trying different things
 #the variable in first slot needs to be 0,1 factor
 mylogit <- glm(formula, data, family = binomial(link = "logit"))
 mylogit <- glm(formula, data, family = binomial) 
 #gives same results thus far
 
-mylogit <- glm(formula = Nugent.score.cat ~ BMI + Presence.Symptoms.2wks + Abnormal.discharge.2wks, data = total, family = binomial)
+mylogit <- glm(formula = Nugent.score.cat ~ Shannon.s.Diversity + Amsels.cat + 
+                 Age.cat + BMI.cat + Ethnicity.cat + Marital.Status.cat + 
+                 Highest.Education.Level.cat + 
+                 Current.or.chronic.conditions...y.1..n.0. + 
+                 Genital.Infections..y.1..n.0. + 
+                 BV..number.of.episodes.2.months.+ 
+                 BV..number.of.episodes.year. + 
+                 BV..number.of.episodes.lifetime. + Yeast..2months. + 
+                 Yeast..year. + Yeast..lifetime. + UTI..2.months. + 
+                 UTI..year. + UTI..lifetime. + Trich..2.months. + 
+                 Trich..year. + Trich..lifetime. + Genital.Warts..2months. + 
+                 Genital.Warts..year. + Genital.Warts..lifetime. + 
+                 Genital.Herpes..2months. + Genital.Herpes..year. + 
+                 Genital.Herpes..lifetime. + Chlamydia..2.months. + 
+                 Chlamydia..year. + Chlamydia..lifetime. + Gonorrhea + 
+                 Syphillis + Antimicrobial.Use..y.1..n.0. + 
+                 X.Non..Prescription..y.1..n.0. + 
+                 Freq.of.Menstrual.Period.cat + Tampon.Use.cat + 
+                 Pregnancy.History..g. + Pregnancy.History..term. + 
+                 Pregnancy.History..p. + Pregnancy.History..sa. + 
+                 Pregnancy.History..ta. + Pregnancy.History..l. + 
+                 Use.of.douche.products..y.1..n.0. + 
+                 Used.in.the.past.48.hours + 
+                 Use.of.feminine.wipes.or.genital.deodrant..y.1..n.0. + 
+                 Used.in.past.48.hours + Sexual.Partners.cat + 
+                 Number.partners.in.past.2.months.cat +
+
+                 Presence.Symptoms.2wks + Abnormal.discharge.2wks, data = total, family = binomial)
 
 mylogit
 confint(mylogit) #CI intervals
