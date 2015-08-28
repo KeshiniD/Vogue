@@ -617,19 +617,8 @@ detach(total)
 total$contr_type <- factor(total$contr_type)
 
 #Use of condoms in last 48 hours
-attach(total)
-total$48h.uses.condoms[Vaginal.intercourse.in.past.48.hours..y.1..n.0. == '1' &
-                         contraception.B.M == '1'] <- '1' #estrogen/progestin
-total$48h.uses.condoms[HContr.Progestin.pill == '1'] <- '2' #progestin
-
-detach(total)
-
+total$condoms.48h <- ifelse(total$Vaginal.intercourse.in.past.48.hours..y.1..n.0. == '1' &
+                                   total$contraception.B.M == '1', 
+                        c("1"), c("0")) 
 #convert 48h.uses.condoms from character into factor
-total$48h.uses.condoms <- factor(total$48h.uses.condoms)
-
-#try this
-if(x > 0){
-  print("Non-negative number")
-} else {
-  print("Negative number")
-}
+total$condoms.48h <- factor(total$condoms.48h)
