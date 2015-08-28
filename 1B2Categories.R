@@ -622,3 +622,33 @@ total$condoms.48h <- ifelse(total$Vaginal.intercourse.in.past.48.hours..y.1..n.0
                         c("1"), c("0")) 
 #convert 48h.uses.condoms from character into factor
 total$condoms.48h <- factor(total$condoms.48h)
+
+
+#Taken probiotics within 2 months
+total[,"probiotics.2.months"]  <- c(0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,
+                                 0,0,0,1,1,0,0,0,1)
+#convert numeric into factor
+# yes-1, no-0
+total$probiotics.2.months <- factor(total$probiotics.2.months)
+
+#Days since LMP
+total[,"days.since.LMP"]  <- c(26,12,23,20,14,"",0,18,20,9,"",1,19,7,12,12,
+                               "",99,14,8,9,19,20,9,18,13)
+#convert character into integer
+# yes-1, no-0
+total$days.since.LMP <- as.integer(total$days.since.LMP)
+
+#weeks since LMP
+total <- total%>%
+  mutate(weeks.since.LMP=days.since.LMP / 7)
+
+#weeks since LMP cat
+attach(total)
+total$weeks.since.LMP.cat[weeks.since.LMP > 0] <- "1" #underweight
+total$weeks.since.LMP.cat[weeks.since.LMP >= 18.5 & weeks.since.LMP <=24.9] <- "2" #normal weight
+total$weeks.since.LMP.cat[weeks.since.LMP >= 25 & weeks.since.LMP <=29.9] <- "3" #overweight
+total$weeks.since.LMP.cat[weeks.since.LMP >= 30] <- "4" #obesity
+detach(total)
+
+#convert weeks.since.LMP.cat from character into factor
+total$weeks.since.LMP.cat <- factor(total$weeks.since.LMP.cat)
