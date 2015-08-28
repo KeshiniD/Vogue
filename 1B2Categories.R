@@ -618,13 +618,18 @@ total$contr_type <- factor(total$contr_type)
 
 #Use of condoms in last 48 hours
 attach(total)
-total$48h.uses.condoms[HContr.Combination.pill == '1'] <- '1' #estrogen/progestin
+total$48h.uses.condoms[Vaginal.intercourse.in.past.48.hours..y.1..n.0. == '1' &
+                         contraception.B.M == '1'] <- '1' #estrogen/progestin
 total$48h.uses.condoms[HContr.Progestin.pill == '1'] <- '2' #progestin
-total$48h.uses.condoms[contraception.C.IUD == '1'] <- '3' #copper IUD
-total$48h.uses.condoms[HContr.Combination.pill == '0' & 
-                   HContr.Progestin.pill == '0' & 
-                   contraception.C.IUD == '0'] <- '0' #none
+
 detach(total)
 
 #convert 48h.uses.condoms from character into factor
 total$48h.uses.condoms <- factor(total$48h.uses.condoms)
+
+#try this
+if(x > 0){
+  print("Non-negative number")
+} else {
+  print("Negative number")
+}
