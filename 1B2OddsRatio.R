@@ -16,7 +16,7 @@ library(ggtree)
 library(PredictABEL) #for adjusted odds ratio
 
 #call for entire 1B2 data
-total <- read.csv(file.path("1B2metabac.csv"))
+total <- read.csv(file.path("1B2metbac_v2.csv"))
 
 #rename headers
 #rename funtion does not work with spaces unless quoted
@@ -93,74 +93,21 @@ total <- dplyr::rename(total,
                       "Illicit Substance Use" = use.of.drugs..y.1..n.0., "Alcohol Use" = alcohol.use..y.1..n.0., 
                       "Smoking (Current or Past)" = smoker..current.or.in.past...y.1..n.0.) 
 
-#Odss Ratio 
-#Need to put data into categories
-# trying to get new columns for category variables (done)
-attach(total)
-total$Nugent.score.cat[Nugent.score > 6] <- "2" #positive
-total$Nugent.score.cat[Nugent.score > 3 & Nugent.score <= 6] <- "1" #intermediate
-total$Nugent.score.cat[Nugent.score <= 3] <- "0" #negative
-detach(total)
-
-#OR (but then need to sort into categories)(will not use this)
-total$Nugent.score.cat <- mapply(as.factor, total$Nugent.score)
-
-#convert Nugent.score.cat from character into factor
-total$Nugent.score.cat <- factor(total$Nugent.score.cat)
-
-#apply this code to the rest of our variables
-
-#Amsels
-attach(total)
-total$Amsels.cat[Amsels < 4] <- "0" #negative
-total$Amsels.cat[Amsels = 4] <- "1" #positive
-detach(total)
-#convert Amsels.cat from character into factor
-total$Amsels.cat <- factor(total$Amsels.cat)
-
-#Age
-attach(total)
-total$Age.cat[Age < 20] <- "1" 
-total$Age.cat[Age >= 20 & Age <=29] <- "2"
-total$Age.cat[Age >= 30 & Age <=39] <- "3"
-total$Age.cat[Age >= 40] <- "4" 
-detach(total)
-
-#convert Age.cat from character into factor
-total$Age.cat <- factor(total$Age.cat)
-
-#BMI
-attach(total)
-total$Age.cat[Age < 20] <- "1" 
-total$Age.cat[Age >= 20 & Age <=29] <- "2"
-total$Age.cat[Age >= 30 & Age <=39] <- "3"
-total$Age.cat[Age >= 40] <- "4" 
-detach(total)
-
-#convert Age.cat from character into factor
-total$Age.cat <- factor(total$Age.cat)
-
-
-
-
+#Odds Ratio 
+#data has been put into categories
 #data has to be in factor form
 #not necessarily (only if you want it to be treated at category)
-total$Symptoms..y.1..n.0. <- factor(total$Symptoms..y.1..n.0.)
-total$abnormal.discharge..y.1..n.0. <- factor(total$abnormal.discharge..y.1..n.0.)
-total$Nugent.score <- factor(total$Nugent.score)
-total$Sexual.Partners  <- factor(total$Sexual.Partners)
-total$Age <- factor(total$Age)
-
-
+total$Presence.Symptoms.2wks <- factor(total$Presence.Symptoms.2wks)
+total$Abnormal.discharge.2wks <- factor(total$Abnormal.discharge.2wks)
 
 #odds ratio code #sexual.partners mucks it up
-mylogit <- glm(formula = Nugent.score ~ Symptoms..y.1..n.0. + 
-                 abnormal.discharge..y.1..n.0. + Sexual.Partners, data = total, family = binomial(link = "logit"))
+mylogit <- glm(formula = Nugent.score ~ Presence.Symptoms.2wks + 
+                 Abnormal.discharge.2wks, data = total, family = binomial(link = "logit"))
 mylogit <- glm(formula = Nugent.score ~ Symptoms..y.1..n.0. + 
                  abnormal.discharge..y.1..n.0., data = total, 
                family = binomial) #gives same results thus far
 #na in data is ok
-mylogit <- glm(formula = Symptoms..y.1..n.0. ~ Nugent.score + Ethnicity + Age + Lactobacillus.iners, data = total, 
+mylogit <- glm(formula = BMI ~ Nugent.score + Ethnicity + Age + Lactobacillus.iners, data = total, 
                family = binomial)
 mylogit <- glm(formula = Symptoms..y.1..n.0. ~ Sexual.Partners, data = total, family = binomial)
 mylogit
@@ -176,16 +123,6 @@ total3 <- model.matrix(~Other.Bacteria -1 , data=total)
 #doesn't work with bacteria
 #might be away to look at things that cannot be set into single column binary
 
-#make numbers into categories
-total$Nugent.score.cat[Nugent.score > 6] <- "0"
-total$Nugent.score.cat[Nugent.score > 3 & Nugent.score <= 6] <- "1"
-total$Nugent.score.cat[Nugent.score <= 3] <- "2"
-total <- rename(total$Sexual.Partners, c("Male" = "0", "Female" = "1"))
-
-#needs to be character to reassign value
-total$Sexual.Partners <- as.character(total$Sexual.Partners)
-total$Sexual.Partners[total$Sexual.Partners=='Male'] <- '0'
-total$Sexual.Partners[total$Sexual.Partners=='Female'] <- '1'
 
 #2x2contingency table
 a <- xtabs(~Nugent.score + Ethnicity , data = total)
