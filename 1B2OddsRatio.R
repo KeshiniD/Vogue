@@ -197,9 +197,44 @@ mylogit <- glm(formula = Nugent.score.cat ~ Shannon.s.Diversity + Amsels.cat +
                  Used.in.the.past.48.hours + 
                  Use.of.feminine.wipes.or.genital.deodrant..y.1..n.0. + 
                  Used.in.past.48.hours + Sexual.Partners.cat + 
-                 Number.partners.in.past.2.months.cat +
-
-                 Presence.Symptoms.2wks + Abnormal.discharge.2wks, data = total, family = binomial)
+                 Number.partners.in.past.2.months.cat + 
+                 Number.partners.in.past.year.cat + 
+                 Vaginal.intercourse.in.past.48.hours..y.1..n.0. + 
+                 Freq.oral.sex.cat + oral.sex.in.past.48.hours..y.1..n.0. + 
+                 Freq.anal.sex.cat + anal.sex.in.past.48.hours..y.1..n.0. +
+                 Freq.sex.toy.use.cat + use.in.past.48.hours..y.1..n.0. + 
+                 use.of.drugs..y.1..n.0.cat + alcohol.use..y.1..n.0.cat + 
+                 smoker..current.or.in.past...y.1..n.0.cat + 
+                 Actinobacteria.sp. + Atopobium.vaginae + 
+                 Clostridia.sp..BVAB2 + Clostridium.genomosp..BVAB3 + 
+                 Escherichia.coli + Gardnerella.vaginalis.Group.A + 
+                 Gardnerella.vaginalis.Group.B + 
+                 Gardnerella.vaginalis.Group.C + 
+                 Gardnerella.vaginalis.Group.D + Klebsiella.pneumoniae + 
+                 Lactobacillus.crispatus + Lactobacillus.gasseri + 
+                 Lactobacillus.iners + Lactobacillus.jensenii + 
+                 Megasphaera.sp..genomosp..type.1 + Other.Actinobacteria + 
+                 Other.Bacteria + Other.Bacteroidetes + Other.Clostridium + 
+                 Other.Firmicutes + Other.Lactobacillus + Other.Prevotella + 
+                 Other.Proteobacteria + Other.Streptococcus + 
+                 Prevotella.amnii + Streptococcus.devriesei + 
+                 How.often.pain.experienced.during.vaginal.intercourse.percentage +
+                 Contraception.cat + Presence.Symptoms.2wks + 
+                 Abnormal.discharge.2wks + Abnormal.odor.2wks + 
+                 Irritation.Discomfort.2wks + Other.Symptoms.2wks + 
+                 Presence.Symptoms.48hrs + Abnormal.discharge.48hrs + 
+                 Abnormal.odor.48hrs + Irritation.Discomfort.48hrs + 
+                 Other.Symptoms.48hrs + Preg.livebirth.ever + 
+                 Chlamydia.ever + Gonorrhea.ever + Bac.STI.ever + 
+                 Herpes.ever + Genwarts.ever + any.sx.pain + 
+                 sx.pain.50.over + sx.pain.100 + contraception.H + 
+                 contraception.S.S + contraception.S.P + contraception.B.M + 
+                 contraception.B.F + contraception.C.IUD + 
+                 HContr.Progestin.pill + HContr.Combination.pill + 
+                 HContr.nuvaring + HContr.mirena + HContr.depoprovera + 
+                 HContr.orthoevra + contr_type + condoms.48h + 
+                 probiotics.2.months + days.since.LMP + weeks.since.LMP + 
+                 weeks.since.LMP.cat, data = total, family = binomial)
 
 mylogit
 confint(mylogit) #CI intervals
