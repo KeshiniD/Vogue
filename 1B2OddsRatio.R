@@ -172,6 +172,7 @@ mylogit <- glm(formula, data, family = binomial(link = "logit"))
 mylogit <- glm(formula, data, family = binomial) 
 #gives same results thus far
 
+#error --> fixed; needed to remove categories which only had one factor
 mylogit <- glm(formula = Nugent.score.cat ~ Shannon.s.Diversity + Amsels.cat + 
                  Age.cat + BMI.cat + Ethnicity.cat + Marital.Status.cat + 
                  Highest.Education.Level.cat + 
@@ -201,8 +202,7 @@ mylogit <- glm(formula = Nugent.score.cat ~ Shannon.s.Diversity + Amsels.cat +
                  Number.partners.in.past.year.cat + 
                  Vaginal.intercourse.in.past.48.hours..y.1..n.0. + 
                  Freq.oral.sex.cat + oral.sex.in.past.48.hours..y.1..n.0. + 
-                 Freq.anal.sex.cat + anal.sex.in.past.48.hours..y.1..n.0. +
-                 Freq.sex.toy.use.cat + use.in.past.48.hours..y.1..n.0. + 
+                 Freq.anal.sex.cat + Freq.sex.toy.use.cat + 
                  use.of.drugs..y.1..n.0.cat + alcohol.use..y.1..n.0.cat + 
                  smoker..current.or.in.past...y.1..n.0.cat + 
                  Actinobacteria.sp. + Atopobium.vaginae + 
@@ -225,16 +225,18 @@ mylogit <- glm(formula = Nugent.score.cat ~ Shannon.s.Diversity + Amsels.cat +
                  Presence.Symptoms.48hrs + Abnormal.discharge.48hrs + 
                  Abnormal.odor.48hrs + Irritation.Discomfort.48hrs + 
                  Other.Symptoms.48hrs + Preg.livebirth.ever + 
-                 Chlamydia.ever + Gonorrhea.ever + Bac.STI.ever + 
+                 Chlamydia.ever + Bac.STI.ever + 
                  Herpes.ever + Genwarts.ever + any.sx.pain + 
                  sx.pain.50.over + sx.pain.100 + contraception.H + 
                  contraception.S.S + contraception.S.P + contraception.B.M + 
-                 contraception.B.F + contraception.C.IUD + 
-                 HContr.Progestin.pill + HContr.Combination.pill + 
-                 HContr.nuvaring + HContr.mirena + HContr.depoprovera + 
-                 HContr.orthoevra + contr_type + condoms.48h + 
-                 probiotics.2.months + days.since.LMP + weeks.since.LMP + 
+                 contraception.C.IUD + HContr.Progestin.pill + 
+                 HContr.Combination.pill + HContr.mirena + contr_type + 
+                 condoms.48h + probiotics.2.months + days.since.LMP + weeks.since.LMP + 
                  weeks.since.LMP.cat, data = total, family = binomial)
+#to fix error
+mylogit <- glm(formula = Nugent.score.cat ~ , data = total, family = binomial(link = "logit"))
+
+
 
 mylogit
 confint(mylogit) #CI intervals
