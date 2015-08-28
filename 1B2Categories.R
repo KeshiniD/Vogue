@@ -608,8 +608,11 @@ attach(total)
 total$contr_type[HContr.Combination.pill == '1'] <- '1' #estrogen/progestin
 total$contr_type[HContr.Progestin.pill == '1'] <- '2' #progestin
 total$contr_type[contraception.C.IUD == '1'] <- '3' #copper IUD
-total$contr_type[Contraception.cat == '0'] <- '0' #no #figure this out
+total$contr_type[HContr.Combination.pill == '0' & 
+                   HContr.Progestin.pill == '0' & 
+                   contraception.C.IUD == '0'] <- '0' #none
 detach(total)
 
 #convert contr_type from character into factor
 total$contr_type <- factor(total$contr_type)
+
