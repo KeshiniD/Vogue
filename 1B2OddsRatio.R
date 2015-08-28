@@ -101,28 +101,21 @@ total$Presence.Symptoms.2wks <- factor(total$Presence.Symptoms.2wks)
 total$Abnormal.discharge.2wks <- factor(total$Abnormal.discharge.2wks)
 
 #odds ratio code #sexual.partners mucks it up
-mylogit <- glm(formula = Nugent.score ~ Presence.Symptoms.2wks + 
-                 Abnormal.discharge.2wks, data = total, family = binomial(link = "logit"))
-mylogit <- glm(formula = Nugent.score ~ Symptoms..y.1..n.0. + 
-                 abnormal.discharge..y.1..n.0., data = total, 
-               family = binomial) #gives same results thus far
 #na in data is ok
-mylogit <- glm(formula = BMI ~ Nugent.score + Ethnicity + Age + Lactobacillus.iners, data = total, 
-               family = binomial)
-mylogit <- glm(formula = Symptoms..y.1..n.0. ~ Sexual.Partners, data = total, family = binomial)
+#just trying different things
+#the variable in first slot needs to be 0,1 factor
+mylogit <- glm(formula, data, family = binomial(link = "logit"))
+mylogit <- glm(formula, data, family = binomial) 
+#gives same results thus far
+
+mylogit <- glm(formula = Nugent.score.cat ~ BMI + Presence.Symptoms.2wks + Abnormal.discharge.2wks, data = total, family = binomial)
+
 mylogit
 confint(mylogit) #CI intervals
 exp(cbind(OR = coef(mylogit), confint(mylogit))) #ORs and CIs
 exp(coef(mylogit)) #only ORs
 summary(mylogit)# for really nice table
 #cannot convert glm into data.frame
-
-#reassign to binary codes
-total2 <- model.matrix(~Ethnicity -1 , data=total)
-total3 <- model.matrix(~Other.Bacteria -1 , data=total) 
-#doesn't work with bacteria
-#might be away to look at things that cannot be set into single column binary
-
 
 #2x2contingency table
 a <- xtabs(~Nugent.score + Ethnicity , data = total)
