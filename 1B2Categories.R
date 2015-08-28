@@ -657,3 +657,6 @@ detach(total)
 
 #convert weeks.since.LMP.cat from character into factor
 total$weeks.since.LMP.cat <- factor(total$weeks.since.LMP.cat)
+
+#write new categories into file
+write.csv(total, "1B2metbac_v2.csv")
