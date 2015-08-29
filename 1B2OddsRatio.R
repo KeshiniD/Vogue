@@ -237,17 +237,14 @@ mylogit <- glm(formula = Nugent.score.cat ~ Abnormal.odor.48hrs +
                  Abnormal.discharge.48hrs + HContr.Progestin.pill + 
                  oral.sex.in.past.48.hours..y.1..n.0., data = total, family = binomial(link = "logit"))
 
+#going to see individual variables on Nugent.score
+
 mylogit
 confint(mylogit) #CI intervals
 exp(cbind(OR = coef(mylogit), confint(mylogit))) #ORs and CIs
 exp(coef(mylogit)) #only ORs
-summary(mylogit)# for really nice table
+summary(mylogit)# for nice table
 #cannot convert glm into data.frame
 
-#2x2contingency table
-a <- xtabs(~Nugent.score + Ethnicity , data = total)
-kable(a)
-#3x3 table
-a <- xtabs(~Nugent.score + Ethnicity + Marital.Status , data = total)
-a <- as.data.frame(a)
+
 
