@@ -1,6 +1,19 @@
 #call for data
 total <- read.csv(file.path("1B2metbac_v2.csv"))
 
+#load packages
+library(vegan)
+library(plyr)
+##suppresses start up messages
+suppressPackageStartupMessages(library(dplyr)) 
+library(ggplot2)
+library(tidyr)
+library(knitr)
+library(assertthat)
+library(entropart)
+library(epitools)
+library(ggtree)
+
 #Bray-Curtis
 install.packages("ecodist", dependencies = TRUE)
 library(ecodist)
@@ -68,7 +81,7 @@ library("gridExtra") #for added features
 #how does data need to be formatted for ggtree??!!
 
 #phyloseq
-source("http://bioconductor.org/biocLite.R")
+source("https://bioconductor.org/biocLite.R")
 biocLite("phyloseq")
 library(phyloseq)
 theme_set(theme_bw()) #what does this do?
