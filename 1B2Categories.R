@@ -668,5 +668,25 @@ detach(total)
 #convert weeks.since.LMP.cat from character into factor
 total$weeks.since.LMP.cat <- factor(total$weeks.since.LMP.cat)
 
+#CST clusters
+#Depoprovera
+total[,"CST"]  <- c('II','IVA','III','III','III','IVD','IVC', 'I', 'I', 
+                    'IVA', 'III', 'III', 'IVC', 'I', 'IVC', 'IVC', 'IVC', 
+                    'IVA', 'III', 'IVA', 'IVA', 'I', 'IVD','IVC', 'I', 'IVA')
+
+#create categories
+total$CST.cat[total$CST=='I'] <- '1'
+total$CST.cat[total$CST=='II'] <- '2'
+total$CST.cat[total$CST=='III'] <- '3'
+total$CST.cat[total$CST=='IVA'] <- '4'
+total$CST.cat[total$CST=='IVB'] <- '5'
+total$CST.cat[total$CST=='IVC'] <- '6'
+total$CST.cat[total$CST=='IVD'] <- '7'
+total$CST.cat[total$CST=='V'] <- '8'
+
+#convert CST.cat from character into factor
+total$CST.cat <- factor(total$CST.cat)
+
 #write new categories into file
 write.csv(total, "1B2metbac_v2.csv")
+
