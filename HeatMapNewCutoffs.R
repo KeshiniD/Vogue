@@ -1,3 +1,7 @@
+source("https://bioconductor.org/biocLite.R")
+biocLite("Heatplus")
+install.packages("BiodiversityR", dependencies = TRUE)
+
 #the following packages will need to be installed before you can load the libraries
 library(lattice)
 library(vegan)
