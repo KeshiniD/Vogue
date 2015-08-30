@@ -164,6 +164,8 @@ total$contr_type <- factor(total$contr_type)
 total$condoms.48h <- factor(total$condoms.48h)
 total$probiotics.2.months <- factor(total$probiotics.2.months)
 total$weeks.since.LMP.cat <- factor(total$weeks.since.LMP.cat)
+total$CST.cat <- factor(total$CST.cat)
+total$CST <- factor(total$CST)
 
 #odds ratio code
 #na in data is ok
@@ -228,7 +230,8 @@ mylogit <- glm(formula = Nugent.score.cat ~ Shannon.s.Diversity + Amsels.cat +
                  contraception.S.S + contraception.S.P + contraception.B.M + 
                  contraception.C.IUD + HContr.Combination.pill + HContr.mirena + 
                  contr_type + condoms.48h + probiotics.2.months + 
-                 days.since.LMP + weeks.since.LMP + weeks.since.LMP.cat, data = total, family = binomial(link = "logit"))
+                 days.since.LMP + weeks.since.LMP + weeks.since.LMP.cat + 
+                 CST.cat, data = total, family = binomial(link = "logit"))
 #overall no associations or statisical significance
 #way too many variables and few observations
 
@@ -237,7 +240,10 @@ mylogit <- glm(formula = Nugent.score.cat ~ Abnormal.odor.48hrs +
                  Abnormal.discharge.48hrs + HContr.Progestin.pill + 
                  oral.sex.in.past.48.hours..y.1..n.0., data = total, family = binomial(link = "logit"))
 
-#going to see individual variables on Nugent.score
+#applying this same code to see associations between NUgent.score, Amsels.cat
+#and CST.cat, with remainder of variables
+#also applying same code going to see individual variables on Nugent.score, Amsels
+#and CST
 
 mylogit
 confint(mylogit) #CI intervals
