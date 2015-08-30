@@ -669,7 +669,6 @@ detach(total)
 total$weeks.since.LMP.cat <- factor(total$weeks.since.LMP.cat)
 
 #CST clusters
-#Depoprovera
 total[,"CST"]  <- c('II','IVA','III','III','III','IVD','IVC', 'I', 'I', 
                     'IVA', 'III', 'III', 'IVC', 'I', 'IVC', 'IVC', 'IVC', 
                     'IVA', 'III', 'IVA', 'IVA', 'I', 'IVD','IVC', 'I', 'IVA')
