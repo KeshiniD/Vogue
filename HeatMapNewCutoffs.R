@@ -75,6 +75,7 @@ plot(hc3, hang=-1)
 #make the heatmaps
 
 rgb.palette <- colorRampPalette(c("black", "blue", "yellow", "red"), space = "rgb")#colour for heatmaps
+clus.col2<-c( "blue4"   ,   "green"  ,  "orange" ,"honeydew3"  ,"red" ,"royalblue1", "yellow")#colours for the groups
 
 colors()#gives list of R colours
 
