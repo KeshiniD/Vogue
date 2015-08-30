@@ -77,12 +77,6 @@ plot(hc3, hang=-1)
 rgb.palette <- colorRampPalette(c("black", "blue", "yellow", "red"), space = "rgb")#colour for heatmaps
 
 colors()#gives list of R colours
-clus.col2<-c( 'blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
-             'forestgreen', 'palegreen', 'green', 'darkgoldenrod1', 
-             'purple', 'mediumorchid2', 'plum', 'firebrick', 'firebrick1', 
-             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
-             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
-             'lavender', 'rosybrown2', 'deeppink')#colours for the groups
 
 quartz(height=8.5, width=12)
 plot(annHeatmap2(as.matrix(vmb),col=rgb.palette(11), legend=3, breaks=10, dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), Col=list(dendro=as.dendrogram(hc3))), cluster=list(Row=list(cuth=0.85),col=clus.col2), labels=list(Col=list(nrow=20.3))), widths=c(1,7.5), heights=c(1,1,9.5))

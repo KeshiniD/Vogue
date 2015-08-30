@@ -48,20 +48,20 @@ d <- dist(as.matrix(vmb)) #gives dif dendrogram
 #clustering
 library(stats)
 #works makes a dendrogram
-hclust(vare.dist, method = "complete", members = NULL) #wards or average deemed best
-w <- hclust(vare.dist, method = "complete", members = NULL) #method: dif clustering methods
-plot(w, labels = NULL, hang = 0.1, check = TRUE, #hang changes length of bars
+hclust(vare.dist, method = "average", members = NULL) #wards or average deemed best
+w <- hclust(vare.dist, method = "average", members = NULL) #method: dif clustering methods
+plot(w, labels = NULL, hang =-1, check = TRUE, #hang changes length of bars
      axes = TRUE, frame.plot = FALSE, ann = TRUE,#ann is labels
      main = "Cluster Dendrogram",
      sub = NULL, xlab = NULL, ylab = "Height")
 rect.hclust(w, k=8, border="red") #puts red border around samples
 
 #dif clustering example
-mydata <- scale(vmb2)
+mydata <- scale(vmb)
 wss <- (nrow(mydata)-1)*sum(apply(mydata,2,var))
 for (i in 1:11) wss[i] <- sum(kmeans(mydata, #doesnt work
                                      centers=i)$withinss)
-plot(wss, type="b", xlab="Number of Clusters",#works but ??
+plot(wss, type="b", xlab="Number of Clusters",#works but ?? suggests that a 8 cluster method is appropropriate for this group
      ylab="Within groups sum of squares")
 
 #validating cluster solutions
@@ -117,14 +117,14 @@ heatmap(m_matrix, Colv=NA, scale="column")
 #not for me
 cor_t <- cor(t(m_matrix))
 distancet <- as.dist(cor_t)
-hclust_complete <- hclust(distancet, method = "complete")
+hclust_complete <- hclust(distancet, method = "average")
 dendcomplete <- as.dendrogram(hclust_complete)
 heatmap(m_matrix, Rowv=dendcomplete, Colv=NA, scale="column")
 
 #version 3
 distancem <- dist(m_matrix)
 # determining how dendrogram should be ordered
-hclust_completem <- hclust(distancem, method = "complete") #ward.D, ward.D2 or average
+hclust_completem <- hclust(distancem, method = "average") #ward.D, ward.D2 or average
 dendcompletem <- as.dendrogram(hclust_completem)
 heatmap(m_matrix, Rowv=dendcompletem, Colv=NA, scale="column")
 #figure out what is the difference between these three versions

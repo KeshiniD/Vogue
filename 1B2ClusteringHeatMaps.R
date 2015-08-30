@@ -33,6 +33,8 @@ vmb <- tbl_df(total) %>% #subset
 a<- sweep(vmb, 1, (rowSums(vmb))/100, '/') # calculates for us
 
 vare.dist <- vegdist(a) #works!#defaults to bray-curtis dissimilarity
+str(vare.dist)
+summary(vare.dist)
 
 #create hierarchecal clusters
 #Participants
@@ -54,7 +56,34 @@ plot(hc1, hang=-1)
 plot(hc2, hang=-1)
 plot(hc3, hang=-1, xlab = "Bacterial Species") # use this one
 
+#also makes same dendogram
+library(stats)
+#works makes a dendrogram
+hclust(vare.dist, method = "average", members = NULL) #wards or average deemed best
+w <- hclust(vare.dist, method = "average", members = NULL) #method: dif clustering methods
+plot(w, labels = NULL, hang =-1, check = TRUE, #hang changes length of bars
+     axes = TRUE, frame.plot = FALSE, ann = TRUE,#ann is labels
+     main = "Cluster Dendrogram",
+     sub = NULL, xlab = "Participants", ylab = "Height")
+rect.hclust(w, k=8, border="red") #puts red border around samples 
+#detects 8 clusters
+
+#validates red boxes
+mydata <- scale(vmb)
+wss <- (nrow(mydata)-1)*sum(apply(mydata,2,var))
+for (i in 1:11) wss[i] <- sum(kmeans(mydata, #doesnt work
+                                     centers=i)$withinss)
+#works suggests that a 8 cluster method is appropropriate for this group
+#value before drop off in slope indicates this value approporaite clustering model
+#K values
+plot(wss, type="b", xlab="Number of Clusters",
+     ylab="Within groups sum of squares")
+
+
 #Heatmap
+#colours for groups
+rgb.palette <- colorRampPalette(c("black", "blue", "yellow", "red"), space = "rgb")#colour for heatmaps
+
 plot(annHeatmap2(as.matrix(vmb),col=rgb.palette(11), legend=3, breaks=10, dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), Col=list(dendro=as.dendrogram(hc3))), cluster=list(Row=list(cuth=0.85),col=clus.col2), labels=list(Col=list(nrow=20.3))), widths=c(1,7.5), heights=c(1,1,9.5))
 plot(annHeatmap2(as.matrix(vmb), legend=TRUE, breaks=10, 
                  dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
