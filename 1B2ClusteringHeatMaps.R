@@ -83,12 +83,15 @@ plot(wss, type="b", xlab="Number of Clusters",
 #Heatmap
 #colours for groups
 rgb.palette <- colorRampPalette(c("black", "blue", "yellow", "red"), space = "rgb")#colour for heatmaps
-clus.col2<-c( "blue4"   ,   "green"  ,  "orange" ,"honeydew3"  ,"red" ,"royalblue1", "yellow")#colours for the groups
 
-plot(annHeatmap2(as.matrix(vmb), legend=3, breaks=10, 
+clus.col<-c( "blue4"   ,   "green"  ,  "orange" ,"honeydew3"  ,"red" ,"royalblue1", "yellow")#colours for the groups
+
+plot(annHeatmap2(as.matrix(vmb), legend=3, breaks=10, dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), Col=list(dendro=as.dendrogram(hc3))), cluster=list(Row=list(cuth=0.85)), labels=list(Col=list(nrow=20.3))), widths=c(1,7.5), heights=c(1,1,9.5))
+
+plot(annHeatmap2(as.matrix(vmb),col=rgb.palet(11), legend=TRUE, breaks=10, 
                  dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
                                  Col=list(dendro=as.dendrogram(hc3))), 
-                 cluster=list(Row=list(cuth=0.85)), 
+                 cluster=list(Row=list(cuth=0.85),col=clus.col), 
                  labels=list(Col=list(nrow=20.3))), widths=c(1,7.5), 
      heights=c(1,1,9.5))
 
