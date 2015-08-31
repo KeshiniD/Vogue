@@ -250,7 +250,9 @@ confint(mylogit) #CI intervals
 exp(cbind(OR = coef(mylogit), confint(mylogit))) #ORs and CIs
 exp(coef(mylogit)) #only ORs
 summary(mylogit)# for nice table
-#cannot convert glm into data.frame
+#cannot convert glm into data.frame but use below to get data
+results_df <-summary.glm(mylogit)$coefficients #can write this to file
 
-
+#Nugent score with all the variables
+mylogit <- glm(formula, data, family = binomial(link = "logit"))
 
