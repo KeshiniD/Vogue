@@ -88,8 +88,10 @@ rgb.palette <- colorRampPalette(c("black", "blue", "yellow", "red"), space = "rg
 
 clus.col<-c( "blue4"   ,   "green"  ,  "orange" ,"honeydew3"  ,"red" ,"royalblue1", "yellow")#colours for the groups
 
+#works
 plot(annHeatmap2(as.matrix(vmb), legend=3, breaks=10, dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), Col=list(dendro=as.dendrogram(hc3))), cluster=list(Row=list(cuth=0.85)), labels=list(Col=list(nrow=20.3))), widths=c(1,7.5), heights=c(1,1,9.5))
 
+#trying to figure out custom colours
 plot(annHeatmap2(as.matrix(vmb),col=rgb.palet(11), legend=TRUE, breaks=10, 
                  dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
                                  Col=list(dendro=as.dendrogram(hc3))), 
