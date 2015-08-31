@@ -104,12 +104,13 @@ bac <- data %>%
          Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
          Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
 #want rownames to be participants
-rownames(total) <- total[,1]
+rownames(bac) <- bac[,1]
+bac[,1] <- NULL
 #colours for individuals
 col <- c("black", "darkred", "forestgreen", "orange", "blue", "yellow", 
          "hotpink", "red", "grey", "purple", "white")
-rarecurve(bac, step = 1, sample = min(rowSums(bac)), xlab = "Sample Size", ylab = "Species",
-          label = TRUE, col = col, xlim=c(0,15000)) # will plot, set sample and step to integer
+rarecurve(bac, step = 1, sample = min(rowSums(bac)), xlab = "Sample Size", 
+          ylab = "Species", label = TRUE, col = col, xlim=c(0,15000))
 #each line is rarefied richness value (higher values more rich than lower values)
 #xaxis:# of indvidual species present in each participant
 #yaxis: bacterial species and amount each participant has
