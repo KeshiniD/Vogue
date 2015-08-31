@@ -59,6 +59,37 @@ drarefy <- drarefy(bac, sample = min(rowSums(bac)))
 rarefy <- as.data.frame(rarefy)
 write.csv(rarefy, "1B2richness_individual.csv")
 
+#richness for cohort
+#already have bac subset data
+#first need to make new table with total counts for each bacterial species
+#bac counts
+bac2 <-
+  gather(bac, key = 'Bacteria', value = 'Counts', Lactobacillus.crispatus, 
+         Lactobacillus.gasseri, Lactobacillus.iners, Lactobacillus.jensenii, 
+         Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
+         Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
+         Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
+         Clostridium.genomosp..BVAB3, Escherichia.coli, 
+         Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
+         Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
+         Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
+         Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
+         Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
+bac3 <- bac2 %>% 
+  select (Bacteria, Counts) %>% #WORKED!!!! for cohort
+  group_by(Bacteria) %>%
+  summarize(TotalCounts = sum(Counts)) %>%
+  select (TotalCounts)
+#specnumber
+h <- colSums(bac3)
+h2 <-  t(h)
+
+#cohort richness
+rarefy2 <- rarefy(bac3, sample=min(rowSums(bac3))) #may be h
+#write cohort species richness into file
+rarefy2 <- as.data.frame(rarefy2)
+write.csv(rarefy2, "1B2richness_cohort.csv")
+
 #need to figure out colours; done
 col <- c("black", "darkred", "forestgreen", "orange", "blue", "yellow", 
          "hotpink", "red", "grey", "purple", "white")
