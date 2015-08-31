@@ -117,5 +117,5 @@ rarecurve(bac, step = 1, sample = min(rowSums(bac)), xlab = "Sample Size",
 #need to figure out legend (do not think there is one)
 #can alter x-axis to see some samples more distinctly 
 
-fisher.alpha(bac, MARGIN = 1)
+fisher.alpha(bac, MARGIN = 1) #alpha parameter; do not need
 specnumber(bac, MARGIN = 1) #number of species, can use above for cohort
