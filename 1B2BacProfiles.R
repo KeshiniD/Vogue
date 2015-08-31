@@ -1,3 +1,4 @@
+#call for data
 data <- read.csv(file.path("1B2data_groups.csv"))
 
 #change headers
@@ -75,6 +76,7 @@ total2 <- read.csv(file.path("1B2metabac.csv")) #getting messed up in this step
 
 ##REDO EVERYTHING TO ORGANIZE BARPLOT VIA NUGENT SCORES
 #tried to facet_wrap & facet_grid but did not appear in tidy fashion
+#code following omitted
 #bac counts (same as above)
 data4 <-
   gather(total, key = 'Bacteria', value = 'Counts', Lactobacillus.crispatus, 

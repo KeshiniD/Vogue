@@ -1,5 +1,5 @@
 #odds ratio
-## needs epitools package
+## might needs epitools package
 
 #load packages
 library(vegan)

@@ -1,7 +1,7 @@
 #call for entire 1B2 data
 total <- read.csv(file.path("1B2metabac.csv"))
 
-#Odds Ratio 
+#for Odds Ratio 
 #Need to put data into categories
 # trying to get new columns for category variables (done)
 attach(total)
