@@ -81,14 +81,13 @@ bac3 <- bac2 %>%
   summarize(TotalCounts = sum(Counts)) %>%
   select (TotalCounts)
 #specnumber
-h <- colSums(bac3)
-h2 <-  t(h)
+
 
 #cohort richness
 rarefy2 <- rarefy(bac3, sample=min(rowSums(bac3))) #may be h
 #write cohort species richness into file
 rarefy2 <- as.data.frame(rarefy2)
-write.csv(rarefy2, "1B2richness_cohort.csv")
+write.csv(rarefy2, "1B2richness_cohort.csv")b #will fix headings in excel
 
 #Plot rarefraction cureve
 bac <- data %>%
