@@ -157,7 +157,7 @@ dist2 <- function(m_matrix, ...) #bray function for heatmap
 install.packages("qiimer", dependencies = TRUE)
 library(qiimer)
 make_otu_table(m_matrix, sample_ids = NULL)
-m_matrix
+m_matrix <- t(m_matrix)
 
 #
 data(GlobalPatterns)
