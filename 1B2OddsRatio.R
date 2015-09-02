@@ -14,6 +14,7 @@ library(entropart)
 library(epitools)
 library(ggtree)
 library(PredictABEL) #for adjusted odds ratio
+library(MASS)
 
 #call for entire 1B2 data
 total <- read.csv(file.path("1B2metbac_v2.csv"))
@@ -253,11 +254,6 @@ summary(mylogit)# for nice table
 #cannot convert glm into data.frame but use below to get data
 results_df <-summary.glm(mylogit)$coefficients #can write this to file
 
-
-
-
-
-
 #Amsels.cat with variables
 mylogit <- glm(formula = Amsels.cat ~ Shannon.s.Diversity, data=total, family = binomial(link = "logit"))
 summary(mylogit)
@@ -361,7 +357,7 @@ mylogit <- glm(formula = Amsels.cat ~ Vaginal.intercourse.in.past.48.hours..y.1.
 summary(mylogit)
 mylogit <- glm(formula = Amsels.cat ~ Freq.oral.sex.cat, data=total, family = binomial(link = "logit"))
 summary(mylogit)
-mylogit <- glm(formula = Amsels.cat ~ Freq.anal.sex.cat, data=total, family = binomial(link = "logit"))
+mylogit <- glm(formula = Amsels.cat ~ oral.sex.in.past.48.hours..y.1..n.0., data=total, family = binomial(link = "logit"))
 summary(mylogit)
 mylogit <- glm(formula = Amsels.cat ~ Freq.sex.toy.use.cat, data=total, family = binomial(link = "logit"))
 summary(mylogit)
@@ -492,3 +488,21 @@ mylogit <- glm(formula = Amsels.cat ~ Prevotella.timonensis, data=total, family 
 mylogit <- glm(formula = Amsels.cat ~ Abnormal.discharge.48hrs, data=total, family = binomial(link = "logit"))
 mylogit <- glm(formula = Amsels.cat ~ Abnormal.odor.48hrs, data=total, family = binomial(link = "logit"))
 mylogit <- glm(formula = Amsels.cat ~ oral.sex.in.past.48.hours..y.1..n.0., data=total, family = binomial(link = "logit"))
+
+#treat Nugent score as ordinal category
+m <- polr(Nugent.score.cat ~ probiotics.2.months, data = total, Hess=TRUE)
+summary(m)
+
+#call for amsels odds
+Am <- read.delim(file.path("Amsels_Odds.txt"))
+#plot
+ggplot(Am, aes(x=Estimate, y=Variables)) + 
+  geom_bar(stat = "identity") + 
+  aes(fill=Variables) + coord_flip()
+
+Am$colour <- ifelse(Am$Estimate < 0, "negative","positive")
+Am$hjust <- ifelse(Am$Estimate > 0, 1.3, -0.3)
+ggplot(Am,aes(Variables,Estimate,label="",hjust=hjust))+
+  geom_bar(stat="identity",position="identity",aes(fill = colour))+
+  scale_fill_manual(values=c(positive="firebrick1",negative="steelblue")) + 
+  coord_flip()

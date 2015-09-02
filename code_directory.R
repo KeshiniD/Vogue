@@ -10,6 +10,7 @@ source("http://bioconductor.org/biocLite.R")
 biocLite("ggtree") #need to update R to 3.1.2 to work
 upbrowseVignettes("ggtree")#for doc
 install.packages("epiR", dependencies = TRUE)
+install.packages("MASS", dependencies = TRUE)
 
 
 #load packages
