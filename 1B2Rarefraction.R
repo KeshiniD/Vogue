@@ -89,7 +89,7 @@ rarefy2 <- rarefy(bac3, sample=min(rowSums(bac3))) #may be h
 rarefy2 <- as.data.frame(rarefy2)
 write.csv(rarefy2, "1B2richness_cohort.csv")b #will fix headings in excel
 
-#Plot rarefraction cureve
+#Plot rarefraction curve
 bac <- data %>%
   select(Participants, Lactobacillus.crispatus, Lactobacillus.gasseri, 
          Lactobacillus.iners, Lactobacillus.jensenii, 
@@ -106,10 +106,15 @@ bac <- data %>%
 rownames(bac) <- bac[,1]
 bac[,1] <- NULL
 #colours for individuals
-col <- c("black", "darkred", "forestgreen", "orange", "blue", "yellow", 
-         "hotpink", "red", "grey", "purple", "white")
-rarecurve(bac, step = 1, sample = min(rowSums(bac)), xlab = "Sample Size", 
-          ylab = "Species", label = TRUE, col = col, xlim=c(0,15000))
+col <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
+             'forestgreen', 'palegreen', 'green', 'darkgoldenrod1', 
+             'purple', 'mediumorchid2', 'plum', 'firebrick', 'firebrick1', 
+             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
+             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
+             'lavender', 'rosybrown2', 'deeppink')
+rarecurve(bac, step = 27, sample = min(rowSums(bac)), 
+          xlab = "Sequence Read Counts", ylab = "Number of Bacterial Species", 
+          label = FALSE, col = col, xlim=c(0,17500), lwd = 2)
 #each line is rarefied richness value (higher values more rich than lower values)
 #xaxis:# of indvidual species present in each participant
 #yaxis: bacterial species and amount each participant has
