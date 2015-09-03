@@ -274,9 +274,9 @@ summary(m)
 Am <- read.delim(file.path("Amsels_Odds.txt"))
 #plot
 
-Am$colour <- ifelse(Am$Estimate < 0, "negative","positive")
-Am$hjust <- ifelse(Am$Estimate > 0, 1.3, -0.3)
-ggplot(Am,aes(Variables,Estimate,label="",hjust=hjust))+
+Am$colour <- ifelse(Am$OddsRatio < 0, "negative","positive")
+Am$hjust <- ifelse(Am$OddsRatio > 0, 1.3, -0.3)
+ggplot(Am,aes(Variables,OddsRatio,label="",hjust=hjust))+
   geom_bar(stat="identity",position="identity",aes(fill = colour))+
   scale_fill_manual(values=c(positive="firebrick1",negative="steelblue")) + 
   coord_flip()
@@ -410,3 +410,32 @@ mylogit <- glm(formula = CST.cat ~ Amsels.cat, Shannon.s.Diversity + Nugent.scor
                  HContr.Progestin.pill + 
                  oral.sex.in.past.48.hours..y.1..n.0.,
                  data = total, family = poisson(link = "log"))
+#plots
+#call for amsels odds
+Am <- read.delim(file.path("Amsels_Odds.txt"))
+#plot
+
+Am$colour <- ifelse(Am$OddsRatio < 0, "negative","positive")
+Am$hjust <- ifelse(Am$OddsRatio > 0, 1.3, -0.3)
+ggplot(Am,aes(Variables,OddsRatio,label="",hjust=hjust))+
+  geom_bar(stat="identity",position="identity",aes(fill = colour))+
+  scale_fill_manual(values=c(positive="firebrick1",negative="steelblue")) + 
+  coord_flip() + xlab("Variables") + ylab("Odds Ratio")
+
+#plot
+CST <- read.delim(file.path("CST_Odds.txt"))
+CST$colour <- ifelse(CST$OddsRatio < 0, "negative","positive")
+CST$hjust <- ifelse(CST$OddsRatio > 0, 1.3, -0.3)
+ggplot(CST,aes(Variables,OddsRatio,label="",hjust=hjust))+
+  geom_bar(stat="identity",position="identity",aes(fill = colour))+
+  scale_fill_manual(values=c(positive="firebrick1",negative="steelblue")) + 
+  coord_flip() +  xlab("Variables") + ylab("Odds Ratio")
+
+#plot
+Nugent <- read.delim(file.path("Nugent_Odds.txt"))
+Nugent$colour <- ifelse(Nugent$OddsRatio < 0, "negative","positive")
+Nugent$hjust <- ifelse(Nugent$OddsRatio > 0, 1.3, -0.3)
+ggplot(Nugent,aes(Variables,OddsRatio,label="",hjust=hjust))+
+  geom_bar(stat="identity",position="identity",aes(fill = colour))+
+  scale_fill_manual(values=c(positive="firebrick1",negative="steelblue")) + 
+  coord_flip() + xlab("Variables") + ylab("Odds Ratio")

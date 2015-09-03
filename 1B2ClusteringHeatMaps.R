@@ -1,5 +1,5 @@
 #install packages
-source("httpa://bioconductor.org/biocLite.R")
+source("http://bioconductor.org/biocLite.R")
 biocLite("Heatplus")
 install.packages("BiodiversityR", dependencies = TRUE)
 install.packages("Heatplus", dependencies = TRUE)
@@ -43,7 +43,7 @@ summary(vare.dist)
 hr1<-hclust(vare.dist, "complete")
 hr2<-hclust(vare.dist, "single")
 hr3<-hclust(vare.dist, "aver")#use this one
-par(mfrow=c(1,3)) #to see each plot side by side
+par(mfrow=c(1,1)) #to see each plot side by side
 plot(hr1, hang=-1)
 plot(hr2, hang=-1)
 plot(hr3, hang=-1, xlab="Participants") #use this one
@@ -67,7 +67,7 @@ plot(w, labels = NULL, hang =-1, check = TRUE, #hang changes length of bars
      axes = TRUE, frame.plot = FALSE, ann = TRUE,#ann is labels
      main = "Cluster Dendrogram",
      sub = NULL, xlab = "Participants", ylab = "Height")
-rect.hclust(w, k=7, border="red") #puts red border around samples 
+rect.hclust(w, k=6, border="red") #puts red border around samples 
 #detects 8 clusters
 
 #validates red boxes
