@@ -334,3 +334,17 @@ list.of.data.frames <- dplyr::rename(list.of.data.frames, Vogue1B2.01.01 = a,
 #write
 write.table(list.of.data.frames, "1B2_individual_Good.csv", sep = ",", row.names = FALSE, quote = FALSE)
 Good <- read.csv(file.path("1B2_individual_Good.csv"))
+
+#merge Pielous, shannons and rarefraction
+a <- read.csv(file.path("1B2_individual_Pielou.csv"))
+b <- read.csv(file.path("1B2richness_individual.csv"))
+c <- read.csv(file.path("1B2_individual_diversity.csv"))
+b$X <- NULL #remove random empty column
+
+#merge three folders together
+diversity <- cbind(a,b,c)
+#remove duplicate columns
+d <- diversity[ -c(3, 5) ]
+
+#write
+write.csv(d, "1B2_individual_all_diversity.csv")
