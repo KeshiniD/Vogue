@@ -106,7 +106,7 @@ bac <- data %>%
 rownames(bac) <- bac[,1]
 bac[,1] <- NULL
 #colours for individuals
-col <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
+col <- c('deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
              'forestgreen', 'palegreen', 'green', 'darkgoldenrod1', 
              'purple', 'mediumorchid2', 'plum', 'firebrick', 'firebrick1', 
              'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
