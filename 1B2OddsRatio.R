@@ -414,28 +414,34 @@ mylogit <- glm(formula = CST.cat ~ Amsels.cat, Shannon.s.Diversity + Nugent.scor
 #call for amsels odds
 Am <- read.delim(file.path("Amsels_Odds.txt"))
 #plot
+#omit Nas
+myData <- Am[-c(27:31,33,39:40,44,72,76,128,139,141,143,145:146,148,157), ]
 
-Am$colour <- ifelse(Am$OddsRatio < 0, "negative","positive")
-Am$hjust <- ifelse(Am$OddsRatio > 0, 1.3, -0.3)
-ggplot(Am,aes(Variables,OddsRatio,label="",hjust=hjust))+
+myData$colour <- ifelse(myData$Estimate < 0, "negative","positive")
+myData$hjust <- ifelse(myData$Estimate > 0, 1.3, -0.3)
+ggplot(myData,aes(Variables,Estimate,label="",hjust=hjust))+
   geom_bar(stat="identity",position="identity",aes(fill = colour))+
   scale_fill_manual(values=c(positive="firebrick1",negative="steelblue")) + 
-  coord_flip() + xlab("Variables") + ylab("Odds Ratio")
+  coord_flip() + xlab("Variables") + ylab("Odds Ratio (log)")
 
 #plot
-CST <- read.delim(file.path("CST_Odds.txt"))
-CST$colour <- ifelse(CST$OddsRatio < 0, "negative","positive")
-CST$hjust <- ifelse(CST$OddsRatio > 0, 1.3, -0.3)
-ggplot(CST,aes(Variables,OddsRatio,label="",hjust=hjust))+
+myData <- CST[-c(28:32,40:41,73,77,140,142,144,146:147), ]
+
+myData <- read.delim(file.path("CST_Odds.txt"))
+myData$colour <- ifelse(myData$Estimate < 0, "negative","positive")
+myData$hjust <- ifelse(myData$Estimate > 0, 1.3, -0.3)
+ggplot(myData,aes(Variables,Estimate,label="",hjust=hjust))+
   geom_bar(stat="identity",position="identity",aes(fill = colour))+
   scale_fill_manual(values=c(positive="firebrick1",negative="steelblue")) + 
-  coord_flip() +  xlab("Variables") + ylab("Odds Ratio")
+  coord_flip() +  xlab("Variables") + ylab("Odds Ratio (log)")
 
 #plot
 Nugent <- read.delim(file.path("Nugent_Odds.txt"))
-Nugent$colour <- ifelse(Nugent$OddsRatio < 0, "negative","positive")
-Nugent$hjust <- ifelse(Nugent$OddsRatio > 0, 1.3, -0.3)
-ggplot(Nugent,aes(Variables,OddsRatio,label="",hjust=hjust))+
+myData <- Nugent[-c(28:32,40:41,73,77,84,87,90,92,98,129,140,142,144,146:147), ]
+
+myData$colour <- ifelse(myData$Estimate < 0, "negative","positive")
+myData$hjust <- ifelse(myData$Estimate > 0, 1.3, -0.3)
+ggplot(myData,aes(Variables,Estimate,label="",hjust=hjust))+
   geom_bar(stat="identity",position="identity",aes(fill = colour))+
   scale_fill_manual(values=c(positive="firebrick1",negative="steelblue")) + 
-  coord_flip() + xlab("Variables") + ylab("Odds Ratio")
+  coord_flip() + xlab("Variables") + ylab("Odds Ratio (log)")
