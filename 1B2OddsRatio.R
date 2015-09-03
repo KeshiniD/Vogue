@@ -176,7 +176,8 @@ mylogit <- glm(formula, data, family = binomial)
 #gives same results thus far
 
 #error --> fixed; needed to remove categories which only had one factor
-mylogit <- glm(formula = Nugent.score.cat ~ Shannon.s.Diversity + Amsels.cat +  
+#ordinal
+mylogit <- polr(formula = Nugent.score.cat ~ Shannon.s.Diversity + Amsels.cat +  
                  Age.cat + BMI.cat + Ethnicity.cat + Marital.Status.cat + 
                  Highest.Education.Level.cat + 
                  Current.or.chronic.conditions...y.1..n.0. + 
@@ -232,14 +233,19 @@ mylogit <- glm(formula = Nugent.score.cat ~ Shannon.s.Diversity + Amsels.cat +
                  contraception.C.IUD + HContr.Combination.pill + HContr.mirena + 
                  contr_type + condoms.48h + probiotics.2.months + 
                  days.since.LMP + weeks.since.LMP + weeks.since.LMP.cat + 
-                 CST.cat, data = total, family = binomial(link = "logit"))
+                 CST.cat + Abnormal.odor.48hrs + 
+                  Abnormal.discharge.48hrs + HContr.Progestin.pill + 
+                  oral.sex.in.past.48.hours..y.1..n.0.,data = total, Hess=TRUE)
 #overall no associations or statisical significance
 #way too many variables and few observations
 
 #these cause error when put with set above but work fine alone :/
+#Sept2 included those below above
 mylogit <- glm(formula = Nugent.score.cat ~ Abnormal.odor.48hrs + 
                  Abnormal.discharge.48hrs + HContr.Progestin.pill + 
                  oral.sex.in.past.48.hours..y.1..n.0., data = total, family = binomial(link = "logit"))
+#plot
+a <- exp(coef(mylogit))
 
 #applying this same code to see associations between NUgent.score, Amsels.cat
 #and CST.cat, with remainder of variables
@@ -252,7 +258,9 @@ exp(cbind(OR = coef(mylogit), confint(mylogit))) #ORs and CIs
 exp(coef(mylogit)) #only ORs
 summary(mylogit)# for nice table
 #cannot convert glm into data.frame but use below to get data
-results_df <-summary.glm(mylogit)$coefficients #can write this to file
+results_df <-summary.polr(mylogit)$coefficients #can write this to file
+
+#Amsels can be binomial and use above code
 
 #get to be treated as continuous
 total$CST.cat <- as.numeric(total$CST.cat)
@@ -272,3 +280,133 @@ ggplot(Am,aes(Variables,Estimate,label="",hjust=hjust))+
   geom_bar(stat="identity",position="identity",aes(fill = colour))+
   scale_fill_manual(values=c(positive="firebrick1",negative="steelblue")) + 
   coord_flip()
+
+#Amsels
+#ordinal
+mylogit <- glm(formula = Amsels.cat ~ Shannon.s.Diversity + Nugent.score.cat +  
+                  Age.cat + BMI.cat + Ethnicity.cat + Marital.Status.cat + 
+                  Highest.Education.Level.cat + 
+                  Current.or.chronic.conditions...y.1..n.0. + 
+                  Genital.Infections..y.1..n.0. + 
+                  BV..number.of.episodes.2.months.+ 
+                  BV..number.of.episodes.year. + 
+                  BV..number.of.episodes.lifetime. + Yeast..2months. + 
+                  Yeast..year. + Yeast..lifetime. + UTI..2.months. + 
+                  UTI..year. + UTI..lifetime. + Trich..2.months. + 
+                  Trich..year. + Trich..lifetime. + Genital.Warts..2months. + 
+                  Genital.Warts..year. + Genital.Warts..lifetime. + 
+                  Genital.Herpes..2months. + Genital.Herpes..year. + 
+                  Genital.Herpes..lifetime. + Chlamydia..2.months. + 
+                  Chlamydia..year. + Chlamydia..lifetime. + Gonorrhea + 
+                  Syphillis + Antimicrobial.Use..y.1..n.0. + 
+                  X.Non..Prescription..y.1..n.0. + 
+                  Freq.of.Menstrual.Period.cat + Tampon.Use.cat + 
+                  Pregnancy.History..g. + Pregnancy.History..term. + 
+                  Pregnancy.History..p. + Pregnancy.History..sa. + 
+                  Pregnancy.History..ta. + Pregnancy.History..l. + 
+                  Use.of.douche.products..y.1..n.0. + 
+                  Used.in.the.past.48.hours + 
+                  Use.of.feminine.wipes.or.genital.deodrant..y.1..n.0. + 
+                  Used.in.past.48.hours + Sexual.Partners.cat + 
+                  Number.partners.in.past.2.months.cat + 
+                  Number.partners.in.past.year.cat + 
+                  Vaginal.intercourse.in.past.48.hours..y.1..n.0. + 
+                  Freq.oral.sex.cat + Freq.anal.sex.cat + Freq.sex.toy.use.cat + 
+                  use.of.drugs..y.1..n.0.cat + alcohol.use..y.1..n.0.cat + 
+                  smoker..current.or.in.past...y.1..n.0.cat + 
+                  Actinobacteria.sp. + Atopobium.vaginae + 
+                  Clostridia.sp..BVAB2 + Clostridium.genomosp..BVAB3 + 
+                  Escherichia.coli + Gardnerella.vaginalis.Group.A + 
+                  Gardnerella.vaginalis.Group.B + 
+                  Gardnerella.vaginalis.Group.C + 
+                  Gardnerella.vaginalis.Group.D + Klebsiella.pneumoniae + 
+                  Lactobacillus.crispatus + Lactobacillus.gasseri + 
+                  Lactobacillus.iners + Lactobacillus.jensenii + 
+                  Megasphaera.sp..genomosp..type.1 + Other.Actinobacteria + 
+                  Other.Bacteria + Other.Bacteroidetes + Other.Clostridium + 
+                  Other.Firmicutes + Other.Lactobacillus + Other.Prevotella + 
+                  Other.Proteobacteria + Other.Streptococcus + 
+                  Prevotella.amnii + Prevotella.timonensis + Streptococcus.devriesei + 
+                  How.often.pain.experienced.during.vaginal.intercourse.percentage +
+                  Contraception.cat + Presence.Symptoms.2wks + 
+                  Abnormal.discharge.2wks + Abnormal.odor.2wks + 
+                  Irritation.Discomfort.2wks + Other.Symptoms.2wks + 
+                  Presence.Symptoms.48hrs + Irritation.Discomfort.48hrs + 
+                  Other.Symptoms.48hrs + Preg.livebirth.ever + Chlamydia.ever + 
+                  Bac.STI.ever + Herpes.ever + Genwarts.ever + any.sx.pain + 
+                  sx.pain.50.over + sx.pain.100 + contraception.H + 
+                  contraception.S.S + contraception.S.P + contraception.B.M + 
+                  contraception.C.IUD + HContr.Combination.pill + HContr.mirena + 
+                  contr_type + condoms.48h + probiotics.2.months + 
+                  days.since.LMP + weeks.since.LMP + weeks.since.LMP.cat + 
+                  CST.cat,data = total, family = binomial(link = "logit"))
+#dataframe
+results_df <-summary.glm(mylogit)$coefficients
+#write new categories into file
+write.csv(results_df, "AmselsOddsMulti.csv") 
+#only records stuff with numbers, rest NA
+t <- read.csv(file.path("AmselsOddsMulti_v2.csv"))
+
+
+#CST multi
+total$CST.cat <- as.numeric(total$CST.cat)
+mylogit <- glm(formula = CST.cat ~ Amsels.cat, Shannon.s.Diversity + Nugent.score.cat +  
+                 Age.cat + BMI.cat + Ethnicity.cat + Marital.Status.cat + 
+                 Highest.Education.Level.cat + 
+                 Current.or.chronic.conditions...y.1..n.0. + 
+                 Genital.Infections..y.1..n.0. + 
+                 BV..number.of.episodes.2.months.+ 
+                 BV..number.of.episodes.year. + 
+                 BV..number.of.episodes.lifetime. + Yeast..2months. + 
+                 Yeast..year. + Yeast..lifetime. + UTI..2.months. + 
+                 UTI..year. + UTI..lifetime. + Trich..2.months. + 
+                 Trich..year. + Trich..lifetime. + Genital.Warts..2months. + 
+                 Genital.Warts..year. + Genital.Warts..lifetime. + 
+                 Genital.Herpes..2months. + Genital.Herpes..year. + 
+                 Genital.Herpes..lifetime. + Chlamydia..2.months. + 
+                 Chlamydia..year. + Chlamydia..lifetime. + Gonorrhea + 
+                 Syphillis + Antimicrobial.Use..y.1..n.0. + 
+                 X.Non..Prescription..y.1..n.0. + 
+                 Freq.of.Menstrual.Period.cat + Tampon.Use.cat + 
+                 Pregnancy.History..g. + Pregnancy.History..term. + 
+                 Pregnancy.History..p. + Pregnancy.History..sa. + 
+                 Pregnancy.History..ta. + Pregnancy.History..l. + 
+                 Use.of.douche.products..y.1..n.0. + 
+                 Used.in.the.past.48.hours + 
+                 Use.of.feminine.wipes.or.genital.deodrant..y.1..n.0. + 
+                 Used.in.past.48.hours + Sexual.Partners.cat + 
+                 Number.partners.in.past.2.months.cat + 
+                 Number.partners.in.past.year.cat + 
+                 Vaginal.intercourse.in.past.48.hours..y.1..n.0. + 
+                 Freq.oral.sex.cat + Freq.anal.sex.cat + Freq.sex.toy.use.cat + 
+                 use.of.drugs..y.1..n.0.cat + alcohol.use..y.1..n.0.cat + 
+                 smoker..current.or.in.past...y.1..n.0.cat + 
+                 Actinobacteria.sp. + Atopobium.vaginae + 
+                 Clostridia.sp..BVAB2 + Clostridium.genomosp..BVAB3 + 
+                 Escherichia.coli + Gardnerella.vaginalis.Group.A + 
+                 Gardnerella.vaginalis.Group.B + 
+                 Gardnerella.vaginalis.Group.C + 
+                 Gardnerella.vaginalis.Group.D + Klebsiella.pneumoniae + 
+                 Lactobacillus.crispatus + Lactobacillus.gasseri + 
+                 Lactobacillus.iners + Lactobacillus.jensenii + 
+                 Megasphaera.sp..genomosp..type.1 + Other.Actinobacteria + 
+                 Other.Bacteria + Other.Bacteroidetes + Other.Clostridium + 
+                 Other.Firmicutes + Other.Lactobacillus + Other.Prevotella + 
+                 Other.Proteobacteria + Other.Streptococcus + 
+                 Prevotella.amnii + Prevotella.timonensis + Streptococcus.devriesei + 
+                 How.often.pain.experienced.during.vaginal.intercourse.percentage +
+                 Contraception.cat + Presence.Symptoms.2wks + 
+                 Abnormal.discharge.2wks + Abnormal.odor.2wks + 
+                 Irritation.Discomfort.2wks + Other.Symptoms.2wks + 
+                 Presence.Symptoms.48hrs + Irritation.Discomfort.48hrs + 
+                 Other.Symptoms.48hrs + Preg.livebirth.ever + Chlamydia.ever + 
+                 Bac.STI.ever + Herpes.ever + Genwarts.ever + any.sx.pain + 
+                 sx.pain.50.over + sx.pain.100 + contraception.H + 
+                 contraception.S.S + contraception.S.P + contraception.B.M + 
+                 contraception.C.IUD + HContr.Combination.pill + HContr.mirena + 
+                 contr_type + condoms.48h + probiotics.2.months + 
+                 days.since.LMP + weeks.since.LMP + weeks.since.LMP.cat + 
+                 Abnormal.odor.48hrs + Abnormal.discharge.48hrs + 
+                 HContr.Progestin.pill + 
+                 oral.sex.in.past.48.hours..y.1..n.0.,
+                 data = total, family = poisson(link = "log"))
