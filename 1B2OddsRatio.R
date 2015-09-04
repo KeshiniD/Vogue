@@ -177,11 +177,13 @@ total$CSTIVD <- factor(total$CSTIVD)
 #na in data is ok
 #the variable in first slot needs to be 0,1 factor
 mylogit <- glm(formula, data, family = binomial(link = "logit"))
-mylogit <- glm(formula, data, family = binomial) 
+mylogit <- glm(formula, data, family = binomial) #binomial outcome variables
 #gives same results thus far
+mylogit <- polr(formula, data, Hess=TRUE) #ordinal outcome variables
+mylogit <- glm(formula, data, family = poisson(link = "log")) #continious outcome
 
 #error --> fixed; needed to remove categories which only had one factor
-#ordinal
+#ordinal multi for Nugent
 mylogit <- polr(formula = Nugent.score.cat ~ Shannon.s.Diversity + Amsels.cat +  
                  Age.cat + BMI.cat + Ethnicity.cat + Marital.Status.cat + 
                  Highest.Education.Level.cat + 
@@ -257,6 +259,7 @@ a <- exp(coef(mylogit))
 #also applying same code going to see individual variables on Nugent.score, Amsels
 #and CST
 
+#to see CIS, ORs, Pvalues, and other coefficients
 mylogit
 confint(mylogit) #CI intervals
 exp(cbind(OR = coef(mylogit), confint(mylogit))) #ORs and CIs
@@ -266,8 +269,8 @@ summary(mylogit)# for nice table
 results_df <-summary.polr(mylogit)$coefficients #can write this to file
 
 #Amsels can be binomial and use above code
-
-#get to be treated as continuous
+#get CST to be treated as continuous
+#sept 4th; do not do this
 total$CST.cat <- as.numeric(total$CST.cat)
 mylogit <- glm(formula = CST.cat ~ Prevotella.timonensis, data=total, family = poisson(link = "log"))
 
@@ -275,10 +278,11 @@ mylogit <- glm(formula = CST.cat ~ Prevotella.timonensis, data=total, family = p
 m <- polr(Nugent.score.cat ~ probiotics.2.months, data = total, Hess=TRUE)
 summary(m)
 
+#plotting Amsels univariate model
 #call for amsels odds
 Am <- read.delim(file.path("Amsels_Odds.txt"))
-#plot
 
+#plot
 Am$colour <- ifelse(Am$OddsRatio < 0, "negative","positive")
 Am$hjust <- ifelse(Am$OddsRatio > 0, 1.3, -0.3)
 ggplot(Am,aes(Variables,OddsRatio,label="",hjust=hjust))+
@@ -287,7 +291,7 @@ ggplot(Am,aes(Variables,OddsRatio,label="",hjust=hjust))+
   coord_flip()
 
 #Amsels
-#ordinal
+#binomial multimodel
 mylogit <- glm(formula = Amsels.cat ~ Shannon.s.Diversity + Nugent.score.cat +  
                   Age.cat + BMI.cat + Ethnicity.cat + Marital.Status.cat + 
                   Highest.Education.Level.cat + 
@@ -415,7 +419,8 @@ mylogit <- glm(formula = CST.cat ~ Amsels.cat, Shannon.s.Diversity + Nugent.scor
                  HContr.Progestin.pill + 
                  oral.sex.in.past.48.hours..y.1..n.0.,
                  data = total, family = poisson(link = "log"))
-#plots
+
+#plots for univariate models
 #call for amsels odds
 Am <- read.delim(file.path("Amsels_Odds.txt"))
 #plot
@@ -430,6 +435,7 @@ ggplot(myData,aes(Variables,Estimate,label="",hjust=hjust))+
   coord_flip() + xlab("Variables") + ylab("Odds Ratio (log)")
 
 #plot
+#omit Nas
 myData <- CST[-c(28:32,40:41,73,77,140,142,144,146:147), ]
 
 myData <- read.delim(file.path("CST_Odds.txt"))
@@ -442,6 +448,7 @@ ggplot(myData,aes(Variables,Estimate,label="",hjust=hjust))+
 
 #plot
 Nugent <- read.delim(file.path("Nugent_Odds.txt"))
+#omit Nas
 myData <- Nugent[-c(28:32,40:41,73,77,84,87,90,92,98,129,140,142,144,146:147), ]
 
 myData$colour <- ifelse(myData$Estimate < 0, "negative","positive")

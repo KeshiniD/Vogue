@@ -1,4 +1,4 @@
-#Nugent score with all the variables (ordinal log reg)
+#Nugent score with all the variables (uni ordinal log reg)
 m <- polr(Nugent.score.cat ~ Shannon.s.Diversity, data = total, Hess=TRUE)
 summary(m)
 pnorm(abs(ctable[, "t value"]), lower.tail = FALSE) * 2
@@ -514,8 +514,6 @@ mylogit <- glm(formula = CST.cat ~ Abnormal.odor.48hrs, data=total, family = poi
 summary(mylogit)
 mylogit <- glm(formula = CST.cat ~ oral.sex.in.past.48.hours..y.1..n.0., data=total, family = poisson(link = "log"))
 summary(mylogit)
-
-
 
 
 #Amsels.cat with variables CIs
