@@ -311,22 +311,42 @@ total$Symptom.pain <- ifelse(total$How.often.pain.experienced.during.vaginal.int
 total$Symptom.pain <- factor(total$Symptom.pain)
 summary(total$Symptom.pain)
 
-#remove %variables
+#remove %variables and duplicates
 total$How.often.pain.experienced.during.vaginal.intercourse.percentage <-  NULL
+total$any.sx.pain <-  NULL
+total$sx.pain.50.over <-  NULL
+total$sx.pain.100 <-  NULL
 
 #Contraception
 summary(total$Contraception)
-#condense categories (none-S, B, H and IUD)
-total$Contraception.cat <- mapply(as.character, total$Contraception)
+#condense categories (none-S, B, H and IUD): y-n categories
+summary(total$contraception.H) #keep
+summary(total$contraception.B.M) #keep
+summary(total$contraception.C.IUD)#keep
+#make new 'no contraception category
+total$Contraception.none <- ifelse(total$Contraception=='None' | total$Contraception=='S', 
+                             c("1"), c("0")) 
+#convert Contraception.none from character into factor
+total$Contraception.none <- factor(total$Contraception.none)
+summary(total$Contraception.none)
 
-total$Contraception.cat[total$Contraception.cat=='None' | total$Contraception.cat=='S'] <- '0'
-total$Contraception.cat[total$Contraception.cat=='H' | total$Contraception.cat== 'B/H'] <- '1'
-total$Contraception.cat[total$contraception.C.IUD=='0'$ total$Contraception.cat=='B' | total$Contraception.cat== 'B/H'] <- '2'
-total$Contraception.cat[total$contraception.C.IUD=='1'] <- '3'
-[100] "Contraception"                                                   
-[101] "Contraception.cat"                                               
-                                           
+#remove the remaining categories
+total$Contraception <- NULL
+total$Contraception.cat <- NULL
+total$contraception.S.S <- NULL
+total$contraception.S.P <- NULL
+total$contraception.B.F <- NULL
+total$HContr.Progestin.pill <- NULL
+total$HContr.Combination.pill <- NULL
+total$HContr.nuvaring <- NULL
+total$HContr.mirena <- NULL
+total$HContr.depoprovera <- NULL
+total$HContr.orthoevra <- NULL
+total$contr_type <- NULL
 
+#Also remove duplicate genital infection history                                
+total$Bac.STI.ever <- NULL
+total$Herpes.ever <- NULL
                     
 [109] "Presence.Symptoms.2wks"                                          
 [110] "Abnormal.discharge.2wks"                                         
@@ -340,26 +360,13 @@ total$Contraception.cat[total$contraception.C.IUD=='1'] <- '3'
 [118] "Other.Symptoms.48hrs"                                            
 [119] "Preg.livebirth.ever"                                             
                                                   
-[122] "Bac.STI.ever"                                                    
-[123] "Herpes.ever"                                                     
-                                                  
-                              
-[127] "any.sx.pain"                                                     
-[128] "sx.pain.50.over"                                                 
-[129] "sx.pain.100"                                                     
-[130] "contraception.H"                                                 
-[131] "contraception.S.S"                                               
-[132] "contraception.S.P"                                               
-[133] "contraception.B.M"                                               
-[134] "contraception.B.F"                                               
-[135] "contraception.C.IUD"                                             
-[136] "HContr.Progestin.pill"                                           
-[137] "HContr.Combination.pill"                                         
-[138] "HContr.nuvaring"                                                 
-[139] "HContr.mirena"                                                   
-[140] "HContr.depoprovera"                                              
-[141] "HContr.orthoevra"                                                
-[142] "contr_type"                                                      
+                       
+                                                   
+                                            
+[136] ""                                           
+[137] ""                                         
+[138] ""                                                 
+                                                     
 [143] "condoms.48h"                                                     
 [144] "probiotics.2.months"                                             
 [145] "days.since.LMP"                                                  
