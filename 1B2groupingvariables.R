@@ -133,7 +133,8 @@ total$Pregnancy.History..term.<- NULL
 total$Pregnancy.History..sa.<- NULL
 total$Pregnancy.History..ta.<- NULL
 total$Pregnancy.History..l.<- NULL
- 
+total$Preg.livebirth.ever<- NULL
+
 #douche products and feminine wipes
 summary(total$Use.of.douche.products..y.1..n.0.)
 summary(total$Use.of.feminine.wipes.or.genital.deodrant..y.1..n.0.)
@@ -347,35 +348,49 @@ total$contr_type <- NULL
 #Also remove duplicate genital infection history                                
 total$Bac.STI.ever <- NULL
 total$Herpes.ever <- NULL
-                    
-[109] "Presence.Symptoms.2wks"                                          
-[110] "Abnormal.discharge.2wks"                                         
-[111] "Abnormal.odor.2wks"                                              
-[112] "Irritation.Discomfort.2wks"                                      
-[113] "Other.Symptoms.2wks"                                             
-[114] "Presence.Symptoms.48hrs"                                         
-[115] "Abnormal.discharge.48hrs"                                        
-[116] "Abnormal.odor.48hrs"                                             
-[117] "Irritation.Discomfort.48hrs"                                     
-[118] "Other.Symptoms.48hrs"                                            
-[119] "Preg.livebirth.ever"                                             
-                                                  
-                       
-                                                   
-                                            
-[136] ""                                           
-[137] ""                                         
-[138] ""                                                 
-                                                     
-[143] "condoms.48h"                                                     
-[144] "probiotics.2.months"                                             
-[145] "days.since.LMP"                                                  
-[146] "weeks.since.LMP"                                                 
-[147] "weeks.since.LMP.cat"                                             
-[148] "CST"                                                             
-[149] "CSTI"                                                            
-[150] "CSTII"                                                           
-[151] "CSTIII"                                                          
-[152] "CSTIVA"                                                          
-[153] "CSTIVC"                                                          
-[154] "CSTIVD"
+
+#Symptoms #keep
+summary(total$Presence.Symptoms.2wks)
+summary(total$Abnormal.discharge.2wks)
+summary(total$Abnormal.odor.2wks)
+summary(total$Irritation.Discomfort.2wks)  
+summary(total$Other.Symptoms.2wks)
+summary(total$Presence.Symptoms.48hrs)  
+summary(total$Abnormal.discharge.48hrs)
+summary(total$Abnormal.odor.48hrs)  
+summary(total$Irritation.Discomfort.48hrs)
+summary(total$Other.Symptoms.48hrs)                                         
+
+#keep condoms 48hrs and probiotics 2mths
+summary(total$condoms.48h)
+summary(total$probiotics.2.months)
+
+#bundle LMP and tampon use: tampons used in past month
+summary(total$Tampon.Use)
+total$days.since.LMP
+#menses within 30 days, do they use tampon every period (exclusively or partly)
+total$Tampon.use.1mth <- ifelse(total$days.since.LMP <30 & 
+                                  total$Tampon.Use =='every period, exclusively' | 
+                                  total$Tampon.Use =='every period, part of the time', 
+                                   c("1"), c("0")) 
+#convert Tampon.use.1mth from character into factor
+total$Tampon.use.1mth <- factor(total$Tampon.use.1mth)
+summary(total$Tampon.use.1mth)
+
+#remove duplicate information
+total$days.since.LMP <- NULL
+total$weeks.since.LMP <- NULL
+total$weeks.since.LMP.cat <- NULL
+
+#CSTs; need these outcome variables
+summary(total$CST)
+summary(total$CSTI)
+summary(total$CSTII)
+summary(total$CSTIII)
+summary(total$CSTIVA)
+summary(total$CSTIVC)
+summary(total$CSTIVD)
+
+#write condensed groups to file
+write.csv(total, "1B2metabac_condensed.csv")
+
