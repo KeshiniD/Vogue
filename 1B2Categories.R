@@ -674,18 +674,65 @@ total[,"CST"]  <- c('II','IVA','III','III','III','IVD','IVC', 'I', 'I',
                     'IVA', 'III', 'IVA', 'IVA', 'I', 'IVD','IVC', 'I', 'IVA')
 
 #create categories
-total$CST.cat[total$CST=='I'] <- '1'
-total$CST.cat[total$CST=='II'] <- '2'
-total$CST.cat[total$CST=='III'] <- '3'
-total$CST.cat[total$CST=='IVA'] <- '4'
-total$CST.cat[total$CST=='IVB'] <- '5'
-total$CST.cat[total$CST=='IVC'] <- '6'
-total$CST.cat[total$CST=='IVD'] <- '7'
-total$CST.cat[total$CST=='V'] <- '8'
+#total$CST.cat[total$CST=='I'] <- '1'
+#total$CST.cat[total$CST=='II'] <- '2'
+#total$CST.cat[total$CST=='III'] <- '3'
+#total$CST.cat[total$CST=='IVA'] <- '4'
+#total$CST.cat[total$CST=='IVB'] <- '5'
+#total$CST.cat[total$CST=='IVC'] <- '6'
+#total$CST.cat[total$CST=='IVD'] <- '7'
+#total$CST.cat[total$CST=='V'] <- '8'
 
 #convert CST.cat from character into factor
-total$CST.cat <- factor(total$CST.cat)
+#total$CST.cat <- factor(total$CST.cat)
 
 #write new categories into file
 write.csv(total, "1B2metbac_v2.csv")
+
+#new CST cats
+#Call data
+total <- read.csv(file.path("1B2metbac_v2.csv"))
+
+#add new categories
+#CSTI (yes-1, no-0)
+total$CSTI <- ifelse(total$CST == 'I', 
+                            c("1"), c("0")) 
+#convert CSTI from character into factor
+total$CSTI <- factor(total$CSTI)
+
+#CSTII (yes-1, no-0)
+total$CSTII <- ifelse(total$CST == 'II', 
+                     c("1"), c("0")) 
+#convert CSTII from character into factor
+total$CSTII <- factor(total$CSTII)
+
+#CSTIII (yes-1, no-0)
+total$CSTIII <- ifelse(total$CST == 'III', 
+                     c("1"), c("0")) 
+#convert CSTIII from character into factor
+total$CSTIII <- factor(total$CSTIII)
+
+#CSTIVA (yes-1, no-0)
+total$CSTIVA <- ifelse(total$CST == 'IVA', 
+                     c("1"), c("0")) 
+#convert CSTIVA from character into factor
+total$CSTIVA <- factor(total$CSTIVA)
+
+#CSTIVC (yes-1, no-0)
+total$CSTIVC <- ifelse(total$CST == 'IVC', 
+                     c("1"), c("0")) 
+#convert CSTIVC from character into factor
+total$CSTIVC <- factor(total$CSTIVC)
+
+#CSTIVD (yes-1, no-0)
+total$CSTIVD <- ifelse(total$CST == 'IVD', 
+                     c("1"), c("0")) 
+#convert CSTI from character into factor
+total$CSTIVD <- factor(total$CSTIVD)
+
+#remove CST.cat
+total$CST.cat <- NULL
+
+#write to file
+write.csv(total, "1B2metabac_v3.csv")
 

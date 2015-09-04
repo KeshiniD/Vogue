@@ -13,7 +13,7 @@ library(RColorBrewer)
 library(Heatplus)#from Bioconductor not CRAN
 
 #load data
-total <- read.csv(file.path("1B2metbac_v2.csv"))
+total <- read.csv(file.path("1B2metabac_v3.csv"))
 
 #want rownames to be participants
 rownames(total) <- total[,1]

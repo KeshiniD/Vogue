@@ -1,5 +1,5 @@
 #call for entire 1B2 data
-total <- read.csv(file.path("1B2metbac_v2.csv"))
+total <- read.csv(file.path("1B2metabac_v3.csv"))
 total2 <- read.csv(file.path("1B2metabac.csv"))
 #descriptives
 mean(total$Age)

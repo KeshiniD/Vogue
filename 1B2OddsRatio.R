@@ -17,7 +17,7 @@ library(PredictABEL) #for adjusted odds ratio
 library(MASS)
 
 #call for entire 1B2 data
-total <- read.csv(file.path("1B2metbac_v2.csv"))
+total <- read.csv(file.path("1B2metabac_v3.csv"))
 
 #rename headers
 #rename funtion does not work with spaces unless quoted
@@ -165,8 +165,13 @@ total$contr_type <- factor(total$contr_type)
 total$condoms.48h <- factor(total$condoms.48h)
 total$probiotics.2.months <- factor(total$probiotics.2.months)
 total$weeks.since.LMP.cat <- factor(total$weeks.since.LMP.cat)
-total$CST.cat <- factor(total$CST.cat)
 total$CST <- factor(total$CST)
+total$CSTI <- factor(total$CSTI)
+total$CSTII <- factor(total$CSTII)
+total$CSTIII <- factor(total$CSTIII)
+total$CSTIVA <- factor(total$CSTIVA)
+total$CSTIVC <- factor(total$CSTIVC)
+total$CSTIVD <- factor(total$CSTIVD)
 
 #odds ratio code
 #na in data is ok
