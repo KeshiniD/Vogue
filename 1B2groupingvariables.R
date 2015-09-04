@@ -302,8 +302,27 @@ total$Streptococcus.devriesei <- NULL
 total$Nugent.score.cat <- NULL
 total$Amsels.cat <- NULL
                                        
-                                                  
-[99] "How.often.pain.experienced.during.vaginal.intercourse.percentage"
+#sxpain
+summary(total$How.often.pain.experienced.during.vaginal.intercourse.percentage)
+#condense to yes and no
+total$Symptom.pain <- ifelse(total$How.often.pain.experienced.during.vaginal.intercourse.percentage > 0, 
+                                c("1"), c("0")) 
+#convert Substance.Use from character into factor
+total$Symptom.pain <- factor(total$Symptom.pain)
+summary(total$Symptom.pain)
+
+#remove %variables
+total$How.often.pain.experienced.during.vaginal.intercourse.percentage <-  NULL
+
+#Contraception
+summary(total$Contraception)
+#condense categories (none-S, B, H and IUD)
+total$Contraception.cat <- mapply(as.character, total$Contraception)
+
+total$Contraception.cat[total$Contraception.cat=='None' | total$Contraception.cat=='S'] <- '0'
+total$Contraception.cat[total$Contraception.cat=='H' | total$Contraception.cat== 'B/H'] <- '1'
+total$Contraception.cat[total$contraception.C.IUD=='0'$ total$Contraception.cat=='B' | total$Contraception.cat== 'B/H'] <- '2'
+total$Contraception.cat[total$contraception.C.IUD=='1'] <- '3'
 [100] "Contraception"                                                   
 [101] "Contraception.cat"                                               
                                            
