@@ -3,15 +3,19 @@
 data <- read.csv(file.path("1B2.csv"))
 
 #add new column with CST.participants
-data[,"Vogue.Participants"]  <- c('CST.II.Vogue1B2.01.01', 'CST.IVA.Vogue1B2.01.06', 
-                                  'CST.III.Vogue1B2.01.07', 'CST.III.Vogue1B2.01.08', 'CST.III.Vogue1B2.01.09', 
-                                  'CST.IVD.Vogue1B2.01.10', 'CST.IVC.Vogue1B2.01.11', 'CST.I.Vogue1B2.01.12', 
-                                  'CST.I.Vogue1B2.01.15', 'CST.IVA.Vogue1B2.01.19', 'CST.III.Vogue1B2.01.21', 
-                                  'CST.III.Vogue1B2.01.23', 'CST.IVC.Vogue1B2.01.26', 'CST.I.Vogue1B2.01.28', 
-                                  'CST.IVC.Vogue1B2.01.29', 'CST.IVC.Vogue1B2.01.35', 'CST.IVC.Vogue1B2.01.37', 
-                                  'CST.IVA.Vogue1B2.01.38', 'CST.III.Vogue1B2.01.50', 'CST.IVA.Vogue1B2.01.52', 
-                                  'CST.IVA.Vogue1B2.01.56', 'CST.I.Vogue1B2.01.58', 'CST.IVD.Vogue1B2.01.61', 
-                                  'CST.IVC.Vogue1B2.01.62', 'CST.I.Vogue1B2.01.63', 'CST.IVA.Vogue1B2.01.64')
+data[,"Vogue.Participants"]  <- c('N.2.Vogue1B2.01.01', 'N.4.Vogue1B2.01.06', 
+                                  'N.4.Vogue1B2.01.07', 'N.6.Vogue1B2.01.08', 
+                                  'N.0.Vogue1B2.01.09', 'N.7.Vogue1B2.01.10', 
+                                  'N.5.Vogue1B2.01.11', 'N.4.Vogue1B2.01.12', 
+                                  'N.0.Vogue1B2.01.15', 'N.1.Vogue1B2.01.19', 
+                                  'N.6.Vogue1B2.01.21', 'N.4.Vogue1B2.01.23', 
+                                  'N.8.Vogue1B2.01.26', 'N.4.Vogue1B2.01.28', 
+                                  'N.4.Vogue1B2.01.29', 'N.6.Vogue1B2.01.35', 
+                                  'N.0.Vogue1B2.01.37', 'N.8.Vogue1B2.01.38', 
+                                  'N.4.Vogue1B2.01.50', 'N.6.Vogue1B2.01.52', 
+                                  'N.8.Vogue1B2.01.56', 'N.4.Vogue1B2.01.58', 
+                                  'N.8.Vogue1B2.01.61', 'N.7.Vogue1B2.01.62', 
+                                  'N.0.Vogue1B2.01.63', 'N.7.Vogue1B2.01.64')
 #bac counts
 data2 <-
   gather(data, key = 'Bacteria', value = 'Counts', Lactobacillus.crispatus, 
