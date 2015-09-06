@@ -1,0 +1,5 @@
+Variables	Estimate
+Genwarts.ever1	3.8577
+Yeast..year.	-1.7534
+Irritation.Discomfort.2wks1	-18.8146
+Other.Symptoms.2wks1	16.1459

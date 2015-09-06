@@ -266,7 +266,7 @@ exp(cbind(OR = coef(mylogit), confint(mylogit))) #ORs and CIs
 exp(coef(mylogit)) #only ORs
 summary(mylogit)# for nice table
 #cannot convert glm into data.frame but use below to get data
-results_df <-summary.polr(mylogit)$coefficients #can write this to file
+results_df <-summary.glm(mylogit)$coefficients #can write this to file
 
 #Amsels can be binomial and use above code
 #get CST to be treated as continuous

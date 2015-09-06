@@ -1,0 +1,8 @@
+Variables	Estimate
+Abnormal.odor.2wks1	4.31E+01
+Abnormal.odor.48hrs1	3.76E-03
+Freq.sex.toy.usecat1	-9.94E+01
+Yeast..lifetime.	-2.81E+00
+Symptom.pain1	3.11E+01
+probiotics.2.months1	5.26E+01
+Feminine.products.48hrs1	4.99E+01

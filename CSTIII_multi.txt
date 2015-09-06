@@ -1,0 +1,9 @@
+Variables	Estimate
+Abnormal.discharge.48hrs1	-49.31
+UTI.ever1	-34.1
+smoking.current1	67.75
+BMIcat2	-35.68
+Pregnancycat1	-19.41
+BMIcat3	-51.51
+BV..number.of.episodes.2.months.	14.21
+contraception.none1	30.33

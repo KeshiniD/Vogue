@@ -1,0 +1,7 @@
+Variables	Estimate
+contraception.H1	103.769
+BV..number.of.episodes.2.months.	-11.125
+contraception.B.M1	65.045
+BV..number.of.episodes.year.	15.598
+Yeast..year.	3.687
+Yeast..lifetime.	5.255
