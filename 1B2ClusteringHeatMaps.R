@@ -55,7 +55,7 @@ summary(vare.dist)
 hr1<-hclust(vare.dist, "complete")
 hr2<-hclust(vare.dist, "single")
 hr3<-hclust(vare.dist, "aver")#use this one
-par(mfrow=c(1,1)) #to see each plot side by side
+par(mfrow=c(1,3)) #to see each plot side by side
 plot(hr1, hang=-1)
 plot(hr2, hang=-1)
 plot(hr3, hang=-1, xlab="Participants") #use this one
@@ -73,13 +73,13 @@ plot(hc3, hang=-1, xlab = "Bacterial Species") # use this one
 #also makes same dendogram
 library(stats)
 #works makes a dendrogram
-hclust(vare.dist, method = "average", members = NULL) #wards or average deemed best
-w <- hclust(vare.dist, method = "average", members = NULL) #method: dif clustering methods
+hclust(vare.dist, method = "ward.D", members = NULL) #wards or average deemed best
+w <- hclust(vare.dist, method = "ward.D", members = NULL) #method: dif clustering methods
 plot(w, labels = NULL, hang =-1, check = TRUE, #hang changes length of bars
      axes = TRUE, frame.plot = FALSE, ann = TRUE,#ann is labels
      main = "Cluster Dendrogram",
      sub = NULL, xlab = "Participants", ylab = "Height")
-rect.hclust(w, k=6, border="red") #puts red border around samples 
+rect.hclust(w, k=7, border="red") #puts red border around samples 
 #detects 8 clusters
 
 #validates red boxes
@@ -122,10 +122,7 @@ vmb <- tbl_df(total) %>% #subset same as above
           Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
           Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
           Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
-m_matrix <- data.matrix(vmb) #make data into matrix #can rename headers
-m_matrix <- t(m_matrix) #transpose
-a <- otu_table(m_matrix, taxa_are_rows=TRUE)#needs to be in otu table
-plot_heatmap(a)
+
 
 #can redo heatmaps for different species cutoff #next steps
 
@@ -195,4 +192,4 @@ vmb2$Participant <- NULL
 plot(annHeatmap2(as.matrix(vmb2),col=rgb.palette(12), legend=3, breaks=10, 
                  dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
                                  Col=list(dendro=as.dendrogram(hc3)),
-                                 status='no'), labels=list(Col=list(nrow=13))))
+                                 status='no'), labels=list(Col=list(nrow=13)))
