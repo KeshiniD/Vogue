@@ -32,6 +32,18 @@ vmb <- tbl_df(total) %>% #subset
           Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
           Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
           Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
+
+#setting row.names
+row.names(vmb) <- c( 'Vogue1B2.01.01', 'Vogue1B2.01.06', 'Vogue1B2.01.07', 
+                     'Vogue1B2.01.08', 'Vogue1B2.01.09', 'Vogue1B2.01.10', 
+                     'Vogue1B2.01.11', 'Vogue1B2.01.12', 'Vogue1B2.01.15', 
+                     'Vogue1B2.01.19', 'Vogue1B2.01.21', 'Vogue1B2.01.23', 
+                     'Vogue1B2.01.26', 'Vogue1B2.01.28', 'Vogue1B2.01.29', 
+                     'Vogue1B2.01.35', 'Vogue1B2.01.37', 'Vogue1B2.01.38', 
+                     'Vogue1B2.01.50', 'Vogue1B2.01.52', 'Vogue1B2.01.56', 
+                     'Vogue1B2.01.58', 'Vogue1B2.01.61', 'Vogue1B2.01.62', 
+                     'Vogue1B2.01.63', 'Vogue1B2.01.64')
+
 a<- sweep(vmb, 1, (rowSums(vmb))/100, '/') # calculates for us
 
 vare.dist <- vegdist(a) #works!#defaults to bray-curtis dissimilarity
@@ -122,3 +134,65 @@ plot(annHeatmap2(as.matrix(vmb),col=rgb.palette(12), legend=3, breaks=10,
                  dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
                                  Col=list(dendro=as.dendrogram(hc3)),
                                  status='hidden'), labels=list(Col=list(nrow=13))))
+#ordered in participant order (not clustered)
+plot(annHeatmap2(as.matrix(vmb),col=rgb.palette(12), legend=3, breaks=10, 
+                 dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
+                                 Col=list(dendro=as.dendrogram(hc3)),
+                                 status='no'), labels=list(Col=list(nrow=13))))
+#ordered via CST
+vmb[,"Participant"]  <- c('CST.II.Vogue1B2.01.01', 'CST.IVA.Vogue1B2.01.06', 
+                    'CST.III.Vogue1B2.01.07', 'CST.III.Vogue1B2.01.08', 'CST.III.Vogue1B2.01.09', 
+                    'CST.IVD.Vogue1B2.01.10', 'CST.IVC.Vogue1B2.01.11', 'CST.I.Vogue1B2.01.12', 
+                    'CST.I.Vogue1B2.01.15', 'CST.IVA.Vogue1B2.01.19', 'CST.III.Vogue1B2.01.21', 
+                    'CST.III.Vogue1B2.01.23', 'CST.IVC.Vogue1B2.01.26', 'CST.I.Vogue1B2.01.28', 
+                    'CST.IVC.Vogue1B2.01.29', 'CST.IVC.Vogue1B2.01.35', 'CST.IVC.Vogue1B2.01.37', 
+                    'CST.IVA.Vogue1B2.01.38', 'CST.III.Vogue1B2.01.50', 'CST.IVA.Vogue1B2.01.52', 
+                    'CST.IVA.Vogue1B2.01.56', 'CST.I.Vogue1B2.01.58', 'CST.IVD.Vogue1B2.01.61', 
+                    'CST.IVC.Vogue1B2.01.62', 'CST.I.Vogue1B2.01.63', 'CST.IVA.Vogue1B2.01.64')
+vmb2 <- vmb %>%
+  arrange(Participant)
+row.names(vmb2) <- c('CST.I.Vogue1B2.01.12',   'CST.I.Vogue1B2.01.15','CST.I.Vogue1B2.01.28', 
+               'CST.I.Vogue1B2.01.58', 'CST.I.Vogue1B2.01.63', 'CST.II.Vogue1B2.01.01', 
+               'CST.III.Vogue1B2.01.07', 'CST.III.Vogue1B2.01.08', 'CST.III.Vogue1B2.01.09', 
+               'CST.III.Vogue1B2.01.21', 'CST.III.Vogue1B2.01.23', 'CST.III.Vogue1B2.01.50', 
+               'CST.IVA.Vogue1B2.01.06', 'CST.IVA.Vogue1B2.01.19', 'CST.IVA.Vogue1B2.01.38', 
+               'CST.IVA.Vogue1B2.01.52', 'CST.IVA.Vogue1B2.01.56', 'CST.IVA.Vogue1B2.01.64', 
+               'CST.IVC.Vogue1B2.01.11', 'CST.IVC.Vogue1B2.01.26', 'CST.IVC.Vogue1B2.01.29', 
+               'CST.IVC.Vogue1B2.01.35', 'CST.IVC.Vogue1B2.01.37', 'CST.IVC.Vogue1B2.01.62', 
+               'CST.IVD.Vogue1B2.01.10', 'CST.IVD.Vogue1B2.01.61')
+vmb2$Participant <- NULL
+plot(annHeatmap2(as.matrix(vmb2),col=rgb.palette(12), legend=3, breaks=10, 
+                 dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
+                                 Col=list(dendro=as.dendrogram(hc3)),
+                                 status='no'), labels=list(Col=list(nrow=13))))
+
+#ordered via Nugent
+vmb[,"Participant"]  <- c('N.2.Vogue1B2.01.01', 'N.4.Vogue1B2.01.06', 
+                          'N.4.Vogue1B2.01.07', 'N.6.Vogue1B2.01.08', 
+                          'N.0.Vogue1B2.01.09', 'N.7.Vogue1B2.01.10', 
+                          'N.5.Vogue1B2.01.11', 'N.4.Vogue1B2.01.12', 
+                          'N.0.Vogue1B2.01.15', 'N.1.Vogue1B2.01.19', 
+                          'N.6.Vogue1B2.01.21', 'N.4.Vogue1B2.01.23', 
+                          'N.8.Vogue1B2.01.26', 'N.4.Vogue1B2.01.28', 
+                          'N.4.Vogue1B2.01.29', 'N.6.Vogue1B2.01.35', 
+                          'N.0.Vogue1B2.01.37', 'N.8.Vogue1B2.01.38', 
+                          'N.4.Vogue1B2.01.50', 'N.6.Vogue1B2.01.52', 
+                          'N.8.Vogue1B2.01.56', 'N.4.Vogue1B2.01.58', 
+                          'N.8.Vogue1B2.01.61', 'N.7.Vogue1B2.01.62', 
+                          'N.0.Vogue1B2.01.63', 'N.7.Vogue1B2.01.64')
+vmb2 <- vmb %>%
+  arrange(Participant)
+row.names(vmb2) <- c( 'N.0.Vogue1B2.01.09','N.0.Vogue1B2.01.15', 'N.0.Vogue1B2.01.37',
+                      'N.0.Vogue1B2.01.63', 'N.1.Vogue1B2.01.19', 'N.2.Vogue1B2.01.01', 
+                      'N.4.Vogue1B2.01.06', 'N.4.Vogue1B2.01.07', 'N.4.Vogue1B2.01.12', 
+                      'N.4.Vogue1B2.01.23', 'N.4.Vogue1B2.01.28', 'N.4.Vogue1B2.01.29', 
+                      'N.4.Vogue1B2.01.50', 'N.4.Vogue1B2.01.58', 'N.5.Vogue1B2.01.11', 
+                      'N.6.Vogue1B2.01.08', 'N.6.Vogue1B2.01.21', 'N.6.Vogue1B2.01.35',
+                      'N.6.Vogue1B2.01.52', 'N.7.Vogue1B2.01.10', 'N.7.Vogue1B2.01.62', 
+                      'N.7.Vogue1B2.01.64', 'N.8.Vogue1B2.01.26', 'N.8.Vogue1B2.01.38', 
+                      'N.8.Vogue1B2.01.56', 'N.8.Vogue1B2.01.61')
+vmb2$Participant <- NULL
+plot(annHeatmap2(as.matrix(vmb2),col=rgb.palette(12), legend=3, breaks=10, 
+                 dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
+                                 Col=list(dendro=as.dendrogram(hc3)),
+                                 status='no'), labels=list(Col=list(nrow=13))))
