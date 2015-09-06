@@ -1,0 +1,61 @@
+Variables	Estimate
+Yeast..lifetime.	0.1503
+Yeast..year.	0.09303
+probiotics.2.months1	-16.676
+Other.Symptoms.2wks1	-16.733
+Freq.anal.sexcat1	-16.733
+UTI.ever1	17.93
+Antimicrobial.Use..y.1..n.0.1	16.73
+X.Non..Prescription..y.1..n.0.1	16.73
+Irritation.Discomfort.2wks1	16.73
+Presence.Symptoms.48hrs1	16.62
+Abnormal.odor.48hrs1	-16.733
+Symptom.pain1	18
+Vaginal.intercourse.in.past.48.hours..y.1..n.0.1	-16.676
+Freq.sex.toy.usecat1	17.93
+Feminine.products1	20.18
+Tampon.use.1mth1 	17.93
+Sexual.Partnerscat1	-14.431
+contraception.C.IUD1	-14.431
+Trich.ever1	-14.388
+contraception.B.M1	-16.622
+Chlamydia.ever1	-16.57
+contraception.none1	-18.001
+Pregnancycat1	-17.858
+Genwarts.ever1	-16.522
+GenHerpes.ever1	-16.522
+Feminine.products.48hrs1	-16.522
+Agecat3	-18.168
+Yeast..2months.	-17.424
+Abnormal.odor.2wks1	-17.733
+Other.Symptoms.48hrs1	-17.733
+Ethnicitycat2	-17.858
+condoms.48h1	-16.475
+smoking.current1	-16.475
+Agecat4	-18.168
+Presence.Symptoms.2wks1	16.48
+Abnormal.discharge.2wks1	17.73
+Abnormal.discharge.48hrs1	17.93
+Irritation.Discomfort.48hrs1	17.79
+contraception.H1	19.62
+Substance.Use2 	1.66E+01
+Ethnicitycat3	-17.858
+Freq.oral.sexcat1	2.00E+01
+Number.partners.in.past.yearcat1	1.79E+01
+Tampon.Usecat3	1.95E+01
+BMIcat3	9.41E-09
+BV..number.of.episodes.2.months.	-6.87E-16
+BV..number.of.episodes.year.	-4.21E-17
+BV..number.of.episodes.lifetime.	1.21E-15
+Freq.oral.sexcat2	-1.24E-07
+Freq.oral.sexcat3	-1.24E-07
+Number.partners.in.past.yearcat2	-3.06E-07
+Tampon.Usecat2	-1.51E-07
+Tampon.Usecat4	-1.51E-07
+Substance.Use1	9.56E-09
+BMIcat2	1.79E+01
+	
+	
+	
+	
+	
