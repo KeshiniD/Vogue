@@ -123,3 +123,9 @@ rarecurve(bac, step = 27, sample = min(rowSums(bac)),
 
 fisher.alpha(bac, MARGIN = 1) #alpha parameter; do not need
 specnumber(bac, MARGIN = 1) #number of species, can use above for cohort
+
+#section earlier curves to see more indepth
+rarecurve(bac, step = 27, sample = min(rowSums(bac)), 
+          xlab = "Sequence Read Counts", ylab = "Number of Bacterial Species", 
+          label = FALSE, col = col, xlim=c(0,8500), lwd = 2)
+
