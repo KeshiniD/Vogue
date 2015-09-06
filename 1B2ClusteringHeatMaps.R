@@ -92,7 +92,7 @@ clus.col<-c("blue4"   ,   "green"  ,  "orange" ,"honeydew3"  ,"red" ,"royalblue1
 plot(annHeatmap2(as.matrix(vmb), legend=3, breaks=10, dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), Col=list(dendro=as.dendrogram(hc3))), cluster=list(Row=list(cuth=0.85)), labels=list(Col=list(nrow=20.3))), widths=c(1,7.5), heights=c(1,1,9.5))
 
 #trying to figure out labels and legends
-plot(annHeatmap2(as.matrix(vmb),col=rgb.palette(12), legend=TRUE, breaks=10, 
+plot(annHeatmap2(as.matrix(vmb),col=rgb.palette(12), legend=3, breaks=10, 
                  dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
                                  Col=list(dendro=as.dendrogram(hc3))), 
                  cluster=list(Row=list(cuth=0.85),col=clus.col), 
@@ -116,3 +116,9 @@ a <- otu_table(m_matrix, taxa_are_rows=TRUE)#needs to be in otu table
 plot_heatmap(a)
 
 #can redo heatmaps for different species cutoff #next steps
+
+#heatpmap without dendrograms and include participant names
+plot(annHeatmap2(as.matrix(vmb),col=rgb.palette(12), legend=3, breaks=10, 
+                 dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
+                                 Col=list(dendro=as.dendrogram(hc3)),
+                                 status='hidden'), labels=list(Col=list(nrow=13))))
