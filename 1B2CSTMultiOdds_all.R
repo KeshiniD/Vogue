@@ -117,10 +117,10 @@ View(results_dfIVD)
 #certain variables mucking with the 18 variables; need certain cat from these variables not all
 
 #write to file
-write.csv(results_dfI, "CSTI_multi_18") 
-write.csv(results_dfII, "CSTII_multi_18") 
-write.csv(results_dfIII, "CSTIII_multi_18") 
-write.csv(results_dfIVA, "CSTIVA_multi_18") 
-write.csv(results_dfIVC, "CSTIVC_multi_18") 
-write.csv(results_dfIVD, "CSTIVD_multi_18") 
+write.csv(results_dfI, "CSTI_multi_18.csv") 
+write.csv(results_dfII, "CSTII_multi_18.csv") 
+write.csv(results_dfIII, "CSTIII_multi_18.csv") 
+write.csv(results_dfIVA, "CSTIVA_multi_18.csv") 
+write.csv(results_dfIVC, "CSTIVC_multi_18.csv") 
+write.csv(results_dfIVD, "CSTIVD_multi_18.csv") 
 
