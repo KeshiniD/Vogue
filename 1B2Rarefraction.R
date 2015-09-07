@@ -113,7 +113,7 @@ col <- c('deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3',
              'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
              'lavender', 'rosybrown2', 'deeppink')
 rarecurve(bac, step = 27, sample = min(rowSums(bac)), 
-          xlab = "Sequence Read Counts", ylab = "Number of Bacterial Species", 
+          xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
           label = FALSE, col = col, xlim=c(0,17500), lwd = 2)
 #each line is rarefied richness value (higher values more rich than lower values)
 #xaxis:# of indvidual species present in each participant
@@ -126,6 +126,6 @@ specnumber(bac, MARGIN = 1) #number of species, can use above for cohort
 
 #section earlier curves to see more indepth
 rarecurve(bac, step = 27, sample = min(rowSums(bac)), 
-          xlab = "Sequence Read Counts", ylab = "Number of Bacterial Species", 
+          xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
           label = FALSE, col = col, xlim=c(0,8500), lwd = 2)
 
