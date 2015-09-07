@@ -350,6 +350,14 @@ d <- diversity[ -c(3, 5) ]
 write.csv(d, "1B2_individual_all_diversity.csv")
 
 #Chao estimator
-#Vogue1B2.01.06
-newdata <- data2[ which(data2$Participants=='Vogue1B2.01.06'), ]
-d <- diversityresult(newdata, index = 'chao')
+#cohort
+d <- diversityresult(data, index = 'chao')
+View(d)
+
+#write to file
+write.csv(d, "1B2_Chao_cohort.csv")
+
+#individuals
+newdata <- data[ which(data$Participants=='Vogue1B2.01.06'), ]
+a <- diversityresult(newdata, index = 'chao')
+View(a) 
