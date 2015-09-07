@@ -351,6 +351,8 @@ write.csv(d, "1B2_individual_all_diversity.csv")
 
 #Chao estimator
 #cohort
+rownames(data) <- data[,1]
+data[,1] <- NULL
 d <- diversityresult(data, index = 'chao')
 View(d)
 
@@ -358,6 +360,189 @@ View(d)
 write.csv(d, "1B2_Chao_cohort.csv")
 
 #individuals
-newdata <- data[ which(data$Participants=='Vogue1B2.01.06'), ]
-a <- diversityresult(newdata, index = 'chao')
-View(a) 
+library(fossil)
+#call data 
+data2 <- read.csv(file.path("1B2.csv"))
+
+#separate manually and calculate each
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.01'), ]
+newdata[,1] <- NULL
+a <- chao1(newdata)
+#insert each participant for coverage
+
+#Vogue 01-06
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.06'), ]
+newdata[,1] <- NULL
+b <- chao1(newdata)
+
+#Vogue 01-07
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.07'), ]
+newdata[,1] <- NULL
+c <- chao1(newdata)
+
+#Vogue 01-08
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.08'), ]
+newdata[,1] <- NULL
+d <- chao1(newdata)
+
+#Vogue 01-09
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.09'), ]
+newdata[,1] <- NULL
+e <- chao1(newdata)
+
+#Vogue 01-10
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.10'), ]
+newdata[,1] <- NULL
+f <- chao1(newdata)
+
+#Vogue 01-11
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.11'), ]
+newdata[,1] <- NULL
+g <- chao1(newdata) 
+
+#Vogue 01-12
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.12'), ]
+newdata[,1] <- NULL
+h <- chao1(newdata)
+
+#Vogue 01-15
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.15'), ]
+newdata[,1] <- NULL
+i <- chao1(newdata) 
+
+#Vogue 01-19
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.19'), ]
+newdata[,1] <- NULL
+j <- chao1(newdata)
+
+#Vogue 01-21
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.21'), ]
+newdata[,1] <- NULL
+k <- chao1(newdata)
+
+#Vogue 01-23
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.23'), ]
+newdata[,1] <- NULL
+l <- chao1(newdata) 
+
+#Vogue 01-26
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.26'), ]
+newdata[,1] <- NULL
+m <- chao1(newdata)
+
+#Vogue 01-28
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.28'), ]
+newdata[,1] <- NULL
+n <- chao1(newdata)
+
+#Vogue 01-29
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.29'), ]
+newdata[,1] <- NULL
+o <- chao1(newdata)
+
+#Vogue 01-35
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.35'), ]
+newdata[,1] <- NULL
+p <- chao1(newdata) 
+
+#Vogue 01-37
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.37'), ]
+newdata[,1] <- NULL
+q <- chao1(newdata)
+
+#Vogue 01-38
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.38'), ]
+newdata[,1] <- NULL
+r <- chao1(newdata)
+
+#Vogue 01-50
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.50'), ]
+newdata[,1] <- NULL
+s <- chao1(newdata)
+
+#Vogue 01-52
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.52'), ]
+newdata[,1] <- NULL
+t <- chao1(newdata)
+
+#Vogue 01-56
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.56'), ]
+newdata[,1] <- NULL
+u <- chao1(newdata)
+
+#Vogue 01-58
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.58'), ]
+newdata[,1] <- NULL
+v <- chao1(newdata)
+
+#Vogue 01-61
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.61'), ]
+newdata[,1] <- NULL
+w <- chao1(newdata) 
+
+#Vogue 01-62
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.62'), ]
+newdata[,1] <- NULL
+x <- chao1(newdata) 
+
+#Vogue 01-63
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.63'), ]
+newdata[,1] <- NULL
+y <- chao1(newdata)
+
+#Vogue 01-64
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.64'), ]
+newdata[,1] <- NULL
+z <- chao1(newdata)
+
+#turn all variables into data.frame, join data.frames and write into file
+a2 <- as.data.frame(a)
+b2 <- as.data.frame(b)
+c2 <- as.data.frame(c)
+d2 <- as.data.frame(d)
+e2 <- as.data.frame(e)
+f2 <- as.data.frame(f)
+g2 <- as.data.frame(g)
+h2 <- as.data.frame(h)
+i2 <- as.data.frame(i)
+j2 <- as.data.frame(j)
+k2 <- as.data.frame(k)
+l2 <- as.data.frame(l)
+m2 <- as.data.frame(m)
+n2 <- as.data.frame(n)
+o2 <- as.data.frame(o)
+p2 <- as.data.frame(p)
+q2 <- as.data.frame(q)
+r2 <- as.data.frame(r)
+s2 <- as.data.frame(s)
+t2 <- as.data.frame(t)
+u2 <- as.data.frame(u)
+v2 <- as.data.frame(v)
+w2 <- as.data.frame(w)
+x2 <- as.data.frame(x)
+y2 <- as.data.frame(y)
+z2 <- as.data.frame(z)
+
+#merge
+list.of.data.frames <- cbind(a2, b2, c2, d2, e2, f2, g2, h2, i2, j2, k2, 
+                             l2, m2, n2, o2, p2, q2, r2, s2, t2, u2, v2, 
+                             w2, x2, y2, z2)
+#edit headers
+list.of.data.frames <- dplyr::rename(list.of.data.frames, Vogue1B2.01.01 = a, 
+                                     Vogue1B2.01.06 = b, Vogue1B2.01.07 = c, 
+                                     Vogue1B2.01.08 = d, Vogue1B2.01.09 = e, 
+                                     Vogue1B2.01.10 = f, Vogue1B2.01.11 = g, 
+                                     Vogue1B2.01.12 = h, Vogue1B2.01.15 = i, 
+                                     Vogue1B2.01.19 = j, Vogue1B2.01.21 = k, 
+                                     Vogue1B2.01.23 = l, Vogue1B2.01.26 = m, 
+                                     Vogue1B2.01.28 = n, Vogue1B2.01.29 = o, 
+                                     Vogue1B2.01.35 = p, Vogue1B2.01.37 = q, 
+                                     Vogue1B2.01.38 = r, Vogue1B2.01.50 = s, 
+                                     Vogue1B2.01.52 = t, Vogue1B2.01.56 = u, 
+                                     Vogue1B2.01.58 = v, Vogue1B2.01.61 = w, 
+                                     Vogue1B2.01.62 = x, Vogue1B2.01.63 = y, 
+                                     Vogue1B2.01.64 = z) 
+list.of.data.frames2 <- as.data.frame(t(list.of.data.frames))
+
+#write to file
+write.csv(list.of.data.frames2, "1B2_Chao_individual.csv")
