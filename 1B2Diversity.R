@@ -546,3 +546,21 @@ list.of.data.frames2 <- as.data.frame(t(list.of.data.frames))
 
 #write to file
 write.csv(list.of.data.frames2, "1B2_Chao_individual.csv")
+
+#merge shannon, peilous, rarefaction, good and chao1
+a <- read.csv(file.path("1B2_individual_Pielou.csv"))
+b <- read.csv(file.path("1B2richness_individual.csv"))
+c <- read.csv(file.path("1B2_individual_diversity.csv"))
+d <- read.csv(file.path("1B2_Chao_individual.csv"))
+e <- read.csv(file.path("1B2_individual_Good_transposed.csv"))
+b$X <- NULL #remove random empty column
+d <- dplyr::rename(d, Participants = X, Chao1 = V1) 
+e <- dplyr::rename(e, Participants = X, GoodsCoverageEstimator = V1) 
+
+#merge three folders together
+diversity <- cbind(a,b,c,d,e)
+#remove duplicate columns
+diversity2 <- diversity[ -c(3, 5, 7, 9) ]
+
+#write
+write.csv(diversity2, "1B2_individual_all5_diversity.csv")
