@@ -221,3 +221,9 @@ mylogit <- glm(formula = Shannon.s.Diversity ~ smoking.current, data=total,
                family = poisson(link = "log"))
 summary(mylogit)
 
+#Multi
+mylogit <- glm(formula = Shannon.s.Diversity ~ Chlamydia.ever + 
+                 Yeast..2months. + Antimicrobial.Use..y.1..n.0. + 
+                 Tampon.Use.cat + X.Non..Prescription..y.1..n.0., data=total, 
+               family = poisson(link = "log"))
+summary(mylogit)
