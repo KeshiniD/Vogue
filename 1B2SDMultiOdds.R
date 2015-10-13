@@ -61,6 +61,8 @@ mylogit <- glm(formula = Shannon.s.Diversity ~ Chlamydia.ever +
                  Tampon.Use.cat + X.Non..Prescription..y.1..n.0., data=total, 
                family = poisson(link = "log"))
 summary(mylogit)
+confint(mylogit)#confidence intervals 
+#can exponentiate with exp() infront
 
 #cannot convert glm into data.frame but use below to get data
 results_df <-summary.glm(mylogit)$coefficients #can write this to file
