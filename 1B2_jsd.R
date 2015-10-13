@@ -3,6 +3,7 @@ total <- read.csv(file.path("1B2metabac_v3.csv"))
 
 #packages
 library(vegan)
+library(Heatplus)
 
 #want bacterial species in decimals;need to make it look like example
 #subset in decimals; relative abundance
