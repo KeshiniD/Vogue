@@ -60,11 +60,7 @@ total$Contraception.none <- factor(total$Contraception.none)
 total$Tampon.use.1mth <- factor(total$Tampon.use.1mth)
 
 
-
-
-
-
-#rememver to factor variables
+#remember to factor variables
 test <- multinom(CST ~ Age.cat, data = total) #multinomial for CST, works
 summary(test)
 #calculate the p-values using Wald's test (z-tests)
