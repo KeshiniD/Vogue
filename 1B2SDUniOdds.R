@@ -12,7 +12,6 @@ total$BMI.cat <- factor(total$BMI.cat)
 total$Ethnicity.cat <- factor(total$Ethnicity.cat)
 total$Antimicrobial.Use..y.1..n.0. <- factor(total$Antimicrobial.Use..y.1..n.0.)
 total$X.Non..Prescription..y.1..n.0. <- factor(total$X.Non..Prescription..y.1..n.0.)
-total$Freq.of.Menstrual.Period.cat <- factor(total$Freq.of.Menstrual.Period.cat)
 total$Tampon.Use.cat <- factor(total$Tampon.Use.cat)
 total$Vaginal.intercourse.in.past.48.hours..y.1..n.0. <- factor(total$Vaginal.intercourse.in.past.48.hours..y.1..n.0.)
 total$Presence.Symptoms.2wks <- factor(total$Presence.Symptoms.2wks)
@@ -59,6 +58,9 @@ total$Tampon.use.1mth <- factor(total$Tampon.use.1mth)
 #Shannons Diversity is continuous variable
 #continious outcome
 mylogit <- glm(formula, data, family = poisson(link = "log")) 
+
+#cannot convert glm into data.frame but use below to get data
+results_df <-summary.glm(mylogit)$coefficients #can write this to file
 
 #Shannon's Diversity
 #Demographics
@@ -221,9 +223,8 @@ mylogit <- glm(formula = Shannon.s.Diversity ~ smoking.current, data=total,
                family = poisson(link = "log"))
 summary(mylogit)
 
-#Multi
-mylogit <- glm(formula = Shannon.s.Diversity ~ Chlamydia.ever + 
-                 Yeast..2months. + Antimicrobial.Use..y.1..n.0. + 
-                 Tampon.Use.cat + X.Non..Prescription..y.1..n.0., data=total, 
-               family = poisson(link = "log"))
-summary(mylogit)
+#Confidence Intervals
+confint(mylogit) #CI intervals
+exp(cbind(OR = coef(mylogit), confint(mylogit))) #ORs and CIs
+exp(coef(mylogit)) #only ORs
+

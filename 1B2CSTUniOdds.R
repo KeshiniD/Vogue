@@ -11,7 +11,6 @@ total$BMI.cat <- factor(total$BMI.cat)
 total$Ethnicity.cat <- factor(total$Ethnicity.cat)
 total$Antimicrobial.Use..y.1..n.0. <- factor(total$Antimicrobial.Use..y.1..n.0.)
 total$X.Non..Prescription..y.1..n.0. <- factor(total$X.Non..Prescription..y.1..n.0.)
-total$Freq.of.Menstrual.Period.cat <- factor(total$Freq.of.Menstrual.Period.cat)
 total$Tampon.Use.cat <- factor(total$Tampon.Use.cat)
 total$Vaginal.intercourse.in.past.48.hours..y.1..n.0. <- factor(total$Vaginal.intercourse.in.past.48.hours..y.1..n.0.)
 total$Presence.Symptoms.2wks <- factor(total$Presence.Symptoms.2wks)
@@ -1357,3 +1356,6 @@ summary(mylogit)
 mylogit <- glm(formula = CST_NL ~ smoking.current, data=total, 
                family = binomial(link = "logit"))
 summary(mylogit)
+
+#cannot convert glm into data.frame but use below to get data
+results_df <-summary.glm(mylogit)$coefficients #can write this to file
