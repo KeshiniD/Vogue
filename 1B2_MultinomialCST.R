@@ -82,7 +82,7 @@ p <- (1 - pnorm(abs(z), 0, 1)) * 2
 p
 confint(test)
 
-test <- multinom(CST ~ Age.cat, data = total) 
+test <- multinom(CST ~ BMI.cat, data = total) 
 summary(test)
 z <- summary(test)$coefficients/summary(test)$standard.errors
 z
@@ -90,68 +90,365 @@ p <- (1 - pnorm(abs(z), 0, 1)) * 2
 p
 confint(test)
 
-BMI.cat
-Ethnicity.cat
+test <- multinom(CST ~ Ethnicity.cat, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
 
 #episodes of BV
-BV..number.of.episodes.2.months.
-BV..number.of.episodes.year.
-BV..number.of.episodes.lifetime.
+test <- multinom(CST ~ BV..number.of.episodes.2.months., data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ BV..number.of.episodes.year., data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ BV..number.of.episodes.lifetime., data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
 
 #episodes of yeast
-Yeast..2months.
-Yeast..year.
-Yeast..lifetime.
+test <- multinom(CST ~ Yeast..2months., data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Yeast..year., data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Yeast..lifetime., data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
 
 #genital infections
-UTI.ever
-Chlamydia.ever
-Genwarts.ever
-Trich.ever
-GenHerpes.ever
+test <- multinom(CST ~ UTI.ever, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Chlamydia.ever, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Genwarts.ever, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Trich.ever, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ GenHerpes.ever, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
 
 #meds
-Antimicrobial.Use..y.1..n.0.
-X.Non..Prescription..y.1..n.0.
-probiotics.2.months
+test <- multinom(CST ~ Antimicrobial.Use..y.1..n.0., data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ X.Non..Prescription..y.1..n.0., data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ probiotics.2.months, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
 
 #symptoms
-Presence.Symptoms.2wks
-Abnormal.discharge.2wks
-Abnormal.odor.2wks
-Irritation.Discomfort.2wks
-Other.Symptoms.2wks
-Presence.Symptoms.48hrs
-Abnormal.discharge.48hrs
-Abnormal.odor.48hrs
-Irritation.Discomfort.48hrs
-Other.Symptoms.48hrs
-Symptom.pain
+test <- multinom(CST ~ Presence.Symptoms.2wks, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Abnormal.discharge.2wks, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Abnormal.odor.2wks, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Irritation.Discomfort.2wks, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Other.Symptoms.2wks, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Presence.Symptoms.48hrs, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Abnormal.discharge.48hrs, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Abnormal.odor.48hrs, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Irritation.Discomfort.48hrs, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Other.Symptoms.48hrs, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Symptom.pain, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
 
 #Sexual Activity
-Vaginal.intercourse.in.past.48.hours..y.1..n.0.
-Freq.oral.sex.cat
-Freq.anal.sex.cat
-Freq.sex.toy.use.cat
-Sexual.Partners.cat
-Number.partners.in.past.year.cat
+test <- multinom(CST ~ Vaginal.intercourse.in.past.48.hours..y.1..n.0., data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Freq.oral.sex.cat, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Freq.anal.sex.cat, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Freq.sex.toy.use.cat, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Sexual.Partners.cat, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Number.partners.in.past.year.cat, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
 
 #Contraception
-contraception.H
-contraception.B.M
-contraception.C.IUD
-Contraception.none
-condoms.48h
+test <- multinom(CST ~ contraception.H, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ contraception.B.M, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ contraception.C.IUD, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Contraception.none, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ condoms.48h, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
 
 #Pregnancy
-Pregnancy.cat
+test <- multinom(CST ~ Pregnancy.cat, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
 
 #Product use
-Feminine.products
-Feminine.products.48hrs
-Tampon.Use.cat
-Tampon.use.1mth
+test <- multinom(CST ~ Feminine.products, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Feminine.products.48hrs, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Tampon.Use.cat, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ Tampon.use.1mth, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
 
 #substance use
-Substance.Use
-smoking.current
+test <- multinom(CST ~ Substance.Use, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
+
+test <- multinom(CST ~ smoking.current, data = total) 
+summary(test)
+z <- summary(test)$coefficients/summary(test)$standard.errors
+z
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+p
+confint(test)
