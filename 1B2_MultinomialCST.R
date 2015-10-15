@@ -68,3 +68,167 @@ z <- summary(test)$coefficients/summary(test)$standard.errors
 z
 p <- (1 - pnorm(abs(z), 0, 1)) * 2
 p
+#CIs
+confint(test)
+
+#
+#CSTI 
+#Demographics
+mylogit <- glm(formula = CSTI ~ Age.cat, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ BMI.cat, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Ethnicity.cat, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+
+#episodes of BV
+mylogit <- glm(formula = CSTI ~ BV..number.of.episodes.2.months., data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ BV..number.of.episodes.year., data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ BV..number.of.episodes.lifetime., data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+
+#episodes of yeast
+mylogit <- glm(formula = CSTI ~ Yeast..2months., data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Yeast..year., data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Yeast..lifetime., data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+
+#genital infections
+mylogit <- glm(formula = CSTI ~ UTI.ever, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Chlamydia.ever, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Genwarts.ever, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Trich.ever, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ GenHerpes.ever, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+
+#meds
+mylogit <- glm(formula = CSTI ~ Antimicrobial.Use..y.1..n.0., data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ X.Non..Prescription..y.1..n.0., data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ probiotics.2.months, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+
+#symptoms
+mylogit <- glm(formula = CSTI ~ Presence.Symptoms.2wks, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Abnormal.discharge.2wks, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Abnormal.odor.2wks, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Irritation.Discomfort.2wks, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Other.Symptoms.2wks, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Presence.Symptoms.48hrs, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Abnormal.discharge.48hrs, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Abnormal.odor.48hrs, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Irritation.Discomfort.48hrs, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Other.Symptoms.48hrs, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Symptom.pain, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+
+#Sexual Activity
+mylogit <- glm(formula = CSTI ~ Vaginal.intercourse.in.past.48.hours..y.1..n.0., data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Freq.oral.sex.cat, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Freq.anal.sex.cat, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Freq.sex.toy.use.cat, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Sexual.Partners.cat, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Number.partners.in.past.year.cat, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+
+#Contraception
+mylogit <- glm(formula = CSTI ~ contraception.H, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ contraception.B.M, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ contraception.C.IUD, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Contraception.none, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ condoms.48h, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+
+#Pregnancy
+mylogit <- glm(formula = CSTI ~ Pregnancy.cat, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+
+#Product use
+mylogit <- glm(formula = CSTI ~ Feminine.products, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Feminine.products.48hrs, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Tampon.Use.cat, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ Tampon.use.1mth, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+
+#substance use
+mylogit <- glm(formula = CSTI ~ Substance.Use, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
+mylogit <- glm(formula = CSTI ~ smoking.current, data=total, 
+               family = binomial(link = "logit"))
+confint(mylogit)
