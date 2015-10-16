@@ -2,10 +2,8 @@
 total <- read.csv(file.path("1B2metabac_condensed.csv"))
 
 #load packages
-library(foreign)
 library(nnet)
-library(ggplot2)
-library(reshape2)
+
 
 #need to be factors if wish to treat like categories
 #some of these are not present in the condensed version and need to be removed
