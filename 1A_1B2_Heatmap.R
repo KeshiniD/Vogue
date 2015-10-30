@@ -56,7 +56,7 @@ rect.hclust(w, k=6, border="red") #puts red border around samples; can select #
 
 #heatmap with jsd
 hr3<- hclust(d, method = "ward.D2", members = NULL) #participants
-hc3<-hclust(d2, "complete") #species #just altered above code, didn't rewrite
+hc3<-hclust(d2, "ward.D2") #species #just altered above code, didn't rewrite
 
 #colours for groups
 rgb.palette <- colorRampPalette(c("black", "blue", "yellow", "red"), space = "rgb")#colour for heatmaps
