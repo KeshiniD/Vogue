@@ -33,6 +33,19 @@ write.table(data1A_1B2, "data1A_1B2.csv", sep = ",", row.names = FALSE, quote = 
 data <- read.csv(file.path("data1A_1B2.csv"))
 data <- ddply(data,c("Bacterial.Species"),numcolwise(sum)) #everything
 
+#rename headers
+data <- dplyr::rename(data, Total.Reads = Total.reads, Vogue1B2.01.26 = X1B2_01_26, 
+                      Vogue1B2.01.35 = X1B2_01_35, Vogue1B2.01.37 = X1B2_01_37, 
+                      Vogue1B2.01.38 = X1B2_01_38, Vogue1B2.01.50 = X1B2_01_50, 
+                      Vogue1B2.01.52 = X1B2_01_52, Vogue1B2.01.56 = X1B2_01_56, 
+                      Vogue1B2.01.58 = X1B2_01_58, Vogue1B2.01.61 = X1B2_01_61, 
+                      Vogue1B2.01.62 = X1B2_01_62, Vogue1B2.01.63 = X1B2_01_63, 
+                      Vogue1B2.01.64 = X1B2_01_64)
+
+#remove excluded participants
+
+
+
 #write this to file
 write.table(data, "data1A_1B2.csv", sep = ",", row.names = FALSE, quote = FALSE)
 
