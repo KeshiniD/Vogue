@@ -43,9 +43,17 @@ data <- dplyr::rename(data, Total.Reads = Total.reads, Vogue1B2.01.26 = X1B2_01_
                       Vogue1B2.01.64 = X1B2_01_64)
 
 #remove excluded participants
+data$Vogue1B2.01.03 <- NULL
+data$Vogue1B2.01.04 <- NULL
+data$Vogue1B2.01.05 <- NULL
+data$Vogue1B2.01.13 <- NULL
+data$Vogue1B2.01.14 <- NULL
+data$Vogue1B2.01.16 <- NULL
+data$Vogue1B2.01.20 <- NULL
+data$Vogue1B2.01.24 <- NULL
 
-
+#order columns numerically
+data <- data[,order(names(data))]
 
 #write this to file
 write.table(data, "data1A_1B2.csv", sep = ",", row.names = FALSE, quote = FALSE)
-
