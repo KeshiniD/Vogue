@@ -19,7 +19,7 @@ bac <- data %>%
          Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
          Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
          Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
-         Clostridium.genomosp..BVAB3, Escherichia.coli, 
+         Clostridium.genomosp..BVAB3, Escherichia.coli, Eukaryote,
          Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
          Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
          Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
@@ -42,7 +42,7 @@ data2 <-
          Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
          Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
          Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
-         Clostridium.genomosp..BVAB3, Escherichia.coli, 
+         Clostridium.genomosp..BVAB3, Escherichia.coli, Eukaryote,
          Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
          Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
          Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
@@ -104,7 +104,7 @@ data2 <-
          Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
          Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
          Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
-         Clostridium.genomosp..BVAB3, Escherichia.coli, 
+         Clostridium.genomosp..BVAB3, Escherichia.coli, Eukaryote,
          Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
          Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
          Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
@@ -280,6 +280,7 @@ y <- Coverage(Ns, Estimator = "Turing")
 newdata <- data2[ which(data2$Participants=='Vogue1B2.01.64'), ]
 #does this work for below coverage function? YES!
 Ns <- newdata$Counts
+z <- Coverage(Ns, Estimator = "Turing") 
 
 #turn all variables into data.frame, join data.frames and write into file
 a2 <- as.data.frame(a)
@@ -334,6 +335,8 @@ list.of.data.frames <- dplyr::rename(list.of.data.frames, Vogue1B2.01.01 = a,
 #write
 write.table(list.of.data.frames, "1B2_individual_Good.csv", sep = ",", row.names = FALSE, quote = FALSE)
 Good <- read.csv(file.path("1B2_individual_Good.csv"))
+df <- t(Good) #transposed
+write.table(df, "1B2_individual_Good_transposed.csv", sep = ",", row.names = FALSE, quote = FALSE)
 
 #merge Pielous, shannons and rarefraction
 a <- read.csv(file.path("1B2_individual_Pielou.csv"))

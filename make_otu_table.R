@@ -79,7 +79,7 @@ vmb2 <- tbl_df(data) %>% #subset
   select (Lactobacillus.crispatus, Lactobacillus.iners, Lactobacillus.gasseri, 
           Lactobacillus.jensenii, Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.A, 
           Gardnerella.vaginalis.Group.B, Gardnerella.vaginalis.Group.D, 
-          Megasphaera.sp.genomosp.type.1, Escherichia.coli, Prevotella.timonensis, Clostridia.sp.BVAB2, 
+          Megasphaera.sp.genomosp.type.1, Escherichia.coli, Eukaryote, Prevotella.timonensis, Clostridia.sp.BVAB2, 
           Clostridium.genomosp.BVAB3, Atopobium.vaginae, Anaerobes, Other.Clostridia, 
           Other.Bacteroidetes, Other.Proteobacteria, Other.Actinobacteria, Other.Firmicutes, Other)
 m_matrix <- data.matrix(vmb2)
