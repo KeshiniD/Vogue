@@ -13,7 +13,7 @@ vmb <- tbl_df(total) %>% #subset
           Gardnerella.vaginalis.Group.B, Gardnerella.vaginalis.Group.C, 
           Gardnerella.vaginalis.Group.D, Actinobacteria.sp., Atopobium.vaginae, 
           Clostridia.sp..BVAB2, Clostridium.genomosp..BVAB3, Escherichia.coli, 
-          Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
+          Eukaryote, Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
           Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
           Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
           Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 

@@ -217,7 +217,7 @@ mylogit <- polr(formula = Nugent.score.cat ~ Shannon.s.Diversity + Amsels.cat +
                  smoker..current.or.in.past...y.1..n.0.cat + 
                  Actinobacteria.sp. + Atopobium.vaginae + 
                  Clostridia.sp..BVAB2 + Clostridium.genomosp..BVAB3 + 
-                 Escherichia.coli + Gardnerella.vaginalis.Group.A + 
+                 Escherichia.coli + Eukaryote + Gardnerella.vaginalis.Group.A + 
                  Gardnerella.vaginalis.Group.B + 
                  Gardnerella.vaginalis.Group.C + 
                  Gardnerella.vaginalis.Group.D + Klebsiella.pneumoniae + 
@@ -325,7 +325,7 @@ mylogit <- glm(formula = Amsels.cat ~ Shannon.s.Diversity + Nugent.score.cat +
                   smoker..current.or.in.past...y.1..n.0.cat + 
                   Actinobacteria.sp. + Atopobium.vaginae + 
                   Clostridia.sp..BVAB2 + Clostridium.genomosp..BVAB3 + 
-                  Escherichia.coli + Gardnerella.vaginalis.Group.A + 
+                  Escherichia.coli + Eukaryote + Gardnerella.vaginalis.Group.A + 
                   Gardnerella.vaginalis.Group.B + 
                   Gardnerella.vaginalis.Group.C + 
                   Gardnerella.vaginalis.Group.D + Klebsiella.pneumoniae + 
@@ -392,7 +392,7 @@ mylogit <- glm(formula = CST.cat ~ Amsels.cat, Shannon.s.Diversity + Nugent.scor
                  smoker..current.or.in.past...y.1..n.0.cat + 
                  Actinobacteria.sp. + Atopobium.vaginae + 
                  Clostridia.sp..BVAB2 + Clostridium.genomosp..BVAB3 + 
-                 Escherichia.coli + Gardnerella.vaginalis.Group.A + 
+                 Escherichia.coli + Eukaryote + Gardnerella.vaginalis.Group.A + 
                  Gardnerella.vaginalis.Group.B + 
                  Gardnerella.vaginalis.Group.C + 
                  Gardnerella.vaginalis.Group.D + Klebsiella.pneumoniae + 

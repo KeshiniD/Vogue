@@ -1,5 +1,7 @@
 #call for data
-data <- read.csv(file.path("1B2data_groups.csv"))
+data <- read.csv(file.path("a1B2data_groups.csv")) 
+#using new file as per "1B2_eukcat.R"
+#creating new names with 'a' at beginning
 
 #change headers
 data <- dplyr::rename(data, Species = Group, Vogue1B2.01.26 = X1B2_01_26, 
@@ -34,7 +36,7 @@ data4 <-
          Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
          Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
          Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
-         Clostridium.genomosp..BVAB3, Escherichia.coli, 
+         Clostridium.genomosp..BVAB3, Escherichia.coli, Eukaryote, 
          Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
          Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
          Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
@@ -50,7 +52,7 @@ vmb <- tbl_df(data4) %>% # finally got the percentages correct
 #bar plot with custom colors
 jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
              'forestgreen', 'palegreen', 'green', 'darkgoldenrod1', 
-             'purple', 'mediumorchid2', 'plum', 'firebrick', 'firebrick1', 
+             'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
              'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
              'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
              'lavender', 'rosybrown2', 'deeppink')
@@ -79,12 +81,12 @@ total2 <- read.csv(file.path("1B2metabac.csv")) #getting messed up in this step
 #code following omitted
 #bac counts (same as above)
 data4 <-
-  gather(total, key = 'Bacteria', value = 'Counts', Lactobacillus.crispatus, 
+  gather(total2, key = 'Bacteria', value = 'Counts', Lactobacillus.crispatus, 
          Lactobacillus.gasseri, Lactobacillus.iners, Lactobacillus.jensenii, 
          Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
          Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
          Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
-         Clostridium.genomosp..BVAB3, Escherichia.coli, 
+         Clostridium.genomosp..BVAB3, Escherichia.coli, Eukaryote,
          Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
          Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
          Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
@@ -100,9 +102,9 @@ vmb2 <- tbl_df(data4) %>%
  
 
 #bar plot with custom colors
-jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green', 
-             'palegreen', 'forestgreen', 'green3', 'darkgoldenrod1', 
-             'purple', 'mediumorchid2', 'plum', 'firebrick', 'firebrick1', 
+jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
+             'forestgreen', 'palegreen', 'green', 'darkgoldenrod1', 
+             'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
              'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
              'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
              'lavender', 'rosybrown2', 'deeppink')
