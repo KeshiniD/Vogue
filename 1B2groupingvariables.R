@@ -276,6 +276,7 @@ total$Atopobium.vaginae <- NULL
 total$Clostridia.sp..BVAB2 <- NULL
 total$Clostridium.genomosp..BVAB3 <- NULL
 total$Escherichia.coli <- NULL
+total$Eukaryote <- NULL
 total$Gardnerella.vaginalis.Group.A <- NULL
 total$Gardnerella.vaginalis.Group.B <- NULL
 total$Gardnerella.vaginalis.Group.C <- NULL

@@ -13,7 +13,7 @@ library(ggtree)
 library(PredictABEL) #for adjusted odds ratio
 
 #call for entire 1B2 data
-total <- read.csv(file.path("1B2metbac_v2.csv"))
+total <- read.csv(file.path("1B2metabac_condensed.csv"))
 
 #Contingency Tables
 #2x2contingency table
@@ -54,5 +54,5 @@ fisher.test(mytable) #does not work for 3x3
 mantelhaen.test(mytable) #only use when counts greater than 1 in each cell, will not use this
 
 #Use above code to create 2x2 tables and use in fisher.test() to assess associations
-#will use for nugent score, cst, and amsels to relate them to remaining variables
+#will use for CSTs and SD to relate them to remaining variables
 #compare findings with odds ratio
