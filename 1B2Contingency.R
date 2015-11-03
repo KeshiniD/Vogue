@@ -20,7 +20,7 @@ total <- read.csv(file.path("1B2metabac_condensed.csv"))
 a <- xtabs(~Nugent.score + Ethnicity , data = total)
 kable(a)
 #3x3 table
-a <- xtabs(~Nugent.score + Ethnicity + Marital.Status , data = total)
+a <- xtabs(~Nugent.score + Ethnicity + CSTI , data = total)
 a <- as.data.frame(a)
 
 #Another way
@@ -29,6 +29,8 @@ attach(total)
 mytable <- table(total$Ethnicity.cat,total$BMI.cat) #has to be same lengths
 mytable
 #works with 0,1, factors, and integers and numerics
+#make into data.frame
+mytable <- as.data.frame(mytable)
 
 #different table stats
 mytable <- table(total$Abnormal.discharge.2wks, total$Nugent.score) 
