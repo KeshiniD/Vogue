@@ -92,2503 +92,877 @@ a <- xtabs(~CSTI + BV..number.of.episodes.year. , data = total)
 fisher.test(a)
 
 a <- xtabs(~CSTI + BV..number.of.episodes.lifetime. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #episodes of yeast
 a <- xtabs(~CSTI + Yeast..2months. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Yeast..year. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Yeast..lifetime. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #genital infections
 a <- xtabs(~CSTI + UTI.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Chlamydia.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Genwarts.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Trich.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + GenHerpes.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #meds
 a <- xtabs(~CSTI + Antimicrobial.Use..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + X.Non..Prescription..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + probiotics.2.months , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #symptoms
 a <- xtabs(~CSTI + Presence.Symptoms.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Abnormal.discharge.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Abnormal.odor.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Irritation.Discomfort.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Other.Symptoms.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Presence.Symptoms.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Abnormal.discharge.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Abnormal.odor.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Irritation.Discomfort.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Other.Symptoms.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Symptom.pain , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Sexual Activity
 a <- xtabs(~CSTI + Vaginal.intercourse.in.past.48.hours..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Freq.oral.sex.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Freq.anal.sex.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Freq.sex.toy.use.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Sexual.Partners.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Number.partners.in.past.year.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + contraception.H , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + contraception.B.M , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + contraception.C.IUD , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Contraception.none , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + condoms.48h , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Pregnancy
 a <- xtabs(~CSTI + Pregnancy.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Product use
 a <- xtabs(~CSTI + Feminine.products , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Feminine.products.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Tampon.Use.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + Tampon.use.1mth , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #substance use
 a <- xtabs(~CSTI + Substance.Use , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTI + smoking.current , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #CSTII
 #Demographics
 a <- xtabs(~CSTII + Age.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + BMI.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Ethnicity.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #episodes of BV
 a <- xtabs(~CSTII + BV..number.of.episodes.2.months. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + BV..number.of.episodes.year. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + BV..number.of.episodes.lifetime. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #episodes of yeast
 a <- xtabs(~CSTII + Yeast..2months. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Yeast..year. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Yeast..lifetime. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #genital infections
 a <- xtabs(~CSTII + UTI.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Chlamydia.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Genwarts.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Trich.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + GenHerpes.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #meds
 a <- xtabs(~CSTII + Antimicrobial.Use..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + X.Non..Prescription..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + probiotics.2.months , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #symptoms
 a <- xtabs(~CSTII + Presence.Symptoms.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Abnormal.discharge.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Abnormal.odor.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Irritation.Discomfort.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Other.Symptoms.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Presence.Symptoms.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Abnormal.discharge.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Abnormal.odor.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Irritation.Discomfort.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Other.Symptoms.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Symptom.pain , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Sexual Activity
 a <- xtabs(~CSTII + Vaginal.intercourse.in.past.48.hours..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Freq.oral.sex.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Freq.anal.sex.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Freq.sex.toy.use.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Sexual.Partners.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Number.partners.in.past.year.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + contraception.H , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + contraception.B.M , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + contraception.C.IUD , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Contraception.none , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + condoms.48h , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Pregnancy
 a <- xtabs(~CSTII + Pregnancy.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Product use
 a <- xtabs(~CSTII + Feminine.products , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Feminine.products.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Tampon.Use.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + Tampon.use.1mth , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #substance use
 a <- xtabs(~CSTII + Substance.Use , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTII + smoking.current , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #CSTIII
 #Demographics
 a <- xtabs(~CSTIII + Age.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + BMI.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Ethnicity.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #episodes of BV
 a <- xtabs(~CSTIII + BV..number.of.episodes.2.months. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + BV..number.of.episodes.year. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + BV..number.of.episodes.lifetime. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #episodes of yeast
 a <- xtabs(~CSTIII + Yeast..2months. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Yeast..year. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Yeast..lifetime. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #genital infections
 a <- xtabs(~CSTIII + UTI.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Chlamydia.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Genwarts.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Trich.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + GenHerpes.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #meds
 a <- xtabs(~CSTIII + Antimicrobial.Use..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + X.Non..Prescription..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + probiotics.2.months , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #symptoms
 a <- xtabs(~CSTIII + Presence.Symptoms.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Abnormal.discharge.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Abnormal.odor.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Irritation.Discomfort.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Other.Symptoms.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Presence.Symptoms.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Abnormal.discharge.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Abnormal.odor.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Irritation.Discomfort.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Other.Symptoms.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Symptom.pain , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Sexual Activity
 a <- xtabs(~CSTIII + Vaginal.intercourse.in.past.48.hours..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Freq.oral.sex.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Freq.anal.sex.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Freq.sex.toy.use.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Sexual.Partners.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Number.partners.in.past.year.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + contraception.H , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + contraception.B.M , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + contraception.C.IUD , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Contraception.none , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + condoms.48h , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Pregnancy
 a <- xtabs(~CSTIII + Pregnancy.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Product use
 a <- xtabs(~CSTIII + Feminine.products , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Feminine.products.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Tampon.Use.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + Tampon.use.1mth , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #substance use
 a <- xtabs(~CSTIII + Substance.Use , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIII + smoking.current , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #CSTIVA
 #Demographics
 a <- xtabs(~CSTIVA + Age.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + BMI.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Ethnicity.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #episodes of BV
 a <- xtabs(~CSTIVA + BV..number.of.episodes.2.months. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + BV..number.of.episodes.year. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + BV..number.of.episodes.lifetime. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #episodes of yeast
 a <- xtabs(~CSTIVA + Yeast..2months. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Yeast..year. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Yeast..lifetime. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #genital infections
 a <- xtabs(~CSTIVA + UTI.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Chlamydia.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Genwarts.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Trich.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + GenHerpes.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #meds
 a <- xtabs(~CSTIVA + Antimicrobial.Use..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + X.Non..Prescription..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + probiotics.2.months , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #symptoms
 a <- xtabs(~CSTIVA + Presence.Symptoms.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Abnormal.discharge.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Abnormal.odor.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Irritation.Discomfort.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Other.Symptoms.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Presence.Symptoms.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Abnormal.discharge.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Abnormal.odor.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Irritation.Discomfort.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Other.Symptoms.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Symptom.pain , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Sexual Activity
 a <- xtabs(~CSTIVA + Vaginal.intercourse.in.past.48.hours..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Freq.oral.sex.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Freq.anal.sex.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Freq.sex.toy.use.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Sexual.Partners.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Number.partners.in.past.year.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + contraception.H , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + contraception.B.M , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + contraception.C.IUD , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Contraception.none , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + condoms.48h , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Pregnancy
 a <- xtabs(~CSTIVA + Pregnancy.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Product use
 a <- xtabs(~CSTIVA + Feminine.products , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Feminine.products.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Tampon.Use.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + Tampon.use.1mth , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #substance use
 a <- xtabs(~CSTIVA + Substance.Use , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVA + smoking.current , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #CSTIVC
 #Demographics
 a <- xtabs(~CSTIVC + Age.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + BMI.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Ethnicity.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #episodes of BV
 a <- xtabs(~CSTIVC + BV..number.of.episodes.2.months. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + BV..number.of.episodes.year. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + BV..number.of.episodes.lifetime. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #episodes of yeast
 a <- xtabs(~CSTIVC + Yeast..2months. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Yeast..year. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Yeast..lifetime. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #genital infections
 a <- xtabs(~CSTIVC + UTI.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Chlamydia.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Genwarts.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Trich.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + GenHerpes.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #meds
 a <- xtabs(~CSTIVC + Antimicrobial.Use..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + X.Non..Prescription..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + probiotics.2.months , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #symptoms
 a <- xtabs(~CSTIVC + Presence.Symptoms.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Abnormal.discharge.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Abnormal.odor.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Irritation.Discomfort.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Other.Symptoms.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Presence.Symptoms.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Abnormal.discharge.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Abnormal.odor.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Irritation.Discomfort.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Other.Symptoms.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Symptom.pain , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Sexual Activity
 a <- xtabs(~CSTIVC + Vaginal.intercourse.in.past.48.hours..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Freq.oral.sex.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Freq.anal.sex.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Freq.sex.toy.use.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Sexual.Partners.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Number.partners.in.past.year.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + contraception.H , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + contraception.B.M , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + contraception.C.IUD , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Contraception.none , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + condoms.48h , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Pregnancy
 a <- xtabs(~CSTIVC + Pregnancy.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Product use
 a <- xtabs(~CSTIVC + Feminine.products , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Feminine.products.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Tampon.Use.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + Tampon.use.1mth , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #substance use
 a <- xtabs(~CSTIVC + Substance.Use , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVC + smoking.current , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #CSTIVD
 #Demographics
 a <- xtabs(~CSTIVD + Age.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + BMI.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Ethnicity.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #episodes of BV
 a <- xtabs(~CSTIVD + BV..number.of.episodes.2.months. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + BV..number.of.episodes.year. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + BV..number.of.episodes.lifetime. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #episodes of yeast
 a <- xtabs(~CSTIVD + Yeast..2months. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Yeast..year. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Yeast..lifetime. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #genital infections
 a <- xtabs(~CSTIVD + UTI.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Chlamydia.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Genwarts.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Trich.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + GenHerpes.ever , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #meds
 a <- xtabs(~CSTIVD + Antimicrobial.Use..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + X.Non..Prescription..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + probiotics.2.months , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #symptoms
 a <- xtabs(~CSTIVD + Presence.Symptoms.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Abnormal.discharge.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Abnormal.odor.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Irritation.Discomfort.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Other.Symptoms.2wks , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Presence.Symptoms.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Abnormal.discharge.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Abnormal.odor.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Irritation.Discomfort.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Other.Symptoms.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Symptom.pain , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Sexual Activity
 a <- xtabs(~CSTIVD + Vaginal.intercourse.in.past.48.hours..y.1..n.0. , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Freq.oral.sex.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Freq.anal.sex.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Freq.sex.toy.use.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Sexual.Partners.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Number.partners.in.past.year.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + contraception.H , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + contraception.B.M , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + contraception.C.IUD , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Contraception.none , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + condoms.48h , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Pregnancy
 a <- xtabs(~CSTIVD + Pregnancy.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #Product use
 a <- xtabs(~CSTIVD + Feminine.products , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Feminine.products.48hrs , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Tampon.Use.cat , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + Tampon.use.1mth , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 #substance use
 a <- xtabs(~CSTIVD + Substance.Use , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
 
 a <- xtabs(~CSTIVD + smoking.current , data = total)
-a <- as.data.frame(a)
-margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
-margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
-prop.table(a) # cell percentages
-prop.table(a, 1) # row percentages 
-prop.table(a, 2) #column percentages
-summary(a)
+fisher.test(a)
