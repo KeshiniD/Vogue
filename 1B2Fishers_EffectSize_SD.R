@@ -82,152 +82,153 @@ total$Symptom.pain <- factor(total$Symptom.pain)
 total$Contraception.none <- factor(total$Contraception.none)
 total$Tampon.use.1mth <- factor(total$Tampon.use.1mth)
 
-#2X2 tables-Fishers
+#2X2 tables-Fishers-Effect Size
+#Interested in Phi
 #Demographics
 a <- xtabs(~SD.cat + Age.cat , data = total)
 assocstats(a)
 
 a <- xtabs(~SD.cat + BMI.cat , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Ethnicity.cat , data = total)
-fisher.test(a)
+assocstats(a)
 
 #episodes of BV
 a <- xtabs(~SD.cat + BV..number.of.episodes.2.months. , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + BV..number.of.episodes.year. , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + BV..number.of.episodes.lifetime. , data = total)
-fisher.test(a)
+assocstats(a)
 
 #episodes of yeast
 a <- xtabs(~SD.cat + Yeast..2months. , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Yeast..year. , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Yeast..lifetime. , data = total)
-fisher.test(a)
+assocstats(a)
 
 #genital infections
 a <- xtabs(~SD.cat + UTI.ever , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Chlamydia.ever , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Genwarts.ever , data = total)
-fisher.test(a)
+assocstats(a)
 
 #there is only 1 outcome for Trich (in this population) so cannot calculate Fishers
 a <- xtabs(~SD.cat + Trich.ever , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + GenHerpes.ever , data = total)
-fisher.test(a)
+assocstats(a)
 
 #meds
 a <- xtabs(~SD.cat + Antimicrobial.Use..y.1..n.0. , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + X.Non..Prescription..y.1..n.0. , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + probiotics.2.months , data = total)
-fisher.test(a)
+assocstats(a)
 
 #symptoms
 a <- xtabs(~SD.cat + Presence.Symptoms.2wks , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Abnormal.discharge.2wks , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Abnormal.odor.2wks , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Irritation.Discomfort.2wks , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Other.Symptoms.2wks , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Presence.Symptoms.48hrs , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Abnormal.discharge.48hrs , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Abnormal.odor.48hrs , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Irritation.Discomfort.48hrs , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Other.Symptoms.48hrs , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Symptom.pain , data = total)
-fisher.test(a)
+assocstats(a)
 
 #Sexual Activity
 a <- xtabs(~SD.cat + Vaginal.intercourse.in.past.48.hours..y.1..n.0. , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Freq.oral.sex.cat , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Freq.anal.sex.cat , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Freq.sex.toy.use.cat , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Sexual.Partners.cat , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Number.partners.in.past.year.cat , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + contraception.H , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + contraception.B.M , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + contraception.C.IUD , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Contraception.none , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + condoms.48h , data = total)
-fisher.test(a)
+assocstats(a)
 
 #Pregnancy
 a <- xtabs(~SD.cat + Pregnancy.cat , data = total)
-fisher.test(a)
+assocstats(a)
 
 #Product use
 a <- xtabs(~SD.cat + Feminine.products , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Feminine.products.48hrs , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Tampon.Use.cat , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + Tampon.use.1mth , data = total)
-fisher.test(a)
+assocstats(a)
 
 #substance use
 a <- xtabs(~SD.cat + Substance.Use , data = total)
-fisher.test(a)
+assocstats(a)
 
 a <- xtabs(~SD.cat + smoking.current , data = total)
-fisher.test(a)
+assocstats(a)

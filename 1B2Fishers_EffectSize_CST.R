@@ -71,9 +71,8 @@ total$Symptom.pain <- factor(total$Symptom.pain)
 total$Contraception.none <- factor(total$Contraception.none)
 total$Tampon.use.1mth <- factor(total$Tampon.use.1mth)
 
-#2X2 tables-Fishers
-#pvalue <0.05 reject null and there is assocation
-#pvalue >0.05 do not reject null and there is no association
+#2X2 tables-Fishers-Effect Size
+#Interested in Phi
 #CSTI
 #Demographics
 a <- xtabs(~CSTI + Age.cat , data = total)
