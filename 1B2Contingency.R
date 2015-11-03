@@ -58,3 +58,5 @@ mantelhaen.test(mytable) #only use when counts greater than 1 in each cell, will
 #Use above code to create 2x2 tables and use in fisher.test() to assess associations
 #will use for CSTs and SD to relate them to remaining variables
 #compare findings with odds ratio
+#pvalue <0.05 reject null and there is assocation
+#pvalue >0.05 do not reject null and there is no association
