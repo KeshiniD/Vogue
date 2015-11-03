@@ -122,6 +122,7 @@ fisher.test(a)
 a <- xtabs(~SD.cat + Genwarts.ever , data = total)
 fisher.test(a)
 
+#there is only 1 outcome for Trich (in this population) so cannot calculate Fishers
 a <- xtabs(~SD.cat + Trich.ever , data = total)
 fisher.test(a)
 
@@ -229,3 +230,19 @@ fisher.test(a)
 
 a <- xtabs(~SD.cat + smoking.current , data = total)
 fisher.test(a)
+
+#Fisher's for all significant variables
+#test
+a <- xtabs(~SD.cat + Chlamydia.ever + Tampon.Use.cat , data = total)
+m <- matrix(unlist(a), 16) #for true matrix
+fisher.test(m, simulate.p.value = TRUE) #TRUE vs NULL due to error
+#pvalue computed based on Monte Carlo simulation
+#rely on repeated random sampling to obtain numerical results
+
+#4 significant variables with p<0.05           
+a <- xtabs(~SD.cat + Chlamydia.ever + Tampon.Use.cat + 
+             Antimicrobial.Use..y.1..n.0. + Freq.sex.toy.use.cat , data = total)
+m <- matrix(unlist(a), 64) #for true matrix
+fisher.test(m, simulate.p.value = TRUE)
+
+#no longer significant once control for signficant variables
