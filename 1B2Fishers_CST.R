@@ -966,3 +966,19 @@ fisher.test(a)
 
 a <- xtabs(~CSTIVD + smoking.current , data = total)
 fisher.test(a)
+
+#Multiple variables which are significant
+#CSTIVA
+#2 significant variables with p<0.05           
+a <- xtabs(~CSTIVA + Age.cat + Abnormal.odor.2wks , data = total)
+m <- matrix(unlist(a), 12) #for true matrix
+fisher.test(m, simulate.p.value = TRUE)
+#no longer significant
+
+#CSTIVC
+#2 significant variables with p<0.05           
+a <- xtabs(~CSTIVC + Contraception.none + BV..number.of.episodes.2.months. 
+           , data = total)
+m <- matrix(unlist(a), 12) #for true matrix
+fisher.test(m, simulate.p.value = TRUE)
+#no longer significant
