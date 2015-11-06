@@ -63,7 +63,31 @@ rgb.palette <- colorRampPalette(c("black", "blue", "yellow", "red"), space = "rg
 
 clus.col<-c("blue4"   ,   "green"  ,  "orange" ,"honeydew3"  ,"red" ,"royalblue1", "yellow")#colours for the groups
 
+a <- plot(annHeatmap2(as.matrix(data2),col=rgb.palette(14), legend=3, breaks=10, 
+                 dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
+                                 Col=list(dendro=as.dendrogram(hc3)),
+                                 status='hidden'), labels=list(Col=list(nrow=13))))
+
+#trying to alter layout 
+#did not work
+dnd = list(Row=list(status="no"), Col=list(status="no"))
+ann = list(Row=list(data=a), Col=list(data=1))
+ll = heatmapLayout(dendrogram=dnd, annotation=ann, leg.side=NULL, show=TRUE)
+ll
+
+
+#trying to alter margins in pdf format
+#did not work
+pdf("file.pdf",width = 8, height = 11,paper='special') 
+
 plot(annHeatmap2(as.matrix(data2),col=rgb.palette(14), legend=3, breaks=10, 
                  dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
                                  Col=list(dendro=as.dendrogram(hc3)),
                                  status='hidden'), labels=list(Col=list(nrow=13))))
+dev.off()
+
+#subset of 1B2 but keep same clustering
+data3 <- data2[311:336,]
+plot(annHeatmap2(as.matrix(data3),col=rgb.palette(14), legend=3, 
+                 breaks=10, dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
+                Col=list(dendro=as.dendrogram(hc3)),status='hidden'), labels=list(Col=list(nrow=13))))
