@@ -91,3 +91,6 @@ data3 <- data2[311:336,]
 plot(annHeatmap2(as.matrix(data3),col=rgb.palette(14), legend=3, 
                  breaks=10, dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
                 Col=list(dendro=as.dendrogram(hc3)),status='hidden'), labels=list(Col=list(nrow=13))))
+
+#subset in alternative way
+#subset d and d2 and then cluster with subset
