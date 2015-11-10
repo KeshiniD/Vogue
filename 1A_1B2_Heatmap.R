@@ -56,7 +56,7 @@ rect.hclust(w, k=6, border="red") #puts red border around samples; can select #
 
 #heatmap with jsd
 hr3<- hclust(d, method = "ward.D2", members = NULL) #participants
-hc3<-hclust(d2, "ward.D2") #species #just altered above code, didn't rewrite
+hc3<-hclust(d2, "ward.D2") #species 
 
 #colours for groups
 rgb.palette <- colorRampPalette(c("black", "blue", "yellow", "red"), space = "rgb")#colour for heatmaps
@@ -93,4 +93,12 @@ plot(annHeatmap2(as.matrix(data3),col=rgb.palette(14), legend=3,
                 Col=list(dendro=as.dendrogram(hc3)),status='hidden'), labels=list(Col=list(nrow=13))))
 
 #subset in alternative way
-#subset d and d2 and then cluster with subset
+#subset d and d2 and then cluster with subset?
+
+
+#flipped axes based on transposed data set
+a <- plot(annHeatmap2(as.matrix(data),col=rgb.palette(16), legend=3, breaks=10, 
+                      dendrogram=list(Row=list(dendro=as.dendrogram(hc3)), 
+                                      Col=list(dendro=as.dendrogram(hr3)),
+                                      status='hidden'), labels=list(Col=list(cex=0.3))))
+#cex = font size; and set to just column
