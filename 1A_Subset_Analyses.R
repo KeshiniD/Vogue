@@ -36,9 +36,13 @@ library(epitools)
 #load dataset
 data <- read.csv(file.path("data1A_1B2.csv"))
 
+#column into row labels
+data2 <- data[,-1]
+rownames(data2) <- data[,1]
+
 #select subset of participants wish to analyze
-data2 <- data %>%
-  select(Bacterial.Species, Vogue1A.01.003, Vogue1A.01.007, Vogue1A.01.012, 
+data2 <- data2 %>%
+  select(Vogue1A.01.003, Vogue1A.01.007, Vogue1A.01.012, 
          Vogue1A.01.016, Vogue1A.01.017, Vogue1A.01.019, Vogue1A.01.020, 
          Vogue1A.01.022, Vogue1A.01.023, Vogue1A.01.024, Vogue1A.01.025, 
          Vogue1A.01.026, Vogue1A.01.029, Vogue1A.01.030, Vogue1A.01.033, 
@@ -65,3 +69,21 @@ data2 <- data %>%
          Vogue1A.01.218, Vogue1A.01.219, Vogue1A.01.224, Vogue1A.01.227, 
          Vogue1A.01.231, Vogue1A.01.233, Vogue1A.01.236, Vogue1A.01.237, 
          Vogue1A.01.238)
+
+#transpose dataset
+data2 <- as.data.frame(t(data2))
+
+#Shannon's Diversity for Individuals
+H <- diversity(data2) 
+H <- as.data.frame(H)
+View(H)
+
+#row names into column
+H <- add_rownames(H, "VALUE")
+#rename headers
+H <- dplyr::rename(H, ShannonsDiversity = H, Participants = VALUE)
+
+#write data to file 
+write.table(H, "1A_subset_individual_diversity.csv", sep = ",", row.names = FALSE, quote = FALSE)
+div <- read.csv(file.path("1A_subset_individual_diversity.csv"))
+
