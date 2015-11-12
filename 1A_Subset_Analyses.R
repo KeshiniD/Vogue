@@ -213,3 +213,100 @@ View(J2)
 #write data to file (altered headings and called back)
 write.table(J2, "1A_subset_cohort_Pielou.csv", sep = ",", row.names = FALSE, quote = FALSE)
 cPiel <- read.csv(file.path("1A_subset_cohort_Pielou.csv"))
+
+
+##Good's Coverage
+## need entropart package
+
+#example
+data(Paracou618) 
+Ns <- Paracou618.MC$Ns
+Coverage(Ns)
+
+#apply to own data
+#same as above
+#bac counts
+data3 <-
+  gather(data2, key = 'Bacteria', value = 'Counts', Actinobacteria.sp., 
+         Alloscardovia.omnicolens, Atopobium.vaginae, 
+         Bifidobacterium.breve, Clostridia.sp..BVAB2, 
+         Clostridium.genomosp..BVAB3, Enterococcus.rattus, 
+         Escherichia.coli, Eukaryote, Gardnerella.vaginalis.Group.A, 
+         Gardnerella.vaginalis.Group.B, Gardnerella.vaginalis.Group.C, 
+         Gardnerella.vaginalis.Group.D, Klebsiella.pneumoniae, 
+         Lactobacillus.crispatus, Lactobacillus.gasseri, 
+         Lactobacillus.iners, Lactobacillus.jensenii, 
+         Megasphaera.sp..genomosp..type.1, Other.Actinobacteria, 
+         Other.Bacteria, Other.Bacteroidetes, Other.Bifidobacterium, 
+         Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
+         Other.Prevotella, Other.Proteobacteria, Other.Streptococcus, 
+         Porphyromonas.uenonis, Prevotella.amnii, Prevotella.timonensis, 
+         Pseudomonas.putida, Streptococcus.devriesei, Variovorax.paradoxus)
+
+#then use in diversity
+data4 <- data3 %>% 
+  select (Bacteria, Counts) %>% #WORKED!!!! for cohort
+  group_by(Bacteria) %>%
+  summarize(TotalCounts = sum(Counts)) %>%
+  select (TotalCounts)
+
+Ns <- data4$TotalCounts
+Coverage(Ns, Estimator = Turing) #Ns has to be numeric vector
+Coverage(Ns) # is value correct; value could be for entire cohort?
+
+
+#Individuals
+#may have to do separate manually and calculate each
+#this subsets data based on participants :)
+newdata <- data3[ which(data3$Participants=='Vogue1A.01.003'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+a <- as.data.frame(Coverage(Ns, Estimator = "Turing"))
+#insert each participant for coverage
+
+#Vogue 01-007
+newdata <- data3[ which(data3$Participants=='Vogue1A.01.007'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+b <- as.data.frame(Coverage(Ns, Estimator = "Turing"))
+
+#Vogue 01-012
+newdata <- data3[ which(data3$Participants=='Vogue1A.01.012'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+c <- as.data.frame(Coverage(Ns, Estimator = "Turing"))
+
+#Vogue 01-016
+newdata <- data3[ which(data3$Participants=='Vogue1A.01.016'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+d <- as.data.frame(Coverage(Ns, Estimator = "Turing"))
+
+#Vogue1A.01.017
+newdata <- data3[ which(data3$Participants=='Vogue1A.01.017'), ]
+#does this work for below coverage function? YES!
+Ns <- newdata$Counts
+e <- as.data.frame(Coverage(Ns, Estimator = "Turing"))
+
+
+
+[6] Vogue1A.01.019 Vogue1A.01.020 Vogue1A.01.022 Vogue1A.01.023 Vogue1A.01.024
+[11] Vogue1A.01.025 Vogue1A.01.026 Vogue1A.01.029 Vogue1A.01.030 Vogue1A.01.033
+[16] Vogue1A.01.034 Vogue1A.01.036 Vogue1A.01.041 Vogue1A.01.042 Vogue1A.01.046
+[21] Vogue1A.01.049 Vogue1A.01.054 Vogue1A.01.060 Vogue1A.01.061 Vogue1A.01.063
+[26] Vogue1A.01.066 Vogue1A.01.067 Vogue1A.01.072 Vogue1A.01.073 Vogue1A.01.077
+[31] Vogue1A.01.078 Vogue1A.01.079 Vogue1A.01.082 Vogue1A.01.085 Vogue1A.01.089
+[36] Vogue1A.01.090 Vogue1A.01.092 Vogue1A.01.095 Vogue1A.01.097 Vogue1A.01.099
+[41] Vogue1A.01.100 Vogue1A.01.107 Vogue1A.01.112 Vogue1A.01.113 Vogue1A.01.114
+[46] Vogue1A.01.118 Vogue1A.01.123 Vogue1A.01.125 Vogue1A.01.126 Vogue1A.01.127
+[51] Vogue1A.01.128 Vogue1A.01.130 Vogue1A.01.134 Vogue1A.01.135 Vogue1A.01.137
+[56] Vogue1A.01.139 Vogue1A.01.140 Vogue1A.01.142 Vogue1A.01.145 Vogue1A.01.146
+[61] Vogue1A.01.147 Vogue1A.01.150 Vogue1A.01.152 Vogue1A.01.156 Vogue1A.01.157
+[66] Vogue1A.01.161 Vogue1A.01.162 Vogue1A.01.163 Vogue1A.01.166 Vogue1A.01.169
+[71] Vogue1A.01.170 Vogue1A.01.172 Vogue1A.01.173 Vogue1A.01.174 Vogue1A.01.175
+[76] Vogue1A.01.184 Vogue1A.01.186 Vogue1A.01.187 Vogue1A.01.191 Vogue1A.01.192
+[81] Vogue1A.01.197 Vogue1A.01.198 Vogue1A.01.200 Vogue1A.01.201 Vogue1A.01.203
+[86] Vogue1A.01.205 Vogue1A.01.207 Vogue1A.01.208 Vogue1A.01.211 Vogue1A.01.212
+[91] Vogue1A.01.213 Vogue1A.01.214 Vogue1A.01.215 Vogue1A.01.216 Vogue1A.01.217
+[96] Vogue1A.01.218 Vogue1A.01.219 Vogue1A.01.224 Vogue1A.01.227 Vogue1A.01.231
+[101] Vogue1A.01.233 Vogue1A.01.236 Vogue1A.01.237 Vogue1A.01.238
