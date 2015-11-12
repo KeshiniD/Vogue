@@ -1,7 +1,7 @@
 #load packages
 library(pwr)
 
-#Power Calculations
+##Power Calculations
 pwr.t2n.test(n1 = 26, n2=104 , sig.level = 0.05, power = 0.8)
 # t test power calculation 
 #n1 = 26
@@ -21,7 +21,7 @@ pwr.2p2n.test(n1 = 26, n2=104 , sig.level = 0.05, power = 0.8)
 #alternative = two.sided
 #NOTE: different sample sizes
 
-#Diversity Indices
+##Diversity Indices
 #load packages
 library(vegan)
 library(plyr)
@@ -73,7 +73,8 @@ data2 <- data2 %>%
 #transpose dataset
 data2 <- as.data.frame(t(data2))
 
-#Shannon's Diversity for Individuals
+
+##Shannon's Diversity for Individuals
 H <- diversity(data2) 
 H <- as.data.frame(H)
 View(H)
@@ -176,3 +177,39 @@ F3 <- dplyr::rename(F3, ShannonsDiversity = F3)
 write.table(F3, "1A_subset_cohort_diversity.csv", sep = ",", row.names = FALSE, quote = FALSE)
 cdiv <- read.csv(file.path("1A_subset_cohort_diversity.csv"))
 
+
+##Pielou's eveness
+#remove participants
+data2 <- data2[-1 ]
+J<- H/log(specnumber(data2)) # for individuals
+J <- as.data.frame(J)
+#row into column
+J <- add_rownames(J, "Participants")
+#rename headers
+#rename headers
+J <- dplyr::rename(J, PielousEveness = H)
+View(J)
+
+#write data to file (altered headings and called back)
+write.table(J, "1A_subset_individual_Pielou.csv", sep = ",", row.names = FALSE, quote = FALSE)
+Piel <- read.csv(file.path("1A_subset_individual_Pielou.csv"))
+
+J2 <- F2/log(specnumber(H2, MARGIN = 2)) #not working for entire cohort
+#NOV-12-2015: fixed above code; margin set to 2; finds frequencies of species
+#specnumber want number of species and we can manually enter 21 to get J2
+#fixed it with below code, and can be used for diversity
+J2 <- as.data.frame(J2)
+J2 <- dplyr::rename(J2, PielousEveness = J2)
+View(J2)
+
+#NOV-12-2015: do not need below code
+# want to sum up all bacteria in one row, with bacteria as columns
+# can then use this in specnumber() and then pielou for cohort
+h4 <- colSums(H2)
+H5 <-  t(h4)
+J2 <- F2/log(H5) 
+View(J2)
+
+#write data to file (altered headings and called back)
+write.table(J2, "1A_subset_cohort_Pielou.csv", sep = ",", row.names = FALSE, quote = FALSE)
+cPiel <- read.csv(file.path("1A_subset_cohort_Pielou.csv"))

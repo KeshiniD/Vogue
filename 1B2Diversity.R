@@ -70,7 +70,8 @@ View(J)
 write.table(J, "1B2_individual_Pielou.csv", sep = ",", row.names = FALSE, quote = FALSE)
 Piel <- read.csv(file.path("1B2_individual_Pielou.csv"))
 
-J2 <- F2/log(specnumber(H2, MARGIN = 1)) #not working for entire cohort
+J2 <- F2/log(specnumber(H2, MARGIN = 2)) #not working for entire cohort
+#NOV-12-2015: fixed above code; margin set to 2; finds frequencies of species
 #specnumber want number of species and we can manually enter 21 to get J2
 #fixed it with below code, and can be used for diversity
 View(J2)
