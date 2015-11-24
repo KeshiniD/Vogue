@@ -11,11 +11,30 @@ pwr.t2n.test(n1 = 26, n2=104 , sig.level = 0.05, power = 0.8)
 #power = 0.8
 #alternative = two.sided
 
+pwr.t2n.test(n1 = 26, n2=300 , sig.level = 0.05, power = 0.8)#changed n2
+#t test power calculation 
+#n1 = 26
+#n2 = 300
+#d = 0.5744546
+#sig.level = 0.05
+#power = 0.8
+#alternative = two.sided
+
 pwr.2p2n.test(n1 = 26, n2=104 , sig.level = 0.05, power = 0.8)
 #difference of proportion power calculation for binomial distribution (arcsine transformation) 
 #h = 0.6142887 (can detect medium differences)
 #n1 = 26
 #n2 = 104
+#sig.level = 0.05
+#power = 0.8
+#alternative = two.sided
+#NOTE: different sample sizes
+
+pwr.2p2n.test(n1 = 26, n2=300 , sig.level = 0.05, power = 0.8)#changed n2
+#difference of proportion power calculation for binomial distribution (arcsine transformation) 
+#h = 0.5727499
+#n1 = 26
+#n2 = 300
 #sig.level = 0.05
 #power = 0.8
 #alternative = two.sided
