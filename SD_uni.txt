@@ -1,0 +1,56 @@
+Variables	Estimate
+Chlamydia.ever1                                	0.8013
+Number of Yeast episodes (2months)	0.2456
+Antimicrobial.Use..y.1..n.0.1            	0.6808
+Tampon.Use.cat4	0.63966
+X.Non..Prescription..y.1..n.0.1           	-0.4562
+Substance.Use2	0.8042
+Freq.sex.toy.use.cat1        	-0.37291
+Agecat4	-0.4655
+Vaginal.intercourse.in.past.48.hours..y.1..n.0.1	0.3689
+UTI.ever1	0.3521
+Abnormal.odor.2wks1                	0.2943
+Sexual.Partners.cat1                 	-1.56326
+Freq.oral.sex.cat3                      	-0.44779
+Number of BV episodes (2months)	0.1735
+Tampon.Use.cat2            	0.4461
+Presence.Symptoms.2wks1           	0.4916
+Irritation.Discomfort.2wks1                     	0.302
+Trich.ever1               	-1.0342
+Contraception.none1	-0.2654
+probiotics.2.months1               	0.2376
+Number of Yeast episodes (lifetime)	0.0107
+Symptom.pain1	-0.20532
+Abnormal.odor.48hrs1                          	0.2243
+Feminine.products1              	-0.2706
+Number of BV episodes (lifetime)	0.0153
+Agecat3	-0.2036
+Other.Symptoms.2wks1                           	0.1881
+condoms.48h1	0.2437
+Tampon.use.1mth1	0.1541
+Presence.Symptoms.48hrs1                      	-0.17528
+contraception.B.M1	0.1532
+BMIcat3	0.19789
+Number of Yeast episodes (year)	0.006018
+contraception.H1                                	0.1105
+Number.partners.in.past.year.cat2	0.214
+Genwarts.ever1                                  	0.129
+Freq.oral.sex.cat2                    	-0.12807
+Pregnancy.cat1                            	-0.0892
+contraception.C.IUD1	-0.2443
+Substance.Use1	-0.3863
+Freq.anal.sex.cat1      	-0.09416
+Irritation.Discomfort.48hrs1                  	0.08518
+Feminine.products.48hrs1	-0.09599
+Ethnicitycat3	0.10081
+Ethnicitycat2	-0.07296
+Freq.oral.sex.cat1                      	-0.09494
+smoking.current1                                	-0.08458
+Abnormal.discharge.2wks1              	0.04955
+Other.Symptoms.48hrs1                     	0.04452
+Number.partners.in.past.year.cat1  	-0.0781
+Abnormal.discharge.48hrs1                 	0.03546
+GenHerpes.ever1	-0.03346
+BMIcat2	0.03399
+Tampon.Use.cat3	0.02605
+Number of BV episodes (year)	0.002698
