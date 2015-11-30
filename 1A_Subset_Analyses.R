@@ -329,3 +329,92 @@ e <- as.data.frame(Coverage(Ns, Estimator = "Turing"))
 [91] Vogue1A.01.213 Vogue1A.01.214 Vogue1A.01.215 Vogue1A.01.216 Vogue1A.01.217
 [96] Vogue1A.01.218 Vogue1A.01.219 Vogue1A.01.224 Vogue1A.01.227 Vogue1A.01.231
 [101] Vogue1A.01.233 Vogue1A.01.236 Vogue1A.01.237 Vogue1A.01.238
+
+#merge
+list.of.data.frames <- cbind()
+#edit headers
+list.of.data.frames <- dplyr::rename(list.of.data.frames, Vogue1B2.01.01 = a, 
+                                     Vogue1B2.01.06 = b, Vogue1B2.01.07 = c, 
+                                     Vogue1B2.01.08 = d, Vogue1B2.01.09 = e, 
+                                     Vogue1B2.01.10 = f, Vogue1B2.01.11 = g, 
+                                     Vogue1B2.01.12 = h, Vogue1B2.01.15 = i, 
+                                     Vogue1B2.01.19 = j, Vogue1B2.01.21 = k, 
+                                     Vogue1B2.01.23 = l, Vogue1B2.01.26 = m, 
+                                     Vogue1B2.01.28 = n, Vogue1B2.01.29 = o, 
+                                     Vogue1B2.01.35 = p, Vogue1B2.01.37 = q, 
+                                     Vogue1B2.01.38 = r, Vogue1B2.01.50 = s, 
+                                     Vogue1B2.01.52 = t, Vogue1B2.01.56 = u, 
+                                     Vogue1B2.01.58 = v, Vogue1B2.01.61 = w, 
+                                     Vogue1B2.01.62 = x, Vogue1B2.01.63 = y, 
+                                     Vogue1B2.01.64 = z) 
+#when transpose and write to file lose 'Participant' IDs
+#list.of.data.frames <- as.data.frame(t(list.of.data.frames))
+
+#write
+#write.table(list.of.data.frames, "1B2_individual_Good.csv", sep = ",", row.names = FALSE, quote = FALSE)
+#Good <- read.csv(file.path("1B2_individual_Good.csv"))
+#df <- t(Good) #transposed
+#write.table(df, "1B2_individual_Good_transposed.csv", sep = ",", row.names = FALSE, quote = FALSE)
+
+
+#Chao estimator
+#cohort
+rownames(data) <- data[,1]
+data[,1] <- NULL
+d <- diversityresult(data, index = 'chao')
+View(d)
+
+#write to file
+#write.csv(d, "1A_Chao_cohort.csv")
+
+#individuals
+library(fossil)
+#call data 
+data2 <- read.csv(file.path("1B2.csv"))
+
+#separate manually and calculate each
+newdata <- data2[ which(data2$Participants=='Vogue1B2.01.01'), ]
+newdata[,1] <- NULL
+a <- chao1(newdata)
+#insert each participant for coverage
+
+#turn all variables into data.frame, join data.frames and write into file
+#merge
+list.of.data.frames <- cbind()
+#edit headers
+list.of.data.frames <- dplyr::rename(list.of.data.frames, Vogue1B2.01.01 = a, 
+                                     Vogue1B2.01.06 = b, Vogue1B2.01.07 = c, 
+                                     Vogue1B2.01.08 = d, Vogue1B2.01.09 = e, 
+                                     Vogue1B2.01.10 = f, Vogue1B2.01.11 = g, 
+                                     Vogue1B2.01.12 = h, Vogue1B2.01.15 = i, 
+                                     Vogue1B2.01.19 = j, Vogue1B2.01.21 = k, 
+                                     Vogue1B2.01.23 = l, Vogue1B2.01.26 = m, 
+                                     Vogue1B2.01.28 = n, Vogue1B2.01.29 = o, 
+                                     Vogue1B2.01.35 = p, Vogue1B2.01.37 = q, 
+                                     Vogue1B2.01.38 = r, Vogue1B2.01.50 = s, 
+                                     Vogue1B2.01.52 = t, Vogue1B2.01.56 = u, 
+                                     Vogue1B2.01.58 = v, Vogue1B2.01.61 = w, 
+                                     Vogue1B2.01.62 = x, Vogue1B2.01.63 = y, 
+                                     Vogue1B2.01.64 = z) 
+list.of.data.frames2 <- as.data.frame(t(list.of.data.frames))
+
+#write to file
+#write.csv(list.of.data.frames2, "1A_Chao_individual.csv")
+
+#merge shannon, peilous, rarefaction, good and chao1
+a <- read.csv(file.path("1B2_individual_Pielou.csv"))
+b <- read.csv(file.path("1B2richness_individual.csv"))
+c <- read.csv(file.path("1B2_individual_diversity.csv"))
+d <- read.csv(file.path("1B2_Chao_individual.csv"))
+e <- read.csv(file.path("1B2_individual_Good_transposed.csv"))
+b$X <- NULL #remove random empty column
+d <- dplyr::rename(d, Participants = X, Chao1 = V1) 
+e <- dplyr::rename(e, Participants = X, GoodsCoverageEstimator = V1) 
+
+#merge three folders together
+diversity <- cbind(a,b,c,d,e)
+#remove duplicate columns
+diversity2 <- diversity[ -c(3, 5, 7, 9) ]
+
+#write
+#write.csv(diversity2, "1A_individual_all_diversity.csv")
