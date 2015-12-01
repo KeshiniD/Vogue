@@ -115,3 +115,74 @@ data3 <- tbl_df(data2) %>%
   arrange(Ureaplasma) #so species are together and not separated
 #use data3, and mollicute.percentage above
 
+#plot per CST
+#call for entire 1B2 data
+total <- read.csv(file.path("1B2metabac_condensed.csv"))
+#remove random columns
+total$X  <-  NULL
+total$X.1  <-  NULL
+total$X.2  <-  NULL
+
+#merge datasets together (data3, and total)
+data4 <- join(data3, total, type="full")
+
+#select variables wish to plot
+data5 <- data4 %>%
+  select (Participants, Mollicutes, Mollicutes.counts, 
+          Mollicutes.percentage, Ureaplasma, CST) %>%
+  arrange(Ureaplasma) #so species are together
+
+#plot
+#facet_wrap mollicutes + CST, and show ureaplasma in each cat.
+ggplot(na.omit(data5), aes(x = factor(1), y = Mollicutes.counts,
+                           fill = Ureaplasma)) + 
+  geom_bar(stat = "identity", width = 1) + xlab("Mollicutes") + 
+  ylab("Number of Participants") +
+  ggtitle("Mollicutes and Ureaplasma of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
+  facet_wrap(~Mollicutes + CST)
+
+#just ureaplasma
+ggplot(na.omit(data5), aes(x = factor(1), y = Mollicutes.counts,
+                           fill = Ureaplasma)) + 
+  geom_bar(stat = "identity", width = 1) + xlab("Mollicutes") + 
+  ylab("Number of Participants") +
+  ggtitle("Ureaplasma of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
+  facet_wrap(~CST)
+
+#just mollicutes
+data6 <- data4 %>%
+  select (Participants, Mollicutes, Mollicutes.counts, 
+          Mollicutes.percentage, Ureaplasma, CST) %>%
+  arrange(Mollicutes) #so mollicutes together
+
+#plot
+ggplot(na.omit(data6), aes(x = factor(1), y = Mollicutes.counts,
+                           fill = Mollicutes)) + 
+  geom_bar(stat = "identity", width = 1) + xlab("Mollicutes") + 
+  ylab("Number of Participants") +
+  ggtitle("Mollicutes of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
+  facet_wrap(~CST)
+
+#pie chart #no complete circles
+ggplot(na.omit(data4), aes(x = factor(1), y = Mollicutes.percentage, 
+                           fill = Ureaplasma)) + 
+  geom_bar(stat = "identity", width = 1) + xlab("") + 
+  ylab("Mollicutes") +
+  ggtitle("Mollicutes and Ureaplasma of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
+  facet_wrap(~Mollicutes + CST) + coord_polar(theta="y") 
+
+#just ureaplasma #not complete circles
+ggplot(na.omit(data5), aes(x = factor(1), y = Mollicutes.percentage, 
+                           fill = Ureaplasma)) + 
+  geom_bar(stat = "identity", width = 1) + xlab("") + 
+  ylab("Mollicutes") +
+  ggtitle("Ureaplasma of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
+  facet_wrap(~CST) + coord_polar(theta="y") 
+
+#just mollicutes #not complete circles
+ggplot(na.omit(data5), aes(x = factor(1), y = Mollicutes.percentage, 
+                           fill = Mollicutes)) + 
+  geom_bar(stat = "identity", width = 1) + xlab("") + 
+  ylab("Mollicutes") +
+  ggtitle("Mollicutes of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
+  facet_wrap(~CST) + coord_polar(theta="y") 
