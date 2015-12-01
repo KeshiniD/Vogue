@@ -7,13 +7,20 @@ library(ggplot2)
 #load dataset
 data <- read.csv(file.path("1B2_Mollicute_Ureaplasma.csv"))
 
+#rename variables
+data <- dplyr::rename(data, 16s.category = X16s_category, #:/
+                      16s.copies.per.swab = X16s_copies_per_swab)
+
 #make variables into factors
 data$mollicutes <- factor(data$mollicutes)
 data$ureaplasma <- factor(data$ureaplasma)
+data$X16s_category <- factor(data$X16s_category) #new name
+data$X16s_copies_per_swab <- factor(data$X16s_copies_per_swab) #new name
 
 #summary of each variables
 summary(data$mollicutes)
 summary(data$ureaplasma)
+summary(data$X16s_category) #new name
 
 #Mollicutes 
 #1-positive: 18
@@ -27,4 +34,13 @@ summary(data$ureaplasma)
 #4-parvum&urealyticum: 0
 #5-not tested: 2
 
+#16s cat
+#1-<10˄4
+#2-10˄4
+#3-10˄5
+#4-10˄6
+#5-10˄7
+#6-10˄8
+#7-10˄9
+#8->10˄9
 
