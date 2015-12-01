@@ -163,16 +163,16 @@ ggplot(na.omit(data6), aes(x = factor(1), y = Mollicutes.counts,
   ggtitle("Mollicutes of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
   facet_wrap(~CST)
 
-#pie chart #no complete circles
-ggplot(na.omit(data4), aes(x = factor(1), y = Mollicutes.percentage, 
+#pie chart 
+ggplot(na.omit(data7), aes(x = factor(1), y = Mollicutes.percentage, 
                            fill = Ureaplasma)) + 
   geom_bar(stat = "identity", width = 1) + xlab("") + 
   ylab("Mollicutes") +
   ggtitle("Mollicutes and Ureaplasma of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
   facet_wrap(~Mollicutes + CST) + coord_polar(theta="y") 
 
-#just ureaplasma #not complete circles
-ggplot(na.omit(data5), aes(x = factor(1), y = Mollicutes.percentage, 
+#just ureaplasma
+ggplot(na.omit(data8), aes(x = factor(1), y = Mollicutes.percentage, 
                            fill = Ureaplasma)) + 
   geom_bar(stat = "identity", width = 1) + xlab("") + 
   ylab("Mollicutes") +
@@ -180,9 +180,28 @@ ggplot(na.omit(data5), aes(x = factor(1), y = Mollicutes.percentage,
   facet_wrap(~CST) + coord_polar(theta="y") 
 
 #just mollicutes #not complete circles
-ggplot(na.omit(data5), aes(x = factor(1), y = Mollicutes.percentage, 
+ggplot(na.omit(data8), aes(x = factor(1), y = Mollicutes.percentage, 
                            fill = Mollicutes)) + 
   geom_bar(stat = "identity", width = 1) + xlab("") + 
   ylab("Mollicutes") +
   ggtitle("Mollicutes of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
   facet_wrap(~CST) + coord_polar(theta="y") 
+
+#make circles complete by creating new mollicute.percentages
+#mollicute+ureaplasma
+#need it to be 100%, going to make new column for proportion
+data7 <- tbl_df(data5) %>% 
+  group_by(CST, Mollicutes) %>%
+  select(Participants, Mollicutes, Mollicutes.counts, Ureaplasma) %>%
+  mutate(Mollicutes.percentage = Mollicutes.counts/(sum(Mollicutes.counts))*100) %>% # can either have % or decimal
+  arrange(CST) 
+#use data7, and mollicute.percentage above in mollicutes+ureaplasma plot
+
+#just ureaplasma
+data8 <- tbl_df(data5) %>% 
+  group_by(CST, Mollicutes.counts) %>%
+  select(Participants, Mollicutes, Mollicutes.counts, Ureaplasma, CST) %>%
+  mutate(Mollicutes.percentage = Mollicutes.counts/(sum(Mollicutes.counts))*100) %>% # can either have % or decimal
+  arrange(CST) 
+#use data8 and mollicute.percentages above in just ureaplasma plot
+#and in just mollicutes plot
