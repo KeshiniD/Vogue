@@ -359,9 +359,8 @@ list.of.data.frames <- dplyr::rename(list.of.data.frames, Vogue1B2.01.01 = a,
 
 #Chao estimator
 #cohort
-rownames(data) <- data[,1]
-data[,1] <- NULL
-d <- diversityresult(data, index = 'chao')
+#data2 step before adding row names
+d <- diversityresult(data2, index = 'chao')
 View(d)
 
 #write to file
@@ -370,7 +369,7 @@ View(d)
 #individuals
 library(fossil)
 #call data 
-data2 <- read.csv(file.path("1B2.csv"))
+#want data now with row name
 
 #separate manually and calculate each
 newdata <- data2[ which(data2$Participants=='Vogue1B2.01.01'), ]
@@ -402,11 +401,11 @@ list.of.data.frames2 <- as.data.frame(t(list.of.data.frames))
 #write.csv(list.of.data.frames2, "1A_Chao_individual.csv")
 
 #merge shannon, peilous, rarefaction, good and chao1
-a <- read.csv(file.path("1B2_individual_Pielou.csv"))
-b <- read.csv(file.path("1B2richness_individual.csv"))
-c <- read.csv(file.path("1B2_individual_diversity.csv"))
-d <- read.csv(file.path("1B2_Chao_individual.csv"))
-e <- read.csv(file.path("1B2_individual_Good_transposed.csv"))
+a <- read.csv(file.path("1A_subset_individual_Pielou.csv"))
+b <- read.csv(file.path("1B2richness_individual.csv")) #rarefraction
+c <- read.csv(file.path("1A_subset_individual_diversity.csv"))
+d <- read.csv(file.path("1A_Chao_individual.csv"))
+e <- read.csv(file.path("1A_individual_Good_transposed.csv"))
 b$X <- NULL #remove random empty column
 d <- dplyr::rename(d, Participants = X, Chao1 = V1) 
 e <- dplyr::rename(e, Participants = X, GoodsCoverageEstimator = V1) 
