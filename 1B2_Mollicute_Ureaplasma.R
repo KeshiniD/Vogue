@@ -76,6 +76,13 @@ data2 <- data %>%
   arrange(Ureaplasma)
 #use data2 below
 
+#also need number of individuals on y-axis
+#create new cat.for that
+#new mollicute.cat
+data2$Mollicutes.counts[data2$Mollicutes.cat >= 1 ] <- "1" 
+#make into integer
+data2$Mollicutes.counts <- as.integer(data2$Mollicutes.counts)
+
 #plot mollicute and ureaplasma for participants
 ggplot(data = data2, aes(x = Participants, y = Mollicutes, 
                         fill = Ureaplasma)) + 
@@ -85,12 +92,17 @@ ggplot(data = data2, aes(x = Participants, y = Mollicutes,
 #drop NAs from plot
 
 #facet_wrap mollicutes, and show ureaplasma in each cat.
-ggplot(data = data2, aes(x = factor(1), y = Ureaplasma, 
+ggplot(data = data2, aes(x = factor(1), y = Mollicutes.counts, 
                         fill = Ureaplasma)) + 
-  geom_bar(stat = "identity", width = 1) + ylab("Ureaplasma") +
+  geom_bar(stat = "identity", width = 1) + xlab("Mollicutes") + 
+  ylab("Number of Participants") +
   ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
   facet_wrap(~Mollicutes)
 
-
-#pie chart
-coord_polar(theta="y")
+#pie chart #not complete circle
+ggplot(data = data2, aes(x = factor(1), y = Mollicutes.counts, 
+                         fill = Ureaplasma)) + 
+  geom_bar(stat = "identity", width = 1) + xlab("Mollicutes") + 
+  ylab("Number of Participants") +
+  ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
+  facet_wrap(~Mollicutes) + coord_polar(theta="y") 
