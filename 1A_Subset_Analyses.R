@@ -417,3 +417,98 @@ diversity2 <- diversity[ -c(3, 5, 7, 9) ]
 
 #write
 #write.csv(diversity2, "1A_individual_all_diversity.csv")
+
+##Rarefraction
+#call for data
+#want all bacteria (in columns), no participants
+data <- read.csv(file.path("1B2.csv"))
+
+bac <- data %>%
+  select(Lactobacillus.crispatus, Lactobacillus.gasseri, 
+         Lactobacillus.iners, Lactobacillus.jensenii, 
+         Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
+         Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
+         Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
+         Clostridium.genomosp..BVAB3, Escherichia.coli, Eukaryote, 
+         Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
+         Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
+         Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
+         Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
+         Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
+
+#set sample to integer (should be smaller than sample size)
+#should probabaly set sample size to min(rowSums(bac))?
+rarefy <- rarefy(bac, sample=min(rowSums(bac))) 
+
+#write individual species richness into file
+rarefy <- as.data.frame(rarefy)
+#write.csv(rarefy, "1Arichness_individual.csv")
+
+#richness for cohort
+#already have bac subset data
+#first need to make new table with total counts for each bacterial species
+#bac counts
+bac2 <-
+  gather(bac, key = 'Bacteria', value = 'Counts', Lactobacillus.crispatus, 
+         Lactobacillus.gasseri, Lactobacillus.iners, Lactobacillus.jensenii, 
+         Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
+         Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
+         Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
+         Clostridium.genomosp..BVAB3, Escherichia.coli, Eukaryote,
+         Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
+         Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
+         Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
+         Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
+         Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
+bac3 <- bac2 %>% 
+  select (Bacteria, Counts) %>% 
+  group_by(Bacteria) %>%
+  summarize(TotalCounts = sum(Counts)) %>%
+  select (TotalCounts)
+#specnumber
+
+
+#cohort richness
+rarefy2 <- rarefy(bac3, sample=min(rowSums(bac3))) #may be h
+#write cohort species richness into file
+rarefy2 <- as.data.frame(rarefy2)
+#write.csv(rarefy2, "1Arichness_cohort.csv")b #will fix headings in excel
+
+
+#Plot rarefraction curve
+bac <- data %>%
+  select(Participants, Lactobacillus.crispatus, Lactobacillus.gasseri, 
+         Lactobacillus.iners, Lactobacillus.jensenii, 
+         Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
+         Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
+         Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
+         Clostridium.genomosp..BVAB3, Escherichia.coli, Eukaryote, 
+         Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
+         Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
+         Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
+         Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
+         Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
+#want rownames to be participants
+rownames(bac) <- bac[,1]
+bac[,1] <- NULL
+#colours for individuals
+col <- c('deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
+         'forestgreen', 'palegreen', 'green', 'darkgoldenrod1', 
+         'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
+         'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
+         'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
+         'lavender', 'rosybrown2', 'deeppink')
+rarecurve(bac, step = 27, sample = min(rowSums(bac)), 
+          xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
+          label = FALSE, col = col, xlim=c(0,17500), lwd = 2)
+#each line is rarefied richness value (higher values more rich than lower values)
+#xaxis:# of indvidual species present in each participant
+#yaxis: bacterial species and amount each participant has
+#need to figure out legend (do not think there is one)
+#can alter x-axis to see some samples more distinctly 
+
+#section earlier curves to see more indepth
+rarecurve(bac, step = 27, sample = min(rowSums(bac)), 
+          xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
+          label = FALSE, col = col, xlim=c(0,8500), lwd = 2)
+
