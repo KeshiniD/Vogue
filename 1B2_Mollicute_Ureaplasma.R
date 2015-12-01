@@ -84,25 +84,34 @@ data2$Mollicutes.counts[data2$Mollicutes.cat >= 1 ] <- "1"
 data2$Mollicutes.counts <- as.integer(data2$Mollicutes.counts)
 
 #plot mollicute and ureaplasma for participants
-ggplot(data = data2, aes(x = Participants, y = Mollicutes, 
+#na.omit removes NAs from being plotted
+ggplot(na.omit(data2), aes(x = Participants, y = Mollicutes, 
                         fill = Ureaplasma)) + 
   geom_bar(stat = "identity") + coord_flip() + 
   ylab("Mollicutes") +
     ggtitle("Mollicutes and Ureaplasma of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis")
-#drop NAs from plot
 
 #facet_wrap mollicutes, and show ureaplasma in each cat.
-ggplot(data = data2, aes(x = factor(1), y = Mollicutes.counts, 
+ggplot(na.omit(data2), aes(x = factor(1), y = Mollicutes.counts,
                         fill = Ureaplasma)) + 
   geom_bar(stat = "identity", width = 1) + xlab("Mollicutes") + 
   ylab("Number of Participants") +
-  ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
+  ggtitle("Mollicutes and Ureaplasma of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
   facet_wrap(~Mollicutes)
 
-#pie chart #not complete circle
-ggplot(data = data2, aes(x = factor(1), y = Mollicutes.counts, 
+#pie chart 
+ggplot(na.omit(data3), aes(x = factor(1), y = Mollicutes.percentage, 
                          fill = Ureaplasma)) + 
-  geom_bar(stat = "identity", width = 1) + xlab("Mollicutes") + 
-  ylab("Number of Participants") +
-  ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
+  geom_bar(stat = "identity", width = 1) + xlab("") + 
+  ylab("Mollicutes") +
+  ggtitle("Mollicutes and Ureaplasma of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
   facet_wrap(~Mollicutes) + coord_polar(theta="y") 
+
+#need it to be 100%, going to make new column for proportion
+data3 <- tbl_df(data2) %>% 
+  group_by(Mollicutes) %>%
+  select(Participants, Mollicutes, Mollicutes.counts, Ureaplasma) %>%
+  mutate(Mollicutes.percentage = Mollicutes.counts/(sum(Mollicutes.counts))*100) %>% # can either have % or decimal
+  arrange(Ureaplasma) #so species are together and not separated
+#use data3, and mollicute.percentage above
+
