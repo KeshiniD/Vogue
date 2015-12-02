@@ -28,7 +28,7 @@ data[,1] <- NULL
 data2 <- as.data.frame(t(data)) #transposed and converted into data.frame
 
 #participants
-m_matrix <- data.matrix(d2) #make data into matrix #can rename headers
+m_matrix <- data.matrix(data2) #make data into matrix #can rename headers
 m_matrix <- t(m_matrix) #transpose for participants
 a <- otu_table(m_matrix, taxa_are_rows=TRUE)#needs to be in otu table
 
