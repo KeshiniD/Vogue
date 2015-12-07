@@ -129,3 +129,28 @@ rarecurve(bac, step = 27, sample = min(rowSums(bac)),
           xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
           label = FALSE, col = col, xlim=c(0,8500), lwd = 2)
 
+#to calculate slope of rarecurve (derivatibe of rarefy) at given sample size
+#sample size, the row sum for each participant (No this creates slope of zero)
+a <- as.data.frame(rareslope(bac, (rowSums(bac)-1))) #what make sample size equal to?
+
+#try something different; can group by participants now but still need to figure
+#out sample size, and make rareslope work below
+a <- bac2 %>%
+  group_by(Participants) %>%
+  mutate(tc = sum(Counts))%>%
+  summarise(a =   rareslope(bac2, tc))
+  
+
+#participants, bacteria and counts
+bac2 <-
+  gather(data, key = 'Bacteria', value = 'Counts', Lactobacillus.crispatus, 
+         Lactobacillus.gasseri, Lactobacillus.iners, Lactobacillus.jensenii, 
+         Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
+         Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
+         Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
+         Clostridium.genomosp..BVAB3, Escherichia.coli, Eukaryote,
+         Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
+         Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
+         Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
+         Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
+         Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
