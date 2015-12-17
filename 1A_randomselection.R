@@ -7,40 +7,54 @@ library(tidyr)
 data <- read.csv(file.path("1A.csv"))
 
 
-
+#do not need this
+#see below code
 #selecting 104/310; all participants
 #select only Study.ID column
-data2 <- data %>%
-  select(Study.ID)
+#data2 <- data %>%
+#  select(Study.ID)
 
 #transpose data in order for function to select participants
-x <- as.data.frame(t(data2))
+#x <- as.data.frame(t(data2))
 
 #random selection of participants
-a <- sample(x, size = 104, replace = FALSE, prob = NULL)
-a <- as.data.frame(t(a))
+#a <- sample(x, size = 104, replace = FALSE, prob = NULL)
+#a <- as.data.frame(t(a))
 
 
-
+#do not need this
 #selecting 104/156; participants only in CST I
 #select only Study.ID column
-data2 <- data[ which(data$CST=='I'), ]
+#data2 <- data[ which(data$CST=='I'), ]
 #select only Study.ID column
-data2 <- data2 %>%
-  select(Study.ID)
+#data2 <- data2 %>%
+#  select(Study.ID)
 
 #transpose data in order for function to select participants
-x <- as.data.frame(t(data2))
+#x <- as.data.frame(t(data2))
 
 #random selection of participants
-a <- sample(x, size = 104, replace = FALSE, prob = NULL)
-a <- as.data.frame(t(a))
+#a <- sample(x, size = 104, replace = FALSE, prob = NULL)
+#a <- as.data.frame(t(a))
 
 
-
+#do not need this; see below code
 #selecting 104/135; participants only in CST I and without Antimicrobial use
-data2 <- data[ which(data$CST=='I' 
-                     & data$Antimicrobials < 1), ]
+#data2 <- data[ which(data$CST=='I' 
+#                     & data$Antimicrobials < 1), ]
+#select only Study.ID column
+#data2 <- data2 %>%
+#  select(Study.ID)
+
+#transpose data in order for function to select participants
+#x <- as.data.frame(t(data2))
+
+#random selection of participants
+#a <- sample(x, size = 104, replace = FALSE, prob = NULL)
+#a <- as.data.frame(t(a))
+
+###selecting 104/135; participants without Antimicrobial use
+data2 <- data[ which(data$Antimicrobials < 1), ]
 #select only Study.ID column
 data2 <- data2 %>%
   select(Study.ID)
@@ -51,6 +65,10 @@ x <- as.data.frame(t(data2))
 #random selection of participants
 a <- sample(x, size = 104, replace = FALSE, prob = NULL)
 a <- as.data.frame(t(a))
+
+#write this data to file
+write.table(a, "1A_randomized_selection.csv", sep = ",", row.names = FALSE, quote = FALSE)
+
 
 ###################
 #Virome 1A Participants
