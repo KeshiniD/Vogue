@@ -2620,3 +2620,16 @@ prop.table(a) # cell percentages
 prop.table(a, 1) # row percentages 
 prop.table(a, 2) #column percentages
 summary(a)
+
+#############################################################################
+#Dec-18-2015
+#redo contingency tables for condensed variables which are still significant
+
+a <- xtabs(~CSTIVD + Number.partners.in.past.year.cat , data = total)
+a <- as.data.frame(a)
+margin.table(a, 1) # A frequencies [(summed over B) AD over nugent]
+margin.table(a, 2) # B frequencies [(summed over A) nugent over AD]
+prop.table(a) # cell percentages
+prop.table(a, 1) # row percentages 
+prop.table(a, 2) #column percentages
+summary(a)
