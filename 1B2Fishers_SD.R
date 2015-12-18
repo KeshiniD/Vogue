@@ -246,3 +246,73 @@ m <- matrix(unlist(a), 64) #for true matrix
 fisher.test(m, simulate.p.value = TRUE)
 
 #no longer significant once control for signficant variables
+
+#################################################################################
+#Dec-18-2015
+#redo Fisher's with new condensed variables
+
+#call for entire 1B2 data
+total <- read.csv(file.path("1B2metabac_condensedv2.csv"))
+#remove random columns
+total$X  <-  NULL
+total$X.1  <-  NULL
+total$X.2  <-  NULL
+total$X.3  <-  NULL
+
+#load packages frmo above and factors including those below
+total$BMI.under.cat <- factor(total$BMI.under.cat)
+total$BMI.over.cat <- factor(total$BMI.over.cat)
+total$BV.2.months.cat <- factor(total$BV.2.months.cat)
+total$BV.year.cat <- factor(total$BV.year.cat)
+total$BV.lifetime.cat <- factor(total$BV.lifetime.cat)
+total$Yeast.2.months.cat <- factor(total$Yeast.2.months.cat)
+total$Yeast.year.cat <- factor(total$Yeast.year.cat)
+total$Yeast.lifetime.cat <- factor(total$Yeast.lifetime.cat)
+
+#Demographics
+#Age
+a <- xtabs(~SD.cat + Age.cat , data = total)
+fisher.test(a)
+
+#BMI
+a <- xtabs(~SD.cat + BMI.under.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~SD.cat + BMI.over.cat , data = total)
+fisher.test(a)
+
+#Ethnicity 
+a <- xtabs(~SD.cat + Ethnicity.cat , data = total)
+fisher.test(a)
+
+#BV episodes
+a <- xtabs(~SD.cat + BV.2.months.cat , data = total)
+fisher.test(a)
+a <- xtabs(~SD.cat + BV.year.cat , data = total)
+fisher.test(a)
+a <- xtabs(~SD.cat + BV.lifetime.cat , data = total)
+fisher.test(a)
+
+#Yeast episodes
+a <- xtabs(~SD.cat + Yeast.2.months.cat , data = total)
+fisher.test(a)
+a <- xtabs(~SD.cat + Yeast.year.cat , data = total)
+fisher.test(a)
+a <- xtabs(~SD.cat + Yeast.lifetime.cat , data = total)
+fisher.test(a)
+
+#Frequency of Tampon Use
+a <- xtabs(~SD.cat + Tampon.Use.cat , data = total)
+fisher.test(a)
+
+#Cat. for number of sexual partners in the last year
+a <- xtabs(~SD.cat + Number.partners.in.past.year.cat , data = total)
+fisher.test(a)
+
+#Frequency of Oral Sex
+a <- xtabs(~SD.cat + Freq.oral.sex.cat , data = total)
+fisher.test(a)
+
+#Substance use
+a <- xtabs(~SD.cat + Substance.Use , data = total)
+fisher.test(a)

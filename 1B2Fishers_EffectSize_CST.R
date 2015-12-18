@@ -966,3 +966,320 @@ assocstats(a)
 
 a <- xtabs(~CSTIVD + smoking.current , data = total)
 assocstats(a)
+#################################################################################
+#Dec-18-2015
+#redo effect size with new condensed variables
+
+#call for entire 1B2 data
+total <- read.csv(file.path("1B2metabac_condensedv2.csv"))
+#remove random columns
+total$X  <-  NULL
+total$X.1  <-  NULL
+total$X.2  <-  NULL
+total$X.3  <-  NULL
+
+#load packages frmo above and factors including those below
+total$BMI.under.cat <- factor(total$BMI.under.cat)
+total$BMI.over.cat <- factor(total$BMI.over.cat)
+total$BV.2.months.cat <- factor(total$BV.2.months.cat)
+total$BV.year.cat <- factor(total$BV.year.cat)
+total$BV.lifetime.cat <- factor(total$BV.lifetime.cat)
+total$Yeast.2.months.cat <- factor(total$Yeast.2.months.cat)
+total$Yeast.year.cat <- factor(total$Yeast.year.cat)
+total$Yeast.lifetime.cat <- factor(total$Yeast.lifetime.cat)
+
+##########################################################################
+#CSTI
+#Demographics
+#Age
+a <- xtabs(~CSTI + Age.cat , data = total)
+assocstats(a)
+
+#BMI
+a <- xtabs(~CSTI + BMI.under.cat , data = total)
+assocstats(a)
+
+a <- xtabs(~CSTI + BMI.over.cat , data = total)
+assocstats(a)
+
+#Ethnicity 
+a <- xtabs(~CSTI + Ethnicity.cat , data = total)
+assocstats(a)
+
+#BV episodes
+a <- xtabs(~CSTI + BV.2.months.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTI + BV.year.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTI + BV.lifetime.cat , data = total)
+assocstats(a)
+
+#Yeast episodes
+a <- xtabs(~CSTI + Yeast.2.months.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTI + Yeast.year.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTI + Yeast.lifetime.cat , data = total)
+assocstats(a)
+
+#Frequency of Tampon Use
+a <- xtabs(~CSTI + Tampon.Use.cat , data = total)
+assocstats(a)
+
+#Cat. for number of sexual partners in the last year
+a <- xtabs(~CSTI + Number.partners.in.past.year.cat , data = total)
+assocstats(a)
+
+#Frequency of Oral Sex
+a <- xtabs(~CSTI + Freq.oral.sex.cat , data = total)
+assocstats(a)
+
+#Substance use
+a <- xtabs(~CSTI + Substance.Use , data = total)
+assocstats(a)
+#########################################################################
+#CSTII
+#Demographics
+#Age
+a <- xtabs(~CSTII + Age.cat , data = total)
+assocstats(a)
+
+#BMI
+a <- xtabs(~CSTII + BMI.under.cat , data = total)
+assocstats(a)
+
+a <- xtabs(~CSTII + BMI.over.cat , data = total)
+assocstats(a)
+
+#Ethnicity 
+a <- xtabs(~CSTII + Ethnicity.cat , data = total)
+assocstats(a)
+
+#BV episodes
+a <- xtabs(~CSTII + BV.2.months.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTII + BV.year.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTII + BV.lifetime.cat , data = total)
+assocstats(a)
+
+#Yeast episodes
+a <- xtabs(~CSTII + Yeast.2.months.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTII + Yeast.year.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTII + Yeast.lifetime.cat , data = total)
+assocstats(a)
+
+#Frequency of Tampon Use
+a <- xtabs(~CSTII + Tampon.Use.cat , data = total)
+assocstats(a)
+
+#Cat. for number of sexual partners in the last year
+a <- xtabs(~CSTII + Number.partners.in.past.year.cat , data = total)
+assocstats(a)
+
+#Frequency of Oral Sex
+a <- xtabs(~CSTII + Freq.oral.sex.cat , data = total)
+assocstats(a)
+
+#Substance use
+a <- xtabs(~CSTII + Substance.Use , data = total)
+assocstats(a)
+
+#########################################################################
+#CSTIII
+#Demographics
+#Age
+a <- xtabs(~CSTIII + Age.cat , data = total)
+assocstats(a)
+
+#BMI
+a <- xtabs(~CSTIII + BMI.under.cat , data = total)
+assocstats(a)
+
+a <- xtabs(~CSTIII + BMI.over.cat , data = total)
+assocstats(a)
+
+#Ethnicity 
+a <- xtabs(~CSTIII + Ethnicity.cat , data = total)
+assocstats(a)
+
+#BV episodes
+a <- xtabs(~CSTIII + BV.2.months.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIII + BV.year.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIII + BV.lifetime.cat , data = total)
+assocstats(a)
+
+#Yeast episodes
+a <- xtabs(~CSTIII + Yeast.2.months.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIII + Yeast.year.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIII + Yeast.lifetime.cat , data = total)
+assocstats(a)
+
+#Frequency of Tampon Use
+a <- xtabs(~CSTIII + Tampon.Use.cat , data = total)
+assocstats(a)
+
+#Cat. for number of sexual partners in the last year
+a <- xtabs(~CSTIII + Number.partners.in.past.year.cat , data = total)
+assocstats(a)
+
+#Frequency of Oral Sex
+a <- xtabs(~CSTIII + Freq.oral.sex.cat , data = total)
+assocstats(a)
+
+#Substance use
+a <- xtabs(~CSTIII + Substance.Use , data = total)
+assocstats(a)
+#########################################################################
+#CSTIVA
+#Demographics
+#Age
+a <- xtabs(~CSTIVA + Age.cat , data = total)
+assocstats(a)
+
+#BMI
+a <- xtabs(~CSTIVA + BMI.under.cat , data = total)
+assocstats(a)
+
+a <- xtabs(~CSTIVA + BMI.over.cat , data = total)
+assocstats(a)
+
+#Ethnicity 
+a <- xtabs(~CSTIVA + Ethnicity.cat , data = total)
+assocstats(a)
+
+#BV episodes
+a <- xtabs(~CSTIVA + BV.2.months.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIVA + BV.year.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIVA + BV.lifetime.cat , data = total)
+assocstats(a)
+
+#Yeast episodes
+a <- xtabs(~CSTIVA + Yeast.2.months.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIVA + Yeast.year.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIVA + Yeast.lifetime.cat , data = total)
+assocstats(a)
+
+#Frequency of Tampon Use
+a <- xtabs(~CSTIVA + Tampon.Use.cat , data = total)
+assocstats(a)
+
+#Cat. for number of sexual partners in the last year
+a <- xtabs(~CSTIVA + Number.partners.in.past.year.cat , data = total)
+assocstats(a)
+
+#Frequency of Oral Sex
+a <- xtabs(~CSTIVA + Freq.oral.sex.cat , data = total)
+assocstats(a)
+
+#Substance use
+a <- xtabs(~CSTIVA + Substance.Use , data = total)
+assocstats(a)
+#########################################################################
+#CSTIVC
+#Demographics
+#Age
+a <- xtabs(~CSTIVC + Age.cat , data = total)
+assocstats(a)
+
+#BMI
+a <- xtabs(~CSTIVC + BMI.under.cat , data = total)
+assocstats(a)
+
+a <- xtabs(~CSTIVC + BMI.over.cat , data = total)
+assocstats(a)
+
+#Ethnicity 
+a <- xtabs(~CSTIVC + Ethnicity.cat , data = total)
+assocstats(a)
+
+#BV episodes
+a <- xtabs(~CSTIVC + BV.2.months.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIVC + BV.year.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIVC + BV.lifetime.cat , data = total)
+assocstats(a)
+
+#Yeast episodes
+a <- xtabs(~CSTIVC + Yeast.2.months.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIVC + Yeast.year.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIVC + Yeast.lifetime.cat , data = total)
+assocstats(a)
+
+#Frequency of Tampon Use
+a <- xtabs(~CSTIVC + Tampon.Use.cat , data = total)
+assocstats(a)
+
+#Cat. for number of sexual partners in the last year
+a <- xtabs(~CSTIVC + Number.partners.in.past.year.cat , data = total)
+assocstats(a)
+
+#Frequency of Oral Sex
+a <- xtabs(~CSTIVC + Freq.oral.sex.cat , data = total)
+assocstats(a)
+
+#Substance use
+a <- xtabs(~CSTIVC + Substance.Use , data = total)
+assocstats(a)
+#########################################################################
+#CSTIVD
+#Demographics
+#Age
+a <- xtabs(~CSTIVD + Age.cat , data = total)
+assocstats(a)
+
+#BMI
+a <- xtabs(~CSTIVD + BMI.under.cat , data = total)
+assocstats(a)
+
+a <- xtabs(~CSTIVD + BMI.over.cat , data = total)
+assocstats(a)
+
+#Ethnicity 
+a <- xtabs(~CSTIVD + Ethnicity.cat , data = total)
+assocstats(a)
+
+#BV episodes
+a <- xtabs(~CSTIVD + BV.2.months.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIVD + BV.year.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIVD + BV.lifetime.cat , data = total)
+assocstats(a)
+
+#Yeast episodes
+a <- xtabs(~CSTIVD + Yeast.2.months.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIVD + Yeast.year.cat , data = total)
+assocstats(a)
+a <- xtabs(~CSTIVD + Yeast.lifetime.cat , data = total)
+assocstats(a)
+
+#Frequency of Tampon Use
+a <- xtabs(~CSTIVD + Tampon.Use.cat , data = total)
+assocstats(a)
+
+#Cat. for number of sexual partners in the last year
+a <- xtabs(~CSTIVD + Number.partners.in.past.year.cat , data = total)
+assocstats(a)
+
+#Frequency of Oral Sex
+a <- xtabs(~CSTIVD + Freq.oral.sex.cat , data = total)
+assocstats(a)
+
+#Substance use
+a <- xtabs(~CSTIVD + Substance.Use , data = total)
+assocstats(a)
