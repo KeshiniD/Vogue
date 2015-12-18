@@ -388,3 +388,106 @@ confint(mylogit)
 mylogit <- glm(formula = Shannon.s.Diversity ~ smoking.current, data=total, 
                family = poisson(link = "log"))
 confint(mylogit)
+
+#############################################################################
+#Dec-18-2015
+#redo odds for condensed variables
+
+#call for entire 1B2 data
+total <- read.csv(file.path("1B2metabac_condensedv2.csv"))
+#remove random columns
+total$X  <-  NULL
+total$X.1  <-  NULL
+total$X.2  <-  NULL
+total$X.3  <-  NULL
+
+#load packages frmo above and factors including those below
+total$BMI.under.cat <- factor(total$BMI.under.cat)
+total$BMI.over.cat <- factor(total$BMI.over.cat)
+total$BV.2.months.cat <- factor(total$BV.2.months.cat)
+total$BV.year.cat <- factor(total$BV.year.cat)
+total$BV.lifetime.cat <- factor(total$BV.lifetime.cat)
+total$Yeast.2.months.cat <- factor(total$Yeast.2.months.cat)
+total$Yeast.year.cat <- factor(total$Yeast.year.cat)
+total$Yeast.lifetime.cat <- factor(total$Yeast.lifetime.cat)
+
+##########################################################################
+#Demographics
+#Age
+mylogit <- glm(formula = Shannon.s.Diversity ~ Age.cat, data=total, 
+               family = poisson(link = "log"))
+confint(mylogit)
+summary(mylogit)
+
+#BMI
+mylogit <- glm(formula = Shannon.s.Diversity ~ BMI.under.cat, data=total, 
+               family = poisson(link = "log"))
+confint(mylogit)
+summary(mylogit)
+
+mylogit <- glm(formula = Shannon.s.Diversity ~ BMI.over.cat, data=total, 
+               family = poisson(link = "log"))
+confint(mylogit)
+summary(mylogit)
+
+#Ethnicity 
+mylogit <- glm(formula = Shannon.s.Diversity ~ Ethnicity.cat, data=total, 
+               family = poisson(link = "log"))
+confint(mylogit)
+summary(mylogit)
+
+#BV episodes
+mylogit <- glm(formula = Shannon.s.Diversity ~ BV.2.months.cat, data=total, 
+               family = poisson(link = "log"))
+confint(mylogit)
+summary(mylogit)
+
+mylogit <- glm(formula = Shannon.s.Diversity ~ BV.year.cat, data=total, 
+               family = poisson(link = "log"))
+confint(mylogit)
+summary(mylogit)
+
+mylogit <- glm(formula = Shannon.s.Diversity ~ BV.lifetime.cat, data=total, 
+               family = poisson(link = "log"))
+confint(mylogit)
+summary(mylogit)
+
+#Yeast episodes
+mylogit <- glm(formula = Shannon.s.Diversity ~ Yeast.2.months.cat, data=total, 
+               family = poisson(link = "log"))
+confint(mylogit)
+summary(mylogit)
+
+mylogit <- glm(formula = Shannon.s.Diversity ~ Yeast.year.cat, data=total, 
+               family = poisson(link = "log"))
+confint(mylogit)
+summary(mylogit)
+
+mylogit <- glm(formula = Shannon.s.Diversity ~ Yeast.lifetime.cat, data=total, 
+               family = poisson(link = "log"))
+confint(mylogit)
+summary(mylogit)
+
+#Frequency of Tampon Use
+mylogit <- glm(formula = Shannon.s.Diversity ~ Tampon.Use.cat, data=total, 
+               family = poisson(link = "log"))
+confint(mylogit)
+summary(mylogit)
+
+#Cat. for number of sexual partners in the last year
+mylogit <- glm(formula = Shannon.s.Diversity ~ Number.partners.in.past.year.cat, data=total, 
+               family = poisson(link = "log"))
+confint(mylogit)
+summary(mylogit)
+
+#Frequency of Oral Sex
+mylogit <- glm(formula = Shannon.s.Diversity ~ Freq.oral.sex.cat, data=total, 
+               family = poisson(link = "log"))
+confint(mylogit)
+summary(mylogit)
+
+#Substance use
+mylogit <- glm(formula = Shannon.s.Diversity ~ Substance.Use, data=total, 
+               family = poisson(link = "log"))
+confint(mylogit)
+summary(mylogit)
