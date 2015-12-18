@@ -395,3 +395,137 @@ summary(total$CSTIVD)
 #write condensed groups to file
 write.csv(total, "1B2metabac_condensed.csv")
 
+###############################################################################
+#Dec-18-2015
+#further group variables into 2 categories (binomial)
+
+#call for data
+data <- read.csv(file = "1B2metabac_condensed.csv")
+
+r###########
+#Age
+#combine 30-39 with 40+
+data$Age.cat[data$Age.cat > 3] <- "3" #reassinging 40+ to 30s cat
+#convert Age.cat to factor
+data$Age.cat <- as.factor(data$Age.cat)
+
+###########
+#BMI 
+#Two categories; compare underweight to normal and overweight/obese to normal
+
+#Underweight and Normal weight
+data$BMI.under.cat[data$BMI < 18.5] <- "1" #underweight
+data$BMI.under.cat[data$BMI >= 18.5 & data$BMI <=24.9] <- "2" #normal weight
+data$BMI.under.cat[data$BMI >= 25] <- "" #overweight/obese
+
+#convert BMI.cat from character into factor
+data$BMI.under.cat <- factor(data$BMI.under.cat) 
+
+#OVerweight/Obese and Normal weight
+data$BMI.over.cat[data$BMI < 18.5] <- "" #underweight
+data$BMI.over.cat[data$BMI >= 18.5 & data$BMI <=24.9] <- "2" #normal weight
+data$BMI.over.cat[data$BMI >= 25] <- "3" #overweight/obese
+
+#convert BMI.cat from character into factor
+data$BMI.over.cat <- factor(data$BMI.over.cat) 
+
+###########
+#Ethnicity 
+#combine Other, Aboriginal, and Asian
+data$Ethnicity.cat[data$Ethnicity=='Caucasian'] <- '1'
+data$Ethnicity.cat[data$Ethnicity=='Asian'] <- '2'
+data$Ethnicity.cat[data$Ethnicity=='Aboriginal'] <- '2'
+data$Ethnicity.cat[data$Ethnicity=='Other (Arab)'] <- '2'
+data$Ethnicity.cat[data$Ethnicity=='Other (Haida/Scottish)'] <- '2'
+#convert Ethnicity.cat from character into factor
+data$Ethnicity.cat <- factor(data$Ethnicity.cat)
+
+############
+#BV and Yeast
+#turn these into categories; 1-3 vs 4+ as per protocol def of RBV
+
+#BV (2 months)
+data$BV.2.months.cat[data$BV..number.of.episodes.2.months. <= 3] <- "1" #1-3 epsidoes
+data$BV.2.months.cat[data$BV..number.of.episodes.2.months. >= 4] <- "2" #4+ episodes
+
+#convert BV.2.months.cat from character into factor
+data$BV.2.months.cat <- factor(data$BV.2.months.cat)
+
+#BV (year)
+data$BV.year.cat[data$BV..number.of.episodes.year. <= 3] <- "1" #1-3 epsidoes
+data$BV.year.cat[data$BV..number.of.episodes.year. >= 4] <- "2" #4+ episodes
+
+#convert BV.year.cat from character into factor
+data$BV.year.cat <- factor(data$BV.year.cat)
+
+#BV (lifetime)
+data$BV.lifetime.cat[data$BV..number.of.episodes.lifetime. <= 3] <- "1" #1-3 epsidoes
+data$BV.lifetime.cat[data$BV..number.of.episodes.lifetime. >= 4] <- "2" #4+ episodes
+
+#convert BV.lifetime.cat from character into factor
+data$BV.lifetime.cat <- factor(data$BV.lifetime.cat)
+
+
+#Yeast
+#Yeast (2 months)
+data$Yeast.2.months.cat[data$Yeast..2months. <= 3] <- "1" #1-3 epsidoes
+data$Yeast.2.months.cat[data$Yeast..2months. >= 4] <- "2" #4+ episodes
+
+#convert Yeast.2.months.cat from character into factor
+data$Yeast.2.months.cat <- factor(data$Yeast.2.months.cat)
+
+#Yeast (year)
+data$Yeast.year.cat[data$Yeast..year. <= 3] <- "1" #1-3 epsidoes
+data$Yeast.year.cat[data$Yeast..year. >= 4] <- "2" #4+ episodes
+
+#convert Yeast.year.cat from character into factor
+data$Yeast.year.cat <- factor(data$Yeast.year.cat)
+
+#Yeast (lifetime)
+data$Yeast.lifetime.cat[data$Yeast..lifetime. <= 3] <- "1" #1-3 epsidoes
+data$Yeast.lifetime.cat[data$Yeast..lifetime. >= 4] <- "2" #4+ episodes
+
+#convert Yeast.lifetime.cat from character into factor
+data$Yeast.lifetime.cat <- factor(data$Yeast.lifetime.cat)
+
+####################
+#Frequency of Tampon Use
+#needs to be character to reassign value
+data$Tampon.Use.cat <- mapply(as.character, data$Tampon.Use)
+#create categories (never-ever cats)
+data$Tampon.Use.cat[data$Tampon.Use.cat=='never'] <- '1'#never used
+data$Tampon.Use.cat[data$Tampon.Use.cat=='sometimes but not for every period'] <- '2'#used ever
+data$Tampon.Use.cat[data$Tampon.Use.cat=='every period, part of the time'] <- '2'
+data$Tampon.Use.cat[data$Tampon.Use.cat=='every period, exclusively'] <- '2'
+
+#convert Tampon.Use.cat from character into factor
+data$Tampon.Use.cat <- factor(data$Tampon.Use.cat)
+
+#####################
+#change to never-ever cats. 
+##Cat. for number of sexual partners in the last year
+data$Number.partners.in.past.year.cat[data$Number.partners.in.past.year <= 0] <- "0" # 0 partners
+data$Number.partners.in.past.year.cat[data$Number.partners.in.past.year >= 1] <- "1"#1 or more partners
+
+#convert Number.partners.in.past.year.cat from character into factor
+data$Number.partners.in.past.year.cat <- factor(data$Number.partners.in.past.year.cat)
+
+#####################
+#Frequency of Oral Sex
+#create categories (change to never-ever cats)
+#data$Freq.oral.sex.cat[data$Freq.oral.sex.cat=='never'] <- '0'
+data$Freq.oral.sex.cat[data$Freq.oral.sex.cat >0] <- '1' #need only run this
+
+#convert Freq.oral.sex.cat from character into factor
+data$Freq.oral.sex.cat <- factor(data$Freq.oral.sex.cat)
+
+######################
+#Substance use
+#change to never-ever cats
+data$Substance.Use[data$Substance.Use >0] <- '1' #emcompass those who use past or currently
+
+#convert Substance.Use from character into factor
+data$Substance.Use <- factor(data$Substance.Use)
+
+#write new groupings into file
+write.csv(data, "1B2metabac_condensedv2.csv")
