@@ -1301,3 +1301,73 @@ fisher.test(a)
 #Substance use
 a <- xtabs(~CSTIVD + Substance.Use , data = total)
 fisher.test(a)
+
+############################################################################
+##Jan-18-2016
+#t-test (since 2 groups, if it was 2+ then ANOVA) for BV and Yeast episodes
+
+#CSTI
+#BV episodes
+t.test(BV..number.of.episodes.2.months.~CSTI, data = total)
+t.test(BV..number.of.episodes.year.~CSTI, data = total)
+t.test(BV..number.of.episodes.lifetime.~CSTI, data = total)
+
+#Yeast episodes
+t.test(Yeast..2months.~CSTI, data = total)
+t.test(Yeast..year.~CSTI, data = total)
+t.test(Yeast..lifetime.~CSTI, data = total)
+
+#CSTII
+#BV episodes
+t.test(BV..number.of.episodes.2.months.~CSTII, data = total)
+t.test(BV..number.of.episodes.year.~CSTII, data = total)
+t.test(BV..number.of.episodes.lifetime.~CSTII, data = total)
+
+#Yeast episodes
+t.test(Yeast..2months.~CSTII, data = total)
+t.test(Yeast..year.~CSTII, data = total)
+t.test(Yeast..lifetime.~CSTII, data = total)
+
+#CSTIII
+#BV episodes
+t.test(BV..number.of.episodes.2.months.~CSTIII, data = total)
+t.test(BV..number.of.episodes.year.~CSTIII, data = total)
+t.test(BV..number.of.episodes.lifetime.~CSTIII, data = total)
+
+#Yeast episodes
+t.test(Yeast..2months.~CSTIII, data = total)
+t.test(Yeast..year.~CSTIII, data = total)
+t.test(Yeast..lifetime.~CSTIII, data = total)
+
+#CSTIVA
+#BV episodes
+t.test(BV..number.of.episodes.2.months.~CSTIVA, data = total)
+t.test(BV..number.of.episodes.year.~CSTIVA, data = total)
+t.test(BV..number.of.episodes.lifetime.~CSTIVA, data = total)
+
+#Yeast episodes
+t.test(Yeast..2months.~CSTIVA, data = total)
+t.test(Yeast..year.~CSTIVA, data = total)
+t.test(Yeast..lifetime.~CSTIVA, data = total)
+
+#CSTIVC
+#BV episodes
+t.test(BV..number.of.episodes.2.months.~CSTIVC, data = total)
+t.test(BV..number.of.episodes.year.~CSTIVC, data = total)
+t.test(BV..number.of.episodes.lifetime.~CSTIVC, data = total)
+
+#Yeast episodes
+t.test(Yeast..2months.~CSTIVC, data = total)
+t.test(Yeast..year.~CSTIVC, data = total)
+t.test(Yeast..lifetime.~CSTIVC, data = total)
+
+#CSTIVD
+#BV episodes
+t.test(BV..number.of.episodes.2.months.~CSTIVD, data = total)
+t.test(BV..number.of.episodes.year.~CSTIVD, data = total)
+t.test(BV..number.of.episodes.lifetime.~CSTIVD, data = total)
+
+#Yeast episodes
+t.test(Yeast..2months.~CSTIVD, data = total)
+t.test(Yeast..year.~CSTIVD, data = total)
+t.test(Yeast..lifetime.~CSTIVD, data = total)
