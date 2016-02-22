@@ -1,8 +1,8 @@
 Variables	Estimate
-Abnormal.odor.2wks1	2.079
-Abnormal.odor.48hrs1	2.079
+(CSTIVA)Abnormal.odor.2wks1	2.079
+(CSTIVA)Abnormal.odor.48hrs1	2.079
 Freq.sex.toy.usecat1	-1.4663
-Yeast..lifetime.	-0.1136
+(CSTIVA)Yeast..lifetime.	-0.1136
 Symptom.pain1	1.715
 probiotics.2.months1	1.3863
 Feminine.products.48hrs1	1.5041

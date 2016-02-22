@@ -143,3 +143,8 @@ mylogit <- glm(formula = CST_NL ~ BV..number.of.episodes.2.months. + Contracepti
                  Tampon.Use.cat + Abnormal.odor.48hrs + contraception.H + 
                  Freq.oral.sex.cat + Abnormal.odor.2wks, data=total, family = binomial(link = "logit"))
 summary(mylogit)
+
+###########################################################################
+#Feb-21-16
+#multivariate based on fishers
+

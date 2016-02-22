@@ -1283,3 +1283,36 @@ assocstats(a)
 #Substance use
 a <- xtabs(~CSTIVD + Substance.Use , data = total)
 assocstats(a)
+
+##################################################################################
+#Feb-21-16
+#t-test (since 2 groups, if it was 2+ then ANOVA) for BV and Yeast episodes
+#need effect size for those which are significant
+
+#CSTI
+#BV episodes
+a <- xtabs(~CSTI + BV..number.of.episodes.2.months., data = total)
+assocstats(a)
+
+#CSTIII
+#BV episodes
+a <- xtabs(~CSTIII + BV..number.of.episodes.2.months., data = total)
+assocstats(a)
+
+#CSTIVA
+#Yeast episodes
+a <- xtabs(~CSTIVA + Yeast..lifetime., data = total)
+assocstats(a)
+
+#CSTIVC
+#BV episodes
+a <- xtabs(~CSTIVC + BV..number.of.episodes.2.months., data = total)
+assocstats(a)
+
+#CSTIVD
+#Yeast episodes
+a <- xtabs(~CSTIVD + Yeast..2months., data = total)
+assocstats(a)
+
+a <- xtabs(~CSTIVD + Yeast..year., data = total)
+assocstats(a)

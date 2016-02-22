@@ -108,3 +108,22 @@ ggplot(CSTIVC,aes(Variables,Estimate,label="",hjust=hjust))+
   coord_flip() + xlab("Variables") + ylab("Odds Ratio (log)") + 
   ggtitle("CSTIVC Univariate Logistic Regression")
 
+#############################################################################
+#Feb-21-16
+#going to select variables which were significant via Fishers
+#only made plot first one; decided to combo plots instead
+#go to 1B2SDUniPlot_CSTSDcomboplot.R
+
+#CSTI Uni Plot
+CSTI <- read.delim(file.path("CSTI_uni.txt"))
+
+#select significant variables
+CSTI <- CSTI[ which(CSTI$Variables=='BV..number.of.episodes.2.months.'),]
+
+CSTI$colour <- ifelse(CSTI$Estimate < 0, "negative","positive")
+CSTI$hjust <- ifelse(CSTI$Estimate > 0, 1.3, -0.3)
+ggplot(CSTI,aes(Variables,Estimate,label="",hjust=hjust))+
+  geom_bar(stat="identity",position="identity",aes(fill = colour))+
+  scale_fill_manual(values=c(positive="firebrick1",negative="steelblue")) + 
+  coord_flip() + xlab("Variables") + ylab("Odds Ratio (log)") + 
+  ggtitle("CSTI Univariate Logistic Regression")

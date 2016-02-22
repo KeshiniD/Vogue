@@ -1359,3 +1359,247 @@ summary(mylogit)
 
 #cannot convert glm into data.frame but use below to get data
 results_df <-summary.glm(mylogit)$coefficients #can write this to file
+
+############################################################################
+#Feb-21-16
+#redo with new condensed variables
+
+#CSTI
+#Demographics
+mylogit <- glm(formula = CSTI ~ Age.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#BMI
+mylogit <- glm(formula = CSTI ~ BMI.under.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = CSTI ~ BMI.over.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Ethnicity 
+mylogit <- glm(formula = CSTI ~ Ethnicity.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Frequency of Tampon Use
+mylogit <- glm(formula = CSTI ~ Tampon.Use.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Cat. for number of sexual partners in the last year
+mylogit <- glm(formula = CSTI ~ Number.partners.in.past.year.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Frequency of Oral Sex
+mylogit <- glm(formula = CSTI ~ Freq.oral.sex.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Substance use
+mylogit <- glm(formula = CSTI ~ Substance.Use, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+#########################################################################
+#CSTII
+#Demographics
+mylogit <- glm(formula = CSTII ~ Age.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#BMI
+mylogit <- glm(formula = CSTII ~ BMI.under.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = CSTII ~ BMI.over.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Ethnicity 
+mylogit <- glm(formula = CSTII ~ Ethnicity.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Frequency of Tampon Use
+mylogit <- glm(formula = CSTII ~ Tampon.Use.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Cat. for number of sexual partners in the last year
+mylogit <- glm(formula = CSTII ~ Number.partners.in.past.year.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Frequency of Oral Sex
+mylogit <- glm(formula = CSTII ~ Freq.oral.sex.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Substance use
+mylogit <- glm(formula = CSTII ~ Substance.Use, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+#########################################################################
+#CSTIII
+#Demographics
+mylogit <- glm(formula = CSTIII ~ Age.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#BMI
+mylogit <- glm(formula = CSTIII ~ BMI.under.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = CSTIII ~ BMI.over.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Ethnicity 
+mylogit <- glm(formula = CSTIII ~ Ethnicity.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Frequency of Tampon Use
+mylogit <- glm(formula = CSTIII ~ Tampon.Use.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Cat. for number of sexual partners in the last year
+mylogit <- glm(formula = CSTIII ~ Number.partners.in.past.year.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Frequency of Oral Sex
+mylogit <- glm(formula = CSTIII ~ Freq.oral.sex.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Substance use
+mylogit <- glm(formula = CSTIII ~ Substance.Use, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+#########################################################################
+#CSTIVA
+#Demographics
+mylogit <- glm(formula = CSTIVA ~ Age.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#BMI
+mylogit <- glm(formula = CSTIVA ~ BMI.under.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = CSTIVA ~ BMI.over.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Ethnicity 
+mylogit <- glm(formula = CSTIVA ~ Ethnicity.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Frequency of Tampon Use
+mylogit <- glm(formula = CSTIVA ~ Tampon.Use.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Cat. for number of sexual partners in the last year
+mylogit <- glm(formula = CSTIVA ~ Number.partners.in.past.year.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Frequency of Oral Sex
+mylogit <- glm(formula = CSTIVA ~ Freq.oral.sex.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Substance use
+mylogit <- glm(formula = CSTIVA ~ Substance.Use, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+#########################################################################
+#CSTIVC
+#Demographics
+mylogit <- glm(formula = CSTIVC ~ Age.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#BMI
+mylogit <- glm(formula = CSTIVC ~ BMI.under.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = CSTIVC ~ BMI.over.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Ethnicity 
+mylogit <- glm(formula = CSTIVC ~ Ethnicity.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Frequency of Tampon Use
+mylogit <- glm(formula = CSTIVC ~ Tampon.Use.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Cat. for number of sexual partners in the last year
+mylogit <- glm(formula = CSTIVC ~ Number.partners.in.past.year.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Frequency of Oral Sex
+mylogit <- glm(formula = CSTIVC ~ Freq.oral.sex.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Substance use
+mylogit <- glm(formula = CSTIVC ~ Substance.Use, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+#########################################################################
+#CSTIVD
+#Demographics
+mylogit <- glm(formula = CSTIVD ~ Age.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#BMI
+mylogit <- glm(formula = CSTIVD ~ BMI.under.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = CSTIVD ~ BMI.over.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Ethnicity 
+mylogit <- glm(formula = CSTIVD ~ Ethnicity.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Frequency of Tampon Use
+mylogit <- glm(formula = CSTIVD ~ Tampon.Use.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Cat. for number of sexual partners in the last year
+mylogit <- glm(formula = CSTIVD ~ Number.partners.in.past.year.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Frequency of Oral Sex
+mylogit <- glm(formula = CSTIVD ~ Freq.oral.sex.cat, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#Substance use
+mylogit <- glm(formula = CSTIVD ~ Substance.Use, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)

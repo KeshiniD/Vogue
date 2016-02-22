@@ -5,7 +5,7 @@ BMIcat2	17.1
 BMIcat3	17.65							
 Ethnicitycat2	-17.4675							
 Ethnicitycat3	0.4055							
-BV..number.of.episodes.2.months.	-18.5333							
+(CSTI)BV..number.of.episodes.2.months.	-18.5333							
 BV..number.of.episodes.lifetime.	-0.006391							
 BV..number.of.episodes.year.	-0.1445							
 Yeast..2months.	0.6581							

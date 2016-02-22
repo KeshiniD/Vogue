@@ -1,7 +1,7 @@
 Variables	Estimate
-contraception.H1	2.0149
-BV..number.of.episodes.2.months.	1.2986
-contraception.B.M1	2.1401
+(CSTIVC)contraception.H1	2.0149
+(CSTIVC)BV..number.of.episodes.2.months.	1.2986
+(CSTIVC)contraception.B.M1	2.1401
 BV..number.of.episodes.year.	0.3121
 Yeast..year.	0.09873
 Yeast..lifetime.	0.0623
@@ -47,7 +47,7 @@ contraception.C.IUD1	-15.4675
 Freq.oral.sexcat2	18.57
 Number.partners.in.past.yearcat1	16.47
 Number.partners.in.past.yearcat2	16.87
-contraception.none1	-19.2784
+(CSTIVC)contraception.none1	-19.2784
 Feminine.products1	-17.6498
 Feminine.products.48hrs1	-17.5852
 Freq.oral.sexcat1	16.96
