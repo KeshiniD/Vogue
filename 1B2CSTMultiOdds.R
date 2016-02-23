@@ -145,6 +145,37 @@ mylogit <- glm(formula = CST_NL ~ BV..number.of.episodes.2.months. + Contracepti
 summary(mylogit)
 
 ###########################################################################
-#Feb-21-16
-#multivariate based on fishers
+#Feb-22-16
+#multivariate based on fishers and t-test
+total <- read.csv(file.path("1B2metabac_condensedv2.csv"))
+#remove random columns
+total$X  <-  NULL
+total$X.1  <-  NULL
+total$X.2  <-  NULL
+total$X.3  <-  NULL
+
+#significant based on p<0.1
+#CSTI #only one variables w=significant
+
+#CSTIII
+mylogit <- glm(formula = CSTIII ~ BV..number.of.episodes.2.months. + 
+                 Abnormal.discharge.48hrs, data=total, family = binomial(link = "logit"))
+summary(mylogit) 
+
+#CSTIVA
+mylogit <- glm(formula = CSTIVA ~ Yeast..lifetime. + Abnormal.odor.2wks + 
+                 Abnormal.odor.48hrs, data=total, family = binomial(link = "logit"))
+summary(mylogit)
+
+#CSTIVC
+mylogit <- glm(formula = CSTIVC ~ Contraception.none + BV..number.of.episodes.2.months. + 
+                 contraception.H + contraception.B.M, data=total, family = binomial(link = "logit"))
+summary(mylogit)
+
+#CSTIVD
+mylogit <- glm(formula = CSTIVD ~ Yeast..2months. + Yeast..year. + 
+                 Number.partners.in.past.year.cat, data=total, family = binomial(link = "logit"))
+summary(mylogit)
+
+
 

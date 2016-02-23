@@ -58,19 +58,19 @@ CSTIVD <- read.delim(file.path("CSTIVD_uni.txt"))
 
 #select significant variables
 #select significant variables
-CSTI <- CSTI[ which(CSTI$Variables=='(CSTI)BV..number.of.episodes.2.months.'),]
-CSTIII <- CSTIII[ which(CSTIII$Variables=='(CSTIII)BV..number.of.episodes.2.months.'
-                        | CSTIII$Variables=='(CSTIII)Abnormal.discharge.48hrs1'),]
-CSTIVA <- CSTIVA[ which(CSTIVA$Variables=='(CSTIVA)Yeast..lifetime.'
-                        | CSTIVA$Variables=='(CSTIVA)Abnormal.odor.48hrs1'
-                        | CSTIVA$Variables=='(CSTIVA)Abnormal.odor.2wks1'),]
-CSTIVC <- CSTIVC[ which(CSTIVC$Variables=='(CSTIVC)contraception.none1'
-                        | CSTIVC$Variables=='(CSTIVC)BV..number.of.episodes.2.months.'
-                        | CSTIVC$Variables=='(CSTIVC)contraception.H1'
-                        | CSTIVC$Variables=='(CSTIVC)contraception.B.M1'),]
-CSTIVD <- CSTIVD[ which(CSTIVD$Variables=='(CSTIVD)Yeast..2months.'
-                        | CSTIVD$Variables=='(CSTIVD)Yeast..year.'
-                        | CSTIVD$Variables=='(CSTIVD)Number.partners.in.past.yearcat1'),]
+CSTI <- CSTI[ which(CSTI$Variables=='(CSTI)BV.number.of.episodes.2.months.'),]
+CSTIII <- CSTIII[ which(CSTIII$Variables=='(CSTIII)BV.number.of.episodes.2.months.'
+                        | CSTIII$Variables=='(CSTIII)Abnormal.discharge.48hrs'),]
+CSTIVA <- CSTIVA[ which(CSTIVA$Variables=='(CSTIVA)Yeast.number.of.episodes.lifetime.'
+                        | CSTIVA$Variables=='(CSTIVA)Abnormal.odor.48hrs'
+                        | CSTIVA$Variables=='(CSTIVA)Abnormal.odor.2wks'),]
+CSTIVC <- CSTIVC[ which(CSTIVC$Variables=='(CSTIVC)Contraception.none'
+                        | CSTIVC$Variables=='(CSTIVC)BV.number.of.episodes.2.months.'
+                        | CSTIVC$Variables=='(CSTIVC)Contraception.Hormonal'
+                        | CSTIVC$Variables=='(CSTIVC)Contraception.Barrier.Male'),]
+CSTIVD <- CSTIVD[ which(CSTIVD$Variables=='(CSTIVD)Yeast.number.episodes.2.months.'
+                        | CSTIVD$Variables=='(CSTIVD)Yeast.number.of.episodes.year.'
+                        | CSTIVD$Variables=='(CSTIVD)Number.partners.in.past.year'),]
 
 #merge CSTs
 zz<-join(CSTI, CSTIII, type="full")
@@ -85,6 +85,9 @@ ggplot(CST,aes(Variables,Estimate,label="",hjust=hjust))+
   geom_bar(stat="identity",position="identity",aes(fill = colour))+
   scale_fill_manual(values=c(positive="firebrick1",negative="steelblue")) + 
   coord_flip() + xlab("Variables") + ylab("Odds Ratio (log)") + 
-  ggtitle("CST Univariate Logistic Regression")
+  ggtitle("CST Univariate Logistic Regression") + 
+  theme(plot.title = element_text(size=22), 
+        axis.title = element_text(size=16,face="bold"), 
+        axis.text = element_text(size=14, face="bold"))
 
 

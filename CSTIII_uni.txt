@@ -1,11 +1,11 @@
 Variables	Estimate
-(CSTIII)Abnormal.discharge.48hrs1	-2.4159
+(CSTIII)Abnormal.discharge.48hrs	-2.4159
 UTI.ever1	-2.2336
 smoking.current1	2.2513
 BMIcat2	-2.1595
 Pregnancycat1	1.5404
 BMIcat3	-2.4849
-(CSTIII)BV..number.of.episodes.2.months.	-1.4033
+(CSTIII)BV.number.of.episodes.2.months.	-1.4033
 contraception.none1	1.3863
 Symptom.pain1	-1.2321
 Substance.Use2 	-1.39E+00

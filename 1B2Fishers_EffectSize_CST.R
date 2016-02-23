@@ -1316,3 +1316,11 @@ assocstats(a)
 
 a <- xtabs(~CSTIVD + Yeast..year., data = total)
 assocstats(a)
+
+
+#########################################################################
+#Feb-23-16
+#Effect size for the multivariate analyses
+a <- xtabs(~CSTIII + BV..number.of.episodes.2.months. + Abnormal.discharge.48hrs, data = total)
+assocstats(a)
+#works; can apply if need it
