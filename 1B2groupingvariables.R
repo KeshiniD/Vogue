@@ -402,7 +402,7 @@ write.csv(total, "1B2metabac_condensed.csv")
 #call for data
 data <- read.csv(file = "1B2metabac_condensed.csv")
 
-r###########
+############
 #Age
 #combine 30-39 with 40+
 data$Age.cat[data$Age.cat > 3] <- "3" #reassinging 40+ to 30s cat
