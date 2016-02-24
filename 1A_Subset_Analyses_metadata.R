@@ -241,9 +241,9 @@ total$Contraception.none <- factor(total$Contraception.none)
 ###########################################
 
 #Use of condoms in last 48 hours
-total$condoms.48h <- ifelse(total$Vaginal.intercourse.in.past.48.hours..y.1..n.0. == '1' &
-                              total$contraception.B.M == '1', 
-                            c("1"), c("0")) 
+total$condoms.48h <- ifelse(total$vaginalintercourse48hr == '1' &
+                              total$Contraception.B.M == '1', 
+                            c("1"), c("2")) 
 #convert 48h.uses.condoms from character into factor
 total$condoms.48h <- factor(total$condoms.48h)
 ############################################
@@ -285,15 +285,15 @@ total$Tampon.Use.cat <- factor(total$Tampon.Use.cat)
 
 ##########################################################
 #Days since LMP
-total[,"days.since.LMP"]  <- c(26,12,23,20,14,"",0,18,20,9,"",1,19,7,12,12,
-                               "",99,14,8,9,19,20,9,18,13)
-#convert character into integer
-# yes-1, no-0
+finish <- as.Date(total$last_menst_per, format="%m/%e/%Y")
+start <- as.Date(total$date_study_entry, format="%m/%e/%Y")
+date_diff<-as.data.frame(abs(finish-start))
+total[,"days.since.LMP"] <- abs(finish-start)
+
+#convert to integer
 total$days.since.LMP <- as.integer(total$days.since.LMP)
 
 #bundle LMP and tampon use: tampons used in past month
-summary(total$Tampon.Use)
-total$days.since.LMP
 #menses within 30 days, do they use tampon every period (exclusively or partly)
 total$Tampon.use.1mth <- ifelse(total$days.since.LMP <30 & 
                                   total$tamponusage<=2, 
@@ -319,3 +319,6 @@ total$smoking.current <- ifelse(total$tobaccouse == '2',
 #convert Substance.Use from character into factor
 total$smoking.current <- factor(total$smoking.current)
 summary(total$smoking.current)
+
+#write to file
+write.csv(total, "1A_grouped.csv")
