@@ -321,4 +321,30 @@ total$smoking.current <- factor(total$smoking.current)
 summary(total$smoking.current)
 
 #write to file
+write.csv(total, "1A_grouped.csv") #made some edits
+
+#redo following cat. 
+#Genital Infections
+#cat there, just convert to factor
+total$UTI.ever <- factor(total$uti_infect)
+
+#convert Trich.ever from integer into factor
+total$Trich.ever <- factor(total$trich_infect) 
+
+#convert Genwarts.ever from integer into factor
+total$Condyloma.ever <- factor(total$condy_infect) 
+
+#convert GenHerpes.ever from integer into factor
+total$GenHerpes.ever <- factor(total$herpes_infect) 
+
+#convert Chlamydia.ever from integer into factor
+total$Chlamydia.ever <- factor(total$chlam_infect) 
+
+#convert Gonorrhea.ever from integer into factor
+total$Gonorrhea.ever <- factor(total$gonor_infect) 
+
+#convert Syphillis.ever from integer into factor
+total$Syphillis.ever <- factor(total$syph_infect) 
+
+#rewrite to file
 write.csv(total, "1A_grouped.csv")
