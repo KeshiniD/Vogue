@@ -1371,3 +1371,16 @@ t.test(BV..number.of.episodes.lifetime.~CSTIVD, data = total)
 t.test(Yeast..2months.~CSTIVD, data = total)
 t.test(Yeast..year.~CSTIVD, data = total)
 t.test(Yeast..lifetime.~CSTIVD, data = total)
+
+########################################################################
+#Feb-24-15
+#see if CST and Nugent association, there is none
+summary(total$BMI.cat)
+#combine overweight and obese
+attach(total)
+total$Nugent.score.cat[total$Nugent.score < 4] <- "3" #underweight
+total$Nugent.score.cat[total$Nugent.score >= 4 & total$Nugent.score <=6] <- "2" #normal weight
+total$Nugent.score.cat[total$Nugent.score > 6] <- "1" #overweight/obese
+detach(total)
+#convert BMI.cat from character into factor
+total$Nugent.score.cat <- factor(total$Nugent.score.cat) 

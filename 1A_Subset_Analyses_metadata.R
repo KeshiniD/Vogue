@@ -530,7 +530,7 @@ vmb2$Participants <- factor(vmb2$Participants,
 #plot
 ggplot(data = vmb2, aes(x = Participants, y = Species.Percentage, fill = Bacteria)) + 
   geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion") +
-  ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
+  ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Healthy-Asymptomatic Women") + 
   theme(axis.text.y = element_text(size=4), plot.title = element_text(size=18), 
         axis.title = element_text(size=18))  + 
   scale_fill_manual(values=jColors)
