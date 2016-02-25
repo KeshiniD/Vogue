@@ -108,6 +108,7 @@ fisher.test(a)
 
 a <- xtabs(~CSTI + Syphillis.ever , data = total)
 fisher.test(a)
+
 #meds
 a <- xtabs(~CSTI + antimicrodrug , data = total)
 fisher.test(a)
@@ -254,6 +255,7 @@ fisher.test(a)
 
 a <- xtabs(~CSTIII + Syphillis.ever , data = total)
 fisher.test(a)
+
 #meds
 a <- xtabs(~CSTIII + antimicrodrug , data = total)
 fisher.test(a)
@@ -367,145 +369,624 @@ t.test(yeast_life~CSTIII, data = total)
 ##############################################################################
 #CSTIVA
 #Demographics
-a <- xtabs(~CSTIII + Age.cat , data = total)
+a <- xtabs(~CSTIVA + Age.cat , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + BMI.under.cat , data = total)
+a <- xtabs(~CSTIVA + BMI.under.cat , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + BMI.over.cat , data = total)
+a <- xtabs(~CSTIVA + BMI.over.cat , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Ethnicity.cat , data = total)
+a <- xtabs(~CSTIVA + Ethnicity.cat , data = total)
 fisher.test(a)
 
 #genital infections
-a <- xtabs(~CSTIII + UTI.ever , data = total)
+a <- xtabs(~CSTIVA + UTI.ever , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Chlamydia.ever , data = total)
+a <- xtabs(~CSTIVA + Chlamydia.ever , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Condyloma.ever , data = total)
+a <- xtabs(~CSTIVA + Condyloma.ever , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Trich.ever , data = total)
+a <- xtabs(~CSTIVA + Trich.ever , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + GenHerpes.ever , data = total)
+a <- xtabs(~CSTIVA + GenHerpes.ever , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Gonorrhea.ever , data = total)
+a <- xtabs(~CSTIVA + Gonorrhea.ever , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Syphillis.ever , data = total)
+a <- xtabs(~CSTIVA + Syphillis.ever , data = total)
 fisher.test(a)
 #meds
-a <- xtabs(~CSTIII + antimicrodrug , data = total)
+a <- xtabs(~CSTIVA + antimicrodrug , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + rxdrug , data = total)
+a <- xtabs(~CSTIVA + rxdrug , data = total)
 fisher.test(a)
 
 #symptoms
-a <- xtabs(~CSTIII + Presence.Symptoms.2wks , data = total)
+a <- xtabs(~CSTIVA + Presence.Symptoms.2wks , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + abnormaldischarge2wk , data = total)
+a <- xtabs(~CSTIVA + abnormaldischarge2wk , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + abnormalodor2wk , data = total)
+a <- xtabs(~CSTIVA + abnormalodor2wk , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + irritationdiscomfort2wk , data = total)
+a <- xtabs(~CSTIVA + irritationdiscomfort2wk , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + vaginalsymptomother2wk , data = total)
+a <- xtabs(~CSTIVA + vaginalsymptomother2wk , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Presence.Symptoms.48hrs , data = total)
+a <- xtabs(~CSTIVA + Presence.Symptoms.48hrs , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + abnormaldischarge48 , data = total)
+a <- xtabs(~CSTIVA + abnormaldischarge48 , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + abnormalodor48 , data = total)
+a <- xtabs(~CSTIVA + abnormalodor48 , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + irritationdiscomfort48 , data = total)
+a <- xtabs(~CSTIVA + irritationdiscomfort48 , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + vaginalsymptomother48 , data = total)
+a <- xtabs(~CSTIVA + vaginalsymptomother48 , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Symptom.pain , data = total)
+a <- xtabs(~CSTIVA + Symptom.pain , data = total)
 fisher.test(a)
 
 #Sexual Activity
-a <- xtabs(~CSTIII + vaginalintercourse48hr , data = total)
+a <- xtabs(~CSTIVA + vaginalintercourse48hr , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + oralsxfrequency.cat , data = total)
+a <- xtabs(~CSTIVA + oralsxfrequency.cat , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + analsxfrequency.cat , data = total)
+a <- xtabs(~CSTIVA + analsxfrequency.cat , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + sextoyfrequency.cat , data = total)
+a <- xtabs(~CSTIVA + sextoyfrequency.cat , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + sexpartner1yr.cat , data = total)
+a <- xtabs(~CSTIVA + sexpartner1yr.cat , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Contraception.H , data = total)
+a <- xtabs(~CSTIVA + Contraception.H , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Contraception.B.M , data = total)
+a <- xtabs(~CSTIVA + Contraception.B.M , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Contraception.IUD , data = total)
+a <- xtabs(~CSTIVA + Contraception.IUD , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Contraception.none , data = total)
+a <- xtabs(~CSTIVA + Contraception.none , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + condoms.48h , data = total)
+a <- xtabs(~CSTIVA + condoms.48h , data = total)
 fisher.test(a)
 
 #Pregnancy
-a <- xtabs(~CSTIII + Pregnancy.cat , data = total)
+a <- xtabs(~CSTIVA + Pregnancy.cat , data = total)
 fisher.test(a)
 
 #Product use
-a <- xtabs(~CSTIII + Feminine.products , data = total)
+a <- xtabs(~CSTIVA + Feminine.products , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Feminine.products.48hrs , data = total)
+a <- xtabs(~CSTIVA + Feminine.products.48hrs , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Tampon.Use.cat , data = total)
+a <- xtabs(~CSTIVA + Tampon.Use.cat , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + Tampon.use.1mth , data = total)
+a <- xtabs(~CSTIVA + Tampon.use.1mth , data = total)
 fisher.test(a)
 
 #substance use
-a <- xtabs(~CSTIII + substance_use_yn , data = total)
+a <- xtabs(~CSTIVA + substance_use_yn , data = total)
 fisher.test(a)
 
-a <- xtabs(~CSTIII + smoking.current , data = total)
+a <- xtabs(~CSTIVA + smoking.current , data = total)
 fisher.test(a)
 
 #######
 #t-test (since 2 groups, if it was 2+ then ANOVA) for BV and Yeast episodes
 
-#CSTIII
+#CSTIVA
 #BV episodes
-t.test(bv_infecttotal_2mo~CSTIII, data = total)
-t.test(bv_infecttotal_1yr~CSTIII, data = total)
-t.test(bv_life~CSTIII, data = total)
+t.test(bv_infecttotal_2mo~CSTIVA, data = total)
+t.test(bv_infecttotal_1yr~CSTIVA, data = total)
+t.test(bv_life~CSTIVA, data = total)
 
 #Yeast episodes
-t.test(yeast_infecttotal_2mo~CSTIII, data = total)
-t.test(yeast_infecttotal_1yr~CSTIII, data = total)
-t.test(yeast_life~CSTIII, data = total)
+t.test(yeast_infecttotal_2mo~CSTIVA, data = total)
+t.test(yeast_infecttotal_1yr~CSTIVA, data = total)
+t.test(yeast_life~CSTIVA, data = total)
+##############################################################################
+#CSTIVC
+#Demographics
+a <- xtabs(~CSTIVC + Age.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + BMI.under.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + BMI.over.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Ethnicity.cat , data = total)
+fisher.test(a)
+
+#genital infections
+a <- xtabs(~CSTIVC + UTI.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Chlamydia.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Condyloma.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Trich.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + GenHerpes.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Gonorrhea.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Syphillis.ever , data = total)
+fisher.test(a)
+
+#meds
+a <- xtabs(~CSTIVC + antimicrodrug , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + rxdrug , data = total)
+fisher.test(a)
+
+#symptoms
+a <- xtabs(~CSTIVC + Presence.Symptoms.2wks , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + abnormaldischarge2wk , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + abnormalodor2wk , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + irritationdiscomfort2wk , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + vaginalsymptomother2wk , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Presence.Symptoms.48hrs , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + abnormaldischarge48 , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + abnormalodor48 , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + irritationdiscomfort48 , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + vaginalsymptomother48 , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Symptom.pain , data = total)
+fisher.test(a)
+
+#Sexual Activity
+a <- xtabs(~CSTIVC + vaginalintercourse48hr , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + oralsxfrequency.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + analsxfrequency.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + sextoyfrequency.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + sexpartner1yr.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Contraception.H , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Contraception.B.M , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Contraception.IUD , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Contraception.none , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + condoms.48h , data = total)
+fisher.test(a)
+
+#Pregnancy
+a <- xtabs(~CSTIVC + Pregnancy.cat , data = total)
+fisher.test(a)
+
+#Product use
+a <- xtabs(~CSTIVC + Feminine.products , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Feminine.products.48hrs , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Tampon.Use.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Tampon.use.1mth , data = total)
+fisher.test(a)
+
+#substance use
+a <- xtabs(~CSTIVC + substance_use_yn , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + smoking.current , data = total)
+fisher.test(a)
+
+#######
+#t-test (since 2 groups, if it was 2+ then ANOVA) for BV and Yeast episodes
+
+#CSTIVC
+#BV episodes
+t.test(bv_infecttotal_2mo~CSTIVC, data = total)
+t.test(bv_infecttotal_1yr~CSTIVC, data = total)
+t.test(bv_life~CSTIVC, data = total)
+
+#Yeast episodes
+t.test(yeast_infecttotal_2mo~CSTIVC, data = total)
+t.test(yeast_infecttotal_1yr~CSTIVC, data = total)
+t.test(yeast_life~CSTIVC, data = total)
+###############################################################################
+#CSTIVD
+#Demographics
+a <- xtabs(~CSTIVD + Age.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + BMI.under.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + BMI.over.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Ethnicity.cat , data = total)
+fisher.test(a)
+
+#genital infections
+a <- xtabs(~CSTIVD + UTI.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Chlamydia.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Condyloma.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Trich.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + GenHerpes.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Gonorrhea.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Syphillis.ever , data = total)
+fisher.test(a)
+#meds
+a <- xtabs(~CSTIVD + antimicrodrug , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + rxdrug , data = total)
+fisher.test(a)
+
+#symptoms
+a <- xtabs(~CSTIVD + Presence.Symptoms.2wks , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + abnormaldischarge2wk , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + abnormalodor2wk , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + irritationdiscomfort2wk , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + vaginalsymptomother2wk , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Presence.Symptoms.48hrs , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + abnormaldischarge48 , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + abnormalodor48 , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + irritationdiscomfort48 , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + vaginalsymptomother48 , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Symptom.pain , data = total)
+fisher.test(a)
+
+#Sexual Activity
+a <- xtabs(~CSTIVD + vaginalintercourse48hr , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + oralsxfrequency.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + analsxfrequency.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + sextoyfrequency.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + sexpartner1yr.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Contraception.H , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Contraception.B.M , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Contraception.IUD , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Contraception.none , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + condoms.48h , data = total)
+fisher.test(a)
+
+#Pregnancy
+a <- xtabs(~CSTIVD + Pregnancy.cat , data = total)
+fisher.test(a)
+
+#Product use
+a <- xtabs(~CSTIVD + Feminine.products , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Feminine.products.48hrs , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Tampon.Use.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + Tampon.use.1mth , data = total)
+fisher.test(a)
+
+#substance use
+a <- xtabs(~CSTIVD + substance_use_yn , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVD + smoking.current , data = total)
+fisher.test(a)
+
+#######
+#t-test (since 2 groups, if it was 2+ then ANOVA) for BV and Yeast episodes
+
+#CSTIVD
+#BV episodes
+t.test(bv_infecttotal_2mo~CSTIVD, data = total)
+t.test(bv_infecttotal_1yr~CSTIVD, data = total)
+t.test(bv_life~CSTIVD, data = total)
+
+#Yeast episodes
+t.test(yeast_infecttotal_2mo~CSTIVD, data = total)
+t.test(yeast_infecttotal_1yr~CSTIVD, data = total)
+t.test(yeast_life~CSTIVD, data = total)
+################################################################################
+#CSTV
+#Demographics
+a <- xtabs(~CSTV + Age.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + BMI.under.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + BMI.over.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Ethnicity.cat , data = total)
+fisher.test(a)
+
+#genital infections
+a <- xtabs(~CSTV + UTI.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Chlamydia.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Condyloma.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Trich.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + GenHerpes.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Gonorrhea.ever , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Syphillis.ever , data = total)
+fisher.test(a)
+
+#meds
+a <- xtabs(~CSTV + antimicrodrug , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + rxdrug , data = total)
+fisher.test(a)
+
+#symptoms
+a <- xtabs(~CSTV + Presence.Symptoms.2wks , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + abnormaldischarge2wk , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + abnormalodor2wk , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + irritationdiscomfort2wk , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + vaginalsymptomother2wk , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Presence.Symptoms.48hrs , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + abnormaldischarge48 , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + abnormalodor48 , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + irritationdiscomfort48 , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + vaginalsymptomother48 , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Symptom.pain , data = total)
+fisher.test(a)
+
+#Sexual Activity
+a <- xtabs(~CSTV + vaginalintercourse48hr , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + oralsxfrequency.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + analsxfrequency.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + sextoyfrequency.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + sexpartner1yr.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Contraception.H , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Contraception.B.M , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Contraception.IUD , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Contraception.none , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + condoms.48h , data = total)
+fisher.test(a)
+
+#Pregnancy
+a <- xtabs(~CSTV + Pregnancy.cat , data = total)
+fisher.test(a)
+
+#Product use
+a <- xtabs(~CSTV + Feminine.products , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Feminine.products.48hrs , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Tampon.Use.cat , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + Tampon.use.1mth , data = total)
+fisher.test(a)
+
+#substance use
+a <- xtabs(~CSTV + substance_use_yn , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTV + smoking.current , data = total)
+fisher.test(a)
+
+#######
+#t-test (since 2 groups, if it was 2+ then ANOVA) for BV and Yeast episodes
+
+#CSTV
+#BV episodes
+t.test(bv_infecttotal_2mo~CSTV, data = total)
+t.test(bv_infecttotal_1yr~CSTV, data = total)
+t.test(bv_life~CSTV, data = total)
+
+#Yeast episodes
+t.test(yeast_infecttotal_2mo~CSTV, data = total)
+t.test(yeast_infecttotal_1yr~CSTV, data = total)
+t.test(yeast_life~CSTV, data = total)
+
+###################################################################################
+#adjust p-values; Benjamini Hochburg
+pvals <- read.csv(file = "clipboard") #copied from excel
+pvals
+
+a <- p.adjust(pvals$P.Value, method = 'hochberg', n = 104)
+View(a)
+
+####
+#four variables significant; none in same cat so no multivariate
+mylogit <- glm(formula = CSTIVA ~ bv_life, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = CSTI ~ nugent_score, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = CSTIVC ~ nugent_score_result, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = CSTIVD ~ nugent_score_result, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#######################################################################################
+#UniPlot Odds
+CST<- read.csv(file="1A_Uni.csv")
+
+#PLOT
+CST$colour <- ifelse(CST$Estimate < 0, "negative","positive")
+CST$hjust <- ifelse(CST$Estimate > 0, 1.3, -0.3)
+ggplot(CST,aes(Variables,Estimate,label="",hjust=hjust))+
+  geom_bar(stat="identity",position="identity",aes(fill = colour))+
+  scale_fill_manual(values=c(positive="firebrick1",negative="steelblue")) + 
+  coord_flip() + xlab("Variables") + ylab("Odds Ratio (log)") + 
+  ggtitle("CST Univariate Logistic Regression") + 
+  theme(plot.title = element_text(size=22), 
+        axis.title = element_text(size=16,face="bold"), 
+        axis.text = element_text(size=14, face="bold"))
