@@ -277,7 +277,7 @@ summary(total$Feminine.products.48hrs)
 
 #Frequency of Tampon Use
 #create categories (never-ever cats)
-total$Tampon.Use.cat <- ifelse(total$tamponusage == '4', 
+total$Tampon.Use.cat <- ifelse(total$tamponusage == '1', 
                                         c("2"), c("1")) 
 
 #convert Tampon.Use.cat from character into factor
@@ -296,7 +296,7 @@ total$days.since.LMP <- as.integer(total$days.since.LMP)
 #bundle LMP and tampon use: tampons used in past month
 #menses within 30 days, do they use tampon every period (exclusively or partly)
 total$Tampon.use.1mth <- ifelse(total$days.since.LMP <30 & 
-                                  total$tamponusage<=2, 
+                                  total$tamponusage >= 3, 
                                 c("1"), c("2")) 
 
 #convert Tampon.use.1mth from character into factor
@@ -346,5 +346,192 @@ total$Gonorrhea.ever <- factor(total$gonor_infect)
 #convert Syphillis.ever from integer into factor
 total$Syphillis.ever <- factor(total$syph_infect) 
 
+#add CST cats. 
+#selected participants needed 
+dean <- read.csv("../Vogue/1A.csv")
+nums <- substring(total$study_id, 13)
+ids <- paste0("Vogue1A.01.", nums)
+total2 <- dean[which(dean$Study.ID %in% ids), ]
+
+#omit antimicrobial column and merge two datasets, total and total2
+total2 <- total2 %>% 
+  select(Study.ID, CST)
+
+total2 <- dplyr::rename(total2, study_id = Study.ID)
+
+total<-join(total, total2, type="full")
+###
+
+#rewrite to file
+#write.csv(total, "1A_grouped.csv")
+
+#Descriptive Characteristics
+total <- read.csv(file="1A_grouped.csv")
+
+#make appropriate cats into factor
+total$Ethnicity.cat <- factor(total$Ethnicity.cat)
+total$maritalstatus <- factor(total$maritalstatus)
+total$educationlevel <- factor(total$educationlevel)
+total$Pregnancy.cat <- factor(total$Pregnancy.cat)
+total$contramethnone___1 <- factor(total$contramethnone___1)
+total$contramethhormonal___1 <- factor(total$contramethhormonal___1)
+total$contramethbarriermc___1 <- factor(total$contramethbarriermc___1)
+total$contramethnotactive___1 <- factor(total$contramethnotactive___1)
+total$abnormalodor2wk <- factor(total$abnormalodor2wk)
+total$abnormaldischarge2wk <- factor(total$abnormaldischarge2wk)
+total$irritationdiscomfort2wk <- factor(total$irritationdiscomfort2wk)
+total$vagintercoursediscomfort <- factor(total$vagintercoursediscomfort)
+total$vaginalsymptomother2wk <- factor(total$vaginalsymptomother2wk)
+total$antimicrodrug <- factor(total$antimicrodrug)
+total$rxdrug <- factor(total$rxdrug)
+total$medical_condition <- factor(total$medical_condition)
+total$menstrualcycle <- factor(total$menstrualcycle)
+total$tamponusage <- factor(total$tamponusage)
+total$doucheproducts <- factor(total$doucheproducts)
+total$deodorantproducts <- factor(total$deodorantproducts)
+total$substance_use_yn <- factor(total$substance_use_yn)
+total$alcoholcurrent <- factor(total$alcoholcurrent)
+total$tobaccouse <- factor(total$tobaccouse)
+total$sexpartner <- factor(total$sexpartner)
+total$vaginalintercourse48hr <- factor(total$vaginalintercourse48hr)
+total$oralsxfrequency <- factor(total$oralsxfrequency)
+total$analsxfrequency <- factor(total$analsxfrequency)
+total$sextoyfrequency <- factor(total$sextoyfrequency)
+total$UTI.ever <- factor(total$uti_infect)
+total$Trich.ever <- factor(total$trich_infect) 
+total$Condyloma.ever <- factor(total$condy_infect) 
+total$GenHerpes.ever <- factor(total$herpes_infect) 
+total$Chlamydia.ever <- factor(total$chlam_infect) 
+total$Gonorrhea.ever <- factor(total$gonor_infect) 
+total$Syphillis.ever <- factor(total$syph_infect)
+total$nugent_score_result <- factor(total$nugent_score_result)
+total$CST <- factor(total$CST)
+
+### DEAN CHANGE TOTAL STUDY_ID
+
+#deantotal <- total
+total$study_id <-
+  paste0("Vogue1A.01.",
+         substring(total$study_id, nchar("Vogue 1A 01-")+1))
+#merge above
+###
+
+#make new CST.cats
+#add new categories
+#CSTI (yes-1, no-2)
+total$CSTI <- ifelse(total$CST == 'I', 
+                     c("1"), c("2")) 
+#convert CSTI from character into factor
+total$CSTI <- factor(total$CSTI)
+
+#CSTIII (yes-1, no-2)
+total$CSTIII <- ifelse(total$CST == 'III', 
+                       c("1"), c("2")) 
+#convert CSTIII from character into factor
+total$CSTIII <- factor(total$CSTIII)
+
+#CSTIVA (yes-1, no-2)
+total$CSTIVA <- ifelse(total$CST == 'IVA', 
+                       c("1"), c("2")) 
+#convert CSTIVA from character into factor
+total$CSTIVA <- factor(total$CSTIVA)
+
+#CSTIVC (yes-1, no-2)
+total$CSTIVC <- ifelse(total$CST == 'IVC', 
+                       c("1"), c("2")) 
+#convert CSTIVC from character into factor
+total$CSTIVC <- factor(total$CSTIVC)
+
+#CSTIVD (yes-1, no-2)
+total$CSTIVD <- ifelse(total$CST == 'IVD', 
+                       c("1"), c("2")) 
+#convert CSTI from character into factor
+total$CSTIVD <- factor(total$CSTIVD)
+
+#CSTV (yes-1, no-2)
+total$CSTV <- ifelse(total$CST == 'V', 
+                       c("1"), c("2")) 
+#convert CSTV from character into factor
+total$CSTV <- factor(total$CSTV)
+
 #rewrite to file
 write.csv(total, "1A_grouped.csv")
+
+#Bac Profiles
+#load dataset
+data <- read.csv(file.path("data1A_1B2.csv"))
+
+#selected participants needed 
+dean <- read.csv(file.path("data1A_1B2.csv"))
+nums <- substring(total$study_id, 12)
+ids <- paste0("Vogue1A.01.", nums)
+data2 <- dean[, which(colnames(dean) %in% c(ids, "Bacterial.Species"))]
+
+#quick and dirty to get table into format i wanted
+t <- t(data2)
+t <- as.data.frame(t)
+#write.csv(t, file = "r.csv") #edit in excel
+data2 <- read.csv(file="r.csv")
+#
+#gather bacteria and counts into columns
+data4 <-
+  gather(data2, key = 'Bacteria', value = 'Counts', Actinobacteria.sp., 
+      Alloscardovia.omnicolens, Atopobium.vaginae, Bifidobacterium.breve, 
+      Clostridia.sp..BVAB2, Clostridium.genomosp..BVAB3, Enterococcus.rattus, 
+      Escherichia.coli, Eukaryote, Gardnerella.vaginalis.Group.A, 
+      Gardnerella.vaginalis.Group.B, Gardnerella.vaginalis.Group.C, 
+      Gardnerella.vaginalis.Group.D, Klebsiella.pneumoniae, Lactobacillus.crispatus,
+      Lactobacillus.gasseri, Lactobacillus.iners, Lactobacillus.jensenii, 
+      Megasphaera.sp..genomosp..type.1, Other.Actinobacteria, Other.Bacteria, 
+      Other.Bacteroidetes, Other.Bifidobacterium, Other.Clostridium, 
+      Other.Firmicutes, Other.Lactobacillus, Other.Prevotella, Other.Proteobacteria, 
+      Other.Streptococcus, Porphyromonas.uenonis, Prevotella.amnii, 
+      Prevotella.timonensis, Pseudomonas.putida, Streptococcus.devriesei,
+      Variovorax.paradoxus)
+         
+vmb <- tbl_df(data4) %>% # finally got the percentages correct
+  group_by(Participants) %>%
+  select(Participants, Bacteria, Counts) %>%
+  mutate(Species.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
+  arrange(Participants)
+
+#bar plot with custom colors
+jColors <- c('purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
+             'gray33', 'gray', 'mediumvioletred','green3', 'forestgreen', 'palegreen', 
+             'green', 'darkgoldenrod1', 'blue', 'deepskyblue3', 'cornflowerblue', 
+             'deepskyblue', 'black', 'olivedrab2', 'orange3', 'tomato', 'lightsalmon', 
+             'slateblue', 'turquoise', 'lavender', 'rosybrown2', 'deeppink', 'tan', 
+             'snow', 'slategray1', 'purple2', 'burlywood2', 'sienna', 'salmon')
+
+ggplot(data = vmb, aes(x = Participants, y = Species.Percentage, fill = Bacteria)) + 
+  geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion") +
+  ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
+  theme(axis.text.y = element_text(size=4), plot.title = element_text(size=18), 
+        axis.title = element_text(size=18))  + 
+  scale_fill_manual(values=jColors)
+
+#added CSTs to Bac.Species table; try to organize plot by CST
+total2 <- dplyr::rename(total2, Participants = study_id)
+dt<-join(vmb, total2, type="full")
+
+vmb2 <- tbl_df(dt) %>% # finally got the percentages correct
+  group_by(Participants) %>%
+  select(Participants, Bacteria, Counts, CST) %>%
+  mutate(Species.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
+  arrange(Participants)        
+
+vmb3 <- tbl_df(vmb2) %>% # but won't plot
+  arrange(CST)
+
+###################
+#DEAN ADDED; changed factor levels
+vmb2$Participants <- factor(vmb2$Participants, 
+                               levels = vmb2$Participants[order(vmb2$CST)])
+#plot
+ggplot(data = vmb2, aes(x = Participants, y = Species.Percentage, fill = Bacteria)) + 
+  geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion") +
+  ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
+  theme(axis.text.y = element_text(size=4), plot.title = element_text(size=18), 
+        axis.title = element_text(size=18))  + 
+  scale_fill_manual(values=jColors)
+
