@@ -58,23 +58,18 @@ CSTIVD <- read.delim(file.path("CSTIVD_uni.txt"))
 
 #select significant variables
 #select significant variables
-CSTI <- CSTI[ which(CSTI$Variables=='(CSTI)BV.number.of.episodes.2.months.'),]
-CSTIII <- CSTIII[ which(CSTIII$Variables=='(CSTIII)BV.number.of.episodes.2.months.'
-                        | CSTIII$Variables=='(CSTIII)Abnormal.discharge.48hrs'),]
-CSTIVA <- CSTIVA[ which(CSTIVA$Variables=='(CSTIVA)Yeast.number.of.episodes.lifetime.'
-                        | CSTIVA$Variables=='(CSTIVA)Abnormal.odor.48hrs'
+CSTIII <- CSTIII[ which(CSTIII$Variables=='(CSTIII)Abnormal.discharge.48hrs'),]
+CSTIVA <- CSTIVA[ which(CSTIVA$Variables=='(CSTIVA)Abnormal.odor.48hrs'
                         | CSTIVA$Variables=='(CSTIVA)Abnormal.odor.2wks'),]
 CSTIVC <- CSTIVC[ which(CSTIVC$Variables=='(CSTIVC)Contraception.none'
                         | CSTIVC$Variables=='(CSTIVC)BV.number.of.episodes.2.months.'
                         | CSTIVC$Variables=='(CSTIVC)Contraception.Hormonal'
-                        | CSTIVC$Variables=='(CSTIVC)Contraception.Barrier.Male'),]
-CSTIVD <- CSTIVD[ which(CSTIVD$Variables=='(CSTIVD)Yeast.number.episodes.2.months.'
-                        | CSTIVD$Variables=='(CSTIVD)Yeast.number.of.episodes.year.'
-                        | CSTIVD$Variables=='(CSTIVD)Number.partners.in.past.year'),]
+                        | CSTIVC$Variables=='(CSTIVC)Contraception.Barrier.Male'
+                        | CSTIVC$Variables=='(CSTIVC)BV.number.of.episodes.year.'),]
+CSTIVD <- CSTIVD[ which(CSTIVD$Variables=='(CSTIVD)Number.of.partners.in.past.year'),]
 
 #merge CSTs
-zz<-join(CSTI, CSTIII, type="full")
-zz <- join(zz, CSTIVA, type='full')
+zz<-join(CSTIII, CSTIVA, type="full")
 zz <- join(zz, CSTIVC, type='full')
 CST<-join(zz, CSTIVD, type="full")
 
