@@ -66,3 +66,34 @@ confint(mylogit)#confidence intervals
 
 #cannot convert glm into data.frame but use below to get data
 results_df <-summary.glm(mylogit)$coefficients #can write this to file
+
+##############################################################################
+#Feb-26-16
+#multivariate based on fishers and t-test
+total <- read.csv(file.path("1B2metabac_condensedv2.csv"))
+#remove random columns
+total$X  <-  NULL
+total$X.1  <-  NULL
+total$X.2  <-  NULL
+total$X.3  <-  NULL
+
+#significant based on p<0.1
+mylogit <- glm(formula = Shannon.s.Diversity ~ Chlamydia.ever + 
+                 Yeast..2months. + Antimicrobial.Use..y.1..n.0. + 
+                 Vaginal.intercourse.in.past.48.hours..y.1..n.0. + 
+                 Freq.sex.toy.use.cat, data=total, 
+               family = poisson(link = "log"))
+summary(mylogit)
+confint(mylogit)
+
+#####################################################################
+#Feb-26-16
+#plot for fisher's significant variables
+SD <- read.csv(file="SD_uni_Fishers.csv")
+
+SD$colour <- ifelse(SD$Estimate < 0, "negative","positive")
+SD$hjust <- ifelse(SD$Estimate > 0, 1.3, -0.3)
+ggplot(SD,aes(Variables,Estimate,label="",hjust=hjust))+
+  geom_bar(stat="identity",position="identity",aes(fill = colour))+
+  scale_fill_manual(values=c(positive="firebrick1",negative="steelblue")) + 
+  coord_flip() + xlab("Variables") + ylab("Odds Ratio (log)")
