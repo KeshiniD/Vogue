@@ -154,3 +154,12 @@ bac2 <-
          Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
          Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
          Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
+
+#####################################
+#Feb-26-16
+#trying to calculate dissimilarity of rarefaction curve
+beta <- vegdist(bac, binary=TRUE) 
+#bac being data.frame of bacteria species headers
+#participants rows and filled with counts
+mean(beta)
+#0.2785247
