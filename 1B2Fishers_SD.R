@@ -316,3 +316,17 @@ fisher.test(a)
 #Substance use
 a <- xtabs(~SD.cat + Substance.Use , data = total)
 fisher.test(a)
+
+##############################################################################
+#Feb-26-16
+#BV and Yeast episodes into a t-test
+#BV episodes
+t.test(BV..number.of.episodes.2.months.~SD.cat, data = total)
+t.test(BV..number.of.episodes.year.~SD.cat, data = total)
+t.test(BV..number.of.episodes.lifetime.~SD.cat, data = total)
+
+#Yeast episodes
+t.test(Yeast..2months.~SD.cat, data = total)
+t.test(Yeast..year.~SD.cat, data = total)
+t.test(Yeast..lifetime.~SD.cat, data = total)
+
