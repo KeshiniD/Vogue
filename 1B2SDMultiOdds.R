@@ -78,8 +78,7 @@ total$X.2  <-  NULL
 total$X.3  <-  NULL
 
 #significant based on p<0.1
-mylogit <- glm(formula = Shannon.s.Diversity ~ Chlamydia.ever + 
-                 Yeast..2months. + Antimicrobial.Use..y.1..n.0. + 
+mylogit <- glm(formula = Shannon.s.Diversity ~ Chlamydia.ever + Antimicrobial.Use..y.1..n.0. + 
                  Vaginal.intercourse.in.past.48.hours..y.1..n.0. + 
                  Freq.sex.toy.use.cat, data=total, 
                family = poisson(link = "log"))
