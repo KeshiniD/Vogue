@@ -248,10 +248,12 @@ total$condoms.48h <- ifelse(total$vaginalintercourse48hr == '1' &
 total$condoms.48h <- factor(total$condoms.48h)
 ############################################
 #Condense pregnancy into null vs multi
-# multi-1, null-0
+# multi->1, null-0
 total$pregnancyhistoryg
-total$Pregnancy.cat <- ifelse(total$pregnancyhistoryg > 1, 
-                              c("1"), c("0")) 
+total$Pregnancy.cat[total$pregnancyhistoryg <= 0] <- "0" # null
+total$Pregnancy.cat[total$pregnancyhistoryg <= 1 & total$pregnancyhistoryg >= 1] <- "1"#1 preg
+total$Pregnancy.cat[total$pregnancyhistoryg > 1] <- "2"#multi
+
 #convert Pregnancy.cat from character into factor
 total$Pregnancy.cat <- factor(total$Pregnancy.cat) 
 summary(total$Pregnancy.cat)

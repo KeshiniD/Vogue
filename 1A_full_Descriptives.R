@@ -206,3 +206,99 @@ c <-join(a2, b3, type="full")
 
 #write this to file
 #write.csv(c, "1A_1B2_compare.csv")
+#####################################################################################
+#Compare 1A and 1B2
+#load data set
+total <- read.csv(file = "1A_1B2_compare.csv")
+
+#convert to factor
+total$Antimicrobial.Use..y.1..n.0. <- factor(total$Antimicrobial.Use..y.1..n.0.)
+total$X.Non..Prescription..y.1..n.0. <- factor(total$X.Non..Prescription..y.1..n.0.)
+total$Vaginal.intercourse.in.past.48.hours..y.1..n.0. <- factor(total$Vaginal.intercourse.in.past.48.hours..y.1..n.0.)
+total$Freq.oral.sex.cat <- factor(total$Freq.oral.sex.cat)
+total$Freq.anal.sex.cat <- factor(total$Freq.anal.sex.cat)
+total$Freq.sex.toy.use.cat <- factor(total$Freq.sex.toy.use.cat)
+total$Abnormal.discharge.2wks <- factor(total$Abnormal.discharge.2wks)
+total$Abnormal.odor.2wks <- factor(total$Abnormal.odor.2wks)
+total$Irritation.Discomfort.2wks <- factor(total$Irritation.Discomfort.2wks)
+total$Other.Symptoms.2wks <- factor(total$Other.Symptoms.2wks)
+total$Abnormal.discharge.48hrs <- factor(total$Abnormal.discharge.48hrs)
+total$Abnormal.odor.48hrs <- factor(total$Abnormal.odor.48hrs)
+total$Irritation.Discomfort.48hrs <- factor(total$Irritation.Discomfort.48hrs)
+total$Other.Symptoms.48hrs <- factor(total$Other.Symptoms.48hrs)
+total$Genwarts.ever <- factor(total$Genwarts.ever)
+total$Number.partners.in.past.year.cat <- factor(total$Number.partners.in.past.year.cat)
+total$contraception.H <- factor(total$contraception.H)
+total$contraception.B.M <- factor(total$contraception.B.M)
+total$contraception.C.IUD <- factor(total$contraception.C.IUD)
+total$Substance.Use <- factor(total$Substance.Use)
+total$study_arm <- factor(total$study_arm)
+total$Ethnicity.cat <- factor(total$Ethnicity.cat)
+total$Tampon.Use.cat <- factor(total$Tampon.Use.cat)
+total$Presence.Symptoms.2wks <- factor(total$Presence.Symptoms.2wks)
+total$Presence.Symptoms.48hrs <- factor(total$Presence.Symptoms.48hrs)
+total$Chlamydia.ever <- factor(total$Chlamydia.ever)
+total$Contraception.none <- factor(total$Contraception.none)
+total$UTI.ever <- factor(total$UTI.ever)
+total$Trich.ever <- factor(total$Trich.ever)
+total$GenHerpes.ever <- factor(total$GenHerpes.ever)
+total$Pregnancy.cat <- factor(total$Pregnancy.cat)
+total$smoking.current <- factor(total$smoking.current)
+total$Symptom.pain <- factor(total$Symptom.pain)
+total$Tampon.use.1mth <- factor(total$Tampon.use.1mth)
+total$CST <- factor(total$CST)
+total$condoms.48h <- factor(total$condoms.48h)
+
+#continuous variables in glm
+#Age
+mylogit <- glm(formula = study_arm ~ Age, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+confint(mylogit)
+
+#BMI
+mylogit <- glm(formula = study_arm ~ Age, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+confint(mylogit)
+
+#BV..number.of.episodes.2.months.
+mylogit <- glm(formula = study_arm ~ Age, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+confint(mylogit)
+
+#BV..number.of.episodes.year.
+mylogit <- glm(formula = study_arm ~ Age, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+confint(mylogit)
+
+#BV..number.of.episodes.lifetime.
+mylogit <- glm(formula = study_arm ~ Age, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+confint(mylogit)
+
+#Yeast..2months.
+mylogit <- glm(formula = study_arm ~ Age, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+confint(mylogit)
+
+#Yeast..year.
+mylogit <- glm(formula = study_arm ~ Age, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+confint(mylogit)
+
+#Yeast..lifetime.
+mylogit <- glm(formula = study_arm ~ Age, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+confint(mylogit)
+
+
+#cat variables in fishers
+a <- xtabs(~SD.cat + Ethnicity.cat , data = total)
+fisher.test(a)
