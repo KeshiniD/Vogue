@@ -178,7 +178,8 @@ b3 <- b2 %>%
           Presence.Symptoms.2wks, Presence.Symptoms.48hrs, 
           Chlamydia.ever, Contraception.none, UTI.ever, Trich.ever, 
           GenHerpes.ever, Pregnancy.cat, 
-          smoking.current, Symptom.pain, Tampon.use.1mth, CST, condoms.48h)
+          smoking.current, Symptom.pain, Tampon.use.1mth, CST, condoms.48h, 
+          Feminine.products, Feminine.products.48hrs)
 
 ##subset 1B2 dataset
 a2 <- a %>%
@@ -199,7 +200,8 @@ a2 <- a %>%
           Presence.Symptoms.2wks, Presence.Symptoms.48hrs, 
           Chlamydia.ever, Contraception.none, UTI.ever, Trich.ever, 
           GenHerpes.ever, Pregnancy.cat, 
-          smoking.current, Symptom.pain, Tampon.use.1mth, CST, condoms.48h)
+          smoking.current, Symptom.pain, Tampon.use.1mth, CST, condoms.48h, 
+          Feminine.products, Feminine.products.48hrs)
 
 #merge a and b together
 c <-join(a2, b3, type="full")
@@ -248,8 +250,16 @@ total$Symptom.pain <- factor(total$Symptom.pain)
 total$Tampon.use.1mth <- factor(total$Tampon.use.1mth)
 total$CST <- factor(total$CST)
 total$condoms.48h <- factor(total$condoms.48h)
+total$Feminine.products <- factor(total$Feminine.products)
+total$Feminine.products.48hrs <- factor(total$Feminine.products.48hrs)
 
 #continuous variables in glm
+#Nugent score
+mylogit <- glm(formula = study_arm ~ Nugent.score, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+confint(mylogit)
+
 #Age
 mylogit <- glm(formula = study_arm ~ Age, data=total, 
                family = binomial(link = "logit"))
@@ -257,48 +267,99 @@ summary(mylogit)
 confint(mylogit)
 
 #BMI
-mylogit <- glm(formula = study_arm ~ Age, data=total, 
+mylogit <- glm(formula = study_arm ~ BMI, data=total, 
                family = binomial(link = "logit"))
 summary(mylogit)
 confint(mylogit)
 
 #BV..number.of.episodes.2.months.
-mylogit <- glm(formula = study_arm ~ Age, data=total, 
+mylogit <- glm(formula = study_arm ~ BV..number.of.episodes.2.months., data=total, 
                family = binomial(link = "logit"))
 summary(mylogit)
 confint(mylogit)
 
 #BV..number.of.episodes.year.
-mylogit <- glm(formula = study_arm ~ Age, data=total, 
+mylogit <- glm(formula = study_arm ~ BV..number.of.episodes.year., data=total, 
                family = binomial(link = "logit"))
 summary(mylogit)
 confint(mylogit)
 
 #BV..number.of.episodes.lifetime.
-mylogit <- glm(formula = study_arm ~ Age, data=total, 
+mylogit <- glm(formula = study_arm ~ BV..number.of.episodes.lifetime., data=total, 
                family = binomial(link = "logit"))
 summary(mylogit)
 confint(mylogit)
 
 #Yeast..2months.
-mylogit <- glm(formula = study_arm ~ Age, data=total, 
+mylogit <- glm(formula = study_arm ~ Yeast..2months., data=total, 
                family = binomial(link = "logit"))
 summary(mylogit)
 confint(mylogit)
 
 #Yeast..year.
-mylogit <- glm(formula = study_arm ~ Age, data=total, 
+mylogit <- glm(formula = study_arm ~ Yeast..year., data=total, 
                family = binomial(link = "logit"))
 summary(mylogit)
 confint(mylogit)
 
 #Yeast..lifetime.
-mylogit <- glm(formula = study_arm ~ Age, data=total, 
+mylogit <- glm(formula = study_arm ~ Yeast..lifetime., data=total, 
                family = binomial(link = "logit"))
 summary(mylogit)
 confint(mylogit)
 
 
 #cat variables in fishers
-a <- xtabs(~SD.cat + Ethnicity.cat , data = total)
+#CST
+a <- xtabs(~study_arm + CST , data = total)
 fisher.test(a)
+
+#Ethnicity.cat
+#Antimicrobial.Use..y.1..n.0.
+#X.Non..Prescription..y.1..n.0.
+
+#Symptoms
+#Presence.Symptoms.2wks
+#Abnormal.discharge.2wks
+#Abnormal.odor.2wks
+#Irritation.Discomfort.2wks
+#Other.Symptoms.2wks
+#Presence.Symptoms.48hrs
+#Abnormal.discharge.48hrs
+#Abnormal.odor.48hrs
+#Irritation.Discomfort.48hrs
+#Other.Symptoms.48hrs
+#Symptom.pain
+
+#Sexual Activity
+#Vaginal.intercourse.in.past.48.hours..y.1..n.0.
+#Freq.oral.sex.cat
+#Freq.anal.sex.cat
+#Freq.sex.toy.use.cat
+#Number.partners.in.past.year.cat
+#Contraception.none
+
+#Genital Infection History
+#Genwarts.ever
+#Chlamydia.ever
+#UTI.ever
+#Trich.ever
+#GenHerpes.ever
+
+#Contraception
+#contraception.H
+#contraception.B.M
+#contraception.C.IUD
+#condoms.48h
+#Pregnancy.cat
+
+#Product use
+#Feminine.products
+#Feminine.products.48hrs
+#Tampon.Use.cat
+#Tampon.use.1mth
+
+#Substance use
+#smoking.current
+#Substance.Use
+
