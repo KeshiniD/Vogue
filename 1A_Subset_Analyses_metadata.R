@@ -116,12 +116,16 @@ total$Syphillis.ever <- factor(total$Syphillis.ever)
 #####################
 #convert integers into factors
 #Antimicrobial use in the past 3 months
-# yes-1, no-2
+# yes-1, no-2 --> yes-1, no-0
+total$antimicrodrug <- ifelse(total$antimicrodrug > 1, 
+                         c("0"), c("1"))
 total$antimicrodrug <- factor(total$antimicrodrug)
 
 #convert integers into factors
 #(non)Prescription use in the past 2 months
 # yes-1, no-2
+total$rxdrug <- ifelse(total$rxdrug > 1, 
+                              c("0"), c("1"))
 total$rxdrug <- factor(total$rxdrug)
 ########################
 
@@ -141,10 +145,10 @@ total$Presence.Symptoms.2wks <- ifelse(total$abnormaldischarge2wk > 0 |
                                          total$abnormalodor2wk > 0 |
                                          total$irritationdiscomfort2wk > 0 |
                                          total$vaginalsymptomother2wk > 0, 
-                               c("1"), c("2")) 
+                               c("1"), c("0")) 
 
 #convert numeric into factor
-# yes-1, no-2
+# yes-1, no-0
 total$Presence.Symptoms.2wks <- factor(total$Presence.Symptoms.2wks)
 
 #add new column for presence of symptoms in 48hrs
@@ -152,45 +156,49 @@ total$Presence.Symptoms.48hrs <- ifelse(total$abnormaldischarge48 > 0 |
                                          total$abnormalodor48 > 0 |
                                          total$irritationdiscomfort48 > 0 |
                                          total$vaginalsymptomother48 > 0, 
-                                       c("1"), c("2")) 
+                                       c("1"), c("0")) 
 
 #convert numeric into factor
-# yes-1, no-2
+# yes-1, no-0
 total$Presence.Symptoms.48hrs <- factor(total$Presence.Symptoms.48hrs)
 ###################
 
 #sxpain
 #convert sx.pain from character into factor
-total$Symptom.pain <- factor(total$vagintercoursediscomfort)
+total$Symptom.pain <- ifelse(total$vagintercoursediscomfort > 1, 
+                       c("0"), c("1"))
+total$Symptom.pain <- factor(total$Symptom.pain)
 summary(total$Symptom.pain)
 
 ########################
 #convert integers into factors
 #vaginal intercourse in the past 48 hours
-# yes-1, no-2
+# yes-1, no-0
+total$vaginalintercourse48hr <- ifelse(total$vaginalintercourse48hr > 1, 
+                             c("0"), c("1"))
 total$vaginalintercourse48hr <- factor(total$vaginalintercourse48hr)
 ##########################
 
 #Frequency of Oral Sex
 #create categories (change to never-ever cats)
-total$oralsxfrequency.cat[total$oralsxfrequency < 6] <- '1' #yes-1, no-2
-total$oralsxfrequency.cat[total$oralsxfrequency > 5] <- '2' #yes-1, no-2
+total$oralsxfrequency.cat[total$oralsxfrequency < 6] <- '1' #yes-1, no-0
+total$oralsxfrequency.cat[total$oralsxfrequency > 5] <- '0' #yes-1, no-0
 
 #convert Freq.oral.sex.cat from character into factor
 total$oralsxfrequency.cat <- as.factor(total$oralsxfrequency.cat)
 
 #Frequency of Anal Sex
 #create categories (change to never-ever cats)
-total$analsxfrequency.cat[total$analsxfrequency < 6] <- '1' #yes-1, no-2
-total$analsxfrequency.cat[total$analsxfrequency > 5] <- '2' #yes-1, no-2
+total$analsxfrequency.cat[total$analsxfrequency < 6] <- '1' #yes-1, no-0
+total$analsxfrequency.cat[total$analsxfrequency > 5] <- '0' #yes-1, no-0
 
 #convert Freq.anal.sex.cat from character into factor
 total$analsxfrequency.cat <- as.factor(total$analsxfrequency.cat)
 
 #Frequency of Sex Toy Use
 #create categories (change to never-ever cats)
-total$sextoyfrequency.cat[total$sextoyfrequency < 6] <- '1' #yes-1, no-2
-total$sextoyfrequency.cat[total$sextoyfrequency > 5] <- '2' #yes-1, no-2
+total$sextoyfrequency.cat[total$sextoyfrequency < 6] <- '1' #yes-1, no-0
+total$sextoyfrequency.cat[total$sextoyfrequency > 5] <- '0' #yes-1, no-0
 
 #convert Freq.sex.toy.cat from character into factor
 total$sextoyfrequency.cat <- as.factor(total$sextoyfrequency.cat)
@@ -209,7 +217,7 @@ total$Sexual.Partners.cat <- factor(total$Sexual.Partners.cat)
 ###########################################
 #change to never-ever cats. 
 ##Cat. for number of sexual partners in the last year
-total$sexpartner1yr.cat[total$sexpartner1yr <= 0] <- "2" # 0 partners
+total$sexpartner1yr.cat[total$sexpartner1yr <= 0] <- "0" # 0 partners
 total$sexpartner1yr.cat[total$sexpartner1yr >= 1] <- "1"#1 or more partners
 
 #convert Number.partners.in.past.year.cat from character into factor
@@ -217,20 +225,20 @@ total$sexpartner1yr.cat <- factor(total$sexpartner1yr.cat)
 
 ################################
 #Contraception
-#condense categories (none-S, B, H and IUD): y-n categories (1-2)
+#condense categories (none-S, B, H and IUD): y-n categories (1-0)
 total$Contraception.H <- ifelse(total$contramethhormonal___1 >=1, 
-                                        c("1"), c("2")) 
+                                        c("1"), c("0")) 
 
 total$Contraception.B.M <- ifelse(total$contramethbarriermc___1 >=1, 
-                                c("1"), c("2")) 
+                                c("1"), c("0")) 
 
 total$Contraception.IUD <- ifelse(total$contramethbarrieriud___1 >=1, 
-                                  c("1"), c("2")) 
+                                  c("1"), c("0")) 
 
 total$Contraception.none <- ifelse(total$contramethnone___1>=1 | 
                                      total$contramethsurgstersubj___1>=1 |
                                      total$contramethsurgsterpart___1>=1, 
-                                   c("1"), c("2")) 
+                                   c("1"), c("0")) 
 
 #convert Contraception cats from character into factor
 total$Contraception.H <- factor(total$Contraception.H)
@@ -243,7 +251,7 @@ total$Contraception.none <- factor(total$Contraception.none)
 #Use of condoms in last 48 hours
 total$condoms.48h <- ifelse(total$vaginalintercourse48hr == '1' &
                               total$Contraception.B.M == '1', 
-                            c("1"), c("2")) 
+                            c("1"), c("0")) 
 #convert 48h.uses.condoms from character into factor
 total$condoms.48h <- factor(total$condoms.48h)
 ############################################
@@ -251,8 +259,8 @@ total$condoms.48h <- factor(total$condoms.48h)
 # multi->1, null-0
 total$pregnancyhistoryg
 total$Pregnancy.cat[total$pregnancyhistoryg <= 0] <- "0" # null
-total$Pregnancy.cat[total$pregnancyhistoryg <= 1 & total$pregnancyhistoryg >= 1] <- "1"#1 preg
-total$Pregnancy.cat[total$pregnancyhistoryg > 1] <- "2"#multi
+#total$Pregnancy.cat[total$pregnancyhistoryg <= 1 & total$pregnancyhistoryg >= 1] <- "1"#1 preg
+total$Pregnancy.cat[total$pregnancyhistoryg > 1] <- "1"#multi
 
 #convert Pregnancy.cat from character into factor
 total$Pregnancy.cat <- factor(total$Pregnancy.cat) 
@@ -263,7 +271,7 @@ summary(total$Pregnancy.cat)
 #combine two variables into feminine product use
 total$Feminine.products <- ifelse(total$doucheproducts == '1' |
                                     total$deodorantproducts == '1', 
-                                  c("1"), c("2")) 
+                                  c("1"), c("0")) 
 total$Feminine.products <- factor(total$Feminine.products) 
 summary(total$Feminine.products)
 
@@ -271,7 +279,7 @@ summary(total$Feminine.products)
 #combine two variables into feminine product use
 total$Feminine.products.48hrs <- ifelse(total$douche48hrs == '1' |
                                           total$deodorant48hrs == '1', 
-                                        c("1"), c("2")) 
+                                        c("1"), c("0")) 
 total$Feminine.products.48hrs <- factor(total$Feminine.products.48hrs) 
 summary(total$Feminine.products.48hrs)
 
@@ -280,7 +288,7 @@ summary(total$Feminine.products.48hrs)
 #Frequency of Tampon Use
 #create categories (never-ever cats)
 total$Tampon.Use.cat <- ifelse(total$tamponusage == '1', 
-                                        c("2"), c("1")) 
+                                        c("0"), c("1")) 
 
 #convert Tampon.Use.cat from character into factor
 total$Tampon.Use.cat <- factor(total$Tampon.Use.cat)
@@ -299,7 +307,7 @@ total$days.since.LMP <- as.integer(total$days.since.LMP)
 #menses within 30 days, do they use tampon every period (exclusively or partly)
 total$Tampon.use.1mth <- ifelse(total$days.since.LMP <30 & 
                                   total$tamponusage >= 3, 
-                                c("1"), c("2")) 
+                                c("1"), c("0")) 
 
 #convert Tampon.use.1mth from character into factor
 total$Tampon.use.1mth <- factor(total$Tampon.use.1mth)
@@ -314,16 +322,16 @@ total$substance_use_yn <- factor(total$substance_use_yn)
 
 ##############################################################
 
-#smoking (yes-1, no-2)
+#smoking (yes-1, no-0)
 #condense to currently smoking or not
 total$smoking.current <- ifelse(total$tobaccouse == '2', 
-                                c("1"), c("2")) 
+                                c("1"), c("0")) 
 #convert Substance.Use from character into factor
 total$smoking.current <- factor(total$smoking.current)
 summary(total$smoking.current)
 
 #write to file
-write.csv(total, "1A_grouped.csv") #made some edits
+#write.csv(total, "1A_grouped.csv") #made some edits
 
 #redo following cat. 
 #Genital Infections

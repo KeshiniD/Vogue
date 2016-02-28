@@ -24,7 +24,7 @@ total <- data[which(data$study_id %in% ids), ]
 #took groups from 1A_Subset_Analyses_metadata.R
 #and wrote into this file
 #rewrite to file
-#write.csv(total3, "1A_full_grouped.csv")
+#write.csv(total, "1A_full_grouped.csv")
 ###
 
 #load dataset
@@ -208,7 +208,7 @@ c <-join(a2, b3, type="full")
 
 #write this to file
 #write.csv(c, "1A_1B2_compare.csv")
-#####################################################################################
+######################################################################################
 #Compare 1A and 1B2
 #load data set
 total <- read.csv(file = "1A_1B2_compare.csv")
@@ -308,58 +308,181 @@ mylogit <- glm(formula = study_arm ~ Yeast..lifetime., data=total,
 summary(mylogit)
 confint(mylogit)
 
-
 #cat variables in fishers
 #CST
 a <- xtabs(~study_arm + CST , data = total)
 fisher.test(a)
 
+#BV ever and Yeast ever.cat
+total$BV.ever <- ifelse(total$BV..number.of.episodes.lifetime. > 0, 
+                        c("1"), c("0"))
+total$BV.ever <- factor(total$BV.ever)
+
+total$Yeast.ever <- ifelse(total$Yeast..lifetime. > 0, 
+                           c("1"), c("0"))
+total$Yeast.ever <- factor(total$Yeast.ever)
+
+a <- xtabs(~study_arm + BV.ever, data = total)
+fisher.test(a)
+
+a <- xtabs(~study_arm + Yeast.ever, data = total)
+fisher.test(a)
+
 #Ethnicity.cat
+a <- xtabs(~study_arm + Ethnicity.cat, data = total)
+fisher.test(a)
+
 #Antimicrobial.Use..y.1..n.0.
+a <- xtabs(~study_arm + Antimicrobial.Use..y.1..n.0., data = total)
+fisher.test(a)
+
 #X.Non..Prescription..y.1..n.0.
+a <- xtabs(~study_arm + X.Non..Prescription..y.1..n.0., data = total)
+fisher.test(a)
 
 #Symptoms
 #Presence.Symptoms.2wks
+a <- xtabs(~study_arm + Presence.Symptoms.2wks, data = total)
+fisher.test(a)
+
 #Abnormal.discharge.2wks
+a <- xtabs(~study_arm + Abnormal.discharge.2wks, data = total)
+fisher.test(a)
+
 #Abnormal.odor.2wks
+a <- xtabs(~study_arm + Abnormal.odor.2wks, data = total)
+fisher.test(a)
+
 #Irritation.Discomfort.2wks
+a <- xtabs(~study_arm + Irritation.Discomfort.2wks, data = total)
+fisher.test(a)
+
 #Other.Symptoms.2wks
+a <- xtabs(~study_arm + Other.Symptoms.2wks, data = total)
+fisher.test(a)
+
 #Presence.Symptoms.48hrs
+a <- xtabs(~study_arm + Presence.Symptoms.48hrs, data = total)
+fisher.test(a)
+
 #Abnormal.discharge.48hrs
+a <- xtabs(~study_arm + Abnormal.discharge.48hrs, data = total)
+fisher.test(a)
+
 #Abnormal.odor.48hrs
+a <- xtabs(~study_arm + Abnormal.odor.48hrs, data = total)
+fisher.test(a)
+
 #Irritation.Discomfort.48hrs
+a <- xtabs(~study_arm + Irritation.Discomfort.48hrs, data = total)
+fisher.test(a)
+
 #Other.Symptoms.48hrs
+a <- xtabs(~study_arm + Other.Symptoms.48hrs, data = total)
+fisher.test(a)
+
 #Symptom.pain
+a <- xtabs(~study_arm + Symptom.pain, data = total)
+fisher.test(a)
 
 #Sexual Activity
 #Vaginal.intercourse.in.past.48.hours..y.1..n.0.
+a <- xtabs(~study_arm + Vaginal.intercourse.in.past.48.hours..y.1..n.0., data = total)
+fisher.test(a)
+
 #Freq.oral.sex.cat
+a <- xtabs(~study_arm + Freq.oral.sex.cat, data = total)
+fisher.test(a)
+
 #Freq.anal.sex.cat
+a <- xtabs(~study_arm + Freq.anal.sex.cat, data = total)
+fisher.test(a)
+
 #Freq.sex.toy.use.cat
+a <- xtabs(~study_arm + Freq.sex.toy.use.cat, data = total)
+fisher.test(a)
+
 #Number.partners.in.past.year.cat
-#Contraception.none
+a <- xtabs(~study_arm + Number.partners.in.past.year.cat, data = total)
+fisher.test(a)
 
 #Genital Infection History
 #Genwarts.ever
+a <- xtabs(~study_arm + Genwarts.ever, data = total)
+fisher.test(a)
+
 #Chlamydia.ever
+a <- xtabs(~study_arm + Chlamydia.ever, data = total)
+fisher.test(a)
+
 #UTI.ever
+a <- xtabs(~study_arm + UTI.ever, data = total)
+fisher.test(a)
+
 #Trich.ever
+a <- xtabs(~study_arm + Trich.ever, data = total)
+fisher.test(a)
+
 #GenHerpes.ever
+a <- xtabs(~study_arm + GenHerpes.ever, data = total)
+fisher.test(a)
+
+#Gonorrhea.ever and Syphillis.ever
+summary(factor(b$Gonorrhea.ever))
+a <- matrix(c(259,0,5,0), 2, 2,)
+fisher.test(a)
+
+summary(factor(b$Syphillis.ever))
+a <- matrix(c(262,0,1,0), 2, 2,)
+fisher.test(a)
 
 #Contraception
 #contraception.H
+a <- xtabs(~study_arm + contraception.H, data = total)
+fisher.test(a)
+
 #contraception.B.M
+a <- xtabs(~study_arm + contraception.B.M, data = total)
+fisher.test(a)
+
 #contraception.C.IUD
+a <- xtabs(~study_arm + contraception.C.IUD, data = total)
+fisher.test(a)
+
+#Contraception.none
+a <- xtabs(~study_arm + Contraception.none, data = total)
+fisher.test(a)
+
 #condoms.48h
+a <- xtabs(~study_arm + condoms.48h, data = total)
+fisher.test(a)
+
 #Pregnancy.cat
+a <- xtabs(~study_arm + Pregnancy.cat, data = total)
+fisher.test(a)
 
 #Product use
 #Feminine.products
+a <- xtabs(~study_arm + Feminine.products, data = total)
+fisher.test(a)
+
 #Feminine.products.48hrs
+a <- xtabs(~study_arm + Feminine.products.48hrs, data = total)
+fisher.test(a)
+
 #Tampon.Use.cat
+a <- xtabs(~study_arm + Tampon.Use.cat, data = total)
+fisher.test(a)
+
 #Tampon.use.1mth
+a <- xtabs(~study_arm + Tampon.use.1mth, data = total)
+fisher.test(a)
 
 #Substance use
 #smoking.current
-#Substance.Use
+a <- xtabs(~study_arm + smoking.current, data = total)
+fisher.test(a)
 
+#Substance.Use
+a <- xtabs(~study_arm + Substance.Use, data = total)
+fisher.test(a)
