@@ -72,6 +72,14 @@ total$Syphillis.ever <- factor(total$syph_infect)
 total$nugent_score_result <- factor(total$nugent_score_result)
 total$CST <- factor(total$CST)
 
+#Descriptives
+mean(total$uti_life, na.rm=TRUE)
+sd(total$uti_life, na.rm=TRUE)
+range(total$uti_life, na.rm=TRUE)
+summary(factor(total$contramethbarrieroth___1))
+summary(factor(total$Symptom.pain))
+summary(factor(total$ethother___1))
+
 #########################################################################
 #merge 1A and 1B2 together to compare groups
 a <- read.csv(file="1B2metabac_condensedv2.csv")
