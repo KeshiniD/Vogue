@@ -409,22 +409,27 @@ fisher.test(a)
 #Genital Infection History
 #Genwarts.ever
 a <- xtabs(~study_arm + Genwarts.ever, data = total)
+a <- matrix(c(289,22,21,4), 2, 2,)
 fisher.test(a)
 
 #Chlamydia.ever
 a <- xtabs(~study_arm + Chlamydia.ever, data = total)
+a <- matrix(c(238,21,24,5), 2, 2,)
 fisher.test(a)
 
 #UTI.ever
 a <- xtabs(~study_arm + UTI.ever, data = total)
+a <- matrix(c(103,10,160,15), 2, 2,)
 fisher.test(a)
 
 #Trich.ever
 a <- xtabs(~study_arm + Trich.ever, data = total)
+a <- matrix(c(259,25,3,0), 2, 2,)
 fisher.test(a)
 
 #GenHerpes.ever
 a <- xtabs(~study_arm + GenHerpes.ever, data = total)
+a <- matrix(c(248,22,15,4), 2, 2,)
 fisher.test(a)
 
 #Gonorrhea.ever and Syphillis.ever
@@ -486,3 +491,122 @@ fisher.test(a)
 #Substance.Use
 a <- xtabs(~study_arm + Substance.Use, data = total)
 fisher.test(a)
+
+#Martial Status
+a <- matrix(c(172,11,133,10, 1, 5), 2, 3,)
+
+#Education
+a <- matrix(c(3,1,7,2, 87, 7,145,14,60,2,8,0), 2, 6,)
+
+#Menstrual Period
+a <- matrix(c(225,23,48,1,2,0,31,2), 2, 4,)
+
+#Sexual Partners
+a <- matrix(c(278,24,9,1,13,0,10,0), 2, 4,)
+
+################################################################################
+#1B2 features in 1A
+total <- read.csv(file="1A_full_grouped.csv")
+
+#used above code to fix symptom variables
+
+#make new CST.cats
+#add new categories
+#CSTI (yes-1, no-0)
+total$CSTI <- ifelse(total$CST == 'I', 
+                     c("1"), c("0")) 
+#convert CSTI from character into factor
+total$CSTI <- factor(total$CSTI)
+
+#CSTIII (yes-1, no-0)
+total$CSTIII <- ifelse(total$CST == 'III', 
+                       c("1"), c("0")) 
+#convert CSTIII from character into factor
+total$CSTIII <- factor(total$CSTIII)
+
+#CSTIVA (yes-1, no-0)
+total$CSTIVA <- ifelse(total$CST == 'IVA', 
+                       c("1"), c("0")) 
+#convert CSTIVA from character into factor
+total$CSTIVA <- factor(total$CSTIVA)
+
+#CSTIVC (yes-1, no-0)
+total$CSTIVC <- ifelse(total$CST == 'IVC', 
+                       c("1"), c("0")) 
+#convert CSTIVC from character into factor
+total$CSTIVC <- factor(total$CSTIVC)
+
+#CSTIVD (yes-1, no-0)
+total$CSTIVD <- ifelse(total$CST == 'IVD', 
+                       c("1"), c("0")) 
+#convert CSTI from character into factor
+total$CSTIVD <- factor(total$CSTIVD)
+
+#CSTV (yes-1, no-0)
+total$CSTV <- ifelse(total$CST == 'V', 
+                     c("1"), c("0")) 
+#convert CSTV from character into factor
+total$CSTV <- factor(total$CSTV)
+
+#significant variables in 1B2 now in 1A
+total$abnormaldischarge48 <- factor(total$abnormaldischarge48)
+total$abnormalodor2wk <- factor(total$abnormalodor2wk)
+total$abnormalodor48 <- factor(total$abnormalodor48)
+total$Contraception.none <- factor(total$Contraception.none)
+total$Contraception.H <- factor(total$Contraception.H)
+total$Contraception.B.M <- factor(total$Contraception.B.M)
+total$sexpartner1yr.cat <- factor(total$sexpartner1yr.cat)
+
+#CSTIII
+a <- xtabs(~CSTIII + abnormaldischarge48 , data = total)
+fisher.test(a)
+
+#CSTIVA
+a <- xtabs(~CSTIVA + abnormalodor2wk , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVA + abnormalodor48 , data = total)
+fisher.test(a)
+
+#CSTIVC
+a <- xtabs(~CSTIVC + Contraception.H , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Contraception.B.M , data = total)
+fisher.test(a)
+
+a <- xtabs(~CSTIVC + Contraception.none , data = total)
+fisher.test(a)
+
+#episodes of BV
+mylogit <- glm(formula = CSTIVC ~ bv_infecttotal_2mo, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+mylogit <- glm(formula = CSTIVC ~ bv_infecttotal_1yr, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#CSTIVD
+a <- xtabs(~CSTIVD + sexpartner1yr.cat , data = total)
+fisher.test(a)
+
+#significant variables in 1A, look at in 1B2
+total <- read.csv(file="1B2metabac_condensedv2.csv")
+
+#factor
+total$CST <- factor(total$CST)
+total$Ethnicity.cat <- factor(total$Ethnicity.cat)
+
+#Ethnicity
+a <- xtabs(~CST + Ethnicity.cat , data = total)
+fisher.test(a)
+
+#Nugent.score
+mylogit <- glm(formula = CST ~ Nugent.score, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#SD
+mylogit <- glm(formula = CST ~ Shannon.s.Diversity, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
