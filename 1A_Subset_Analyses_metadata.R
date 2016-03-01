@@ -430,37 +430,37 @@ total$study_id <-
 #add new categories
 #CSTI (yes-1, no-2)
 total$CSTI <- ifelse(total$CST == 'I', 
-                     c("1"), c("2")) 
+                     c("1"), c("0")) 
 #convert CSTI from character into factor
 total$CSTI <- factor(total$CSTI)
 
 #CSTIII (yes-1, no-2)
 total$CSTIII <- ifelse(total$CST == 'III', 
-                       c("1"), c("2")) 
+                       c("1"), c("0")) 
 #convert CSTIII from character into factor
 total$CSTIII <- factor(total$CSTIII)
 
 #CSTIVA (yes-1, no-2)
 total$CSTIVA <- ifelse(total$CST == 'IVA', 
-                       c("1"), c("2")) 
+                       c("1"), c("0")) 
 #convert CSTIVA from character into factor
 total$CSTIVA <- factor(total$CSTIVA)
 
 #CSTIVC (yes-1, no-2)
 total$CSTIVC <- ifelse(total$CST == 'IVC', 
-                       c("1"), c("2")) 
+                       c("1"), c("0")) 
 #convert CSTIVC from character into factor
 total$CSTIVC <- factor(total$CSTIVC)
 
 #CSTIVD (yes-1, no-2)
 total$CSTIVD <- ifelse(total$CST == 'IVD', 
-                       c("1"), c("2")) 
+                       c("1"), c("0")) 
 #convert CSTI from character into factor
 total$CSTIVD <- factor(total$CSTIVD)
 
 #CSTV (yes-1, no-2)
 total$CSTV <- ifelse(total$CST == 'V', 
-                       c("1"), c("2")) 
+                       c("1"), c("0")) 
 #convert CSTV from character into factor
 total$CSTV <- factor(total$CSTV)
 
@@ -469,7 +469,7 @@ write.csv(total, "1A_grouped.csv")
 
 #Bac Profiles
 #load dataset
-data <- read.csv(file.path("data1A_1B2.csv"))
+data <- read.csv(file.path("data1A_1B2.csv")) #made total for second chunk
 
 #selected participants needed 
 dean <- read.csv(file.path("data1A_1B2.csv"))
@@ -477,11 +477,19 @@ nums <- substring(total$study_id, 12)
 ids <- paste0("Vogue1A.01.", nums)
 data2 <- dean[, which(colnames(dean) %in% c(ids, "Bacterial.Species"))]
 
+#selected all 1A
+#selected participants needed 
+data <- read.csv(file.path("data1A_1B2.csv"))
+dean <- read.csv(file.path("1A.csv"))
+nums <- substring(dean$Study.ID, 12)
+ids <- paste0("Vogue1A.01.", nums)
+data2 <- data[, which(colnames(data) %in% c(ids, "Bacterial.Species"))]
+
 #quick and dirty to get table into format i wanted
 t <- t(data2)
 t <- as.data.frame(t)
-#write.csv(t, file = "r.csv") #edit in excel
-data2 <- read.csv(file="r.csv")
+#write.csv(t, file = "r.csv") #edit in excel #made into r2 for full 1A
+data2 <- read.csv(file="r.csv") #made into r2 for full 1A
 #
 #gather bacteria and counts into columns
 data4 <-
@@ -521,7 +529,8 @@ ggplot(data = vmb, aes(x = Participants, y = Species.Percentage, fill = Bacteria
   scale_fill_manual(values=jColors)
 
 #added CSTs to Bac.Species table; try to organize plot by CST
-total2 <- dplyr::rename(total2, Participants = study_id)
+total2 <- dean #messy
+total2 <- dplyr::rename(total2, Participants = Study.ID)
 dt<-join(vmb, total2, type="full")
 
 vmb2 <- tbl_df(dt) %>% # finally got the percentages correct
@@ -541,7 +550,7 @@ vmb2$Participants <- factor(vmb2$Participants,
 ggplot(data = vmb2, aes(x = Participants, y = Species.Percentage, fill = Bacteria)) + 
   geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion") +
   ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Healthy-Asymptomatic Women") + 
-  theme(axis.text.y = element_text(size=4), plot.title = element_text(size=18), 
+  theme(axis.text.y = element_text(size=4), plot.title = element_text(size=22), 
         axis.title = element_text(size=18))  + 
   scale_fill_manual(values=jColors)
 

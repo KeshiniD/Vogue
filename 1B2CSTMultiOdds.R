@@ -167,5 +167,11 @@ mylogit <- glm(formula = CSTIVC ~ Contraception.none + BV..number.of.episodes.2.
                  contraception.H + contraception.B.M + BV..number.of.episodes.year., data=total, family = binomial(link = "logit"))
 summary(mylogit)
 
-
+########################################################################################
+#Feb-29-16
+#did not do this 
+#re-do multivariate based on effect size
+mylogit <- glm(formula = CSTIVC ~ Contraception.none + BV..number.of.episodes.2.months. + 
+                 contraception.H + contraception.B.M, data=total, family = binomial(link = "logit"))
+summary(mylogit)
 
