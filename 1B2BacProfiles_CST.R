@@ -45,3 +45,39 @@ ggplot(data = vmb, aes(x = Vogue.Participants, y = Species.Percentage, fill = Ba
   geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion") +
   scale_fill_manual(values=jColors) + 
   ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis")
+
+
+########################################################################
+#Mar-5-16
+#order this based on CST with Dean's code
+#add new column with CST.participants
+data[,"CST"]  <- c('II', 'IVA', 'III', 'III', 'III', 'IVD', 'IVC', 'I', 
+                  'I', 'IVA', 'III', 'III', 'IVC', 'I', 'IVC', 'IVC', 'IVC', 
+                  'IVA', 'III', 'IVA', 'IVA', 'I', 'IVD', 'IVC', 'I', 'IVA')
+
+vmb <- tbl_df(data2) %>% # finally got the percentages correct
+  group_by(Participants) %>%
+  select(Participants, Bacteria, Counts, CST) %>%
+  mutate(Species.Percentage = Counts/(sum(Counts))*100) %>% 
+  # can either have % or decimal
+  arrange(Participants)
+
+#Dean added to order by factor levels
+vmb$Participants <- factor(vmb$Participants, 
+                            levels = vmb$Participants[order(vmb$CST)])
+
+#custom colours
+jColors <- c('darkgoldenrod1', 'purple', 'mediumorchid2', 'plum', 
+             'firebrick', 'yellow', 'green3', 'forestgreen', 'palegreen', 
+             'green' , 'firebrick1', 'blue', 'deepskyblue3', 
+             'cornflowerblue', 'deepskyblue' , 'gray33', 'gray', 
+             'mediumvioletred', 'black', 'olivedrab2', 'orange3', 'tomato', 
+             'lightsalmon', 'slateblue', 'turquoise', 'lavender', 
+             'rosybrown2', 'deeppink')
+
+ggplot(data = vmb, aes(x = Participants, y = Species.Percentage, fill = Bacteria)) + 
+  geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion") +
+  scale_fill_manual(values=jColors) +   
+  theme(axis.text = element_text(size=14), axis.title = element_text(size=18), 
+        plot.title = element_text(size=20), legend.text = element_text(size=14)) +
+  ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis")
