@@ -79,5 +79,6 @@ ggplot(data = vmb, aes(x = Participants, y = Species.Percentage, fill = Bacteria
   geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion") +
   scale_fill_manual(values=jColors) +   
   theme(axis.text = element_text(size=14), axis.title = element_text(size=18), 
-        plot.title = element_text(size=20), legend.text = element_text(size=14)) +
+        plot.title = element_text(size=30), legend.title = element_blank(), 
+        legend.text = element_text(size=14)) +
   ggtitle("Cpn60 Species Characterization of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis")
