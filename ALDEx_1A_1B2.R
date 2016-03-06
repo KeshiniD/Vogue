@@ -112,6 +112,11 @@ min(ald.edu$kw.eBH) # 9.77707e-46
 meta <- read.csv(file="Aldex_metadata_1A_1B2.csv")
 bac <- read.csv(file="Aldex_bac_1A_1B2")
 
+#variables need to be factors; maybe? try integer and see
+# set the rownames as the taxa names
+row.names(bac) <- bac[, 1]
+bac <- bac[, -1]
+
 #make a vector that is the variable labels
 cond.edu <- meta$CST
 #run ALDEx
@@ -124,13 +129,32 @@ head(ald.edu)
 min(ald.edu$glm.eBH) # 2.7962e-81
 min(ald.edu$kw.eBH) # 9.77707e-46
 
-
 ########################
-cond.edu <- meta$Nugent.score
+#variables need to be factors; maybe? try integer and see
+#Feminine Products
+cond.edu <- meta$Feminine.products
 ald.edu1 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
-cond.edu <- meta$Age
+# smallest p-values
+min(ald.edu$glm.eBH) # 
+min(ald.edu$kw.eBH) # 
+
+#Condoms.past.48hrs
+cond.edu <- meta$condoms.48h
 ald.edu2 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
-cond.edu <- meta$BMI
+# smallest p-values
+min(ald.edu$glm.eBH) # 
+min(ald.edu$kw.eBH) # 
+
+#TamponUse.past.month
+cond.edu <- meta$Tampon.use.1mth
 ald.edu3 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
-cond.edu <- meta$BV..number.of.episodes.2.months.
+# smallest p-values
+min(ald.edu$glm.eBH) # 
+min(ald.edu$kw.eBH) # 
+
+#Ethnicity
+cond.edu <- meta$Ethnicity.cat
 ald.edu4 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
+# smallest p-values
+min(ald.edu$glm.eBH) #
+min(ald.edu$kw.eBH) # 
