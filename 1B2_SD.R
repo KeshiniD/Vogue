@@ -10,9 +10,9 @@ library(ggplot2)
 library(tidyr)
 library(knitr)
 library(vcd)
+library(effsize)
 
 #convert variables into factors
-
 total$Age.cat <- factor(total$Age.cat)
 total$BMI.cat <- factor(total$BMI.cat)
 total$Ethnicity.cat <- factor(total$Ethnicity.cat)
@@ -61,6 +61,14 @@ total$Symptom.pain <- factor(total$Symptom.pain)
 total$Contraception.none <- factor(total$Contraception.none)
 total$Tampon.use.1mth <- factor(total$Tampon.use.1mth)
 
+######################################################################
+#Mar-5-16
+#DM wants this cat, not episodes
+total$Yeast.ever <- ifelse(total$Yeast..lifetime. > 0, 
+                           c("1"), c("0")) 
+#convert Yeast.ever from character into factor
+total$Yeast.ever <- factor(total$Yeast.ever) 
+####################################################################3
 
 #simple linear regression
 #Shannon's Diversity
@@ -91,12 +99,17 @@ cohen.d(Shannon.s.Diversity~Age.cat, data = total)
 
 t.test(Shannon.s.Diversity~BMI.under.cat, data = total)
 cohen.d(Shannon.s.Diversity~BMI.under.cat, data = total)
+
 t.test(Shannon.s.Diversity~BMI.over.cat, data = total)
 cohen.d(Shannon.s.Diversity~BMI.over.cat, data = total)
+
 t.test(Shannon.s.Diversity~Ethnicity.cat, data = total)
 cohen.d(Shannon.s.Diversity~Ethnicity.cat, data = total)
 
 #genital infections
+t.test(Shannon.s.Diversity~Yeast.ever, data = total)
+cohen.d(Shannon.s.Diversity~Yeast.ever, data = total)
+
 t.test(Shannon.s.Diversity~UTI.ever, data = total)
 cohen.d(Shannon.s.Diversity~UTI.ever, data = total)
 t.test(Shannon.s.Diversity~Chlamydia.ever, data = total)
@@ -195,7 +208,14 @@ cohen.d(Shannon.s.Diversity~smoking.current, data = total)
 pvals <- read.csv(file = "clipboard") #copied from excel
 pvals
 
-a <- p.adjust(pvals$x, method = 'hochberg', n = 104)
+a <- p.adjust(pvals$x, method = 'hochberg', n = 26)
 View(a)
 
-####
+###########################################################
+#Mar-5-16
+#summary per CST; nice list
+aggregate(total$Contraception.none, list(total$CST), summary)
+# look at only women with high Nugent scores
+newdata <- subset(total, Nugent.score >= 4) 
+levels(droplevels(total$CST)) # get rid of empty levels
+#trying anlayses without low Nugent women

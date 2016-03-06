@@ -237,4 +237,24 @@ summary(aov(total$Yeast..2months. ~total$CST))
 summary(aov(total$Yeast..year. ~total$CST))
 summary(aov(total$Yeast..lifetime. ~total$CST))
 
+######################################################################
+#Mar-5-16
+#DM wants this cat, not episodes
+total$Yeast.ever <- ifelse(total$Yeast..lifetime. > 0, 
+                           c("1"), c("0")) 
+#convert Yeast.ever from character into factor
+total$Yeast.ever <- factor(total$Yeast.ever) 
+
+a <- xtabs(~Yeast.ever + CST , data = total)
+fisher.test(a)
+assocstats(a)
+
+####################################################################
+#Mar-5-16
+#summary per CST; nice list
 aggregate(total$Contraception.none, list(total$CST), summary)
+# look at only women with high Nugent scores
+newdata <- subset(total, Nugent.score >= 4) 
+levels(droplevels(total$CST)) # get rid of empty levels
+
+
