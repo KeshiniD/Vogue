@@ -105,3 +105,32 @@ min(ald.edu$kw.eBH) # 9.77707e-46
 #write metadata and bacterial into file to look at later
 #write.csv(total2, "Aldex_metadata_1A_1B2.csv")
 #write.csv(data4, "Aldex_bac_1A_1B2")
+
+########################################################################
+#Mar-5-16
+#cleaning and testing done above
+meta <- read.csv(file="Aldex_metadata_1A_1B2.csv")
+bac <- read.csv(file="Aldex_bac_1A_1B2")
+
+#make a vector that is the variable labels
+cond.edu <- meta$CST
+#run ALDEx
+ald.edu <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
+
+#look at the output
+head(ald.edu)
+
+# smallest p-values
+min(ald.edu$glm.eBH) # 2.7962e-81
+min(ald.edu$kw.eBH) # 9.77707e-46
+
+
+########################
+cond.edu <- meta$Nugent.score
+ald.edu1 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
+cond.edu <- meta$Age
+ald.edu2 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
+cond.edu <- meta$BMI
+ald.edu3 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
+cond.edu <- meta$BV..number.of.episodes.2.months.
+ald.edu4 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
