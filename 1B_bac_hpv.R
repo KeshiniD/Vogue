@@ -43,8 +43,8 @@ library(tidyr)
 
 #bac2 is dataset we want
 # set the rownames as the taxa names
-row.names(bac) <- bac[, 1]
-bac <- bac[, -1]
+row.names(bac2) <- bac2[, 1]
+bac2 <- bac2[, -1]
 
 #hpv2 is metadata dataset we want
 #make sure both dataset have same particiapnts; remove participants 55, 57
@@ -63,6 +63,7 @@ hpv2$t16 <- factor(hpv2$t16)
 hpv2$t18 <- factor(hpv2$t18)
 hpv2$t26 <- factor(hpv2$t26)
 hpv2$t31 <- factor(hpv2$t31)
+hpv2$t33 <- factor(hpv2$t33)
 hpv2$t34 <- factor(hpv2$t34)
 hpv2$t35 <- factor(hpv2$t35)
 hpv2$t39 <- factor(hpv2$t39)
@@ -95,8 +96,10 @@ hpv2$t89 <- factor(hpv2$t89)
 
 ################################################################################
 #ready for Aldex
+
+#t16
 #make a vector that is the variable labels
-cond.edu <- hpv2$t06
+cond.edu <- hpv2$t16
 #run ALDEx
 ald.edu <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
                  effect = FALSE)
@@ -105,5 +108,99 @@ ald.edu <- aldex(reads = bac2, conditions = cond.edu, test = "glm",
 head(ald.edu)
 
 # smallest p-values
-min(ald.edu$glm.eBH) # 
-min(ald.edu$kw.eBH) # 
+min(ald.edu$glm.eBH) # 0.3511769
+min(ald.edu$kw.eBH) #  0.7713612
+
+#t06, t11, 34, 39, 44, 69, 82
+#have only 1 factor level (0 participants have these types)
+
+#t18
+cond.edu <- hpv2$t18
+#run ALDEx
+ald.edu2 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                 effect = FALSE)
+
+#look at the output
+head(ald.edu2)
+
+# smallest p-values
+min(ald.edu2$glm.eBH) # 0.3558991
+min(ald.edu2$kw.eBH) # 0.745945
+
+#t26
+cond.edu <- hpv2$t26
+#run ALDEx
+ald.edu3 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                  effect = FALSE)
+
+#look at the output
+head(ald.edu3)
+
+# smallest p-values
+min(ald.edu3$glm.eBH) #  0.7672958
+min(ald.edu3$kw.eBH) # 0.6648511
+
+#t31
+cond.edu <- hpv2$t31
+#run ALDEx
+ald.edut31 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                  effect = FALSE)
+
+#look at the output
+head(ald.edut31)
+
+# smallest p-values
+min(ald.edut31$glm.eBH) # 0.3973176
+min(ald.edut31$kw.eBH) # 0.7093364
+
+#t33
+cond.edu <- hpv2$t33
+#run ALDEx
+ald.edut33 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                  effect = FALSE)
+
+#look at the output
+head(ald.edut33)
+
+# smallest p-values
+min(ald.edut33$glm.eBH) # 0.759353
+min(ald.edut33$kw.eBH) # 0.8370351
+
+#t35
+cond.edu <- hpv2$t35
+#run ALDEx
+ald.edut35 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                  effect = FALSE)
+
+#look at the output
+head(ald.edut35)
+
+# smallest p-values
+min(ald.edut35$glm.eBH) # 0.7475281
+min(ald.edut35$kw.eBH) # 0.7207958
+
+#t40
+cond.edu <- hpv2$t40
+#run ALDEx
+ald.edut40 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                  effect = FALSE)
+
+#look at the output
+head(ald.edut40)
+
+# smallest p-values
+min(ald.edut40$glm.eBH) # 0.5860327
+min(ald.edut40$kw.eBH) # 0.7518268
+
+#t42
+cond.edu <- hpv2$t42
+#run ALDEx
+ald.edut42 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut42)
+
+# smallest p-values
+min(ald.edut42$glm.eBH) # 0.3908511
+min(ald.edut42$kw.eBH) # 0.793962
