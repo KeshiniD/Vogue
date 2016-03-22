@@ -126,8 +126,8 @@ ald.edu <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALS
 head(ald.edu)
 
 # smallest p-values
-min(ald.edu$glm.eBH) # 2.7962e-81
-min(ald.edu$kw.eBH) # 9.77707e-46
+min(ald.edu$glm.eBH) # 8.105249e-85
+min(ald.edu$kw.eBH) # 9.634603e-46
 
 ########################
 #variables need to be factors; maybe? try integer and see
@@ -135,26 +135,26 @@ min(ald.edu$kw.eBH) # 9.77707e-46
 cond.edu <- meta$Feminine.products
 ald.edu1 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu$glm.eBH) # 
-min(ald.edu$kw.eBH) # 
+min(ald.edu1$glm.eBH) # 0.9318553
+min(ald.edu1$kw.eBH) # 0.9345083
 
 #Condoms.past.48hrs
 cond.edu <- meta$condoms.48h
 ald.edu2 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu$glm.eBH) # 
-min(ald.edu$kw.eBH) # 
+min(ald.edu2$glm.eBH) # 0.540174
+min(ald.edu2$kw.eBH) # 0.6268818
 
 #TamponUse.past.month
 cond.edu <- meta$Tampon.use.1mth
 ald.edu3 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu$glm.eBH) # 
-min(ald.edu$kw.eBH) # 
+min(ald.edu3$glm.eBH) # 0.8178718
+min(ald.edu3$kw.eBH) #  0.7903009
 
 #Ethnicity
 cond.edu <- meta$Ethnicity.cat
 ald.edu4 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu$glm.eBH) #
-min(ald.edu$kw.eBH) # 
+min(ald.edu4$glm.eBH) #0.6617548
+min(ald.edu4$kw.eBH) # 0.6399051
