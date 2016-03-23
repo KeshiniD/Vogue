@@ -204,3 +204,279 @@ head(ald.edut42)
 # smallest p-values
 min(ald.edut42$glm.eBH) # 0.3908511
 min(ald.edut42$kw.eBH) # 0.793962
+
+###
+#t45
+cond.edu <- hpv2$t45
+#run ALDEx
+ald.edut45 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut45)
+
+# smallest p-values
+min(ald.edut45$glm.eBH) # 0.2439142
+min(ald.edut45$kw.eBH) # 0.6724364
+
+#t51
+cond.edu <- hpv2$t51
+#run ALDEx
+ald.edut51 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut51)
+
+# smallest p-values
+min(ald.edut51$glm.eBH) # 0.4989222
+min(ald.edut51$kw.eBH) # 0.7537444
+
+#t52
+cond.edu <- hpv2$t52
+#run ALDEx
+ald.edut52 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut52)
+
+# smallest p-values
+min(ald.edut52$glm.eBH) # 0.7819569
+min(ald.edut52$kw.eBH) # 0.7109325
+
+##
+#t53
+cond.edu <- hpv2$t53
+#run ALDEx
+ald.edut53 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut53)
+
+# smallest p-values
+min(ald.edut53$glm.eBH) # 0.4091033
+min(ald.edut53$kw.eBH) # 0.7914435
+
+#t54
+cond.edu <- hpv2$t54
+#run ALDEx
+ald.edut54 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut54)
+
+# smallest p-values
+min(ald.edut54$glm.eBH) # 0.7322225
+min(ald.edut54$kw.eBH) # 0.866994
+
+#t56
+cond.edu <- hpv2$t56
+#run ALDEx
+ald.edut56 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut56)
+
+# smallest p-values
+min(ald.edut56$glm.eBH) # 0.5566415
+min(ald.edut56$kw.eBH) # 0.8561722
+
+#t58
+cond.edu <- hpv2$t58
+#run ALDEx
+ald.edut58 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut58)
+
+# smallest p-values
+min(ald.edut58$glm.eBH) # 0.721489
+min(ald.edut58$kw.eBH) # 0.6588548
+
+#t59
+cond.edu <- hpv2$t59
+#run ALDEx
+ald.edut59 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut59)
+
+# smallest p-values
+min(ald.edut59$glm.eBH) # 0.07717463
+min(ald.edut59$kw.eBH) # 0.5800034
+
+#t61
+cond.edu <- hpv2$t61
+#run ALDEx
+ald.edut61 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut61)
+
+# smallest p-values
+min(ald.edut61$glm.eBH) # 0.7834177
+min(ald.edut61$kw.eBH) # 0.864827
+
+#t62
+cond.edu <- hpv2$t62
+#run ALDEx
+ald.edut62 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut62)
+
+# smallest p-values
+min(ald.edut62$glm.eBH) # 0.7304734
+min(ald.edut62$kw.eBH) # 0.8458157
+
+#t66
+cond.edu <- hpv2$t66
+#run ALDEx
+ald.edut66 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut66)
+
+# smallest p-values
+min(ald.edut66$glm.eBH) # 0.7677015
+min(ald.edut66$kw.eBH) # 0.8336628
+
+#t67
+cond.edu <- hpv2$t67
+#run ALDEx
+ald.edut67 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut67)
+
+# smallest p-values
+min(ald.edut67$glm.eBH) # 0.6339599
+min(ald.edut67$kw.eBH) # 0.7797199
+
+#t68
+cond.edu <- hpv2$t68
+#run ALDEx
+ald.edut68 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut68)
+
+# smallest p-values
+min(ald.edut68$glm.eBH) # 0.3707561
+min(ald.edut68$kw.eBH) # 0.6864514
+
+#t70
+cond.edu <- hpv2$t70
+#run ALDEx
+ald.edut70 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut70)
+
+# smallest p-values
+min(ald.edut70$glm.eBH) # 0.5951442
+min(ald.edut70$kw.eBH) # 0.8399509
+
+#t71
+cond.edu <- hpv2$t71
+#run ALDEx
+ald.edut71 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut71)
+
+# smallest p-values
+min(ald.edut71$glm.eBH) # 0.01098429
+min(ald.edut71$kw.eBH) # 0.6995699
+
+#t72
+cond.edu <- hpv2$t72
+#run ALDEx
+ald.edut72 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut72)
+
+# smallest p-values
+min(ald.edut72$glm.eBH) # 0.03026395
+min(ald.edut72$kw.eBH) # 0.6195201
+
+#t73
+cond.edu <- hpv2$t73
+#run ALDEx
+ald.edut73 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut73)
+
+# smallest p-values
+min(ald.edut73$glm.eBH) # 0.69986
+min(ald.edut73$kw.eBH) # 0.7774987
+
+#
+#t81
+cond.edu <- hpv2$t81
+#run ALDEx
+ald.edut81 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut81)
+
+# smallest p-values
+min(ald.edut81$glm.eBH) # 0.4803137
+min(ald.edut81$kw.eBH) # 0.8301087
+
+#t83
+cond.edu <- hpv2$t83
+#run ALDEx
+ald.edut83 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut83)
+
+# smallest p-values
+min(ald.edut83$glm.eBH) # 0.1630032
+min(ald.edut83$kw.eBH) # 0.6242779
+
+#t84
+cond.edu <- hpv2$t84
+#run ALDEx
+ald.edut84 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut84)
+
+# smallest p-values
+min(ald.edut84$glm.eBH) # 0.3985252
+min(ald.edut84$kw.eBH) # 0.7216579
+
+#t89
+cond.edu <- hpv2$t89
+#run ALDEx
+ald.edut89 <- aldex(reads = bac2, conditions = cond.edu, test = "glm", 
+                    effect = FALSE)
+
+#look at the output
+head(ald.edut89)
+
+# smallest p-values
+min(ald.edut89$glm.eBH) # 0.8860515
+min(ald.edut89$kw.eBH) # 0.8691187
