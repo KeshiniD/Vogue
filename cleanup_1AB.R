@@ -12,9 +12,8 @@ vmb <- tbl_df(data) %>% # collection vs HIV
   arrange(Event.Name)
 
 myData = vmb[-c(1:94), ] # just HIV data
-# wrote to file
-write.table(myData, "myData.csv", sep = ",", row.names = FALSE, 
-            quote = FALSE)
+# write to file
+write.table(myData, "Vogue1B_HIVdata.csv", sep = ",", row.names = FALSE, quote = FALSE)
 
 #clean up 1A file
 data <- read.delim(file.path("VOGUE_1A.txt"))
