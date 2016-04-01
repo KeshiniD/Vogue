@@ -158,3 +158,10 @@ ald.edu4 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FAL
 # smallest p-values
 min(ald.edu4$glm.eBH) #0.6617548
 min(ald.edu4$kw.eBH) # 0.6399051
+
+#Ethnicity
+cond.edu <- meta$Nugent.score
+ald.edu5 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
+# smallest p-values
+min(ald.edu5$glm.eBH) # 1.241176e-15
+min(ald.edu5$kw.eBH) # 7.524657e-13
