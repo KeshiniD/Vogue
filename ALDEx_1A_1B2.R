@@ -184,29 +184,29 @@ min(ald.edu7$kw.eBH) # 0.855607
 cond.edu <- meta$BV..number.of.episodes.2.months.
 ald.edu8 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu8$glm.eBH) 
-min(ald.edu8$kw.eBH)
+min(ald.edu8$glm.eBH) # 0.002328189
+min(ald.edu8$kw.eBH) # 0.0337454
 
 #BV_year
 cond.edu <- meta$BV..number.of.episodes.year.
 ald.edu9 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu9$glm.eBH) 
-min(ald.edu9$kw.eBH)
+min(ald.edu9$glm.eBH) # 0.004781706
+min(ald.edu9$kw.eBH) # 0.1478793
 
 #BV_lifetime
 cond.edu <- meta$BV..number.of.episodes.lifetime.
 ald.edu10 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu10$glm.eBH) 
-min(ald.edu10$kw.eBH)
+min(ald.edu10$glm.eBH) #0.007302841
+min(ald.edu10$kw.eBH) #0.2387352
 
 #Yeast_2months
 cond.edu <- meta$Yeast..2months.
 ald.edu11 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu11$glm.eBH) 
-min(ald.edu11$kw.eBH)
+min(ald.edu11$glm.eBH) #0.7945676
+min(ald.edu11$kw.eBH) # 0.8814478
 
 #Yeast_year
 cond.edu <- meta$Yeast..year.
