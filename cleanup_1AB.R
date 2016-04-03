@@ -32,7 +32,7 @@ data2 <-
 data <- read.csv(file.path("VOGUE_1B.csv"))
 vmb <- tbl_df(data) %>% # collection vs HIV vs blank
   arrange(redcap_event_name)
-myData = vmb[c(348:401), ] # just collection
+myData = vmb[c(1:54), ] # just collection
 #write to file
 write.table(myData, "Vogue1B_collection2.csv", sep = ",", row.names = FALSE, 
             quote = FALSE)

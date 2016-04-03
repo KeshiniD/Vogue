@@ -212,36 +212,36 @@ min(ald.edu11$kw.eBH) # 0.8814478
 cond.edu <- meta$Yeast..year.
 ald.edu12 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu12$glm.eBH) 
-min(ald.edu12$kw.eBH)
+min(ald.edu12$glm.eBH) #0.2254619
+min(ald.edu12$kw.eBH) # 0.8938613
 
 #Yeast_lifetime
 cond.edu <- meta$Yeast..lifetime.
 ald.edu13 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu13$glm.eBH) 
-min(ald.edu13$kw.eBH)
+min(ald.edu13$glm.eBH) #0.3590241
+min(ald.edu13$kw.eBH) # 0.9092517
 
 #Antimicrobials (make into factor)
 cond.edu <- meta$Antimicrobial.Use..y.1..n.0.
 ald.edu14 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu14$glm.eBH) 
-min(ald.edu14$kw.eBH)
+min(ald.edu14$glm.eBH) #0.2931287
+min(ald.edu14$kw.eBH) #0.541405
 
 #Prescription (make into factor)
 cond.edu <- meta$X.Non..Prescription..y.1..n.0.
 ald.edu15 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu15$glm.eBH) 
-min(ald.edu15$kw.eBH)
+min(ald.edu15$glm.eBH) #0.8166254
+min(ald.edu15$kw.eBH) # 0.8315676
 
 #vaginal intercourse_past48h (make into factor)
 cond.edu <- meta$Vaginal.intercourse.in.past.48.hours..y.1..n.0.
 ald.edu16 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu16$glm.eBH) 
-min(ald.edu16$kw.eBH)
+min(ald.edu16$glm.eBH) #0.3078194
+min(ald.edu16$kw.eBH) # 0.5789654
 
 #oralsex_cat (factor)
 cond.edu <- meta$Freq.oral.sex.cat
