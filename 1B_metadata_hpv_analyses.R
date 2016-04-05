@@ -5,6 +5,7 @@ suppressPackageStartupMessages(library(dplyr))
 library(ggplot2)
 library(tidyr)
 library(knitr)
+library(vcd)
 
 #load dataset
 total <- read.csv(file="1B_grouped.csv")
@@ -100,8 +101,294 @@ total$irritationdiscomfort2wk <- factor(total$irritationdiscomfort2wk)
 total$irritationdiscomfort48 <- factor(total$irritationdiscomfort48)
 total$vaginalsymptomother2wk <- factor(total$vaginalsymptomother2wk)
 total$vaginalsymptomother48 <- factor(total$vaginalsymptomother48)
+total$antimicrodrug <- factor(total$antimicrodrug)
+total$rxdrug <- factor(total$rxdrug)
 
 #t06, t11, 34, 39, 44, 69, 82
 #have only 1 factor level (0 participants have these types)
 
 #nugent (consistent -1, intermediate -2, inconsistent -3)
+
+##2X2 tables-Fishers
+#pvalue <0.05 reject null and there is assocation
+#pvalue >0.05 do not reject null and there is no association
+
+#t16
+#Demographics
+a <- xtabs(~t16 + Age.cat , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + BMI.under.cat , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + BMI.over.cat , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Ethnicity.cat , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Ethnicity2.cat , data = total)
+fisher.test(a)
+assocstats(a)
+
+#Meds
+a <- xtabs(~t16 + antimicrodrug , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + rxdrug , data = total)
+fisher.test(a)
+assocstats(a)
+
+#Genital Infections
+mylogit <- glm(formula = t16 ~ bv_infecttotal_2mo, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = t16 ~ bv_infecttotal_1yr, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = t16 ~ bv_life, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+a <- xtabs(~t16 + BV.ever , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Yeast.ever , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + UTI.ever , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Trich.ever , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Condyloma.ever , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + GenHerpes.ever , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Chlamydia.ever , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Gonorrhea.ever , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Syphillis.ever , data = total)
+fisher.test(a)
+assocstats(a)
+
+#Symptoms
+a <- xtabs(~t16 + Presence.Symptoms.2wks , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Presence.Symptoms.48hrs , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + abnormaldischarge2wk , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + abnormaldischarge48 , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + abnormalodor2wk , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + abnormalodor48 , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + irritationdiscomfort2wk , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + irritationdiscomfort48 , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + vaginalsymptomother2wk , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + vaginalsymptomother48 , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Symptom.pain , data = total)
+fisher.test(a)
+assocstats(a)
+
+
+#Contraception
+a <- xtabs(~t16 + Contraception.H , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Contraception.B.M , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Contraception.IUD , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Contraception.none , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + contramethnotactive___1 , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + condoms.48h , data = total)
+fisher.test(a)
+assocstats(a)
+
+#Pregnancy
+a <- xtabs(~t16 + Pregnancy.cat , data = total)
+fisher.test(a)
+assocstats(a)
+
+#Sexual Activty
+a <- xtabs(~t16 + oralsxfrequency.cat , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + analsxfrequency.ca , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + sextoyfrequency.cat , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + sexpartner1yr.ca , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + sexpartner , data = total)
+fisher.test(a)
+assocstats(a)
+
+#Product Use
+a <- xtabs(~t16 + Feminine.products , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Feminine.products.48hrs , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Tampon.Use.cat , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Tampon.use.1mth , data = total)
+fisher.test(a)
+assocstats(a)
+
+#Substance Use
+a <- xtabs(~t16 + smoking.current , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + druguse , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + substanceuse , data = total)
+fisher.test(a)
+assocstats(a)
+
+#HIV data
+a <- xtabs(~t16 + Is.the.patient.antiretroviral.naive. , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + HIV.Clade...Result , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + Likely.mode.of.HIV.acquisition , data = total)
+fisher.test(a)
+assocstats(a)
+
+mylogit <- glm(formula = t16 ~ Med.Duration, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = t16 ~ Duration.of.HIV.Infection., data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = t16 ~ CD4.Nadir., data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = t16 ~ Highest.VL.Ever.., data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = t16 ~ CD4., data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+mylogit <- glm(formula = t16 ~ VL..copies.mL.., data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+a <- xtabs(~t16 + HCV.Antibody...Result , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + HCV.PCR...Result , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + HBV.sAb...Result , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + HBV.sAg...Result , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~t16 + HBV.cAb...Result , data = total)
+fisher.test(a)
+assocstats(a)
+
+#HPV data
+mylogit <- glm(formula = t16 ~ Number.of.Different.HPV.Types, data=total, 
+               family = binomial(link = "logit"))
+summary(mylogit)
+
+#CST
+a <- xtabs(~t16 + CST , data = total)
+fisher.test(a)
+assocstats(a)
+
+#Nugent
+a <- xtabs(~t16 + nugent_score_result , data = total)
+fisher.test(a)
+assocstats(a)
+

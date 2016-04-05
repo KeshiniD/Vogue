@@ -450,7 +450,8 @@ total2 <- total %>%
          HBV.sAg...Result, HBV.cAb...Result, nugent_score_result, sexpartner, 
          contramethnotactive___1, abnormaldischarge2wk, abnormaldischarge48, 
          abnormalodor2wk, abnormalodor48, irritationdiscomfort2wk, 
-         irritationdiscomfort48, vaginalsymptomother2wk, vaginalsymptomother48)
+         irritationdiscomfort48, vaginalsymptomother2wk, vaginalsymptomother48, 
+         rxdrug, antimicrodrug)
 
 #write to file
 #write.csv(total2, "1B_grouped.csv")
