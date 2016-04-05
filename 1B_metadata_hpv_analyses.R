@@ -109,7 +109,7 @@ total$rxdrug <- factor(total$rxdrug)
 
 #nugent (consistent -1, intermediate -2, inconsistent -3)
 
-##2X2 tables-Fishers
+##2X2 tables-Fishers(cat variables); glm (continuous variables)
 #pvalue <0.05 reject null and there is assocation
 #pvalue >0.05 do not reject null and there is no association
 
@@ -274,7 +274,7 @@ a <- xtabs(~t16 + oralsxfrequency.cat , data = total)
 fisher.test(a)
 assocstats(a)
 
-a <- xtabs(~t16 + analsxfrequency.ca , data = total)
+a <- xtabs(~t16 + analsxfrequency.cat , data = total)
 fisher.test(a)
 assocstats(a)
 
@@ -282,7 +282,7 @@ a <- xtabs(~t16 + sextoyfrequency.cat , data = total)
 fisher.test(a)
 assocstats(a)
 
-a <- xtabs(~t16 + sexpartner1yr.ca , data = total)
+a <- xtabs(~t16 + sexpartner1yr.cat , data = total)
 fisher.test(a)
 assocstats(a)
 
@@ -392,3 +392,5 @@ a <- xtabs(~t16 + nugent_score_result , data = total)
 fisher.test(a)
 assocstats(a)
 
+#########################################
+#Ran Dean's code instead
