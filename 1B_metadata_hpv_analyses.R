@@ -394,3 +394,13 @@ assocstats(a)
 
 #########################################
 #Ran Dean's code instead
+#dean.R
+#can change hpv groupings to:
+#no hpv, non-oncogenic hpv, 1 oncogenic hpv type, 1+ oncogenic hpv type
+###################################################################################
+#adjust p-values; Benjamini Hochburg
+pvals <- read.csv(file = "clipboard") #copied from excel
+pvals
+
+a <- p.adjust(pvals$pval, method = 'hochberg', n = 1827)
+View(a)
