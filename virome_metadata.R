@@ -6,81 +6,36 @@ library(ggplot2)
 library(tidyr)
 library(knitr)
 
-#load datasets
-hiv <- read.csv(file="Vogue1B_HIVdata.csv")
-hpv <- read.csv(file= "HPVinHIV_types.csv")
-data <- read.csv(file="Vogue1B_collection2.csv")
+#load dataset
+data <- read.csv(file="VOGUE_1A_1B_1B2.csv")
+virome <- read.csv(file="Virome_Participants.csv")
+virome$X <- NULL
 
-#select participants with HPV data available (omit those excluded from 1B)
-hiv <- read.csv(file="Vogue1B_HIVdata.csv")
-hpv <- read.csv(file= "HPVinHIV_types.csv")
-nums <- substring(hpv$Vogue.1B.ID, 4)
-ids <- paste0("Vogue 1B 01-", nums)
-hiv2 <- hiv[which(hiv$Study.ID %in% ids), ]
+#just want 1A and 1B2
+newvirome <- data.frame(virome[-c(22:46), ]  )
 
-data <- read.csv(file="Vogue1B_collection2.csv")
-hpv <- read.csv(file= "HPVinHIV_types.csv")
-nums <- substring(hpv$Vogue.1B.ID, 4)
-ids <- paste0("Vogue 1B 01-", nums)
+#select virome participants
+data <- read.csv(file="VOGUE_1A_1B_1B2.csv")
+#newvirome
+nums <- substring(newvirome$VogueViromeParticipants, 1)
+ids <- paste0("", nums)
 data2 <- data[which(data$study_id %in% ids), ]
 
-### change study ID
-hpv$Vogue.1B.ID <-
-  paste0("Vogue 1B 01-",
-         substring(hpv$Vogue.1B.ID, nchar("01-")+1))
+#merge newvirome participants (has CSTs) with data2
+#rename vogueviromeparticpants to study_id
+newvirome <- dplyr::rename(newvirome, study_id = VogueViromeParticipants) #same column name
 
-#select hpv types, and merge datasets together
-hpv2 <- hpv %>%
-  select (Vogue.1B.ID, t06, t11, t16, t18, t26, t31, t33, t34, t35, t39, t40, 
-          t42, t44, t45, t51, t52, t53, t54, t56, t58, t59, t61, t62, t66, t67, 
-          t68, t69, t70, t71, t72, t73, t81, t82, t83, t84, t89, Number.of.Different.HPV.Types) 
-
-#merge all datasets
-data2 <- dplyr::rename(data2, Study.ID = study_id) #same column name
-hpv3 <- dplyr::rename(hpv2, Study.ID = Vogue.1B.ID) #same column name
-total<-join(data2, hiv2, type="full") #merge
-total2 <- join(total, hpv3, type='full')
-
-#remove participants 55, 57; excluded from 1B
-#last two rows
-total3 <- total2[c(-31,-32),]
-
-#add CSTs
-CST <- read.csv(file="Vogue1B_CST.csv")
-
-### change study ID
-total3$Study.ID <-
-  paste0("Vogue1B.01.",
-         substring(total3$Study.ID, nchar("Vogue 1B 01-")+1))
-
-CST$Participants <-
-  paste0("Vogue1B.01.0",
-         substring(CST$Participants, nchar("Vogue1B.1.")+1))
-#now they are the same
-
-#select columns want
-CST2 <- CST %>%
-  select (Participants, CST)
-
-#remove empty rows
-CST3 <- CST2[c(-55:-69),]
-
-#select participants which have hpv types
-#CST3
-#total3
-nums <- substring(total3$Study.ID, 12)
-ids <- paste0("Vogue1B.01.", nums)
-CST4 <- CST3[which(CST3$Participants %in% ids), ]
-
-#rename participant column and merge
-CST5 <- dplyr::rename(CST4, Study.ID = Participants) #same column name
-total4<-join(total3, CST5, type="full") #merge
+total<-join(data2, newvirome, type="full") #merge
 
 #write to file
-#write.csv(total4, "1B_full.csv")
+#write.csv(total, "virome_metadata_full.csv")
+
+################################################################################
+#put metadata into groups like 1B, then merge 1A, 1B2 data with 1B data 
+#1B already grouped
 
 #clean up variables, group
-total <- read.csv(file="1B_full.csv")
+total <- read.csv(file="virome_metadata_full.csv")
 
 #Grouping variables
 #Age
@@ -144,13 +99,13 @@ total$Ethnicity2.cat <- factor(total$Ethnicity2.cat)
 #Genital Infections
 #collapse BV category, BV ever
 total$BV.ever <- ifelse(total$bv_life > 0, 
-                           c("1"), c("0")) 
+                        c("1"), c("0")) 
 #convert BV.ever from character into factor
 total$BV.ever <- factor(total$BV.ever) 
 
 #collapse Yeast category, Yeast ever
 total$Yeast.ever <- ifelse(total$yeast_life > 0, 
-                         c("1"), c("0")) 
+                           c("1"), c("0")) 
 #convert Yeast.ever from character into factor
 total$Yeast.ever <- factor(total$Yeast.ever) 
 
@@ -291,13 +246,12 @@ total$sexpartner1yr.cat[total$sexpartner1yr >= 1] <- "1"#1 or more partners
 #convert Number.partners.in.past.year.cat from character into factor
 total$sexpartner1yr.cat <- factor(total$sexpartner1yr.cat)
 
-##Cat. for number of sexual partners in the last 2months
+##Cat. for number of sexual partners in the last 2 months
 total$sexpartner2mo.cat[total$sexpartner2mo <= 0] <- "0" # 0 partners
 total$sexpartner2mo.cat[total$sexpartner2mo >= 1] <- "1"#1 or more partners
 
-#convert sexpartner2mo.cat from character into factor
+#convert Number.partners.in.past.year.cat from character into factor
 total$sexpartner2mo.cat <- factor(total$sexpartner2mo.cat)
-
 
 ################################
 #Contraception
@@ -374,7 +328,7 @@ total$Tampon.Use.cat <- factor(total$Tampon.Use.cat)
 #######################################################
 #Days since LMP
 finish <- as.Date(total$last_menst_per, format="%m/%e/%Y")
-start <- as.Date(total$Date.of.Study.Entry, format="%m/%e/%Y")
+start <- as.Date(total$date_study_entry, format="%m/%e/%Y")
 date_diff<-as.data.frame(abs(finish-start))
 total[,"days.since.LMP"] <- abs(finish-start)
 
@@ -404,8 +358,9 @@ summary(total$smoking.current)
 #######################################
 #drug use
 #manually created
-total[,"druguse"]  <- c(0,2,2,0,0,2,1,2,2,1,2,1,2,2,2,0,1,1,2,1,1,2,2,2,0,
-                             0,2,1,2,1)
+total[,"druguse"]  <- c(2,2,1,2,0,0,2,1,0,2,0,0,0,0,0,
+                        2,0,1,0,0,2,1,1,1,1,0,1,1,0)
+
 #convert numeric into factor
 # current-2, past-1, no-0
 total$druguse <- factor(total$druguse)
@@ -413,55 +368,36 @@ total$druguse <- factor(total$druguse)
 #substance use (drug and alcohol) 
 #combine: current (yes-1,no-0)(all alcohol drinkers are current) 
 total$substanceuse <- ifelse(total$druguse > 1 & 
-                                  total$alcoholcurrent >= 3, 
-                                c("1"), c("0")) 
+                               total$alcoholcurrent >= 3, 
+                             c("1"), c("0")) 
 
 #convert substanceuse from character into factor
 total$substanceuse <- factor(total$substanceuse)
 summary(total$substanceuse)
 
-##################################
-#total med duration = sum(combo.duration days)
-total[,"Med.Duration"]  <- (total$Combo.Duration..days.+ 
-                            total$Combo.Duration..days..1 + 
-                              total$Combo.Duration..days..2 + 
-                              total$Combo.Duration..days..3 + 
-                              total$Combo.Duration..days..4 + 
-                              total$Combo.Duration..days..5 + 
-                              total$Combo.Duration..days..6 + 
-                              total$Combo.Duration..days..7 + 
-                              total$Combo.Duration..days..8 + 
-                              total$Combo.Duration..days..9 + 
-                              total$Combo.Duration..days..10 + 
-                              total$Combo.Duration..days..11) 
 ###################################################################
 
 #select categories want to analyse
 total2 <- total %>%
-  select(Study.ID, t06, t11, t16, t18, t26, t31, t33, t34, t35, t39, t40, t42, t44, t45, 
-         t51, t52, t53, t54, t56, t58, t59, t61, t62, t66, t67, t68, t69, t70, 
-         t71, t72, t73, t81, t82, t83, t84, t89, Number.of.Different.HPV.Types, 
-         CST, Age.cat, BMI.under.cat, BMI.over.cat, Ethnicity.cat, Ethnicity2.cat, 
+  select(study_id, CST, Age.cat, BMI.under.cat, BMI.over.cat, Ethnicity.cat, Ethnicity2.cat, 
          bv_life, bv_infecttotal_1yr, bv_infecttotal_2mo, BV.ever, Yeast.ever, 
          UTI.ever, Trich.ever, Condyloma.ever, GenHerpes.ever, 
          Chlamydia.ever, Gonorrhea.ever, Syphillis.ever, Presence.Symptoms.2wks, 
          Presence.Symptoms.48hrs, Symptom.pain, oralsxfrequency.cat, 
-         analsxfrequency.cat, sextoyfrequency.cat, sexpartner1yr.cat,
+         analsxfrequency.cat, sextoyfrequency.cat, sexpartner1yr.cat, 
          sexpartner2mo.cat, Contraception.H, Contraception.B.M, Contraception.IUD, 
          Contraception.none, condoms.48h, Pregnancy.cat, Feminine.products, 
          Feminine.products.48hrs, Tampon.Use.cat, days.since.LMP, 
          Tampon.use.1mth, smoking.current, druguse, substanceuse, 
-         Med.Duration, Is.the.patient.antiretroviral.naive., HIV.Clade...Result, 
-         Likely.mode.of.HIV.acquisition, Duration.of.HIV.Infection., 
-         CD4.Nadir., Highest.VL.Ever.., CD4., VL..copies.mL.., 
-         HCV.Antibody...Result, HCV.PCR...Result, HBV.sAb...Result, 
-         HBV.sAg...Result, HBV.cAb...Result, nugent_score_result, sexpartner, 
-         contramethnotactive___1, abnormaldischarge2wk, abnormaldischarge48, 
+         nugent_score_result, sexpartner, contramethnotactive___1, 
+         abnormaldischarge2wk, abnormaldischarge48, 
          abnormalodor2wk, abnormalodor48, irritationdiscomfort2wk, 
          irritationdiscomfort48, vaginalsymptomother2wk, vaginalsymptomother48, 
          rxdrug, antimicrodrug)
 
 #write to file
-#write.csv(total2, "1B_grouped.csv")
+#write.csv(total2, "virome_metadata_grouped.csv")
 
-###################################################################################
+#####
+#back to start; and include 1B
+#dataset I have is only hpv types, not all virome 1B
