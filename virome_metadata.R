@@ -872,5 +872,15 @@ b <- read.csv(file="virome1B_metadata_CST_full.csv")
 
 total<-join(a, b, type="full") #merge
 
+#new column for study arm
+v1a <- which(grepl("1A", total$study_id))
+v1b2 <- which(grepl("1B2", total$study_id))
+v1b <- which(grepl("1B\\.", total$study_id))
+
+total$study_arm <- NA
+total$study_arm[v1a] <- "1A"
+total$study_arm[v1b2] <- "1B2"
+total$study_arm[v1b] <- "1B"
+
 #write to file
 #write.csv(total, "viromeall_metadata_full.csv")
