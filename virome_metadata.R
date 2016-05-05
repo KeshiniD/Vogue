@@ -362,7 +362,7 @@ total[,"druguse"]  <- c(2,1,2,0,0,0,2,1,2,0,2,0,0,1,0,0,0,0,2,1,0,1,1,1,1,0,1,1,
 
 #convert numeric into factor
 # current-2, past-1, no-0
-total$druguse <- factor(total$druguse)
+#total$druguse <- factor(total$druguse)
 
 #substance use (drug and alcohol) 
 #combine: current (yes-1,no-0)(all alcohol drinkers are current) 
@@ -378,7 +378,7 @@ summary(total$substanceuse)
 
 #select categories want to analyse
 total2 <- total %>%
-  select(study_id, CST, Age.cat, BMI.under.cat, BMI.over.cat, Ethnicity.cat, Ethnicity2.cat, 
+  select(study_id, CST, age, bmi, Age.cat, BMI.under.cat, BMI.over.cat, Ethnicity.cat, Ethnicity2.cat, 
          bv_life, bv_infecttotal_1yr, bv_infecttotal_2mo, BV.ever, Yeast.ever, 
          UTI.ever, Trich.ever, Condyloma.ever, GenHerpes.ever, 
          Chlamydia.ever, Gonorrhea.ever, Syphillis.ever, Presence.Symptoms.2wks, 
@@ -392,12 +392,12 @@ total2 <- total %>%
          abnormaldischarge2wk, abnormaldischarge48, 
          abnormalodor2wk, abnormalodor48, irritationdiscomfort2wk, 
          irritationdiscomfort48, vaginalsymptomother2wk, vaginalsymptomother48, 
-         rxdrug, antimicrodrug)
+         rxdrug, antimicrodrug, vaginalintercourse48hr)
 
 #write to file
 #write.csv(total2, "virome_metadata_grouped.csv")
 
-######
+#######
 #dataset I have is only hpv types, not all virome 1B
 #get virome participants and merge with 1A and 1B2
 #load datasets
@@ -807,7 +807,7 @@ total[,"Med.Duration"]  <- (total$Combo.Duration..days.+
 ####################################################################
 #select categories want to analyse
 total2 <- total %>%
-  select(study_id, Age.cat, BMI.under.cat, BMI.over.cat, Ethnicity.cat, Ethnicity2.cat, 
+  select(study_id, age, bmi, Age.cat, BMI.under.cat, BMI.over.cat, Ethnicity.cat, Ethnicity2.cat, 
          bv_life, bv_infecttotal_1yr, bv_infecttotal_2mo, BV.ever, Yeast.ever, 
          UTI.ever, Trich.ever, Condyloma.ever, GenHerpes.ever, 
          Chlamydia.ever, Gonorrhea.ever, Syphillis.ever, Presence.Symptoms.2wks, 
@@ -829,7 +829,7 @@ total2 <- total %>%
          Likely.mode.of.HIV.acquisition, Duration.of.HIV.Infection., 
          CD4.Nadir., Highest.VL.Ever.., CD4., VL..copies.mL.., 
          HCV.Antibody...Result, HCV.PCR...Result, HBV.sAb...Result, 
-         HBV.sAg...Result, HBV.cAb...Result)
+         HBV.sAg...Result, HBV.cAb...Result, vaginalintercourse48hr)
 ########################################################
 #add CSTs
 CST <- read.csv(file="Vogue1B_CST.csv")
