@@ -884,3 +884,13 @@ total$study_arm[v1b] <- "1B"
 
 #write to file
 #write.csv(total, "viromeall_metadata_full.csv")
+########################################################################
+#load data
+total <- read.csv(file="viromeall_metadata_full.csv")
+
+#look at descriptives for each substudy
+#subset cohorts
+data1A <- total[ which(total$study_arm=='1A'), ]
+data1B <- total[ which(total$study_arm=='1B'), ]
+data1B2 <- total[ which(total$study_arm=='1B2'), ]
+
