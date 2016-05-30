@@ -455,28 +455,57 @@ min(ald.edu46$kw.eBH)
 
 #####################################
 #Dean put all variables in one line
+library(ALDEx2)
+meta <- read.csv(file="Aldex_metadata_1A_1B2.csv")
+bac <- read.csv(file="Aldex_bac_1A_1B2")
+
+#variables need to be factors; maybe? try integer and see
+# set the rownames as the taxa names
+row.names(bac) <- bac[, 1]
+bac <- bac[, -1]
+meta$X.1 <- NULL
+meta$X <- NULL
+
+
+
 variables <- colnames(meta)
-#variables <- variables[2:4]
+#variables <- variables[c(2,7,17)]
+notfactors <- c(
+  "Nugent.score","Age","BMI","BV..number.of.episodes.2.months.",
+  "BV..number.of.episodes.year.","BV..number.of.episodes.lifetime.",
+  "Yeast..2months.","Yeast..year.","Yeast..lifetime."
+)
 
 
 mydf <- data.frame(variable = c(), glm.eBH = c(), kw.eBH = c())
 
 lapply(variables, function(var) {
+  
+  if ( var == "Participants" ) {
+    return()
+  }
+  if (!(var %in% notfactors)) {
+    var < as.factor(var)
+  }
+  
   #make a vector that is the variable labels
   cond.edu <- meta[[var]]
   
   #run ALDEx
   ald.edu <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
-  #ald.edu <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE, mc.samples = 2)
+  #ald.edu <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE, mc.samples = 2, verbose = FALSE)
   
   #look at the output
   #head(ald.edu)
-  
+  cat(var, "\t", min(ald.edu$glm.eBH), "\t", min(ald.edu$kw.eBH), "\n")
   row <- data.frame(variable = var, glm.eBH = min(ald.edu$glm.eBH), kw.eBH = min(ald.edu$kw.eBH))
   mydf <<- rbind(mydf, row)
-  
-  # smallest p-values
-  # 8.105249e-85
-  # 9.634603e-46
-  
 })
+
+mydf$signif <- mydf$glm.eBH < 0.05
+
+#################
+mydf2 <- mydf
+mydf2$signif <- mydf$glm.eBH < 0.05
+View(mydf2)
+mydf2$signif <- mydf$glm.eBH < 0.05
