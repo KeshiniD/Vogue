@@ -463,7 +463,6 @@ bac <- read.csv(file="Aldex_bac_1A_1B2")
 # set the rownames as the taxa names
 row.names(bac) <- bac[, 1]
 bac <- bac[, -1]
-meta$X.1 <- NULL
 meta$X <- NULL
 
 

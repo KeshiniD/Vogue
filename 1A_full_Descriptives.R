@@ -82,6 +82,7 @@ summary(factor(total$ethother___1))
 
 #########################################################################
 #merge 1A and 1B2 together to compare groups
+#remember to rerun factor code above
 a <- read.csv(file="1B2metabac_condensedv2.csv")
 b <- read.csv(file="1A_full_grouped.csv")
 #include study arm cat
