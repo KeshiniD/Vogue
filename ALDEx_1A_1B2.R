@@ -247,22 +247,22 @@ min(ald.edu16$kw.eBH) # 0.5789654
 cond.edu <- meta$Freq.oral.sex.cat
 ald.edu17 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu17$glm.eBH) 
-min(ald.edu17$kw.eBH)
+min(ald.edu17$glm.eBH) # 0.8288082
+min(ald.edu17$kw.eBH) # 0.8253596
 
 #analsex_cat (factor)
 cond.edu <- meta$Freq.anal.sex.cat
 ald.edu18 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu18$glm.eBH) 
-min(ald.edu18$kw.eBH)
+min(ald.edu18$glm.eBH) # 0.5200745
+min(ald.edu18$kw.eBH) # 0.4972258
 
 #sextoy_cat (factor)
 cond.edu <- meta$Freq.sex.toy.use.cat
 ald.edu19 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
 # smallest p-values
-min(ald.edu19$glm.eBH) 
-min(ald.edu19$kw.eBH)
+min(ald.edu19$glm.eBH) #0.7256718
+min(ald.edu19$kw.eBH) #0.7233183
 
 #presencesymptoms_2wks
 cond.edu <- meta$Presence.Symptoms.2wks
@@ -453,3 +453,30 @@ ald.edu46 <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FA
 min(ald.edu46$glm.eBH) 
 min(ald.edu46$kw.eBH)
 
+#####################################
+#Dean put all variables in one line
+variables <- colnames(meta)
+#variables <- variables[2:4]
+
+
+mydf <- data.frame(variable = c(), glm.eBH = c(), kw.eBH = c())
+
+lapply(variables, function(var) {
+  #make a vector that is the variable labels
+  cond.edu <- meta[[var]]
+  
+  #run ALDEx
+  ald.edu <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
+  #ald.edu <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE, mc.samples = 2)
+  
+  #look at the output
+  #head(ald.edu)
+  
+  row <- data.frame(variable = var, glm.eBH = min(ald.edu$glm.eBH), kw.eBH = min(ald.edu$kw.eBH))
+  mydf <<- rbind(mydf, row)
+  
+  # smallest p-values
+  # 8.105249e-85
+  # 9.634603e-46
+  
+})

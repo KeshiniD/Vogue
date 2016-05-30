@@ -894,3 +894,68 @@ data1A <- total[ which(total$study_arm=='1A'), ]
 data1B <- total[ which(total$study_arm=='1B'), ]
 data1B2 <- total[ which(total$study_arm=='1B2'), ]
 
+###########################################################################
+data <- read.csv(file.path("data1A_1B2.csv"))
+
+#column into row labels
+data2 <- data[,-1]
+rownames(data2) <- data[,1]
+#transpose dataset
+data2 <- as.data.frame(t(data2))
+#row into column
+data2 <- add_rownames(data2, "Participants")
+data2 <- data.frame(data2[c(2:311), ]  )
+
+
+#just want 1A
+virome <- read.csv(file="Virome_Participants.csv")
+newvirome <- data.frame(virome[c(1:21), ]  )
+
+#select virome participants
+#data2
+#newvirome
+nums <- substring(newvirome$VogueViromeParticipants, 13)
+ids <- paste0("Vogue1A.01.", nums)
+data3 <- data2[which(data2$Participants %in% ids), ]
+
+#bac counts
+data4 <-
+  gather(data3, key = 'Bacteria', value = 'Counts', Actinobacteria.sp., 
+         Alloscardovia.omnicolens, Atopobium.vaginae, 
+         Bifidobacterium.breve, Clostridia.sp..BVAB2, 
+         Clostridium.genomosp..BVAB3, Enterococcus.rattus, 
+         Escherichia.coli, Eukaryote, Gardnerella.vaginalis.Group.A, 
+         Gardnerella.vaginalis.Group.B, Gardnerella.vaginalis.Group.C, 
+         Gardnerella.vaginalis.Group.D, Klebsiella.pneumoniae, 
+         Lactobacillus.crispatus, Lactobacillus.gasseri, 
+         Lactobacillus.iners, Lactobacillus.jensenii, 
+         Megasphaera.sp..genomosp..type.1, Other.Actinobacteria, 
+         Other.Bacteria, Other.Bacteroidetes, Other.Bifidobacterium, 
+         Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
+         Other.Prevotella, Other.Proteobacteria, Other.Streptococcus, 
+         Porphyromonas.uenonis, Prevotella.amnii, Prevotella.timonensis, 
+         Pseudomonas.putida, Streptococcus.devriesei, Variovorax.paradoxus)
+
+vmb <- tbl_df(data4) %>% # finally got the percentages correct
+  group_by(Participants) %>%
+  select(Participants, Bacteria, Counts) %>%
+  mutate(Species.Percentage = Counts/(sum(Counts))*100) %>% 
+  # can either have % or decimal
+  arrange(Participants)
+
+#colours arent the best
+jColors <- c('maroon', 'magenta', 'linen', 'olivedrab', 'red', 
+             'pink', 'darkorchid2', 'darkseagreen4', 'lightsalmon', 'green3', 
+             'forestgreen', 'palegreen', 'green', 'darkgoldenrod1', 
+             'blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 
+             'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 
+             'firebrick1', 'gray33', 'gray', 'mediumvioletred', 'black', 
+             'olivedrab2', 'orange3', 
+             'slateblue', 'turquoise', 'lavender', 'rosybrown2', 'deeppink')
+
+ggplot(data = vmb, aes(x = Participants, y = Species.Percentage, fill = Bacteria)) + 
+  geom_bar(stat = "identity") + coord_flip() + ylab("Species Proportion") +
+  scale_fill_manual(values=jColors)
+###############################################################################
+#make new dataset for comparsion...maybe cannot do with one have
+#check and make changes
