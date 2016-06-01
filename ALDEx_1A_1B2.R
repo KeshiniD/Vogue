@@ -508,3 +508,107 @@ mydf2 <- mydf
 mydf2$signif <- mydf$glm.eBH < 0.05
 View(mydf2)
 mydf2$signif <- mydf$glm.eBH < 0.05
+
+#################################################################################
+#look at variables which are significant
+meta$X.Non..Prescription..y.1..n.0. <- factor(meta$X.Non..Prescription..y.1..n.0.)
+meta$Vaginal.intercourse.in.past.48.hours..y.1..n.0. <- factor(meta$Vaginal.intercourse.in.past.48.hours..y.1..n.0.)
+meta$Abnormal.odor.2wks <- factor(meta$Abnormal.odor.2wks)
+meta$Other.Symptoms.2wks <- factor(meta$Other.Symptoms.2wks)
+meta$Abnormal.odor.48hrs <- factor(meta$Abnormal.odor.48hrs)
+meta$Other.Symptoms.48hrs <- factor(meta$Other.Symptoms.48hrs)
+meta$Genwarts.ever <- factor(meta$Genwarts.ever)
+meta$Substance.Use <- factor(meta$Substance.Use)
+meta$study_arm <- factor(meta$study_arm)
+meta$Tampon.Use.cat <- factor(meta$Tampon.Use.cat)
+meta$Chlamydia.ever <- factor(meta$Chlamydia.ever)
+meta$Trich.ever <- factor(meta$Trich.ever)
+meta$GenHerpes.ever <- factor(meta$GenHerpes.ever)
+meta$Pregnancy.cat <- factor(meta$Pregnancy.cat)
+meta$CST <- factor(meta$CST)
+
+#Nugent Score
+cond.eduNS <- meta$Nugent.score
+ald.eduNS <- aldex(reads = bac, conditions = cond.eduNS, test = "glm", effect = FALSE)
+
+#Age 
+cond.eduAge <- meta$Age
+ald.eduAge <- aldex(reads = bac, conditions = cond.eduAge, test = "glm", effect = FALSE)
+
+#BMI 
+cond.eduBMI <- meta$BMI
+ald.eduBMI <- aldex(reads = bac, conditions = cond.eduBMI, test = "glm", effect = FALSE)
+
+#BV..number.of.episodes.2.months.
+cond.eduBV2mths <- meta$BV..number.of.episodes.2.months.
+ald.eduBV2mths <- aldex(reads = bac, conditions = cond.eduBV2mths, test = "glm", effect = FALSE)
+
+#BV..number.of.episodes.year.
+cond.eduBVyr <- meta$BV..number.of.episodes.year.
+ald.eduBVyr <- aldex(reads = bac, conditions = cond.eduBVyr, test = "glm", effect = FALSE)
+
+#BV..number.of.episodes.lifetime.
+cond.eduBVlifetime <- meta$BV..number.of.episodes.lifetime.
+ald.eduBVlifetime <- aldex(reads = bac, conditions = cond.eduBVlifetime, test = "glm", effect = FALSE)
+
+#X.Non..Prescription..y.1..n.0.
+cond.edurxdrug <- meta$X.Non..Prescription..y.1..n.0.
+ald.edurxdrug <- aldex(reads = bac, conditions = cond.edurxdrug, test = "glm", effect = FALSE)
+
+#Vaginal.intercourse.in.past.48.hours..y.1..n.0.
+cond.eduintercourse48 <- meta$Vaginal.intercourse.in.past.48.hours..y.1..n.0.
+ald.eduintercourse48 <- aldex(reads = bac, conditions = cond.eduintercourse48, test = "glm", effect = FALSE)
+
+#Abnormal.odor.2wks 
+cond.eduodor2wks <- meta$Abnormal.odor.2wks
+ald.eduodor2wks <- aldex(reads = bac, conditions = cond.eduodor2wks, test = "glm", effect = FALSE)
+
+#Other.Symptoms.2wks
+cond.eduother2wks <- meta$Other.Symptoms.2wks
+ald.eduother2wks <- aldex(reads = bac, conditions = cond.eduother2wks, test = "glm", effect = FALSE)
+
+#Abnormal.odor.48hrs
+cond.eduodor48hrs <- meta$Abnormal.odor.48hrs
+ald.eduodor48hrs <- aldex(reads = bac, conditions = cond.eduodor48hrs, test = "glm", effect = FALSE)
+
+#Other.Symptoms.48hrs
+cond.eduother48hrs <- meta$Other.Symptoms.48hrs
+ald.eduother48hrs <- aldex(reads = bac, conditions = cond.eduother48hrs, test = "glm", effect = FALSE)
+
+#Genwarts.ever
+cond.edugenwarts <- meta$Genwarts.ever
+ald.edugenwarts <- aldex(reads = bac, conditions = cond.edugenwarts, test = "glm", effect = FALSE)
+
+#Substance.Use
+cond.edusubuse <- meta$Substance.Use
+ald.edusubuse <- aldex(reads = bac, conditions = cond.edusubuse, test = "glm", effect = FALSE)
+
+#study_arm
+cond.edustudyarm <- meta$study_arm
+ald.edustudyarm <- aldex(reads = bac, conditions = cond.edustudyarm, test = "glm", effect = FALSE)
+
+#Tampon.Use.cat
+cond.edutamponuse <- meta$Tampon.Use.cat
+ald.edutamponuse <- aldex(reads = bac, conditions = cond.edutamponuse, test = "glm", effect = FALSE)
+
+#Chlamydia.ever
+cond.educhlamydia <- meta$Chlamydia.ever
+ald.educhlamydia <- aldex(reads = bac, conditions = cond.educhlamydia, test = "glm", effect = FALSE)
+
+#Trich.ever
+cond.edutrich <- meta$Trich.ever
+ald.edutrich <- aldex(reads = bac, conditions = cond.edutrich, test = "glm", effect = FALSE)
+
+#GenHerpes.ever
+cond.edugenherpes <- meta$GenHerpes.ever
+ald.edugenherpes <- aldex(reads = bac, conditions = cond.edugenherpes, test = "glm", effect = FALSE)
+
+#Pregnancy.cat
+cond.edupreg <- meta$Pregnancy.cat
+ald.edupreg <- aldex(reads = bac, conditions = cond.edupreg, test = "glm", effect = FALSE)
+
+#CST
+cond.eduCST <- meta$CST
+ald.eduCST <- aldex(reads = bac, conditions = cond.eduCST, test = "glm", effect = FALSE)
+
+#############
