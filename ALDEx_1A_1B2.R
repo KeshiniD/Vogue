@@ -611,4 +611,27 @@ ald.edupreg <- aldex(reads = bac, conditions = cond.edupreg, test = "glm", effec
 cond.eduCST <- meta$CST
 ald.eduCST <- aldex(reads = bac, conditions = cond.eduCST, test = "glm", effect = FALSE)
 
-#############
+###############
+#write to file
+#write.csv(ald.eduNS, "Aldex_1B2_Nugentscore.csv")
+#write.csv(ald.eduAge, "Aldex_1B2_Age.csv")
+#write.csv(ald.eduBMI, "Aldex_1B2_BMI.csv")
+#write.csv(ald.eduBV2mths, "Aldex_1B2_BV2months.csv")
+#write.csv(ald.eduBVyr, "Aldex_1B2_BVyear.csv")
+#write.csv(ald.eduBVlifetime, "Aldex_1B2_BVlifetime.csv")
+#write.csv(ald.edurxdrug, "Aldex_1B2_rxdrug.csv")
+#write.csv(ald.eduintercourse48, "Aldex_1B2_intercourse48hrs.csv")
+#write.csv(ald.eduodor2wks, "Aldex_1B2_odor2wks.csv")
+#write.csv(ald.eduother2wks, "Aldex_1B2_other2wks.csv")
+#write.csv(ald.eduodor48hrs, "Aldex_1B2_odor48hrs.csv")
+#write.csv(ald.eduother48hrs, "Aldex_1B2_other48hrs.csv")
+#write.csv(ald.edugenwarts, "Aldex_1B2_Genwarts.csv")
+#write.csv(ald.edusubuse, "Aldex_1B2_substanceuse.csv")
+#write.csv(ald.edustudyarm, "Aldex_1B2_studyarm.csv")
+#write.csv(ald.edutamponuse, "Aldex_1B2_TamponUse.csv")
+#write.csv(ald.educhlamydia, "Aldex_1B2_Chlamydia.csv")
+#write.csv(ald.edutrich, "Aldex_1B2_Trich.csv")
+#write.csv(ald.edugenherpes, "Aldex_1B2_GenHerpes.csv")
+#write.csv(ald.edupreg, "Aldex_1B2_Pregcat.csv")
+#write.csv(ald.eduCST, "Aldex_1B2_CST.csv")
+#################################################################################
