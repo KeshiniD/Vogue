@@ -185,3 +185,15 @@ diag(slope10)
 #sample size = total reads minus 100
 slope100 <- rareslope(bac, (rowSums(bac)-100))
 diag(slope100)
+
+#make into data.frame, merge, and write to file
+slope1_df <- data.frame(diag(slope1))
+slope5_df <- data.frame(diag(slope5))
+slope10_df <- data.frame(diag(slope10))
+slope100_df <- data.frame(diag(slope100))
+
+z <- join(slope1_df, slope5_df, type = "full")
+zz <- join(slope10_df, z, type = "full")
+zzz <- join(slope100_df, zz, type = "full")
+
+write.csv(zzz, "rareslope_1B2.csv")
