@@ -163,3 +163,25 @@ beta <- vegdist(bac, binary=TRUE)
 #participants rows and filled with counts
 mean(beta)
 #0.2785247
+
+###################################
+#June-11-16
+#rareslope to see if curves are platleaus
+#slope at sample size = total reads for each participant
+slope <- rareslope(bac, rowSums(bac)) #result is zero
+
+#looks at diagonal results which this case is relevant results for each participant
+diag(slope) 
+
+#sample size = total reads minus 1
+slope1 <- rareslope(bac, (rowSums(bac)-1))
+diag(slope1)
+#sample size = total reads minus 5
+slope5 <- rareslope(bac, (rowSums(bac)-5))
+diag(slope5)
+#sample size = total reads minus 10
+slope10 <- rareslope(bac, (rowSums(bac)-10))
+diag(slope10)
+#sample size = total reads minus 100
+slope100 <- rareslope(bac, (rowSums(bac)-100))
+diag(slope100)
