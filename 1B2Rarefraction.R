@@ -196,4 +196,4 @@ z <- join(slope1_df, slope5_df, type = "full")
 zz <- join(slope10_df, z, type = "full")
 zzz <- join(slope100_df, zz, type = "full")
 
-write.csv(zzz, "rareslope_1B2.csv")
+write.csv(zzz, "rareslope_1B2.csv") #edit made to the excel document
