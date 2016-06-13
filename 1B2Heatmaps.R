@@ -207,4 +207,9 @@ write.csv(data_clust_7, "data_clust_7.csv")
 plot(data_Jensen_Shannon_dist_sample_cluster, hang=-5, cex=0.6) #testimage.png
 #has right clusters; need to figure how to do just included 1b2
 
+####
+#for coloured bars, amend aldex_metadata
+#need to add the excluded participants
+meta <- read.csv(file="Aldex_metadata_1A_1B2.csv")
+heat_meat <- meta %>% select (Participants, Nugent.score, CST)
 
