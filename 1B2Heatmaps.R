@@ -203,26 +203,8 @@ write.csv(data_clust_7, "data_clust_7.csv")
 
 ####################
 #try with JH data, just looking at 1B2 women #doesnt work
-data <- read.delim(file = "JHdata.txt")
-row.names(data) <- data[, 1]
-data <- data[, -1]
+##################
+plot(data_Jensen_Shannon_dist_sample_cluster, hang=-5, cex=0.6) #testimage.png
+#has right clusters; need to figure how to do just included 1b2
 
-#change headers
-data <- dplyr::rename(data, Vogue1B2.01.26 = X1B2_01_26, 
-                      Vogue1B2.01.35 = X1B2_01_35, Vogue1B2.01.37 = X1B2_01_37, 
-                      Vogue1B2.01.38 = X1B2_01_38, Vogue1B2.01.50 = X1B2_01_50, 
-                      Vogue1B2.01.52 = X1B2_01_52, Vogue1B2.01.56 = X1B2_01_56, 
-                      Vogue1B2.01.58 = X1B2_01_58, Vogue1B2.01.61 = X1B2_01_61, 
-                      Vogue1B2.01.62 = X1B2_01_62, Vogue1B2.01.63 = X1B2_01_63, 
-                      Vogue1B2.01.64 = X1B2_01_64)
-data2 <- data %>%
-  select(Vogue1B2_01_01, Vogue1B2_01_06, Vogue1B2_01_07, Vogue1B2_01_08, 
-         Vogue1B2_01_09, Vogue1B2_01_10, Vogue1B2_01_11, Vogue1B2_01_12, 
-         Vogue1B2_01_15, Vogue1B2_01_19, Vogue1B2_01_21, Vogue1B2_01_23, 
-         Vogue1B2.01.26, Vogue1B2_01_28, Vogue1B2_01_29, Vogue1B2.01.35, 
-         Vogue1B2.01.37, Vogue1B2.01.38, Vogue1B2.01.50, Vogue1B2.01.52, 
-         Vogue1B2.01.56, Vogue1B2.01.58, Vogue1B2.01.61, Vogue1B2.01.62, 
-         Vogue1B2.01.63, Vogue1B2.01.64)
 
-data_clust_7 <- cutree(data_Jensen_Shannon_dist_sample_cluster, k=6) #since 7 clusters with 1A&1B2
-summary(factor(data_clust_7))
