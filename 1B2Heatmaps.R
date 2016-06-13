@@ -186,6 +186,7 @@ data$oral.sex.in.past.48.hours..y.1..n.0. <- mapvalues(data$oral.sex.in.past.48.
 ############################################################################
 #June-12-16
 #following Aline's code for heatmap
-#want rownames to be participants
-rownames(vmb) <- vmb[,1]
-bac[,1] <- NULL
+#use JH's data
+data <- read.delim(file = "JHdata.txt")
+
+#follow Ai
