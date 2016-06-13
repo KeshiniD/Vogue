@@ -183,4 +183,9 @@ data$abnormal.discharge..y.1..n.0. <- mapvalues(data$abnormal.discharge..y.1..n.
 #with NA
 data$oral.sex.in.past.48.hours..y.1..n.0. <- mapvalues(data$oral.sex.in.past.48.hours..y.1..n.0., from = c("0", "1"), to = c("no", "yes"))# works
 
-
+############################################################################
+#June-12-16
+#following Aline's code for heatmap
+#want rownames to be participants
+rownames(vmb) <- vmb[,1]
+bac[,1] <- NULL
