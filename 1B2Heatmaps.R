@@ -211,5 +211,53 @@ plot(data_Jensen_Shannon_dist_sample_cluster, hang=-5, cex=0.6) #testimage.png
 #for coloured bars, amend aldex_metadata
 #need to add the excluded participants
 meta <- read.csv(file="Aldex_metadata_1A_1B2.csv")
-heat_meat <- meta %>% select (Participants, Nugent.score, CST)
 
+#rename dataJH participants names so they look lke aldex metadata participants
+data <- dplyr::rename(data, Vogue1B2.01.26 = X1B2_01_26,
+                      Vogue1B2.01.35 = X1B2_01_35, Vogue1B2.01.37 = X1B2_01_37,
+                      Vogue1B2.01.38 = X1B2_01_38, Vogue1B2.01.50 = X1B2_01_50,
+                      Vogue1B2.01.52 = X1B2_01_52, Vogue1B2.01.56 = X1B2_01_56,
+                      Vogue1B2.01.58 = X1B2_01_58, Vogue1B2.01.61 = X1B2_01_61,
+                      Vogue1B2.01.62 = X1B2_01_62, Vogue1B2.01.63 = X1B2_01_63,
+                      Vogue1B2.01.64 = X1B2_01_64, Vogue1B2.01.01 = Vogue1B2_01_01, 
+                      Vogue1B2.01.02 = Vogue1B2_01_02, Vogue1B2.01.03 =  Vogue1B2_01_03, 
+                      Vogue1B2.01.04 = Vogue1B2_01_04, Vogue1B2.01.05 = Vogue1B2_01_05, 
+                      Vogue1B2.01.06 = Vogue1B2_01_06, Vogue1B2.01.07 = Vogue1B2_01_07, 
+                      Vogue1B2.01.08 = Vogue1B2_01_08, Vogue1B2.01.09 = Vogue1B2_01_09, 
+                      Vogue1B2.01.10 = Vogue1B2_01_10, Vogue1B2.01.11 = Vogue1B2_01_11, 
+                      Vogue1B2.01.12 = Vogue1B2_01_12, Vogue1B2.01.13 = Vogue1B2_01_13, 
+                      Vogue1B2.01.14 = Vogue1B2_01_14, Vogue1B2.01.15 = Vogue1B2_01_15, 
+                      Vogue1B2.01.16 = Vogue1B2_01_16, Vogue1B2.01.19 = Vogue1B2_01_19, 
+                      Vogue1B2.01.20 = Vogue1B2_01_20, Vogue1B2.01.21 = Vogue1B2_01_21, 
+                      Vogue1B2.01.23 = Vogue1B2_01_23, Vogue1B2.01.24 = Vogue1B2_01_24, 
+                      Vogue1B2.01.28 = Vogue1B2_01_28, Vogue1B2.01.29 = Vogue1B2_01_29)
+
+#making new data.frame for excluded participants and then merge
+heat_map <- meta %>% select (Participants, Nugent.score, CST)
+Participants <-  c("Vogue1B2.01.02","Vogue1B2.01.03", "Vogue1B2.01.04", 
+                   "Vogue1B2.01.05", "Vogue1B2.01.13", "Vogue1B2.01.14", 
+                   "Vogue1B2.01.16", "Vogue1B2.01.20", "Vogue1B2.01.24")
+Nugent.score <- c(3, 6, 0, 0, 7, 2, 1, 0, 7)
+CST <- c("II", "IVD", "I", "III", "V", "I", "II", "I", "IVD")
+heat <- data.frame(Participants, Nugent.score, CST)
+
+zz <- join(heat, heat_map, type="full")
+
+#make new data.frame for Nugent.score and CST separately
+Nugent <- zz %>% 
+  select (Participants, Nugent.score)
+
+CST <- zz %>%
+  select(Participants, CST)
+
+#group nugent scores, and write categories to file
+Nugent$Nugent.score.cat[Nugent$Nugent.score < 4] <- "Inconsistent"
+Nugent$Nugent.score.cat[Nugent$Nugent.score >= 4 & Nugent$Nugent.score <=6] <- "Intermediate" 
+Nugent$Nugent.score.cat[Nugent$Nugent.score >= 7] <- "Consistent"
+
+Nugent <- Nugent %>%
+  select(Participants, Nugent.score.cat)
+
+write.csv(Nugent, "Nugent_heatmap.csv")
+#write CST to file
+write.csv(CST, "CST_heatmap.csv")
