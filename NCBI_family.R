@@ -1,4 +1,4 @@
-files <- list.files(pattern = ".csv$")
+files <- list.files(pattern = "_condensed.csv$")
 
 invisible <- lapply(files, function(file) {
   if (grepl("_family.csv", file)) {
@@ -6,10 +6,10 @@ invisible <- lapply(files, function(file) {
   }
   message("doing ", file)
   
-  ids <- suppressWarnings(read.csv(file, header = FALSE))
+  ids <- suppressWarnings(read.csv(file, header = TRUE))
   filename <- tools::file_path_sans_ext(file)
   
-  a <- classification(c(ids$V1), db="ncbi")
+  a <- classification(c(ids$Var1), db="ncbi")
   c <- rbind(a) %>% 
     filter(rank == "family") %>% 
     .$name
