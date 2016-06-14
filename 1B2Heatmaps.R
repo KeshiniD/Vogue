@@ -261,3 +261,5 @@ Nugent <- Nugent %>%
 write.csv(Nugent, "Nugent_heatmap.csv")
 #write CST to file
 write.csv(CST, "CST_heatmap.csv")
+
+#these variables files work with heatmap; need 7th levelfor CST
