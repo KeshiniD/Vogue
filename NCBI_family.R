@@ -12,11 +12,12 @@ invisible <- lapply(files, function(file) {
   a <- classification(c(ids$Var1), db="ncbi")
   c <- rbind(a) %>% 
     filter(rank == "family") %>% 
-    .$name
+    .$name 
   
   outfile <- paste0(filename, "_family.csv")
   write.csv(c, outfile, quote = FALSE, row.names = FALSE)
 })
+
 
 #get freq of file
 #lala <- read.csv("Vogue1A_52_DNA_1.viralcol4_ncbi.csv", header = FALSE)
