@@ -1,7 +1,7 @@
-files <- list.files(pattern = ".csv$")
+files <- list.files(pattern = "_ncbi_family.csv$")
 
 invisible <- lapply(files, function(file) {
-  if (grepl("_condensed.csv", file)) {
+  if (grepl("_family_condensed.csv", file)) {
     return()
   }
   message("doing ", file)
