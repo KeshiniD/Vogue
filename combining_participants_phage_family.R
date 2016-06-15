@@ -6,13 +6,11 @@ vogueA_52 <- read.csv(file="Vogue1A_52_DNA_1.phagecol4_ncbi_family_condensed.csv
 vogueA_52$VALUE <- NULL
 vogueA_52 <- dplyr::rename(vogueA_52, Vogue1A.01.52 = Freq)
 
-# vogueA_59 <- read.csv(file="Vogue1A_59_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogueA_59$VALUE <- NULL
-# vogueA_59 <- dplyr::rename(vogueA_59, Vogue1A.01.59 = a)
-# 
-# vogueA_61 <- read.csv(file="Vogue1A_61_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogueA_61$VALUE <- NULL
-# vogueA_61 <- dplyr::rename(vogueA_61, Vogue1A.01.61 = a)
+vogueA_59 <- read.csv(file="Vogue1A_59_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogueA_59 <- dplyr::rename(vogueA_59, Vogue1A.01.59 = a, Var1=VALUE)
+
+vogueA_61 <- read.csv(file="Vogue1A_61_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogueA_61 <- dplyr::rename(vogueA_61, Vogue1A.01.61 = a, Var1=VALUE)
 
 vogueA_62 <- read.csv(file="Vogue1A_62_DNA_1.phagecol4_ncbi_family_condensed.csv")
 vogueA_62$VALUE <- NULL
@@ -22,22 +20,18 @@ vogueA_64 <- read.csv(file="Vogue1A_64_DNA_1.phagecol4_ncbi_family_condensed.csv
 vogueA_64$VALUE <- NULL
 vogueA_64 <- dplyr::rename(vogueA_64, Vogue1A.01.64 = Freq)
 
-# vogueA_65 <- read.csv(file="Vogue1A_65_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogueA_65$VALUE <- NULL
-# vogueA_65 <- dplyr::rename(vogueA_65, Vogue1A.01.65 = a)
-# 
-# vogueA_68 <- read.csv(file="Vogue1A_68_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogueA_68$VALUE <- NULL
-# vogueA_68 <- dplyr::rename(vogueA_68, Vogue1A.01.68 = a)
-# 
-# vogueA_70 <- read.csv(file="Vogue1A_70_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogueA_70$VALUE <- NULL
-# vogueA_70 <- dplyr::rename(vogueA_70, Vogue1A.01.70 = a)
-# 
-# vogueA_74 <- read.csv(file="Vogue1A_74_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogueA_74$VALUE <- NULL
-# vogueA_74 <- dplyr::rename(vogueA_74, Vogue1A.01.74 = a)
-# 
+vogueA_65 <- read.csv(file="Vogue1A_65_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogueA_65 <- dplyr::rename(vogueA_65, Vogue1A.01.65 = a, Var1=VALUE)
+
+vogueA_68 <- read.csv(file="Vogue1A_68_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogueA_68 <- dplyr::rename(vogueA_68, Vogue1A.01.68 = a, Var1=VALUE)
+
+vogueA_70 <- read.csv(file="Vogue1A_70_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogueA_70 <- dplyr::rename(vogueA_70, Vogue1A.01.70 = a, Var1=VALUE)
+
+vogueA_74 <- read.csv(file="Vogue1A_74_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogueA_74 <- dplyr::rename(vogueA_74, Vogue1A.01.74 = a, Var1=VALUE)
+
 vogueA_75 <- read.csv(file="Vogue1A_75_DNA_1.phagecol4_ncbi_family_condensed.csv")
 vogueA_75$VALUE <- NULL
 vogueA_75 <- dplyr::rename(vogueA_75, Vogue1A.01.75 = Freq)
@@ -46,33 +40,28 @@ vogueA_76 <- read.csv(file="Vogue1A_76_DNA_1.phagecol4_ncbi_family_condensed.csv
 vogueA_76$VALUE <- NULL
 vogueA_76 <- dplyr::rename(vogueA_76, Vogue1A.01.76 = Freq)
 
-# vogueA_78 <- read.csv(file="Vogue1A_78_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogueA_78$VALUE <- NULL
-# vogueA_78 <- dplyr::rename(vogueA_78, Vogue1A.01.78 = a)
+vogueA_78 <- read.csv(file="Vogue1A_78_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogueA_78 <- dplyr::rename(vogueA_78, Vogue1A.01.78 = a, Var1=VALUE)
 
 vogueA_81 <- read.csv(file="Vogue1A_81_DNA_1.phagecol4_ncbi_family_condensed.csv")
 vogueA_81$VALUE <- NULL
 vogueA_81 <- dplyr::rename(vogueA_81, Vogue1A.01.81 = Freq)
 
-# vogueA_84 <- read.csv(file="Vogue1A_84_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogueA_84$VALUE <- NULL
-# vogueA_84 <- dplyr::rename(vogueA_84, Vogue1A.01.84 = a)
+vogueA_84 <- read.csv(file="Vogue1A_84_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogueA_84 <- dplyr::rename(vogueA_84, Vogue1A.01.84 = a, Var1=VALUE)
 
 vogueA_85 <- read.csv(file="Vogue1A_85_DNA_1.phagecol4_ncbi_family_condensed.csv")
 vogueA_85$VALUE <- NULL
 vogueA_85 <- dplyr::rename(vogueA_85, Vogue1A.01.85 = Freq)
 
-# vogueA_92 <- read.csv(file="Vogue1A_92_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogueA_92$VALUE <- NULL
-# vogueA_92 <- dplyr::rename(vogueA_92, Vogue1A.01.92 = a)
-# 
-# vogueA_101 <- read.csv(file="Vogue1A_101_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogueA_101$VALUE <- NULL
-# vogueA_101 <- dplyr::rename(vogueA_101, Vogue1A.01.101 = a)
-# 
-# vogueA_106 <- read.csv(file="Vogue1A_106_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogueA_106$VALUE <- NULL
-# vogueA_106 <- dplyr::rename(vogueA_106, Vogue1A.01.106 = a)
+vogueA_92 <- read.csv(file="Vogue1A_92_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogueA_92 <- dplyr::rename(vogueA_92, Vogue1A.01.92 = a, Var1=VALUE)
+
+vogueA_101 <- read.csv(file="Vogue1A_101_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogueA_101 <- dplyr::rename(vogueA_101, Vogue1A.01.101 = a, Var1=VALUE)
+
+vogueA_106 <- read.csv(file="Vogue1A_106_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogueA_106 <- dplyr::rename(vogueA_106, Vogue1A.01.106 = a, Var1=VALUE)
 
 #################################################################
 #################################################################
@@ -126,9 +115,8 @@ vogueB_21 <- read.csv(file="Vogue1B_21_DNA_1.phagecol4_ncbi_family_condensed.csv
 vogueB_21$VALUE <- NULL
 vogueB_21 <- dplyr::rename(vogueB_21, Vogue1B.01.21 = Freq)
 
-# vogueB_26 <- read.csv(file="Vogue1B_26_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogueB_26$VALUE <- NULL
-# vogueB_26 <- dplyr::rename(vogueB_26, Vogue1B.01.26 = a)
+vogueB_26 <- read.csv(file="Vogue1B_26_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogueB_26 <- dplyr::rename(vogueB_26, Vogue1B.01.26 = a, Var1=VALUE)
 
 vogueB_32 <- read.csv(file="Vogue1B_32_DNA_1.phagecol4_ncbi_family_condensed.csv")
 vogueB_32$VALUE <- NULL
@@ -158,13 +146,11 @@ vogueB_43 <- read.csv(file="Vogue1B_43_DNA_1.phagecol4_ncbi_family_condensed.csv
 vogueB_43$VALUE <- NULL
 vogueB_43 <- dplyr::rename(vogueB_43, Vogue1B.01.43 = Freq)
 
-# vogueB_48 <- read.csv(file="Vogue1B_48_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogueB_48$VALUE <- NULL
-# vogueB_48 <- dplyr::rename(vogueB_48, Vogue1B.01.48 = a)
-# 
-# vogueB_52 <- read.csv(file="Vogue1B_52_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogueB_52$VALUE <- NULL
-# vogueB_52 <- dplyr::rename(vogueB_52, Vogue1B.01.52 = a)
+vogueB_48 <- read.csv(file="Vogue1B_48_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogueB_48 <- dplyr::rename(vogueB_48, Vogue1B.01.48 = a, Var1=VALUE)
+
+vogueB_52 <- read.csv(file="Vogue1B_52_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogueB_52 <- dplyr::rename(vogueB_52, Vogue1B.01.52 = a, Var1=VALUE)
 
 ########################################################################
 #######################################################################
@@ -174,9 +160,8 @@ vogue1B2_06 <- read.csv(file="Vogue1B2_06_DNA_1.phagecol4_ncbi_family_condensed.
 vogue1B2_06$VALUE <- NULL
 vogue1B2_06 <- dplyr::rename(vogue1B2_06, Vogue1B2.01.06 = Freq)
 
-# vogue1B2_07 <- read.csv(file="Vogue1B2_07_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogue1B2_07$VALUE <- NULL
-# vogue1B2_07 <- dplyr::rename(vogue1B2_07, Vogue1B2.01.07 = a)
+vogue1B2_07 <- read.csv(file="Vogue1B2_07_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogue1B2_07 <- dplyr::rename(vogue1B2_07, Vogue1B2.01.07 = a, Var1=VALUE)
 
 vogue1B2_08 <- read.csv(file="Vogue1B2_08_DNA_1.phagecol4_ncbi_family_condensed.csv")
 vogue1B2_08$VALUE <- NULL
@@ -186,13 +171,11 @@ vogue1B2_09 <- read.csv(file="Vogue1B2_09_DNA_1.phagecol4_ncbi_family_condensed.
 vogue1B2_09$VALUE <- NULL
 vogue1B2_09 <- dplyr::rename(vogue1B2_09, Vogue1B2.01.09 = Freq)
 
-# vogue1B2_10 <- read.csv(file="Vogue1B2_10_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogue1B2_10$VALUE <- NULL
-# vogue1B2_10 <- dplyr::rename(vogue1B2_10, Vogue1B2.01.10 = a)
-# 
-# vogue1B2_11 <- read.csv(file="Vogue1B2_11_DNA_1.phagecol4_ncbi_family_condensed.csv")
-# vogue1B2_11$VALUE <- NULL
-# vogue1B2_11 <- dplyr::rename(vogue1B2_11, Vogue1B2.01.11 = a)
+vogue1B2_10 <- read.csv(file="Vogue1B2_10_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogue1B2_10 <- dplyr::rename(vogue1B2_10, Vogue1B2.01.10 = a, Var1=VALUE)
+
+vogue1B2_11 <- read.csv(file="Vogue1B2_11_DNA_1.phagecol4_ncbi_family_condensed.csv")
+vogue1B2_11 <- dplyr::rename(vogue1B2_11, Vogue1B2.01.11 = a, Var1=VALUE)
 
 vogue1B2_12 <- read.csv(file="Vogue1B2_12_DNA_1.phagecol4_ncbi_family_condensed.csv")
 vogue1B2_12$VALUE <- NULL
@@ -204,23 +187,23 @@ vogue1B2_15 <- dplyr::rename(vogue1B2_15, Vogue1B2.01.15 = Freq)
 
 #####################################
 #join all participants together
-a <- join(vogueA_52, vogueA_62, type="full")
-# a <- join(a, vogueA_61, type="full")
-# a <- join(a, vogueA_62, type="full")
+a <- join(vogueA_52, vogueA_59, type="full")
+a <- join(a, vogueA_61, type="full")
+a <- join(a, vogueA_62, type="full")
 a <- join(a, vogueA_64, type="full")
-# a <- join(a, vogueA_65, type="full")
-# a <- join(a, vogueA_68, type="full")
-# a <- join(a, vogueA_70, type="full")
-# a <- join(a, vogueA_74, type="full")
+a <- join(a, vogueA_65, type="full")
+a <- join(a, vogueA_68, type="full")
+a <- join(a, vogueA_70, type="full")
+a <- join(a, vogueA_74, type="full")
 a <- join(a, vogueA_75, type="full")
 a <- join(a, vogueA_76, type="full")
-# a <- join(a, vogueA_78, type="full")
+a <- join(a, vogueA_78, type="full")
 a <- join(a, vogueA_81, type="full")
-# a <- join(a, vogueA_84, type="full")
+a <- join(a, vogueA_84, type="full")
 a <- join(a, vogueA_85, type="full")
-# a <- join(a, vogueA_92, type="full")
-# a <- join(a, vogueA_101, type="full")
-# a <- join(a, vogueA_106, type="full")
+a <- join(a, vogueA_92, type="full")
+a <- join(a, vogueA_101, type="full")
+a <- join(a, vogueA_106, type="full")
 ###############################################
 #1B
 b <- join(vogueB_01, vogueB_04, type="full")
@@ -234,7 +217,7 @@ b <- join(b, vogueB_13, type="full")
 b <- join(b, vogueB_15, type="full")
 b <- join(b, vogueB_17, type="full")
 b <- join(b, vogueB_21, type="full")
-# b <- join(b, vogueB_26, type="full")
+b <- join(b, vogueB_26, type="full")
 b <- join(b, vogueB_32, type="full")
 b <- join(b, vogueB_34, type="full")
 b <- join(b, vogueB_36, type="full")
@@ -242,16 +225,16 @@ b <- join(b, vogueB_37, type="full")
 b <- join(b, vogueB_38, type="full")
 b <- join(b, vogueB_40, type="full")
 b <- join(b, vogueB_43, type="full")
-# b <- join(b, vogueB_48, type="full")
-# b <- join(b, vogueB_52, type="full")
+b <- join(b, vogueB_48, type="full")
+b <- join(b, vogueB_52, type="full")
 
 #######################################################
 #1B2
-b2 <- join(vogue1B2_06, vogue1B2_08, type="full")
-# b2 <- join(b2, vogue1B2_08, type="full")
+b2 <- join(vogue1B2_06, vogue1B2_07, type="full")
+b2 <- join(b2, vogue1B2_08, type="full")
 b2 <- join(b2, vogue1B2_09, type="full")
-# b2 <- join(b2, vogue1B2_10, type="full")
-# b2 <- join(b2, vogue1B2_11, type="full")
+b2 <- join(b2, vogue1B2_10, type="full")
+b2 <- join(b2, vogue1B2_11, type="full")
 b2 <- join(b2, vogue1B2_12, type="full")
 b2 <- join(b2, vogue1B2_15, type="full")
 
