@@ -1,66 +1,54 @@
-files <- list.files(pattern = "_condensed.csv$")
+files <- list.files(pattern = ".csv$")
 
 invisible <- lapply(files, function(file) {
-  if (grepl("_family.csv", file)) {
+  if (grepl("_ncbi_family.csv", file) || grepl("_ncbi.csv", file)) {
     return()
   }
   message("doing ", file)
   
-  ids <- suppressWarnings(read.csv(file, header = TRUE))
+  ids <- suppressWarnings(read.csv(file, header = FALSE))
+  colnames(ids) <- "uid"
+  ids$uid <- as.character(ids$uid)
   filename <- tools::file_path_sans_ext(file)
   
-  a <- classification(c(ids$Var1), db="ncbi")
-  c <- rbind(a) %>% 
-    filter(rank == "family") %>% 
-    .$name 
+  idsunique <- unique(ids)
+  total <- length(idsunique$uid)
+  start <- 1
+  result <- list()
+  while(TRUE) {
+    end <- min(start + 499, total)
+    taxinfo <- taxize::ncbi_get_taxon_summary(idsunique$uid[start:end])
+    clas <- taxize::classification(idsunique$uid[start:end], db = 'ncbi', return_id = FALSE)
+    clas_mapping <- lapply(clas, function(x) {
+      if(!is.data.frame(x)) {
+        -99
+      } else {
+        idx <- which(x$rank == "family")
+        if (length(idx) == 0) {
+          -99
+        } else {
+          x$name[idx]
+        }
+      }
+    })
+    clas_mapping_df <- 
+      data.frame(uid = names(clas_mapping),
+                 family = as.character(clas_mapping),
+                 stringsAsFactors = FALSE)
+    nomatch_idx <- clas_mapping_df$family == -99
+    clas_mapping_df$family[nomatch_idx] <- clas_mapping_df$uid[nomatch_idx]
+    
+    result <- c(result, list(clas_mapping_df))
+    if (end >= total) {
+      break()
+    }
+    start <- end + 1
+  }
   
-  outfile <- paste0(filename, "_family.csv")
-  write.csv(c, outfile, quote = FALSE, row.names = FALSE)
+  result <- do.call(rbind, result) 
+  
+  merged <- merge(ids, result, all.x = TRUE)
+  
+  outfile <- paste0(filename, "_ncbi_family.csv")
+  write.table(merged$family, outfile, quote = FALSE, row.names = FALSE, col.names = FALSE)
 })
-
-
-#get freq of file
-#lala <- read.csv("Vogue1A_52_DNA_1.viralcol4_ncbi.csv", header = FALSE)
-#sort(table(lala$V1)) #can set to variable and write that to file
-#a <- taxize::ncbi_get_taxon_summary(c(13097, 13098, 3554))
-
-#doesn't work the way I want
-#files <- list.files(pattern = "_ncbi.csv$")
-#
-#invisible <- lapply(files, function(file) {
-#  if (grepl("_family.csv", file)) {
-#    return()
-#  }
-#  message("doing ", file)
-#  
-#  ids <- suppressWarnings(read.csv(file, header = TRUE))
-#  colnames(ids) <- "uid"
-#  ids$uid <- as.character(ids$uid)
-#  filename <- tools::file_path_sans_ext(file)
-#  
-#  idsunique <- unique(ids)
-#  total <- length(idsunique$uid)
-#  start <- 1
-#  tax_names <- list()
-#  while(TRUE) {
-#    end <- min(start + 499, total)
-#    taxinfo <- taxize::ncbi_get_taxon_summary(idsunique$uid[start:end])
-#    tax_name <- tax_name(query = taxinfo$name, get = "family", db = "ncbi")
-#    tax_names <- c(tax_names, list(tax_name))
-#    if (end >= total) {
-#      break()
-#    }
-#    start <- end + 1
-#  }
-#  
-#  tax_names <- do.call(rbind, tax_names) 
-#  
-#  merged <- merge(ids, tax_names, all.x = TRUE)
-#  
-#  outfile <- paste0(filename, "_family.csv")
-#  write.table(merged$family, outfile, quote = FALSE, row.names = FALSE, col.names = FALSE)
-#})
-
-#get freq of file
-#lala <- read.csv("Vogue1A_52_DNA_1.viralcol4_ncbi.csv", header = FALSE)
-#sort(table(lala$V1)) #can set to variable and write that to file
