@@ -1,0 +1,52 @@
+,Viral_Families,freq,Vogue1B2.01.06,Vogue1B2.01.07,Vogue1B2.01.08,Vogue1B2.01.09,Vogue1B2.01.10,Vogue1B2.01.11,Vogue1B2.01.12,Vogue1B2.01.15
+1,Caudovirales,42,33,0,1,2,3,2,1,0
+2,Lactobacillus phage,514,37,0,0,0,0,1,475,1
+3,Myoviridae,1330,621,58,51,62,118,30,369,21
+4,Podoviridae,26434,1467,10,21,4880,15,22,310,19709
+5,Siphoviridae,10635,9433,11,62,316,22,12,767,12
+7,Adenoviridae,8109,21,6958,35,13,59,33,805,185
+8,Alloherpesviridae,92,5,17,10,0,21,32,5,2
+9,Alphaflexiviridae,47,10,2,8,0,3,3,21,0
+10,Anelloviridae,10,0,1,2,0,6,0,1,0
+11,Ascoviridae,3,0,0,1,0,1,1,0,0
+12,Baculoviridae,663,14,42,32,1,467,50,51,6
+13,Bicaudaviridae,15,2,0,1,0,0,5,6,1
+14,Caliciviridae,2,2,0,0,0,0,0,0,0
+15,Chrysoviridae,1,1,0,0,0,0,0,0,0
+16,Circoviridae,14,12,0,0,2,0,0,0,0
+17,Endornaviridae,1,0,0,0,0,1,0,0,0
+18,Flaviviridae,4,1,0,0,0,0,1,2,0
+19,Fuselloviridae,10,0,5,1,0,1,3,0,0
+20,Hepeviridae,1,0,0,0,0,0,1,0,0
+21,Herpesviridae,2138,110,432,259,109,686,323,145,74
+22,Hytrosaviridae,7,0,0,0,0,5,1,1,0
+23,Inoviridae,3,0,0,1,0,0,2,0,0
+24,Iridoviridae,146,4,17,28,1,42,50,4,0
+25,Lipothrixviridae,37,18,0,1,8,2,0,8,0
+26,Luteoviridae,3,1,0,0,0,1,0,1,0
+27,Microviridae,1,0,0,0,0,1,0,0,0
+28,Mimiviridae,51,3,2,5,16,8,9,1,7
+29,Nimaviridae,34,1,3,5,0,2,4,19,0
+30,Nudiviridae,4,0,0,1,1,1,1,0,0
+31,Other dsDNA Viruses,184,11,8,15,1,114,16,16,3
+32,Other Phages,282,255,1,3,17,2,2,2,0
+33,Other ssRNA negative viruses,1,0,0,0,0,0,1,0,0
+34,Other ssRNA positive viruses,3,0,0,0,0,2,0,1,0
+35,Other Viruses (unclassified),273,133,2,1,1,5,5,123,3
+36,Pandoraviridae,635,6,93,100,3,233,158,35,7
+37,Papillomaviridae,158682,156173,394,279,304,855,391,86,200
+38,Paramyxoviridae,12,1,3,3,0,0,4,1,0
+39,Parvoviridae,5,0,2,0,0,1,2,0,0
+40,Phycodnaviridae,4271,162,382,593,181,1121,469,1227,136
+41,Picornaviridae,522,104,20,0,2,0,10,45,341
+42,Polydnaviridae,1460,32,258,257,9,389,433,51,31
+43,Polyomaviridae,187,0,1,1,185,0,0,0,0
+44,Potyviridae,9,2,1,1,0,2,2,1,0
+45,Poxviridae,26,0,3,6,2,5,5,4,1
+46,Reoviridae,14,7,0,0,1,0,3,0,3
+47,Retroviridae,166,4,16,35,2,61,27,14,7
+48,Secoviridae,2,0,0,0,0,1,1,0,0
+49,Streptococcus phage,134,134,0,0,0,0,0,0,0
+50,Tymoviridae,8,3,0,2,0,2,1,0,0
+51,Vibrio phage,5,2,0,0,0,0,0,3,0
+52,Closteroviridae,1,0,0,1,0,0,0,0,0
