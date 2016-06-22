@@ -1,0 +1,531 @@
+"","Var1","Vogue1B2.01.06","Vogue1B2.01.07","Vogue1B2.01.08","Vogue1B2.01.09","Vogue1B2.01.10","Vogue1B2.01.11","Vogue1B2.01.12","Vogue1B2.01.15"
+"1","Acanthamoeba polyphaga mimivirus",1,0,0,0,0,0,0,0
+"2","Agrotis ipsilon multiple nucleopolyhedrovirus",1,0,3,0,2,0,0,0
+"3","Agrotis segetum nucleopolyhedrovirus B",1,0,0,0,1,0,1,0
+"4","Alphapapillomavirus 5",1,0,0,0,1,0,0,0
+"5","Bacillus phage BCD7",1,0,0,0,0,0,0,0
+"6","Bacillus phage SIOphi",1,0,0,0,0,0,0,0
+"7","Bombyx mori nucleopolyhedrovirus",1,0,1,0,1,1,1,0
+"8","Cyprinid herpesvirus 2",1,1,0,0,2,2,2,0
+"9","Enterococcus phage IME-EFm1",1,0,0,0,0,0,0,0
+"10","environmental samples",1,0,0,0,0,0,0,0
+"11","Equid herpesvirus type 2 strain 86/87",1,0,2,0,0,1,0,0
+"12","Gallid herpesvirus 3",1,0,0,0,0,3,1,0
+"13","Haemophilus phage Aaphi23",1,0,0,0,0,0,0,0
+"14","Hemileuca sp. nucleopolyhedrovirus",1,0,0,0,1,0,0,0
+"15","Human adenovirus 27",1,6,0,0,0,0,0,0
+"16","Human endogenous retrovirus",1,0,0,0,0,0,0,0
+"17","Human papillomavirus - cand85",1,0,0,0,0,0,0,0
+"18","Human papillomavirus type 104",1,0,0,0,0,0,0,0
+"19","Human papillomavirus type 121",1,0,0,0,0,0,0,0
+"20","Human papillomavirus type 28",1,0,0,0,0,0,0,0
+"21","Human papillomavirus type 32",1,0,1,1,0,0,0,0
+"22","Human papillomavirus type 51",1,1,0,0,0,0,0,0
+"23","Human papillomavirus type 58",1,0,0,0,0,0,0,0
+"24","Human papillomavirus type 83",1,1,1,2,10,2,0,4
+"25","Human papillomavirus type 87",1,9,1,3,1,6,0,3
+"26","Human papillomavirus type 90",1,1,3,1,8,0,0,0
+"27","Human papillomavirus type 93",1,0,0,0,0,0,0,0
+"28","Lymantria dispar multiple nucleopolyhedrovirus",1,4,3,0,7,6,2,0
+"29","Macacine herpesvirus 4",1,2,6,1,8,5,9,0
+"30","Measles virus",1,3,3,0,0,4,1,0
+"31","Muromegalovirus",1,0,0,0,0,0,0,0
+"32","Mycobacterium phage Myrna",1,0,0,0,0,0,0,0
+"33","Mycobacterium phage QuinnKiro",1,0,0,0,0,0,0,0
+"34","Mycobacterium phage Rey",1,0,0,0,0,0,0,0
+"35","Mycobacterium phage Thibault",1,0,0,0,0,0,0,0
+"36","Paramecium bursaria Chlorella virus Can18-4",1,0,0,0,0,0,0,0
+"37","Pasteurella phage F108",1,0,0,0,0,0,0,0
+"38","Pigeon adenovirus 1",1,15,12,0,16,6,78,7
+"39","Propionibacterium phage PHL070N00",1,0,0,0,0,0,0,0
+"40","Propionibacterium phage PHL082",1,0,0,0,0,0,0,0
+"41","Pseudomonas phage PS5",1,0,0,1,0,0,0,0
+"42","Saccharomonospora phage PIS 136",1,0,0,0,0,0,0,0
+"43","Simian adenovirus B",1,0,1,0,4,2,1,0
+"44","Singapore grouper iridovirus",1,0,0,0,0,0,0,0
+"45","Spodoptera littoralis nucleopolyhedrovirus",1,0,0,0,0,1,0,0
+"46","Squash chlorosis mottling virus",1,1,1,0,2,1,0,0
+"47","Staphylococcus phage SA5",1,0,0,0,0,0,0,0
+"48","Streptococcus phage 2167",1,0,0,0,0,0,0,0
+"49","Streptococcus phage Alq132",1,0,0,0,0,0,0,0
+"50","Streptococcus phage C1",1,0,0,0,0,0,0,130
+"51","Streptococcus phage IC1",1,0,0,0,0,0,0,0
+"52","Synechococcus phage S-RSM4",1,1,1,0,1,0,1,0
+"53","Synechococcus phage S-ShM2",1,0,0,0,0,0,0,0
+"54","T7likevirus",1,0,0,11,0,0,1,1
+"55","Tursiops truncatus papillomavirus 7",1,0,0,0,1,0,0,0
+"56","unclassified N4likevirus",1,0,0,0,0,0,0,0
+"57","uncultured phage crAssphage",1,0,0,0,0,0,0,0
+"58","Verticillium dahliae chrysovirus 1",1,0,0,0,0,0,0,0
+"59","Acidianus two-tailed virus",2,0,1,0,0,5,6,1
+"60","Alphapapillomavirus 2",2,0,0,0,0,0,0,0
+"61","Corynebacterium phage BFK20",2,0,0,0,0,0,0,0
+"62","Emiliania huxleyi virus 156",2,7,10,0,10,10,97,2
+"63","Emiliania huxleyi virus PS401",2,2,6,0,5,10,6,0
+"64","Enterococcus phage EFDG1",2,0,1,0,0,1,1,0
+"65","Gordonia phage Gsput1",2,0,0,0,0,0,0,0
+"66","Human adenovirus 22",2,284,1,1,2,1,2,17
+"67","Human papillomavirus type 12",2,0,0,0,0,0,1,0
+"68","Human papillomavirus type 143",2,0,0,0,0,0,0,0
+"69","Human papillomavirus type 61",2,2,2,2,8,1,1,1
+"70","Human papillomavirus type 81",2,1,2,3,6,0,3,1
+"71","Human papillomavirus type 86",2,0,0,0,0,2,0,0
+"72","Hyposoter fugitivus ichnovirus",2,13,16,0,28,39,1,2
+"73","Klebsiella phage NTUH-K2044-K1-1",2,1,5,0,9,11,86,2
+"74","Lactobacillus phage LfeSau",2,0,0,0,0,0,82,0
+"75","Lactococcus phage phi31",2,0,0,0,0,0,0,0
+"76","Macacine herpesvirus 3",2,0,2,0,1,1,1,0
+"77","Moumouvirus",2,1,0,0,1,0,0,0
+"78","Norwalk virus",2,0,0,0,0,0,0,0
+"79","Pandoravirus inopinatum",2,7,2,2,9,14,5,0
+"80","Paramecium bursaria Chlorella virus A1",2,0,1,0,0,0,0,0
+"81","Phaeocystis globosa virus",2,18,27,0,22,19,31,3
+"82","Phietalikevirus",2,0,0,0,0,0,0,0
+"83","Rhodococcus phage REQ2",2,0,0,0,0,0,0,0
+"84","Salmonella phage SPN3US",2,0,0,0,0,0,0,0
+"85","Staphylococcus phage StB27",2,0,0,0,0,0,0,0
+"86","Streptococcus phage 5093",2,0,0,2,3,1,0,0
+"87","Streptococcus phage K13",2,0,0,0,0,0,0,0
+"88","Streptococcus phage phi20c",2,0,0,0,0,0,0,0
+"89","Streptococcus phage phi3396",2,0,0,0,0,0,0,0
+"90","Streptococcus phage YMC-2011",2,0,0,0,1,0,0,0
+"91","Sus scrofa papillomavirus 1",2,0,0,0,0,0,0,0
+"92","Tupaiid herpesvirus 1",2,3,3,1,3,0,7,0
+"93","Vibrio phage henriette 12B8",2,0,0,0,0,0,0,0
+"94","Acanthocystis turfacea Chlorella virus 1",3,10,20,3,16,37,31,4
+"95","Andrias davidianus ranavirus",3,16,26,1,32,49,1,0
+"96","Avian sarcoma virus 31",3,7,27,0,23,19,10,6
+"97","Brochothrix phage BL3",3,0,0,0,0,0,0,0
+"98","Emiliania huxleyi virus 99B1",3,0,2,0,1,3,3,0
+"99","Eptesicus serotinus papillomavirus type 3",3,0,0,0,0,0,0,0
+"100","Grapevine fleck virus",3,0,0,0,1,0,0,0
+"101","Human papillomavirus type 137",3,0,0,0,0,0,0,0
+"102","Human papillomavirus type 141",3,0,0,0,0,0,0,0
+"103","Human papillomavirus type 59",3,0,0,0,0,0,0,0
+"104","Human papillomavirus type 70",3,3,1,2,1,3,0,1
+"105","Lactobacillus phage Lv-1",3,0,0,0,0,0,122,0
+"106","Mycobacterium phage Gaia",3,0,0,0,0,0,0,0
+"107","Paramecium bursaria Chlorella virus AP110A",3,3,3,0,19,0,1,0
+"108","Rice ragged stunt virus",3,0,0,0,0,0,0,0
+"109","Streptococcus phage V22",3,0,0,0,0,0,0,0
+"110","Streptomyces phage SV1",3,0,0,0,0,0,0,0
+"111","Alphaherpesvirinae",4,0,0,1,1,0,2,1
+"112","Burkholderia phage phiE255",4,0,0,0,0,0,0,0
+"113","Chlorovirus",4,3,1,0,0,4,0,0
+"114","Colwellia phage 9A",4,0,0,0,0,0,0,0
+"115","Cyprinid herpesvirus 3",4,11,9,0,7,30,3,2
+"116","Escherichia phage phAPEC8",4,0,0,0,0,0,0,0
+"117","Human papillomavirus type 72",4,3,14,8,121,19,2,14
+"118","Human papillomavirus type 97",4,0,0,0,0,0,0,0
+"119","Lactobacillus phage KC5a",4,0,0,17,0,1,324,0
+"120","Pandoravirus salinus",4,69,93,1,81,137,26,7
+"121","Pseudomonas phage Phi-S1",4,0,0,18,0,0,0,0
+"122","Ralstonia phage RSA1",4,0,0,0,0,0,0,0
+"123","Staphylococcus phage PH15",4,0,0,0,0,0,0,0
+"124","Staphylococcus phage StB20",4,0,0,0,0,0,0,0
+"125","Streptococcus phage 7201",4,0,0,0,0,0,0,0
+"126","Streptococcus phage MM1",4,0,0,0,0,0,0,0
+"127","unclassified phages",4,0,0,0,0,0,0,0
+"128","Vibrio phage ICP1",4,0,0,0,0,0,0,0
+"129","Erwinia phage Ea35-70",5,0,0,0,0,0,0,0
+"130","Human papillomavirus type 129",5,0,0,0,0,0,0,0
+"131","Mastadenovirus",5,658,7,3,8,5,3,15
+"132","Orgyia leucostigma NPV",5,5,6,0,6,8,4,4
+"133","Streptococcus phage PH10",5,0,0,0,0,0,0,0
+"134","Streptococcus phage TP-778L",5,0,0,0,0,0,0,0
+"135","Actinoplanes phage phiAsp2",6,0,0,0,0,0,0,0
+"136","Brochothrix phage A9",6,0,0,0,0,0,0,0
+"137","Human papillomavirus 116",6,0,0,0,0,0,0,0
+"138","Human papillomavirus type 31",6,8,4,11,19,23,1,10
+"139","Staphylococcus phage 37",6,0,0,0,0,0,0,0
+"140","Streptococcus phage Str-PAP-1",6,0,0,0,0,0,0,0
+"141","Alphapapillomavirus 3",7,15,6,5,13,14,0,5
+"142","Emiliania huxleyi virus 145",7,3,14,2,10,9,18,2
+"143","Picovirinae",7,0,0,0,0,0,0,0
+"144","Human papillomavirus type 71",8,9,9,6,13,12,13,7
+"145","uncultured phage",8,0,0,0,0,0,0,0
+"146","unidentified phage",8,0,0,0,1,0,0,0
+"147"," no RNA stage",9,2,6,0,5,6,5,2
+"148","dsDNA viruses",9,2,6,0,5,6,5,2
+"149","Fusobacterium phage Funu2",9,0,0,0,0,1,0,0
+"150","Pseudomonas phage phiIBB-PF7A",9,0,0,49,0,0,0,0
+"151","Staphylococcus phage 77",9,0,0,0,0,0,0,0
+"152","Staphylococcus phage IME-SA2",9,24,41,4,39,19,40,6
+"153","Streptococcus phage Sfi19",9,0,0,0,0,0,0,0
+"154","Human mastadenovirus D",10,5292,12,8,25,15,10,132
+"155","Indian citrus ringspot virus",10,2,8,0,3,3,21,0
+"156","Sfi1unalikevirus",10,0,0,0,0,0,0,0
+"157","uncultured marine virus",10,0,0,0,2,4,2,1
+"158","Caudovirales",11,0,1,0,1,2,0,0
+"159","Cronobacter phage CR5",11,0,0,0,0,0,0,0
+"160","Dromedary stool-associated circular ssDNA virus",11,0,0,0,0,0,0,0
+"161","Lactobacillus phage Lrm1",11,0,9,0,0,0,57,0
+"162","Alphapapillomavirus",12,0,2,0,2,3,0,0
+"163","Streptococcus phage phi5218",12,0,0,0,0,0,0,0
+"164","Rhodococcus phage REQ3",13,0,0,0,0,0,0,0
+"165","Environmental Halophage eHP-40",14,0,0,0,0,0,0,0
+"166","Lymphocryptovirus",14,53,16,16,30,23,2,19
+"167","Staphylococcus phage IME-SA4",14,0,0,0,0,0,0,0
+"168","Human papillomavirus type 72b",15,23,21,20,159,29,7,21
+"169","Staphylococcus phage Ipla5",15,0,0,0,0,0,0,0
+"170","Human herpesvirus 6 (strain Uganda-1102)",17,90,114,1,92,128,22,12
+"171","Sfi21dtunalikevirus",17,0,0,0,0,0,0,0
+"172","Streptococcus phage phiS10",17,0,0,0,0,0,0,0
+"173","Streptococcus phage 34117",18,0,0,0,0,0,0,0
+"174","Thermoproteus tenax virus 1",18,0,0,8,2,0,8,0
+"175","Actinomyces phage Av-1",19,0,0,0,0,0,0,0
+"176","Glypta fumiferanae ichnovirus",19,227,237,9,273,392,47,25
+"177","Phage Gifsy-1",19,0,0,0,0,0,0,0
+"178","Aggregatibacter phage Aabphi01",20,0,0,0,0,0,0,0
+"179","Betapapillomavirus 1",20,0,0,0,0,0,0,0
+"180","Human papillomavirus type 124",20,0,0,0,0,0,0,0
+"181","Human papillomavirus type 18",21,0,0,0,0,0,0,0
+"182","Human papillomavirus type 42",21,0,0,0,1,0,0,0
+"183","Human papillomavirus type 62",21,124,17,67,45,37,5,15
+"184","Human papillomavirus type 152",26,0,0,0,0,0,0,0
+"185","Deep-sea thermophilic phage D6E",27,0,3,0,0,0,0,0
+"186","Staphylococcus phage StB12",30,0,0,0,0,0,0,0
+"187","Vibrio phage VP882",30,0,0,0,0,0,0,0
+"188","unclassified Twortlikevirus",36,0,0,0,0,0,0,0
+"189","Lactobacillus prophage Lj771",37,0,0,0,0,1,474,1
+"190","Human papillomavirus type 34",38,0,0,0,0,0,0,0
+"191","Streptococcus phage Abc2",38,0,0,0,0,0,0,0
+"192","Streptococcus phage SMP",42,0,0,0,0,0,0,0
+"193","Cellulophaga phage phi39:1",43,0,1,0,0,0,0,0
+"194","Macaca fascicularis papillomavirus type 7",44,0,0,0,0,0,0,0
+"195","Podoviridae",44,0,0,430,0,1,4,0
+"196","Streptococcus phage SM1",46,0,0,0,0,0,0,0
+"197","Burkholderia phage Bcep22",47,0,0,0,0,0,0,0
+"198","Streptococcus phage 20617",50,0,0,0,0,0,0,0
+"199","Lactobacillus phage phijl1",51,0,0,0,0,0,0,0
+"200","Human papillomavirus type 89",56,68,74,37,167,71,4,35
+"201","Streptococcus phage EJ-1",56,0,0,0,0,0,0,0
+"202","Human papillomavirus",57,0,0,0,0,1,0,0
+"203","Streptococcus phage 700P1",57,0,0,0,0,0,0,0
+"204","Human herpesvirus 4",64,231,64,50,92,89,15,39
+"205","Coccolithovirus",66,150,217,15,190,165,540,49
+"206","Human papillomavirus type 6",68,10,5,5,67,10,3,7
+"207","unclassified Coccolithovirus",68,162,280,104,263,200,491,68
+"208","Pseudomonas phage phi15",71,3,3,873,0,0,81,0
+"209","unclassified T7-like viruses",71,1,1,550,0,2,22,0
+"210","Streptococcus phage M102",73,0,0,0,0,1,0,0
+"211","Alphapapillomavirus 10",86,5,5,7,29,13,1,2
+"212","Lactobacillus phage Lb338-1",87,0,0,0,0,0,0,0
+"213","Streptococcus phage SpSL1",93,0,0,0,0,0,0,0
+"214","Viruses",122,1,1,1,1,1,117,1
+"215","Streptococcus phage DT1",129,0,0,0,0,0,10,0
+"216","Alphapapillomavirus 7",146,0,0,0,0,0,0,0
+"217","Phage SK137",150,0,0,0,0,0,0,0
+"218","Human papillomavirus type 66",161,0,0,0,0,1,0,0
+"219","Human papillomavirus type 13",206,2,0,1,0,0,0,0
+"220","Pseudomonas phage PPpW-4",217,3,2,2606,2,3,113,0
+"221","Human papillomavirus type 73",272,0,0,0,0,0,0,0
+"222","unclassified Siphoviridae",281,4,37,2,4,4,73,1
+"223","Alphapapillomavirus 9",320,0,0,0,1,0,0,0
+"224","Human papillomavirus type 16",339,0,0,0,1,0,0,0
+"225","Streptomyces phage phiCAM",427,0,0,0,0,0,0,0
+"226","Bacillus phage BCJA1c",553,1,0,0,0,0,0,0
+"227","Streptococcus phage phi30c",738,0,8,0,0,0,2,0
+"228","Streptococcus phage PH15",1004,0,0,0,0,0,0,0
+"229","Human papillomavirus type 30",1049,0,0,0,0,0,0,0
+"230","Human papillomavirus type 74",2052,5,8,13,12,19,1,6
+"231","Siphoviridae",2670,2,1,52,1,1,0,2
+"232","Streptococcus phage phiNJ2",3775,1,0,0,1,0,0,0
+"233","root",4615,69,115,30,96,114,1690,26
+"234","Alphapapillomavirus 6",9932,3,7,8,8,6,0,5
+"235","Human papillomavirus type 53",17664,2,0,3,1,3,2,1
+"236","Human papillomavirus type 52",24586,12,10,12,8,16,2,8
+"237","Papillomaviridae",24613,53,55,53,112,63,20,30
+"238","Human papillomavirus type 45",30336,7,1,0,1,2,4,3
+"239","Human papillomavirus type 56",43910,13,17,29,19,19,3,15
+"240","Acanthocystis turfacea Chlorella virus Canal-1",0,1,0,0,0,0,0,0
+"241","Adoxophyes orana granulovirus",0,1,0,0,1,0,3,0
+"242","Alcelaphine herpesvirus 2",0,1,0,0,5,3,2,0
+"243","Alphabaculovirus",0,1,2,1,4,2,3,0
+"244","Alphapapillomavirus 13",0,1,0,0,0,0,0,1
+"245","Bathycoccus sp. RCC1105 virus BpV1",0,1,2,0,0,3,0,0
+"246","Bovine herpesvirus 5",0,1,0,0,0,2,1,0
+"247","Bovine herpesvirus type 1.2",0,1,0,0,1,1,0,0
+"248","Callitrichine herpesvirus 3",0,1,0,0,0,0,0,0
+"249","Canarypox virus",0,1,1,0,2,0,0,0
+"250","Canine minute virus",0,1,0,0,0,0,0,0
+"251","Cyanophage NATL2A-133",0,1,0,0,0,0,0,0
+"252","Duck adenovirus 2",0,1,0,0,1,2,1,0
+"253","Elephant endotheliotropic herpesvirus 5",0,1,0,0,0,0,0,0
+"254","Emiliania huxleyi virus 18",0,1,2,0,2,0,2,0
+"255","Emiliania huxleyi virus 203",0,1,1,0,1,0,1,0
+"256","Fox parvovirus",0,1,0,0,0,0,0,0
+"257","Gallid herpesvirus 2",0,1,0,0,1,4,0,0
+"258","Gorilla gorilla cytomegalovirus 2.1",0,1,0,0,0,0,0,0
+"259","Human adenovirus 39",0,1,0,0,0,0,0,0
+"260","Human adenovirus 43",0,1,0,0,0,0,0,0
+"261","Human adenovirus B3",0,1,0,0,0,0,0,0
+"262","Human herpesvirus 4 type 1",0,1,1,1,0,1,0,0
+"263","Human herpesvirus 6",0,1,1,0,0,1,1,0
+"264","Human immunodeficiency virus 1",0,1,6,0,3,3,1,0
+"265","Human mastadenovirus A",0,1,0,0,0,0,0,0
+"266","Human papillomavirus RTRX7",0,1,0,0,0,0,0,0
+"267","Human papillomavirus type 102",0,1,1,0,0,0,0,0
+"268","Human papillomavirus type 107",0,1,1,0,1,2,0,0
+"269","Human papillomavirus type 114",0,1,0,1,2,1,0,1
+"270","Los Azufres archaeal virus 2",0,1,0,0,0,0,0,0
+"271","Macaca mulatta adenovirus 1",0,1,0,0,0,0,0,0
+"272","Maruca vitrata nucleopolyhedrovirus",0,1,0,0,1,0,1,0
+"273","Meleagrid herpesvirus 1",0,1,0,0,0,0,0,0
+"274","Merkel cell polyomavirus",0,1,0,177,0,0,0,0
+"275","Moumouvirus goulette",0,1,2,0,3,7,1,1
+"276","Murid herpesvirus 1",0,1,5,0,0,2,3,0
+"277","Mycobacterium phage Barnyard",0,1,1,0,0,2,0,1
+"278","Mycobacterium phage MOOREtheMARYer",0,1,0,0,0,0,0,0
+"279","Nile crocodilepox virus Zimbabwe/Ume/2001",0,1,3,0,0,1,0,0
+"280","Ostreococcus virus OsV5",0,1,0,0,0,0,0,0
+"281","Ovine herpesvirus 2",0,1,1,0,0,4,2,0
+"282","Phocoena spinipinnis papillomavirus (isolate Peru)",0,1,0,0,0,0,2,0
+"283","Pithovirus sibericum",0,1,1,0,0,0,0,0
+"284","Plutella xylostella multiple nucleopolyhedrovirus",0,1,0,0,0,0,0,0
+"285","Pseudoplusia includens SNPV IE",0,1,1,0,0,0,0,1
+"286","Rat cytomegalovirus Maastricht",0,1,0,0,1,0,0,0
+"287","Saimiri sciureus papillomavirus 2",0,1,0,0,0,2,0,0
+"288","Spodoptera frugiperda granulovirus",0,1,0,0,1,2,1,0
+"289","Spodoptera litura granulovirus",0,1,0,0,1,1,3,0
+"290","Suid herpesvirus 1",0,1,5,0,3,8,6,0
+"291","Synechococcus phage S-CBP2",0,1,0,0,0,0,0,0
+"292","Synechococcus phage S-SSM7",0,1,0,0,1,1,0,0
+"293","Thysanoplusia orichalcea nucleopolyhedrovirus",0,1,0,0,0,0,1,0
+"294","Torque teno virus",0,1,0,0,3,0,0,0
+"295","Turkey adenovirus 1",0,1,0,0,0,0,2,0
+"296","Vaccinia virus Copenhagen",0,1,0,1,1,1,0,0
+"297","Varicellovirus",0,1,0,0,0,0,0,0
+"298","Yersinia phage phiR1-37",0,1,0,12,0,0,0,0
+"299","Ateline herpesvirus 3",0,2,0,0,0,1,0,0
+"300","Enterococcus phage EFLK1",0,2,1,0,1,0,0,0
+"301","Pseudaletia unipuncta granulovirus",0,2,2,0,0,0,1,0
+"302","Tursiops truncatus papillomavirus 5",0,2,5,0,5,1,2,1
+"303","Emiliania huxleyi virus 84",0,3,5,0,0,5,6,2
+"304","Human endogenous retrovirus ERV-9",0,3,0,1,1,1,0,0
+"305","Panine herpesvirus 2",0,3,2,0,0,1,0,0
+"306","Paramecium bursaria Chlorella virus CvsA1",0,3,0,0,3,2,0,0
+"307","Phaeocystis globosa virus 12T",0,3,1,0,3,0,4,0
+"308","White spot syndrome virus",0,3,4,0,1,4,19,0
+"309","Human adenovirus 15",0,4,0,0,0,0,0,0
+"310","Plutella xylostella granulovirus",0,4,2,0,2,6,13,0
+"311","Tursiops truncatus papillomavirus 1",0,4,1,0,2,2,1,1
+"312","Sulfolobales Mexican fusellovirus 1",0,5,1,0,0,3,0,0
+"313","Epstein-barr virus strain ag876",0,6,7,0,0,4,29,0
+"314","Human adenovirus D9",0,6,0,0,0,0,0,0
+"315","Elephantid herpesvirus 1",0,7,10,0,17,16,2,0
+"316","Human mastadenovirus C",0,8,0,0,0,0,0,0
+"317","Pandoravirus dulcis",0,8,3,0,7,4,4,0
+"318","Human adenovirus 8E",0,12,0,0,0,0,1,0
+"319","Xestia c-nigrum granulovirus",0,12,9,0,12,9,2,0
+"320","Human mastadenovirus B",0,20,0,0,0,0,0,0
+"321","Human adenovirus D8",0,29,0,0,0,0,0,0
+"322","Adenoviridae",0,301,0,0,2,2,0,9
+"323","Human adenovirus 19",0,316,1,0,0,0,2,5
+"324","Alphapapillomavirus 14",0,0,1,1,1,2,0,1
+"325","Andean potato latent virus",0,0,1,0,0,0,0,0
+"326","Anelloviridae",0,0,1,0,0,0,0,0
+"327","Bacillus phage G",0,0,1,3,0,0,0,0
+"328","Bacillus phage vB_BceM-Bc431v3",0,0,1,0,0,0,0,0
+"329","Bovine papillomavirus type 6",0,0,1,1,0,1,1,0
+"330","Brevibacillus phage Emery",0,0,1,0,0,0,0,0
+"331","Carollia perspicillata polyomavirus 1",0,0,1,0,0,0,0,0
+"332","Caulobacter phage CcrColossus",0,0,1,0,0,0,0,0
+"333","Common chimpanzee papillomavirus 1",0,0,1,0,0,0,0,0
+"334","Cydia pomonella granulovirus",0,0,1,0,0,0,0,0
+"335","Ectocarpus siliculosus virus 1 (isolate Kaikoura)",0,0,1,55,2,6,1,5
+"336","Ectropis obliqua nucleopolyhedrovirus",0,0,1,0,2,0,0,0
+"337","Falconid herpesvirus 1",0,0,1,0,2,1,1,0
+"338","Fruit bat alphaherpesvirus 1",0,0,1,0,0,0,0,0
+"339","Heliothis zea nudivirus",0,0,1,1,0,1,0,0
+"340","Human herpesvirus 5 strain AD169",0,0,1,0,0,0,0,0
+"341","Human papillomavirus type 109",0,0,1,0,0,0,0,0
+"342","Ictalurid herpesvirus 1 (strain Auburn)",0,0,1,0,0,0,0,0
+"343","Invertebrate iridescent virus 3",0,0,1,0,0,0,0,0
+"344","Invertebrate iridescent virus 6",0,0,1,0,0,1,2,0
+"345","Lactobacillus phage phiJB",0,0,1,229,0,0,0,3
+"346","Leporid herpesvirus 4",0,0,1,0,0,1,0,0
+"347","Megavirus courdo11",0,0,1,0,0,0,0,0
+"348","Microbacterium phage Min1",0,0,1,0,0,0,0,0
+"349","Miniopterus schreibersii papillomavirus 1",0,0,1,0,0,0,0,0
+"350","Molluscum contagiosum virus subtype 1",0,0,1,0,0,0,1,0
+"351","Mycobacterium phage Alsfro",0,0,1,0,0,1,0,0
+"352","Mycobacterium phage Dori",0,0,1,0,0,0,0,0
+"353","Mycobacterium phage Sheen",0,0,1,0,0,0,1,0
+"354","Okra mosaic virus",0,0,1,0,0,1,0,0
+"355","Papiine herpesvirus 2",0,0,1,0,0,1,1,0
+"356","Paramecium bursaria Chlorella virus AR158",0,0,1,1,0,0,0,0
+"357","Phycodnaviridae",0,0,1,0,1,0,1,0
+"358","Prochlorococcus phage P-SSM7",0,0,1,0,0,1,0,0
+"359","Raccoonpox virus",0,0,1,0,0,0,0,0
+"360","Ralstonia phage RSM3",0,0,1,0,0,0,0,0
+"361","Spodoptera frugiperda multiple nucleopolyhedrovirus",0,0,1,0,0,4,1,0
+"362","Streptococcus phage SOCP",0,0,1,0,0,0,0,0
+"363","Sulfolobus monocaudavirus SMV1",0,0,1,0,0,0,0,0
+"364","Synechococcus phage ACG-2014b",0,0,1,0,0,0,0,0
+"365","Synechococcus phage ACG-2014e",0,0,1,0,0,0,0,0
+"366","Thermoproteus tenax virus 1 (STRAIN KRA1)",0,0,1,0,0,0,0,0
+"367","Torque teno midi virus",0,0,1,0,0,0,1,0
+"368","Trichoplusia ni ascovirus 2c",0,0,1,0,0,1,0,0
+"369","unclassified T4-like viruses",0,0,1,0,0,1,0,0
+"370","Y73 sarcoma virus",0,0,1,0,0,0,0,0
+"371","Cafeteria roenbergensis virus BV-PW1",0,0,2,0,0,0,0,2
+"372","Cercopithecine herpesvirus 5",0,0,2,0,0,2,2,0
+"373","Emiliania huxleyi virus 164",0,0,2,0,0,0,2,1
+"374","Human herpesvirus 5",0,0,2,0,2,1,17,0
+"375","Saimiriine herpesvirus 2",0,0,2,0,2,2,0,0
+"376","Siphovirus contig89",0,0,2,0,0,0,0,0
+"377","Deerpox virus W-848-83",0,0,0,1,0,0,1,0
+"378","Emiliania huxleyi virus 208",0,0,0,1,0,0,0,0
+"379","Human herpesvirus 7",0,0,0,1,0,0,0,0
+"380","Papio hamadryas papillomavirus type 1",0,0,0,1,0,0,0,1
+"381","Shewanella sp. phage 1/40",0,0,0,1,0,0,0,0
+"382","Snake adenovirus 1",0,0,0,1,0,0,0,0
+"383","Synechococcus phage ACG-2014f",0,0,0,1,0,0,0,1
+"384","Trichechus manatus papillomavirus 4",0,0,0,1,1,0,1,0
+"385","Bacillus virus 1",0,0,0,2,0,0,0,0
+"386","Escherichia phage Av-05",0,0,0,2,0,0,0,0
+"387","Mesorhizobium phagevB_MloP_Lo5R7ANS",0,0,0,2,0,0,0,0
+"388","Po-Circo-like virus",0,0,0,2,0,0,0,0
+"389","Tsukamurella phage TPA2",0,0,0,2,0,0,0,0
+"390","unclassified Polyomavirus",0,0,0,2,0,0,0,0
+"391","Synechococcus phage ACG-2014c",0,0,0,3,0,1,0,0
+"392","Lactobacillus phage Sha1",0,0,0,4,0,0,0,0
+"393","unclassified Myoviridae",0,0,0,4,0,0,0,0
+"394","Proteus phage pPM_01",0,0,0,5,0,0,0,0
+"395","Cardioderma polyomavirus",0,0,0,6,0,0,0,0
+"396","Staphylococcus phage 47",0,0,0,8,0,0,0,0
+"397","Cellulophaga phage phiST",0,0,0,12,0,0,0,0
+"398","Pseudomonas phage PhiPA3",0,0,0,13,0,0,0,0
+"399","Mimiviridae",0,0,0,16,0,0,0,4
+"400","Geobacillus virus E2",0,0,0,17,0,0,1,0
+"401","Cronobacter phage vB_CsaP_GAP52",0,0,0,20,0,0,0,0
+"402","Bovine herpesvirus 1",0,0,0,35,1,1,1,0
+"403","Alphafusellovirus",0,0,0,0,1,0,0,0
+"404","Antheraea pernyi nucleopolyhedrovirus",0,0,0,0,1,0,1,0
+"405","Avipoxvirus",0,0,0,0,1,0,0,0
+"406","Bacillus phage PBC1",0,0,0,0,1,0,0,0
+"407","Bat betaherpesvirus B7D8",0,0,0,0,1,1,2,0
+"408","Bettongia penicillata papillomavirus 1",0,0,0,0,1,0,0,0
+"409","Bovine parvovirus",0,0,0,0,1,0,0,0
+"410","Cadicistrovirus",0,0,0,0,1,0,1,0
+"411","Cytomegalovirus",0,0,0,0,1,0,0,0
+"412","Eel River basin pequenovirus",0,0,0,0,1,0,0,0
+"413","Enterococcus phage ECP3",0,0,0,0,1,0,0,0
+"414","Environmental Halophage eHP-31",0,0,0,0,1,0,0,0
+"415","Epiphyas postvittana nucleopolyhedrovirus",0,0,0,0,1,1,1,0
+"416","Equid herpesvirus 5",0,0,0,0,1,1,1,0
+"417","Euproctis pseudoconspersa nucleopolyhedrovirus",0,0,0,0,1,0,0,0
+"418","Herpesviridae",0,0,0,0,1,2,1,0
+"419","Human endogenous retrovirus K",0,0,0,0,1,2,0,0
+"420","Human herpesvirus 2",0,0,0,0,1,0,1,0
+"421","Human papillomavirus type 101",0,0,0,0,1,0,0,0
+"422","Human papillomavirus type 125",0,0,0,0,1,0,0,0
+"423","Human papillomavirus type 47",0,0,0,0,1,0,1,0
+"424","Human papillomavirus type 68",0,0,0,0,1,0,0,0
+"425","Leucania separata nucleopolyhedrovirus",0,0,0,0,1,1,1,0
+"426","Macacine herpesvirus 1",0,0,0,0,1,0,0,0
+"427","Micromonas pusilla virus SP1",0,0,0,0,1,0,0,0
+"428","Murid herpesvirus 4",0,0,0,0,1,0,1,0
+"429","Musca domestica salivary gland hypertrophy virus",0,0,0,0,1,0,1,0
+"430","Mycobacterium phage Predator",0,0,0,0,1,0,0,0
+"431","Olive latent virus 3",0,0,0,0,1,0,0,0
+"432","Orf virus",0,0,0,0,1,0,0,0
+"433","Organic Lake phycodnavirus 2",0,0,0,0,1,0,0,0
+"434","Paramecium bursaria Chlorella virus 1",0,0,0,0,1,1,1,0
+"435","Paramecium bursaria Chlorella virus CVB-1",0,0,0,0,1,0,0,0
+"436","Peridroma alphabaculovirus",0,0,0,0,1,0,0,0
+"437","Prochlorococcus phage P-GSP1",0,0,0,0,1,0,0,0
+"438","Pseudoalteromonas phage B8b",0,0,0,0,1,0,0,0
+"439","Pseudomonas phage PaP4",0,0,0,0,1,0,0,0
+"440","Rose spring dwarf-associated virus",0,0,0,0,1,0,0,0
+"441","Salmonella phage 7-11",0,0,0,0,1,0,0,0
+"442","Sclerotinia sclerotiorum endornavirus 2",0,0,0,0,1,0,0,0
+"443","Simian immunodeficiency virus",0,0,0,0,1,0,0,0
+"444","Synechococcus phage ACG-2014g",0,0,0,0,1,0,0,0
+"445","Synechococcus phage ACG-2014i",0,0,0,0,1,1,0,0
+"446","Synechococcus phage ACG-2014j",0,0,0,0,1,0,0,0
+"447","Synechococcus phage S-CBP1",0,0,0,0,1,0,0,0
+"448","Tomato ringspot virus",0,0,0,0,1,0,0,0
+"449","uncultured Anellovirus",0,0,0,0,1,0,0,0
+"450","Choristoneura rosaceana alphabaculovirus",0,0,0,0,2,1,2,0
+"451","Dendrolimus kikuchii nucleopolyhedrovirus",0,0,0,0,2,1,1,0
+"452","Glossina pallidipes salivary gland hypertrophy virus",0,0,0,0,3,1,0,0
+"453","Lactobacillus phage phi jlb1",0,0,0,0,3,0,0,3
+"454","Lactobacillus phage phiadh",0,0,0,0,5,0,271,0
+"455","Alphapapillomavirus 12",0,0,0,0,0,1,0,0
+"456","Arabis mosaic virus",0,0,0,0,0,1,0,0
+"457","Bacillus phage BigBertha",0,0,0,0,0,1,1,0
+"458","Bocaparvovirus",0,0,0,0,0,1,0,0
+"459","Bovine papillomavirus",0,0,0,0,0,1,0,0
+"460","Cercopithecine herpesvirus 9",0,0,0,0,0,1,2,0
+"461","Choristoneura murinana alphabaculovirus",0,0,0,0,0,1,2,0
+"462","Cotesia congregata bracovirus",0,0,0,0,0,1,0,0
+"463","Crocidura russula cytomegalovirus 1",0,0,0,0,0,1,0,0
+"464","Enterobacteria phage Ac3",0,0,0,0,0,1,0,0
+"465","Enterovirus B",0,0,0,0,0,1,0,70
+"466","Environmental halophage 1 AAJ-2005",0,0,0,0,0,1,0,0
+"467","Epinotia aporema granulovirus",0,0,0,0,0,1,0,1
+"468","Feline papillomavirus type 2",0,0,0,0,0,1,0,0
+"469","Gammaherpesvirinae",0,0,0,0,0,1,0,0
+"470","Hepatitis C virus",0,0,0,0,0,1,2,0
+"471","Hepatitis E virus",0,0,0,0,0,1,0,0
+"472","Human herpesvirus 4 (strain B95-8)",0,0,0,0,0,1,0,1
+"473","Human papillomavirus type 21",0,0,0,0,0,1,1,0
+"474","Hyphantria cunea nucleopolyhedrovirus",0,0,0,0,0,1,1,0
+"475","Mycobacterium phage Doom",0,0,0,0,0,1,0,0
+"476","Paramecium bursaria Chlorella virus FR483",0,0,0,0,0,1,0,0
+"477","Porcine parvovirus 6",0,0,0,0,0,1,0,0
+"478","Propionibacterium phage PHL041M10",0,0,0,0,0,1,0,0
+"479","Retroperitoneal fibromatosis-associated herpesvirus",0,0,0,0,0,1,0,0
+"480","Rotavirus",0,0,0,0,0,1,0,0
+"481","Simian cytomegalovirus",0,0,0,0,0,1,0,0
+"482","Spodoptera exigua multiple nucleopolyhedrovirus",0,0,0,0,0,1,0,0
+"483","Synechococcus phage S-SSM5",0,0,0,0,0,1,0,0
+"484","unclassified Chlorovirus",0,0,0,0,0,1,0,0
+"485","Wuhan Louse Fly Virus 9",0,0,0,0,0,1,0,0
+"486","Bovine herpesvirus 6",0,0,0,0,0,2,0,0
+"487","Human herpesvirus 1",0,0,0,0,0,2,1,0
+"488","Inoviridae",0,0,0,0,0,2,0,0
+"489","Lambdina fiscellaria nucleopolyhedrovirus",0,0,0,0,0,2,2,0
+"490","Fowlpox virus strain NVSL",0,0,0,0,0,3,0,0
+"491","Armadillidium vulgare iridescent virus",0,0,0,0,0,0,1,0
+"492","Buzura suppressaria nucleopolyhedrovirus",0,0,0,0,0,0,1,0
+"493","Caprine herpesvirus 1",0,0,0,0,0,0,1,0
+"494","Caviid herpesvirus 2",0,0,0,0,0,0,1,0
+"495","Choristoneura biennis entomopoxvirus 'L'",0,0,0,0,0,0,1,0
+"496","Enterobacteria phage JenP1",0,0,0,0,0,0,1,0
+"497","Equid herpesvirus 2",0,0,0,0,0,0,1,0
+"498","Felis catus papillomavirus 4",0,0,0,0,0,0,1,0
+"499","Herpesvirales",0,0,0,0,0,0,1,0
+"500","Human herpesvirus 6A",0,0,0,0,0,0,1,0
+"501","Human papillomavirus type 20",0,0,0,0,0,0,1,0
+"502","Human papillomavirus type 36",0,0,0,0,0,0,1,0
+"503","Mamestra brassicae multiple nucleopolyhedrovirus",0,0,0,0,0,0,1,0
+"504","Melanoplus sanguinipes entomopoxvirus",0,0,0,0,0,0,1,0
+"505","Mycobacterium phage Hamulus",0,0,0,0,0,0,1,0
+"506","Mycobacterium phage Lamina13",0,0,0,0,0,0,1,0
+"507","Papiine herpesvirus 1",0,0,0,0,0,0,1,0
+"508","Pectobacterium phage PM1",0,0,0,0,0,0,1,0
+"509","Polerovirus",0,0,0,0,0,0,1,0
+"510","Prochlorococcus phage Syn1",0,0,0,0,0,0,1,0
+"511","Saimiriine herpesvirus 1",0,0,0,0,0,0,1,0
+"512","Synechococcus phage S-SSM4",0,0,0,0,0,0,1,0
+"513","Tursiops truncatus papillomavirus type 3",0,0,0,0,0,0,1,0
+"514","uncultured phage MedDCM-OCT-S08-C964",0,0,0,0,0,0,1,0
+"515","Vibrio phage helene 12B3",0,0,0,0,0,0,3,0
+"516","Lactobacillus phage phig1e",0,0,0,0,0,0,10,0
+"517","Phijlunalikevirus",0,0,0,0,0,0,12,0
+"518","Staphylococcus phage 2638A",0,0,0,0,0,0,14,0
+"519","Lactobacillus phage JCL1032",0,0,0,0,0,0,28,0
+"520","Lactobacillus phage c5",0,0,0,0,0,0,32,0
+"521","Coxsackievirus B3",0,0,0,0,0,0,0,1
+"522","Echovirus E6",0,0,0,0,0,0,0,1
+"523","Rhodococcus phage RGL3",0,0,0,0,0,0,0,1
+"524","Pectobacterium phage My1",0,0,0,0,0,0,0,3
+"525","Coxsackievirus B1",0,0,0,0,0,0,0,5
+"526","Echovirus E25",0,0,0,0,0,0,0,5
+"527","Lactobacillus phage phiAQ113",0,0,0,0,0,0,0,11
+"528","Enterococcus phage vB_Efae230P-4",0,0,0,0,0,0,0,49
+"529","Coxsackievirus A9",0,0,0,0,0,0,0,50
+"530","Enterovirus",0,0,0,0,0,0,0,204
