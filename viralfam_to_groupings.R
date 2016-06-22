@@ -325,15 +325,76 @@ ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Grou
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
   ylab("Relative Abundance (%)") 
 
-#### cant order based on viral load
+#### order based on viral load
 #Dean added to order by factor levels
+#load 1B data
+data <- read.csv("virus_groupings_1B.csv")
+
+#unsuppressed women
+unsup <- data %>%
+  select(Virus_Groups, Vogue1B.01.32, Vogue1B.01.52, Vogue1B.01.43, 
+         Vogue1B.01.11, Vogue1B.01.01, Vogue1B.01.15, Vogue1B.01.37, 
+         Vogue1B.01.05, Vogue1B.01.09, Vogue1B.01.26, Vogue1B.01.36, 
+         Vogue1B.01.48, Vogue1B.01.13, Vogue1B.01.08, Vogue1B.01.04)
+
+#load Viral Load data
 vl <- read.csv("Vogue1B_VL.csv")
 
 #omit empty rows and columns
 vl <- vl[c(1:25),]
+vl <- vl[c(1:15),]
+#rename
+vl2 <- dplyr::rename(vl, Participants = X)
 
-vmb$Participants <- factor(vmb$Participants, 
-                           levels = vmb$Participants[order(vmb$CST)])
+#rename study_ids
+vl2$Participants <-
+  paste0("Vogue1B.0",
+         substring(vl2$Participants, nchar("Vogue1B.")+1))
+
+#reorganize dataframe
+rownames(unsup) <- unsup[,1]
+unsup[,1] <- NULL
+unsup <- as.data.frame(t(unsup))
+unsup[is.na(unsup)] <- 0
+unsup <- add_rownames(unsup, "Participants")
+
+#merge VL data and 1B unsuppressed data
+total <- join(vl2, unsup, type="full")
+
+#remove NA and replace with zero
+total[is.na(total)] <- 0
+
+#order by factor levels
+total$Participants <- factor(total$Participants, 
+                             levels = total$Participants[order(total$Participants.Sequencing)])
+
+#bac counts
+data2 <-
+  gather(total, key = 'Viral_Groups', value = 'Counts', Adenoviridae, Anelloviridae, 
+         Baculoviridae, Caudovirales, Herpesviridae, Hytrosaviridae, 
+         Lactobacillus_phage, Myoviridae, Pandoraviridae, Papillomaviridae, 
+         Phycodnaviridae, Picornaviridae, Podoviridae, Polydnaviridae, 
+         Polyomaviridae, Retroviridae, Siphoviridae, Streptococcus_phage, 
+         Virgaviridae, ssDNA, dsDNA, dsDNA_RT, dsRNA, negative_ssRNA, positive_ssRNA, 
+         Other_Phages, Other_Viruses_unclassified) 
+
+vmb <- tbl_df(data2) %>% # finally got the percentages correct
+  group_by(Participants) %>%
+  select(Participants, Viral_Groups, Counts, Participants.Sequencing) %>%
+  mutate(Group.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
+  arrange(Participants)
+
+#bar plot with custom colors
+jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
+             'forestgreen', 'palegreen', 'darkgoldenrod1', 
+             'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
+             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
+             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
+             'lavender', 'rosybrown2', 'deeppink')
+
+ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
+  geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
+  ylab("Relative Abundance (%)") 
 
 
 
