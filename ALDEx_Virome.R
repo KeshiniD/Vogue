@@ -26,9 +26,15 @@ meta$VL..copies.mL..[is.na(meta$VL..copies.mL..)] <- 0
 #Aldex
 variables <- colnames(meta)
 #variables <- variables[c(2,7,17)]
+# notfactors <- c(
+#   "age", "bmi", "bv_life", "bv_infecttotal_1yr", "bv_infecttotal_2mo", 
+#   "days.since.LMP", "Number.of.Different.HPV.Types", "Med.Duration", 
+#   "Duration.of.HIV.Infection.", "CD4.Nadir.", "Highest.VL.Ever..", "CD4.", 
+#   "VL..copies.mL.."
+# )
+
 notfactors <- c(
-  "age", "bmi", "bv_life", "bv_infecttotal_1yr", "bv_infecttotal_2mo", 
-  "days.since.LMP", "Number.of.Different.HPV.Types", "Med.Duration", 
+  "Number.of.Different.HPV.Types", "Med.Duration", 
   "Duration.of.HIV.Infection.", "CD4.Nadir.", "Highest.VL.Ever..", "CD4.", 
   "VL..copies.mL.."
 )
@@ -68,5 +74,17 @@ View(mydf2)
 mydf2$signif <- mydf$glm.eBH < 0.05
 
 ##################################################################################
-meta$Number.of.Different.HPV.Types[is.na(meta$Number.of.Different.HPV.Types)] <- 0                  
+#################################################################################
+#look at variables which are significant
+meta$X.Non..Prescription..y.1..n.0. <- factor(meta$X.Non..Prescription..y.1..n.0.)
+meta$Vaginal.intercourse.in.past.48.hours..y.1..n.0. <- factor(meta$Vaginal.intercourse.in.past.48.hours..y.1..n.0.)
 
+#Nugent Score
+cond.eduNS <- meta$Nugent.score
+ald.eduNS <- aldex(reads = bac, conditions = cond.eduNS, test = "glm", effect = FALSE)
+
+###############
+#write to file
+#write.csv(ald.eduNS, "Aldex_1B2_Nugentscore.csv")
+
+#################################################################################
