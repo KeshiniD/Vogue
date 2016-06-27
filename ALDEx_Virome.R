@@ -26,18 +26,17 @@ meta$Feminine.products.48hrs[is.na(meta$Feminine.products.48hrs)] <- 0
 #Aldex
 variables <- colnames(meta)
 #variables <- variables[c(2,7,17)]
-notfactors <- c(
-  "age", "bmi", "bv_life", "bv_infecttotal_1yr", "bv_infecttotal_2mo",
-  "days.since.LMP", "Number.of.Different.HPV.Types", "Med.Duration",
-  "Duration.of.HIV.Infection.", "CD4.Nadir.", "Highest.VL.Ever..", "CD4.",
-  "VL..copies.mL.."
-)
-
 # notfactors <- c(
-#   "Number.of.Different.HPV.Types", "Med.Duration", 
-#   "Duration.of.HIV.Infection.", "CD4.Nadir.", "Highest.VL.Ever..", "CD4.", 
+#   "age", "bmi", "bv_life", "bv_infecttotal_1yr", "bv_infecttotal_2mo",
+#   "days.since.LMP", "Number.of.Different.HPV.Types", "Med.Duration",
+#   "Duration.of.HIV.Infection.", "CD4.Nadir.", "Highest.VL.Ever..", "CD4.",
 #   "VL..copies.mL.."
 # )
+
+notfactors <- c(
+  "age", "bmi", "bv_life", "bv_infecttotal_1yr", "bv_infecttotal_2mo", 
+  "days.since.LMP"
+)
 
 
 mydf <- data.frame(variable = c(), glm.eBH = c(), kw.eBH = c())
@@ -80,54 +79,56 @@ mydf2$signif <- mydf$glm.eBH < 0.05
 
 #################
 #repeat aldex with separated meta data by cohort
-meta <- meta[c(1:21),] #1A
-meta <- meta[c(30:54),] #1B
-meta <- meta[c(22:29),] #1B2
+#not suppose to do that
 
-####
-#omit columns with only 1 factor level
-#1A
-meta$Gonorrhea.ever <- NULL
-meta$Syphillis.ever <- NULL
-meta$analsxfrequency.cat <- NULL
-meta$abnormaldischarge2wk <- NULL
-meta$abnormaldischarge48 <- NULL
-meta$abnormalodor2wk <- NULL
-meta$abnormalodor48 <- NULL
-meta$vaginalsymptomother2wk <- NULL
-meta$vaginalsymptomother48 <- NULL
-meta$antimicrodrug <- NULL
-meta <- meta[c(1:47)]
-
-#1B
-meta$Contraception.IUD <- NULL
-meta$sexpartner <- NULL
-meta$vaginalsymptomother48 <- NULL
-meta$study_arm <- NULL
-meta$t06 <- NULL
-meta$t11 <- NULL
-meta$t31 <- NULL
-meta$t34 <- NULL
-meta$t39 <- NULL
-meta$t40 <- NULL
-meta$t44 <- NULL
-meta$t58 <- NULL
-meta$t59 <- NULL
-meta$t69 <- NULL
-meta$t82 <- NULL
-
-#1B2
-meta$Trich.ever <- NULL
-meta$GenHerpes.ever <- NULL
-meta$Gonorrhea.ever <- NULL
-meta$Syphillis.ever <- NULL
-meta$Presence.Symptoms.2wks <- NULL
-meta$sexpartner1yr.cat <- NULL
-meta$Contraception.IUD <- NULL
-meta$substanceuse <- NULL
-meta$vaginalsymptomother2wk <- NULL
-meta$vaginalsymptomother48 <- NULL
-meta <- meta[c(1:47)]
+# meta <- meta[c(1:21),] #1A
+# meta <- meta[c(30:54),] #1B
+# meta <- meta[c(22:29),] #1B2
+# 
+# ####
+# #omit columns with only 1 factor level
+# #1A
+# meta$Gonorrhea.ever <- NULL
+# meta$Syphillis.ever <- NULL
+# meta$analsxfrequency.cat <- NULL
+# meta$abnormaldischarge2wk <- NULL
+# meta$abnormaldischarge48 <- NULL
+# meta$abnormalodor2wk <- NULL
+# meta$abnormalodor48 <- NULL
+# meta$vaginalsymptomother2wk <- NULL
+# meta$vaginalsymptomother48 <- NULL
+# meta$antimicrodrug <- NULL
+# meta <- meta[c(1:47)]
+# 
+# #1B
+# meta$Contraception.IUD <- NULL
+# meta$sexpartner <- NULL
+# meta$vaginalsymptomother48 <- NULL
+# meta$study_arm <- NULL
+# meta$t06 <- NULL
+# meta$t11 <- NULL
+# meta$t31 <- NULL
+# meta$t34 <- NULL
+# meta$t39 <- NULL
+# meta$t40 <- NULL
+# meta$t44 <- NULL
+# meta$t58 <- NULL
+# meta$t59 <- NULL
+# meta$t69 <- NULL
+# meta$t82 <- NULL
+# 
+# #1B2
+# meta$Trich.ever <- NULL
+# meta$GenHerpes.ever <- NULL
+# meta$Gonorrhea.ever <- NULL
+# meta$Syphillis.ever <- NULL
+# meta$Presence.Symptoms.2wks <- NULL
+# meta$sexpartner1yr.cat <- NULL
+# meta$Contraception.IUD <- NULL
+# meta$substanceuse <- NULL
+# meta$vaginalsymptomother2wk <- NULL
+# meta$vaginalsymptomother48 <- NULL
+# meta <- meta[c(1:47)]
 
 
 ####################################################################################3
