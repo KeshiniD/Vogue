@@ -26,18 +26,18 @@ meta$VL..copies.mL..[is.na(meta$VL..copies.mL..)] <- 0
 #Aldex
 variables <- colnames(meta)
 #variables <- variables[c(2,7,17)]
+notfactors <- c(
+  "age", "bmi", "bv_life", "bv_infecttotal_1yr", "bv_infecttotal_2mo",
+  "days.since.LMP", "Number.of.Different.HPV.Types", "Med.Duration",
+  "Duration.of.HIV.Infection.", "CD4.Nadir.", "Highest.VL.Ever..", "CD4.",
+  "VL..copies.mL.."
+)
+
 # notfactors <- c(
-#   "age", "bmi", "bv_life", "bv_infecttotal_1yr", "bv_infecttotal_2mo", 
-#   "days.since.LMP", "Number.of.Different.HPV.Types", "Med.Duration", 
+#   "Number.of.Different.HPV.Types", "Med.Duration", 
 #   "Duration.of.HIV.Infection.", "CD4.Nadir.", "Highest.VL.Ever..", "CD4.", 
 #   "VL..copies.mL.."
 # )
-
-notfactors <- c(
-  "Number.of.Different.HPV.Types", "Med.Duration", 
-  "Duration.of.HIV.Infection.", "CD4.Nadir.", "Highest.VL.Ever..", "CD4.", 
-  "VL..copies.mL.."
-)
 
 
 mydf <- data.frame(variable = c(), glm.eBH = c(), kw.eBH = c())
@@ -75,6 +75,16 @@ mydf2$signif <- mydf$glm.eBH < 0.05
 
 ##################################################################################
 #################################################################################
+#no variables significant using all meta and viral species
+
+
+#################
+#repeat aldex with separated meta data by cohort
+meta <- meta[c(1:21),] #1A
+meta <- meta[c(30:54),] #1B
+meta <- meta[c(22:29),] #1B2
+
+####################################################################################3
 #look at variables which are significant
 meta$X.Non..Prescription..y.1..n.0. <- factor(meta$X.Non..Prescription..y.1..n.0.)
 meta$Vaginal.intercourse.in.past.48.hours..y.1..n.0. <- factor(meta$Vaginal.intercourse.in.past.48.hours..y.1..n.0.)
