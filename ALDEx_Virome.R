@@ -1,4 +1,5 @@
-DO_PARALLEL <- TRUE
+DO_PARALLEL <- TRUE # TRUE = run 4 core, FALSE = run single core
+FAST_VERSION <- FALSE # TRUE = mc=2, FALSE = run to completion(mc=128)
 
 #load packages
 library(ALDEx2)
@@ -55,8 +56,11 @@ if (DO_PARALLEL) {
     cond.edu <- meta[[var]]
     
     #run ALDEx
-    ald.edu <- aldex(reads = viral, conditions = cond.edu, test = "glm", effect = FALSE)
-    #ald.edu <- ALDEx2::aldex(reads = viral, conditions = cond.edu, test = "glm", effect = FALSE, mc.samples = 2, verbose = FALSE)
+    if (FAST_VERSION) {
+      ald.edu <- ALDEx2::aldex(reads = viral, conditions = cond.edu, test = "glm", effect = FALSE, mc.samples = 2, verbose = FALSE)
+    } else {
+      ald.edu <- ALDEx2::aldex(reads = viral, conditions = cond.edu, test = "glm", effect = FALSE)
+    }
     
     #look at the output
     #head(ald.edu)
@@ -82,8 +86,11 @@ if (DO_PARALLEL) {
     cond.edu <- meta[[var]]
     
     #run ALDEx
-    ald.edu <- aldex(reads = viral, conditions = cond.edu, test = "glm", effect = FALSE)
-    #ald.edu <- aldex(reads = viral, conditions = cond.edu, test = "glm", effect = FALSE, mc.samples = 2, verbose = FALSE)
+    if (FAST_VERSION) {
+      ald.edu <- aldex(reads = viral, conditions = cond.edu, test = "glm", effect = FALSE, mc.samples = 2, verbose = FALSE) 
+    } else {
+      ald.edu <- aldex(reads = viral, conditions = cond.edu, test = "glm", effect = FALSE)  
+    }
     
     #look at the output
     #head(ald.edu)
