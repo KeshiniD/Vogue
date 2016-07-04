@@ -1,3 +1,5 @@
+DO_PARALLEL <- TRUE
+
 #load packages
 library(ALDEx2)
 library(plyr)
@@ -25,44 +27,71 @@ meta$Feminine.products.48hrs[is.na(meta$Feminine.products.48hrs)] <- 0
 
 #Aldex
 variables <- colnames(meta)
-#variables <- variables[c(2,7,17)]
-# notfactors <- c(
-#   "age", "bmi", "bv_life", "bv_infecttotal_1yr", "bv_infecttotal_2mo",
-#   "days.since.LMP", "Number.of.Different.HPV.Types", "Med.Duration",
-#   "Duration.of.HIV.Infection.", "CD4.Nadir.", "Highest.VL.Ever..", "CD4.",
-#   "VL..copies.mL.."
-# )
-
+# variables <- variables[c(2,7,17)]
 notfactors <- c(
-  "age", "bmi", "bv_life", "bv_infecttotal_1yr", "bv_infecttotal_2mo", 
-  "days.since.LMP"
+  "age", "bmi", "bv_life", "bv_infecttotal_1yr", "bv_infecttotal_2mo",
+  "days.since.LMP", "Number.of.Different.HPV.Types", "Med.Duration",
+  "Duration.of.HIV.Infection.", "CD4.Nadir.", "Highest.VL.Ever..", "CD4.",
+  "VL..copies.mL.."
 )
 
+# notfactors <- c(
+#   "age", "bmi", "bv_life", "bv_infecttotal_1yr", "bv_infecttotal_2mo", 
+#   "days.since.LMP"
+# )
 
-mydf <- data.frame(variable = c(), glm.eBH = c(), kw.eBH = c())
+# run the aldex code on each core on your computer, should be 2-4 times faster
+if (DO_PARALLEL) {
+  cl <- parallel::makeCluster(4)
+  parallel::clusterExport(cl = cl, varlist = c("meta", "viral"))
+  
+  mydf <- parLapply(cl, variables, function(var) {
+    
+    if ( var == "study_id" ) {
+      return()
+    }
 
-lapply(variables, function(var) {
+    #make a vector that is the variable labels
+    cond.edu <- meta[[var]]
+    
+    #run ALDEx
+    ald.edu <- aldex(reads = viral, conditions = cond.edu, test = "glm", effect = FALSE)
+    #ald.edu <- ALDEx2::aldex(reads = viral, conditions = cond.edu, test = "glm", effect = FALSE, mc.samples = 2, verbose = FALSE)
+    
+    #look at the output
+    #head(ald.edu)
+    #cat(var, "\t", min(ald.edu$glm.eBH), "\t", min(ald.edu$kw.eBH), "\n")
+    row <- data.frame(variable = var, glm.eBH = min(ald.edu$glm.eBH), kw.eBH = min(ald.edu$kw.eBH))
+    #mydf <<- rbind(mydf, row)
+    row
+  })
   
-  if ( var == "study_id" ) {
-    return()
-  }
-  if (!(var %in% notfactors)) {
-    var < as.factor(var)
-  }
+  mydf <- do.call(rbind, mydf)
   
-  #make a vector that is the variable labels
-  cond.edu <- meta[[var]]
+} else {
+ # the old slower way
+  mydf <- data.frame(variable = c(), glm.eBH = c(), kw.eBH = c())
   
-  #run ALDEx
-  ald.edu <- aldex(reads = viral, conditions = cond.edu, test = "glm", effect = FALSE)
-  #ald.edu <- aldex(reads = viral, conditions = cond.edu, test = "glm", effect = FALSE, mc.samples = 2, verbose = FALSE)
-  
-  #look at the output
-  #head(ald.edu)
-  cat(var, "\t", min(ald.edu$glm.eBH), "\t", min(ald.edu$kw.eBH), "\n")
-  row <- data.frame(variable = var, glm.eBH = min(ald.edu$glm.eBH), kw.eBH = min(ald.edu$kw.eBH))
-  mydf <<- rbind(mydf, row)
-})
+  lapply(variables, function(var) {
+    
+    if ( var == "study_id" ) {
+      return()
+    }
+    
+    #make a vector that is the variable labels
+    cond.edu <- meta[[var]]
+    
+    #run ALDEx
+    ald.edu <- aldex(reads = viral, conditions = cond.edu, test = "glm", effect = FALSE)
+    #ald.edu <- aldex(reads = viral, conditions = cond.edu, test = "glm", effect = FALSE, mc.samples = 2, verbose = FALSE)
+    
+    #look at the output
+    #head(ald.edu)
+    cat(var, "\t", min(ald.edu$glm.eBH), "\t", min(ald.edu$kw.eBH), "\n")
+    row <- data.frame(variable = var, glm.eBH = min(ald.edu$glm.eBH), kw.eBH = min(ald.edu$kw.eBH))
+    mydf <<- rbind(mydf, row)
+  })
+}
 
 mydf$signif <- mydf$glm.eBH < 0.05
 
@@ -133,12 +162,12 @@ mydf2$signif <- mydf$glm.eBH < 0.05
 
 ####################################################################################3
 #look at variables which are significant
-meta$X.Non..Prescription..y.1..n.0. <- factor(meta$X.Non..Prescription..y.1..n.0.)
-meta$Vaginal.intercourse.in.past.48.hours..y.1..n.0. <- factor(meta$Vaginal.intercourse.in.past.48.hours..y.1..n.0.)
-
-#Nugent Score
-cond.eduNS <- meta$Nugent.score
-ald.eduNS <- aldex(reads = bac, conditions = cond.eduNS, test = "glm", effect = FALSE)
+# meta$X.Non..Prescription..y.1..n.0. <- factor(meta$X.Non..Prescription..y.1..n.0.)
+# meta$Vaginal.intercourse.in.past.48.hours..y.1..n.0. <- factor(meta$Vaginal.intercourse.in.past.48.hours..y.1..n.0.)
+# 
+# #Nugent Score
+# cond.eduNS <- meta$Nugent.score
+# ald.eduNS <- aldex(reads = bac, conditions = cond.eduNS, test = "glm", effect = FALSE)
 
 ###############
 #write to file
