@@ -1,5 +1,5 @@
 DO_PARALLEL <- TRUE # TRUE = run 4 core, FALSE = run single core
-FAST_VERSION <- FALSE # TRUE = mc=2, FALSE = run to completion(mc=128)
+FAST_VERSION <- TRUE # TRUE = mc=2, FALSE = run to completion(mc=128)
 
 #load packages
 library(ALDEx2)
