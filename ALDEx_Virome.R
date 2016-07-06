@@ -44,7 +44,7 @@ notfactors <- c(
 # run the aldex code on each core on your computer, should be 2-4 times faster
 if (DO_PARALLEL) {
   cl <- parallel::makeCluster(4)
-  parallel::clusterExport(cl = cl, varlist = c("meta", "viral"))
+  parallel::clusterExport(cl = cl, varlist = c("meta", "viral", "FAST_VERSION"))
   
   mydf <- parLapply(cl, variables, function(var) {
     
