@@ -306,7 +306,7 @@ levels(metadata$cst)[5] <- "blue"
 levels(metadata$cst)[6] <- "red"
 
 # Check that each factor got a colour
-levels(metadata$cst)
+levels(metadata$cs)
 
 # Should be: [1] "orange" "purple" "magenta" "forestgreen" "blue" [6] "red" 
 
@@ -385,7 +385,7 @@ heatmap.2(as.matrix(data_t),
           key.title = NA,
           key.xlab = "Relative proportion", 
           margins = c(20, 0.5), 
-          RowSideColors = metadata$nugent
+          RowSideColors = metadata$cst
 )
 
 
@@ -402,7 +402,7 @@ heatmap.2(as.matrix(data_t),
           key.title = NA,
           key.xlab = "Relative proportion", 
           margins = c(20, 0.5),
-          RowSideColors = metadata$nugent
+          RowSideColors = metadata$cst
 )
 
 #### Transposing
@@ -422,7 +422,7 @@ heatmap.2(t(as.matrix(data_t)),
           key.title = NA,
           key.xlab = "Relative proportion",
           margins = c(0.5, 20), 
-          ColSideColors = metadata$nugent
+          ColSideColors = metadata$cst
 )
 
 
@@ -439,7 +439,7 @@ heatmap.2(t(as.matrix(data_t)),
           key.title = NA,
           key.xlab = NA,
           margins = c(0.5, 18),
-          ColSideColors = metadata$nugent
+          ColSideColors = metadata$cst
 )
 
 
