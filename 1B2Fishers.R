@@ -10,6 +10,7 @@ library(ggplot2)
 library(tidyr)
 library(knitr)
 library(vcd)
+library(effsize)
 
 #convert variables into factors
 
@@ -257,4 +258,8 @@ aggregate(total$Contraception.none, list(total$CST), summary)
 newdata <- subset(total, Nugent.score >= 4) 
 levels(droplevels(total$CST)) # get rid of empty levels
 
-
+###############
+#dean.R has loops for fishers, anova for CST and t.test and correlation for SD
+#need to remove CSTII before do loops for CST
+total2 <- total[-c(1),]
+total2$CST <- droplevels(total2$CST)

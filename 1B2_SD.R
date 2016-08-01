@@ -208,7 +208,7 @@ cohen.d(Shannon.s.Diversity~smoking.current, data = total)
 pvals <- read.csv(file = "clipboard") #copied from excel
 pvals
 
-a <- p.adjust(pvals$x, method = 'hochberg', n = 26)
+a <- p.adjust(pvals$x, method = 'hochberg', n = 26) #n=number of test done (total pvals)
 View(a)
 
 ###########################################################
