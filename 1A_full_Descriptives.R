@@ -309,6 +309,30 @@ mylogit <- glm(formula = study_arm ~ Yeast..lifetime., data=total,
 summary(mylogit)
 confint(mylogit)
 
+##################################################################
+#Aug-2-16
+#contin variables should go in t.test
+
+#Nugent score
+t.test(Nugent.score ~ study_arm, data=total)
+#Age
+t.test(Age ~ study_arm, data=total)
+#BMI
+t.test(BMI ~ study_arm, data=total)
+#BV..number.of.episodes.2.months.
+t.test(BV..number.of.episodes.2.months. ~ study_arm, data=total)
+#BV..number.of.episodes.year.
+t.test(BV..number.of.episodes.year. ~ study_arm, data=total)
+#BV..number.of.episodes.lifetime.
+t.test(BV..number.of.episodes.lifetime. ~ study_arm, data=total)
+#Yeast..2months.
+t.test(Yeast..2months. ~ study_arm, data=total)
+#Yeast..year.
+t.test(Yeast..year. ~ study_arm, data=total)
+#Yeast..lifetime.
+t.test(Yeast..lifetime. ~ study_arm, data=total)
+
+###########################################
 #cat variables in fishers
 #CST
 a <- xtabs(~study_arm + CST , data = total)
@@ -611,3 +635,52 @@ summary(mylogit)
 mylogit <- glm(formula = CST ~ Shannon.s.Diversity, data=total, 
                family = binomial(link = "logit"))
 summary(mylogit)
+
+#################################################################################
+#Aug-2-16
+#compare 1A and 1B2, diversity statistics
+
+#load diversity statistics for 1A
+chao1A <- read.csv("1A_individual_chao1.csv")
+chao1A$X <- NULL
+richness1A <- read.csv("1A_individual_richness.csv")
+pielou1A <- read.csv("1A_individual_Pielou.csv")
+SD1A <- read.csv("1A_individual_diversity.csv")
+good1A <- read.csv("1A_individual_Good.csv")
+good1A$X <- NULL
+
+#load diversity statisitcs for 1B2
+all1B2 <- read.csv("1B2_individual_all5_diversity.csv")
+all1B2$X <- NULL
+
+#rename headers in 1A to match 
+chao1A <- dplyr::rename(chao1A, Participants = var, Chao1 = chao) 
+richness1A <- dplyr::rename(richness1A, Participants = X, Species.Richness = rarefy) 
+pielou1A <- dplyr::rename(pielou1A, Pielou.s.Eveness = J) 
+SD1A <- dplyr::rename(SD1A, Shannon.s.Diversity = ShannonsDiversity) 
+good1A <- dplyr::rename(good1A, Good.s.Coverage = a) 
+
+#join all 1A together, and merge with 1B2
+diversity <- cbind(chao1A, richness1A, pielou1A, SD1A, good1A)
+#remove duplicate columns
+diversity2 <- diversity[ -c(3, 5, 7, 9) ]
+
+#add study_arm 
+all1B2[,"study_arm"]  <- c("1B2")
+diversity2[,"study_arm"]  <- c("1A")
+
+#merge 1B2
+diversity3 <- join(diversity2, all1B2, type="full")
+
+#write to file
+#write.csv(diversity3, "1A_1B2_diversitystats.csv")
+
+#call data back
+diversity <- read.csv("1A_1B2_diversitystats.csv")
+
+#independent:study_arm, dependent:contin diversity stats
+t.test(Shannon.s.Diversity ~study_arm, data=diversity)
+t.test(Pielou.s.Eveness ~study_arm, data=diversity)
+t.test(Chao1 ~study_arm, data=diversity)
+t.test(Species.Richness ~study_arm, data=diversity)
+t.test(Good.s.Coverage ~study_arm, data=diversity)

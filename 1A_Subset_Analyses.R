@@ -104,7 +104,7 @@ H <- add_rownames(H, "VALUE")
 H <- dplyr::rename(H, ShannonsDiversity = H, Participants = VALUE)
 
 #write data to file 
-write.table(H, "1A_subset_individual_diversity.csv", sep = ",", row.names = FALSE, quote = FALSE)
+#write.table(H, "1A_subset_individual_diversity.csv", sep = ",", row.names = FALSE, quote = FALSE)
 div <- read.csv(file.path("1A_subset_individual_diversity.csv"))
 
 #SD cohort
@@ -152,7 +152,7 @@ data2 <- as.data.frame(t(data2))
 data2 <- add_rownames(data2, "Participants")
 
 #write data to file 
-write.table(data2, "1A_temp.csv", sep = ",", row.names = FALSE, quote = FALSE)
+#write.table(data2, "1A_temp.csv", sep = ",", row.names = FALSE, quote = FALSE)
 data2 <- read.csv(file.path("1A_temp.csv"))
 
 
@@ -210,7 +210,7 @@ J <- dplyr::rename(J, PielousEveness = H)
 View(J)
 
 #write data to file (altered headings and called back)
-write.table(J, "1A_subset_individual_Pielou.csv", sep = ",", row.names = FALSE, quote = FALSE)
+# write.table(J, "1A_subset_individual_Pielou.csv", sep = ",", row.names = FALSE, quote = FALSE)
 Piel <- read.csv(file.path("1A_subset_individual_Pielou.csv"))
 
 J2 <- F2/log(specnumber(H2, MARGIN = 2)) #not working for entire cohort
@@ -270,7 +270,7 @@ data4 <- data3 %>%
   select (TotalCounts)
 
 Ns <- data4$TotalCounts
-Coverage(Ns, Estimator = Turing) #Ns has to be numeric vector
+Coverage(Ns, Estimator = "Turing") #Ns has to be numeric vector
 Coverage(Ns) # is value correct; value could be for entire cohort?
 
 
@@ -283,7 +283,7 @@ Ns <- newdata$Counts
 a <- as.data.frame(Coverage(Ns, Estimator = "Turing"))
 #insert each participant for coverage
 
-data3 %>%
+data5 <- data3 %>% #works for individual; does all at once, dont have to do manually
   group_by(Participants) %>%
   summarise(a = Coverage(Counts, Estimator = "Turing"))
 
@@ -364,7 +364,7 @@ e <- as.data.frame(Coverage(Ns, Estimator = "Turing"))
 #Chao estimator
 #cohort
 #data2 step before adding row names
-d <- diversityresult(data2, index = 'chao')
+d <- diversityresult(newdata2, index = 'chao')
 View(d)
 
 #write to file
@@ -516,3 +516,48 @@ rarecurve(bac, step = 27, sample = min(rowSums(bac)),
           xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
           label = FALSE, col = col, xlim=c(0,8500), lwd = 2)
 
+################################################################################
+#Aug-2-16
+#did diversity for 1A entire cohort using above codes, with this dataset
+data <- read.csv(file.path("data1A_1B2.csv"))
+
+#column into row labels
+data2 <- data[,-1]
+rownames(data2) <- data[,1]
+
+data2 <- data.frame(t(data2)) #tranpose
+
+newdata <- data2[2:311,] #remove 1B2, and keep 1A
+
+#and remove actinobacteria kleb, and ecoli; counts are zero when remove 1B2
+newdata$Actinobacteria.sp. <- NULL
+newdata$Escherichia.coli <- NULL
+newdata$Klebsiella.pneumoniae <- NULL
+#and made the necesssary format changes when needed
+
+#good's coverage estimator for individuals
+data5 <- data3 %>% #data3 is bacteria counts seen above with participants
+  group_by(Participants) %>%
+  summarise(a = Coverage(Counts, Estimator = "Turing"))
+
+#loop for chao1-1A individuals
+library(BiodiversityR)
+newdata <- add_rownames(newdata, "Participants")
+Participant <- newdata$Participants
+
+df <- data.frame(var = c(), chao = c())
+
+df_list_chao <- lapply(Participant, function(Participants)  { 
+  
+  subset_data <- newdata[ which(newdata$Participants==Participants), ]
+  d <- diversityresult(subset_data, index = 'chao') 
+  
+  chao <- d$chao 
+  
+  row <- data.frame(var = Participants, chao = chao)
+  row
+})  
+df_list_chao <- do.call(rbind, df_list_chao)
+
+#write to file
+#write.csv(df_list_chao, "1A_individual_chao1.csv")
