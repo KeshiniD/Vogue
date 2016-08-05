@@ -172,20 +172,30 @@ ggplot(na.omit(data7), aes(x = factor(1), y = Mollicutes.percentage,
   facet_wrap(~Mollicutes + CST) + coord_polar(theta="y") 
 
 #just ureaplasma
+my_title <- expression(paste(italic("Ureaplasma"), " species of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis"))
+
 ggplot(na.omit(data8), aes(x = factor(1), y = Mollicutes.percentage, 
                            fill = Ureaplasma)) + 
   geom_bar(stat = "identity", width = 1) + xlab("") + 
-  ylab("CSTs") +
-  ggtitle("Ureaplasma of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
-  facet_wrap(~CST) + coord_polar(theta="y") 
+  ylab("Community State Types") +
+  ggtitle(my_title) + 
+  facet_wrap(~CST) + coord_polar(theta="y")   + 
+  theme(legend.position = "bottom", legend.key.size = unit(.35, "cm"), 
+        legend.title = element_blank(), plot.title = element_text(size=18), 
+        axis.text = element_text(size=12), axis.title = element_text(size=16), 
+        legend.text = element_text(size=14)) 
 
 #just mollicutes #not complete circles
 ggplot(na.omit(data8), aes(x = factor(1), y = Mollicutes.percentage, 
                            fill = Mollicutes)) + 
   geom_bar(stat = "identity", width = 1) + xlab("") + 
-  ylab("CSTs") +
+  ylab("Community State Types") +
   ggtitle("Mollicutes of the Vaginal Microbiome of Women with Recurrent Bacterial Vaginosis") + 
-  facet_wrap(~CST) + coord_polar(theta="y") 
+  facet_wrap(~CST) + coord_polar(theta="y")  + 
+  theme(legend.position = "bottom", legend.key.size = unit(.35, "cm"), 
+        legend.title = element_blank(), plot.title = element_text(size=18), 
+        axis.text = element_text(size=12), axis.title = element_text(size=16), 
+        legend.text = element_text(size=14)) 
 
 #make circles complete by creating new mollicute.percentages
 #mollicute+ureaplasma
