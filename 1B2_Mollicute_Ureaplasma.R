@@ -124,7 +124,7 @@ total$X.1  <-  NULL
 total$X.2  <-  NULL
 
 #merge datasets together (data3, and total)
-data4 <- join(data3, total, type="full")
+data4 <- join(data3, total, type="full") #make sure both vectors are dataframes
 
 #select variables wish to plot
 data5 <- data4 %>%
