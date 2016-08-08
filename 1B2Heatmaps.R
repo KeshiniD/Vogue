@@ -196,7 +196,7 @@ data_clust_7 <- cutree(data_Jensen_Shannon_dist_sample_cluster, k=7) #since 7 cl
 summary(factor(data_clust_7))
 
 # Save the list of cluster results 
-write.csv(data_clust_7, "data_clust_7.csv")
+# write.csv(data_clust_7, "data_clust_7.csv")
 
 #importance(t(data), data_24) #cluster_7 in here with JH data, species does in column
 #write.csv(importance(t(data), data_24), "data_24_indicator.csv")

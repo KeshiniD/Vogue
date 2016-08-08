@@ -202,10 +202,17 @@ plot(hic3, hang=-1)
 
 #make the heatmaps
 
-rgb.palette <- colorRampPalette(c("black", "blue", "yellow", "red"), space = "rgb")#colour for heatmaps
+rgb.palette <- colorRampPalette(c("black", "blue", "yellow", "red"), 
+                                space = "rgb")#colour for heatmaps
 
 colors()#gives list of R colours
-clus.col3<-c( "blue4"   ,   "green"  ,  "orange" ,"yellow"  ,"seagreen" ,"black", "honeydew3" , "lightpink2" , "royalblue1", "red" )#colours for the groups
+clus.col3<-c( "blue4"   ,   "green"  ,  "orange" ,"yellow"  ,"seagreen" ,
+              "black", "honeydew3" , "lightpink2" , "royalblue1", "red" )#colours for the groups
 
-quartz(height=8.5, width=12)
-plot(annHeatmap2(as.matrix(hiv.dat),col=rgb.palette(12), legend=3, breaks=10, dendrogram=list(Row=list(dendro=as.dendrogram(hir3)), Col=list(dendro=as.dendrogram(hic3))), cluster=list(Row=list(cuth=0.75),col=clus.col3), labels=list(Col=list(nrow=20))), widths=c(1,7.5), heights=c(1,1,7.5))
+windows(height=8.5, width=12)
+plot(annHeatmap2(as.matrix(data),col=rgb.palette(12), legend=3, 
+                 breaks=11, dendrogram=list(Row=list(dendro=as.dendrogram(hr3)), 
+                                            Col=list(dendro=as.dendrogram(hc3))), 
+                 cluster=list(Row=list(cuth=0.75),col=clus.col3), 
+                 labels=list(Col=list(nrow=20))), widths=c(1,7.5), 
+     heights=c(1,1,7.5))

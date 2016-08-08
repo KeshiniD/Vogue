@@ -57,7 +57,7 @@ drarefy <- drarefy(bac, sample = min(rowSums(bac)))
 
 #write individual species richness into file
 rarefy <- as.data.frame(rarefy)
-write.csv(rarefy, "1B2richness_individual.csv")
+#write.csv(rarefy, "1B2richness_individual.csv")
 
 #richness for cohort
 #already have bac subset data
@@ -87,7 +87,7 @@ bac3 <- bac2 %>%
 rarefy2 <- rarefy(bac3, sample=min(rowSums(bac3))) #may be h
 #write cohort species richness into file
 rarefy2 <- as.data.frame(rarefy2)
-write.csv(rarefy2, "1B2richness_cohort.csv")b #will fix headings in excel
+#write.csv(rarefy2, "1B2richness_cohort.csv")b #will fix headings in excel
 
 #Plot rarefraction curve
 bac <- data %>%
@@ -196,4 +196,27 @@ z <- join(slope1_df, slope5_df, type = "full")
 zz <- join(slope10_df, z, type = "full")
 zzz <- join(slope100_df, zz, type = "full")
 
-write.csv(zzz, "rareslope_1B2.csv") #edit made to the excel document
+#write.csv(zzz, "rareslope_1B2.csv") #edit made to the excel document
+
+#############
+#Aug-5-16
+#adding legend
+par(mar=c(5,6,7,2)) #and making space for it; alter margins
+
+rarecurve(bac, step = 27, sample = min(rowSums(bac)), 
+          xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
+          label = FALSE, col = col, xlim=c(0,8500), lwd = 2, cex.lab=1.5) 
+
+rarecurve(bac, step = 27, sample = min(rowSums(bac)), 
+          xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
+          label = FALSE, col = col, xlim=c(0,17500), lwd = 2, cex.lab=1.5)
+
+legend(x=0,y=30,legend=paste(c("1", "6", "7", "8", "9", "10", "11", "12", "15", 
+                               "19", "21", "23", "26", "28", "29", "35", "37", 
+                               "38", "50", "52", "56", "58", "61", "62", "63", "64")),
+       pch=16, col = col,
+       bty="n",ncol=13,cex=1,
+       pt.cex=2,xpd=TRUE, text.width = 1, y.intersp = 0.2)
+#pch:type of symbol, bty?, cex:font size of text, pt.cex:size of points
+#xpd:put legend outside of plot, text.width:space between points
+#y.intersp:space between rows, ncol:number of columns, x&y:coord of legend position

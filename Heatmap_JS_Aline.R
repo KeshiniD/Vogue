@@ -306,7 +306,7 @@ levels(metadata$cst)[5] <- "blue"
 levels(metadata$cst)[6] <- "red"
 
 # Check that each factor got a colour
-levels(metadata$cs)
+levels(metadata$cst)
 
 # Should be: [1] "orange" "purple" "magenta" "forestgreen" "blue" [6] "red" 
 
