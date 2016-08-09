@@ -361,7 +361,7 @@ d <- diversityresult(data, index = 'chao')
 View(d)
 
 #write to file
-write.csv(d, "1B2_Chao_cohort.csv")
+# write.csv(d, "1B2_Chao_cohort.csv")
 
 #individuals
 library(fossil)
@@ -567,4 +567,4 @@ diversity <- cbind(a,b,c,d,e)
 diversity2 <- diversity[ -c(3, 5, 7, 9) ]
 
 #write
-write.csv(diversity2, "1B2_individual_all5_diversity.csv")
+# write.csv(diversity2, "1B2_individual_all5_diversity.csv")
