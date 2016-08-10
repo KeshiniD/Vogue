@@ -1,0 +1,78 @@
+"","Var1","Vogue1B2.01.06","Vogue1B2.01.07","Vogue1B2.01.08","Vogue1B2.01.09","Vogue1B2.01.10","Vogue1B2.01.11","Vogue1B2.01.12","Vogue1B2.01.15"
+"1","Choristoneura occidentalis granulovirus",1,0,0,2,0,1,0,0
+"2","Human herpesvirus 4",1,0,0,1,0,0,0,0
+"3","Human mastadenovirus D",1,0,0,0,0,0,288,0
+"4","root",1,0,0,7,230,0,0,0
+"5","unclassified Coccolithovirus",1,16,0,0,1,1,0,0
+"6","Glypta fumiferanae ichnovirus",3,34,11,1,6,0,1,1
+"7","Coxsackievirus A9",10,1,0,1,0,0,4,2
+"8","Enterovirus B",24,3,0,1,0,1,11,1
+"9","Enterovirus",33,9,0,3,0,4,11,3
+"10"," no RNA stage",0,1,0,0,2,0,0,0
+"11","dsDNA viruses",0,1,0,0,2,0,0,0
+"12","Human endogenous retrovirus HCML-ARV",0,1,0,0,0,0,0,0
+"13","Orgyia leucostigma NPV",0,1,0,0,0,0,0,0
+"14","Suid herpesvirus 1",0,1,0,0,0,0,0,0
+"15","unclassified T4-like viruses",0,1,0,0,0,0,0,0
+"16","White spot syndrome virus",0,1,0,0,1,0,0,0
+"17","Alcelaphine herpesvirus 2",0,2,0,0,1,0,0,0
+"18","Human herpesvirus 6",0,2,0,0,0,0,0,0
+"19","Phaeocystis globosa virus",0,2,0,0,0,0,0,0
+"20","Andrias davidianus ranavirus",0,3,0,0,1,0,0,0
+"21","Coccolithovirus",0,5,0,1,2,1,0,0
+"22","Hyposoter fugitivus ichnovirus",0,5,0,0,0,0,0,0
+"23","Feline sarcoma virus (STRAIN GARDNER-RASHEED)",0,7,3,0,0,0,0,0
+"24","Staphylococcus phage IME-SA2",0,7,0,0,0,0,0,0
+"25","Pandoravirus salinus",0,10,1,0,10,0,0,0
+"26","Human T-lymphotropic virus 1",0,11,2,0,0,0,0,0
+"27","Avian sarcoma virus 31",0,13,0,0,0,0,0,1
+"28","Baku virus",0,19,23,0,0,1,1,0
+"29","Human herpesvirus 6 (strain Uganda-1102)",0,20,4,0,67,0,0,0
+"30","unclassified dsDNA viruses",0,0,1,0,0,0,0,0
+"31","Emiliania huxleyi virus 18",0,0,5,0,0,0,0,0
+"32","Plutella xylostella granulovirus",0,0,0,1,1,0,0,0
+"33","Herpesviridae",0,0,0,0,1,0,0,0
+"34","Human herpesvirus 1",0,0,0,0,1,0,0,0
+"35","Miniopterus schreibersii papillomavirus 1",0,0,0,0,1,0,0,0
+"36","Moloney murine leukemia virus",0,0,0,0,1,0,0,0
+"37","Paramecium bursaria chlorella virus MT325",0,0,0,0,1,0,0,0
+"38","Phycodnaviridae",0,0,0,0,1,0,0,0
+"39","Simian torque teno virus",0,0,0,0,1,0,0,0
+"40","Siphoviridae",0,0,0,0,1,0,0,0
+"41","Spodoptera frugiperda granulovirus",0,0,0,0,1,0,0,0
+"42","Trichoplusia ni single nucleopolyhedrovirus",0,0,0,0,1,0,0,0
+"43","Weissella phage phiYS61",0,0,0,0,1,0,0,0
+"44","Emiliania huxleyi virus 99B1",0,0,0,0,2,0,0,0
+"45","Human herpesvirus 5",0,0,0,0,2,0,0,0
+"46","Human herpesvirus 8",0,0,0,0,2,0,0,0
+"47","Kallithea virus",0,0,0,0,2,0,0,0
+"48","Macaca nemestrina rhadinovirus 2",0,0,0,0,2,0,0,0
+"49","Mimiviridae",0,0,0,0,2,0,0,0
+"50","Pandoravirus inopinatum",0,0,0,0,2,0,0,0
+"51","Saimiriine herpesvirus 1",0,0,0,0,2,0,0,0
+"52","Torque teno virus",0,0,0,0,2,0,0,0
+"53","Yersinia phage phiR1-37",0,0,0,0,2,0,0,0
+"54","Aureococcus anophagefferens virus",0,0,0,0,3,0,0,0
+"55","Ectocarpus siliculosus virus 1 (isolate Kaikoura)",0,0,0,0,3,0,0,0
+"56","Human papillomavirus type 107",0,0,0,0,3,0,0,0
+"57","Organic Lake phycodnavirus 2",0,0,0,0,3,0,0,0
+"58","Paramecium bursaria Chlorella virus AR158",0,0,0,0,3,0,0,0
+"59","Cyprinid herpesvirus 3",0,0,0,0,5,0,0,0
+"60","Pithovirus sibericum",0,0,0,0,7,0,0,0
+"61","Emiliania huxleyi virus PS401",0,0,0,0,8,0,0,0
+"62","Gammaretrovirus",0,0,0,0,9,0,2,0
+"63","Saimiriine herpesvirus 2",0,0,0,0,14,0,0,0
+"64","Pandoravirus dulcis",0,0,0,0,100,0,0,0
+"65","Pseudomonas phage PaBG",0,0,0,0,108,0,0,0
+"66","Alphabaculovirus",0,0,0,0,763,0,0,0
+"67","Acanthocystis turfacea Chlorella virus Canal-1",0,0,0,0,1132,1,0,0
+"68","Bathycoccus sp. RCC1105 virus BpV1",0,0,0,0,0,1,0,0
+"69","Cafeteria roenbergensis virus BV-PW1",0,0,0,0,0,3,0,0
+"70","Echovirus E30",0,0,0,0,0,0,1,0
+"71","Echovirus E6",0,0,0,0,0,0,1,0
+"72","Human adenovirus D8",0,0,0,0,0,0,1,0
+"73","Human adenovirus 8E",0,0,0,0,0,0,2,0
+"74","Adenoviridae",0,0,0,0,0,0,3,0
+"75","Human adenovirus 19",0,0,0,0,0,0,16,0
+"76","Mastadenovirus",0,0,0,0,0,0,21,0
+"77","Human adenovirus 22",0,0,0,0,0,0,22,0

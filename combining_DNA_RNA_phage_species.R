@@ -1,15 +1,19 @@
-phage <- read.csv("Phage_species_DNA.csv")
+#redoing with new post-processed files: Aug-10-16
+phageD <- read.csv("Phage_species_DNA.csv")
+phageR <- read.csv("Phage_species_RNA.csv")
 vDNA <- read.csv("Viral_species_DNA.csv")
 vRNA <- read.csv("Viral_species_RNA.csv")
 
 #omit empty column
 vDNA$X <- NULL
 vRNA$X <- NULL
-phage$X <- NULL
+phageD$X <- NULL
+phageR$X <- NULL
 
 #merge
 everyone <- join(vDNA, vRNA, type="full")
-everyone <- join(phage, everyone, type="full")
+everyone <- join(phageD, everyone, type="full")
+everyone <- join(phageR, everyone, type="full")
 
 #consolidate families together
 everyone_2 <- ddply(everyone,c("Var1"),numcolwise(sum)) #includes all columns
