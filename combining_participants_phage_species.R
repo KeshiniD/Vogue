@@ -174,7 +174,7 @@ vogueB_48$VALUE <- NULL
 vogueB_48 <- dplyr::rename(vogueB_48, Vogue1B.01.48 = Freq)
 
 vogueB_51 <- read.csv(file="DNA_B_51.phagecol4_ncbi_condensed.csv")
-vogueB_51 <- dplyr::rename(vogueB_51, Vogue1A.01.51 = a, Var1 = VALUE)
+vogueB_51 <- dplyr::rename(vogueB_51, Vogue1B.01.51 = a, Var1 = VALUE)
 
 vogueB_52 <- read.csv(file="DNA_B_01.phagecol4_ncbi_condensed.csv")
 vogueB_52$VALUE <- NULL
