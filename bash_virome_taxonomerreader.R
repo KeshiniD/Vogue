@@ -61,3 +61,4 @@ find /projects5/kdevakandan/virome/ -name "*.aligned.fastq" -exec gzip {} \;
 
 # make links from all the fastq files into one folder, for easier downloading
 find /projects5/kdevakandan/virome/ -name "*.aligned.fastq.gz" -exec ln -s {} /projects5/kdevakandan/virome/fastqc_aligned/ \;
+
