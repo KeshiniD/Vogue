@@ -35,4 +35,4 @@ blat negR1.fa sample.fa output.psl
 #sample: participant file; list both reads
 #output in psl format
 
-#next step after blat, manually remove files it identified in participant
+#next step after blat, manually remove files it identified in participant 
