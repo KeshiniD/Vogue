@@ -1,5 +1,5 @@
-DO_PARALLEL <- TRUE # TRUE = run 4 core, FALSE = run single core
-FAST_VERSION <- TRUE # TRUE = mc=2, FALSE = run to completion(mc=128)
+DO_PARALLEL <- FALSE # TRUE = run 4 core, FALSE = run single core
+FAST_VERSION <- FALSE # TRUE = mc=2, FALSE = run to completion(mc=128)
 
 #load packages
 library(ALDEx2)
@@ -11,13 +11,15 @@ library(tidyr)
 
 #Aldex for DNA_RNA_phage_all
 viral <- read.csv("DNA_RNA_phage_viral_species_all.csv")
-meta <- read.csv("viromeall_metadata_full.csv")
+meta <- read.csv("viromeall_metadata_full.csv") #renamed manually to match viral
 
 #variables need to be factors; maybe? try integer and see
 # set the rownames as the taxa names
 viral$X <- NULL
 row.names(viral) <- viral[, 1]
 viral <- viral[, -1]
+viral[is.na(viral)] <- 0
+viral <- viral[,order(colnames(viral))]
 meta$X <- NULL
 meta$X.1 <- NULL
 meta$Med.Duration[is.na(meta$Med.Duration)] <- 0                  
@@ -25,6 +27,24 @@ meta$Duration.of.HIV.Infection.[is.na(meta$Duration.of.HIV.Infection.)] <- 0
 meta$Highest.VL.Ever..[is.na(meta$Highest.VL.Ever..)] <- 0                  
 meta$VL..copies.mL..[is.na(meta$VL..copies.mL..)] <- 0                  
 meta$Feminine.products.48hrs[is.na(meta$Feminine.products.48hrs)] <- 0
+meta <- meta %>% 
+  arrange(study_id)
+
+#
+#these have one factor level
+meta$t06 <- NULL
+meta$t11 <- NULL
+meta$t31 <- NULL
+meta$t34 <- NULL
+meta$t39 <- NULL
+meta$t40 <- NULL
+meta$t44 <- NULL
+meta$t58 <- NULL
+meta$t59 <- NULL
+meta$t69 <- NULL
+meta$t82 <- NULL
+meta$vaginalsymptomother48 <- NULL
+######
 
 #Aldex
 variables <- colnames(meta)
@@ -100,7 +120,7 @@ if (DO_PARALLEL) {
   })
 }
 
-mydf$signif <- mydf$glm.eBH < 0.05
+mydf$signif <- mydf$kw.eBH < 0.05
 
 #################
 mydf2 <- mydf
@@ -167,17 +187,16 @@ mydf2$signif <- mydf$glm.eBH < 0.05
 # meta <- meta[c(1:47)]
 
 
-####################################################################################3
+####################################################################################
 #look at variables which are significant
-# meta$X.Non..Prescription..y.1..n.0. <- factor(meta$X.Non..Prescription..y.1..n.0.)
-# meta$Vaginal.intercourse.in.past.48.hours..y.1..n.0. <- factor(meta$Vaginal.intercourse.in.past.48.hours..y.1..n.0.)
-# 
-# #Nugent Score
-# cond.eduNS <- meta$Nugent.score
-# ald.eduNS <- aldex(reads = bac, conditions = cond.eduNS, test = "glm", effect = FALSE)
+meta$study_arm <- factor(meta$study_arm)
+
+#study_arm
+cond.edustudy_arm <- meta$study_arm
+ald.edustudy_arm <- aldex(reads = viral, conditions = cond.edustudy_arm, test = "glm", effect = FALSE)
 
 ###############
 #write to file
-#write.csv(ald.eduNS, "Aldex_1B2_Nugentscore.csv")
+# write.csv(ald.edustudy_arm, "Aldex_virome_studyarm.csv")
 
 #################################################################################
