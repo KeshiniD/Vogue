@@ -200,3 +200,11 @@ ald.edustudy_arm <- aldex(reads = viral, conditions = cond.edustudy_arm, test = 
 # write.csv(ald.edustudy_arm, "Aldex_virome_studyarm.csv")
 
 #################################################################################
+#merge the two result files
+ald <- read.csv("Aldex_virome_results.csv")
+ald2 <- read.csv("Aldex_virome_results2.csv")
+
+ald3 <- join(ald, ald2, type="full")
+
+#write to file
+# write.csv(ald3, "Aldex_virome_results_combined.csv")
