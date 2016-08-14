@@ -959,3 +959,111 @@ ggplot(data = vmb, aes(x = Participants, y = Species.Percentage, fill = Bacteria
 ###############################################################################
 #make new dataset for comparsion...maybe cannot do with one have
 #check and make changes
+
+#Aug-13-16 add extra data columns for comparasion
+
+#load data
+total <- read.csv("viromeall_metadata_full.csv")
+extra <- read.csv("extra_metadata_virome.csv")
+extra <- extra[1:10]
+
+#rename study_id to participants
+extra <- dplyr::rename(extra, study_id = Participants) #same column name
+
+#merge two datasets together
+virome <- join(total, extra, type="full")
+
+#sexual partners data frame
+sexp <- read.csv("virome_sexual_partners.csv")
+
+#make appropriate variables into factors
+vars_BAD <- c("age", "bmi", "How.often....time.", 
+              "bv_infecttotal_2mo", "bv_infecttotal_1yr", 
+              "bv_life")
+vars <- setdiff(colnames(virome), vars_BAD)
+virome[vars] <- lapply(virome[vars], as.factor)
+
+
+#categorical variables; use Fisher's because excepted cell values less than 5
+#continuous variables; use one-way ANOVA
+
+
+###########################
+#lists of variables
+factors <- c("Ethnicity", "maritalstatus", "Education.Level", 
+             "Chronic.Current.Conditions..y.1..n.2.", "Menstrual.cycle", 
+             "Illicit.Substance.Use", "Alcohol.Use", "Tobacco.Use", "BV.ever", 
+             "Yeast.ever", "UTI.ever", "Trich.ever", "Condyloma.ever", "GenHerpes.ever", 
+             "Chlamydia.ever", "Gonorrhea.ever", "Syphillis.ever", 
+             "Presence.Symptoms.2wks", "Presence.Symptoms.48hrs", "Symptom.pain", 
+             "oralsxfrequency.cat", "analsxfrequency.cat", "sextoyfrequency.cat", 
+             "Contraception.H", "Contraception.B.M", "Contraception.none", 
+             "condoms.48h", "Pregnancy.cat", "Feminine.products", 
+             "Feminine.products.48hrs", "Tampon.Use.cat", "Tampon.use.1mth", 
+             "smoking.current", "druguse", "substanceuse", "nugent_score_result", 
+             "sexpartner", "abnormaldischarge2wk", "abnormaldischarge48", 
+             "abnormalodor2wk", "abnormalodor48", "irritationdiscomfort2wk", 
+             "irritationdiscomfort48", "vaginalsymptomother2wk", "rxdrug", 
+             "antimicrodrug", "vaginalintercourse48hr", "CST")
+
+contins <- c("age", "bmi", "How.often....time.", "bv_infecttotal_2mo", 
+             "bv_infecttotal_1yr", "bv_life")
+
+#Fisher's loop
+df <- data.frame(var = c(), pval = c(), phi = c(), cramer = c())
+
+df_list_viromecompare_factors <- lapply(factors, function(factor)  {
+  
+  cat("variable: ", factor, "\n")
+  
+  formula <- paste0("~", factor, " + study_arm")
+  result <- xtabs(formula, data = virome)
+  
+  fisher <- fisher.test(result)
+  assoc <- assocstats(result)
+  
+  pval <- fisher$p.value
+  phi <- assoc$phi
+  cramer <- assoc$cramer
+  
+  row <- data.frame(var = factor, pval = pval, phi = phi, cramer = cramer)
+  row
+})  
+df_list_viromecompare_factors <- do.call(rbind, df_list_viromecompare_factors)
+
+###################################
+#ANOVA loop
+df <- data.frame(var = c(), pval = c(), Fvalue = c())
+
+df_list_viromecompare_contin <- lapply(contins, function(contin)  {
+  
+  cat("variable: ", contin, "\n")
+  
+  result <- summary(aov(virome[[contin]] ~virome$study_arm))
+  
+  pval <- result[[1]]$`Pr(>F)`[1]
+  Fvalue <- result[[1]]$`F value`[1]
+  
+  row <- data.frame(var = contin, pval = pval, Fvalue = Fvalue)
+  row
+})  
+df_list_viromecompare_contin <- do.call(rbind, df_list_viromecompare_contin)
+
+#write to file
+# write.csv(df_list_viromecompare_factors, "compare_virome_factors.csv")
+# write.csv(df_list_viromecompare_contin, "compare_virome_contin.csv")
+
+#compare for sexual partners
+sexp$study_arm <- factor(sexp$study_arm)
+
+summary(aov(sexp$sexpartner2mo ~ sexp$study_arm))
+# Df Sum Sq Mean Sq F value Pr(>F)
+# sexp$study_arm  2  1.226   0.613   1.626  0.207
+# Residuals      50 18.850   0.377               
+# 1 observation deleted due to missingness
+
+summary(aov(sexp$sexpartner1yr ~ sexp$study_arm))
+# Df Sum Sq Mean Sq F value Pr(>F)
+# sexp$study_arm  2   2.62   1.311   1.056  0.356
+# Residuals      50  62.10   1.242               
+# 1 observation deleted due to missingness
