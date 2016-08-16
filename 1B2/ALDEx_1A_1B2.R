@@ -635,3 +635,30 @@ ald.eduCST <- aldex(reads = bac, conditions = cond.eduCST, test = "glm", effect 
 #write.csv(ald.edupreg, "Aldex_1B2_Pregcat.csv")
 #write.csv(ald.eduCST, "Aldex_1B2_CST.csv")
 #################################################################################
+#aug-16-16
+#add yeast.ever; not significant 
+meta$Yeast.ever <- ifelse(meta$Yeast..lifetime. > 0, 
+                           c("1"), c("0")) 
+#convert Yeast.ever from character into factor
+meta$Yeast.ever <- factor(meta$Yeast.ever) 
+
+#CST
+cond.eduYeast <- meta$Yeast.ever
+ald.eduYeast <- aldex(reads = bac, conditions = cond.eduYeast, test = "glm", effect = FALSE)
+
+
+#aug-16-16
+#median values to define significant assoications from aldex
+#Dean put all variables in one line
+library(ALDEx2)
+meta <- read.csv(file="Aldex_metadata_1A_1B2.csv")
+bac <- read.csv(file="Aldex_bac_1A_1B2")
+
+# set the rownames as the taxa names
+row.names(bac) <- bac[, 1]
+bac <- bac[, -1]
+meta$X <- NULL
+
+#only handles tow levels; not more than one
+x <- aldex.clr(bac, mc.samples=128)
+a <- aldex.effect(x, conditions = meta$Freq.oral.sex.cat, include.sample.summary = TRUE)

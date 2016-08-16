@@ -263,3 +263,22 @@ levels(droplevels(total$CST)) # get rid of empty levels
 #need to remove CSTII before do loops for CST
 total2 <- total[-c(1),]
 total2$CST <- droplevels(total2$CST)
+
+####
+#Aug-16-16
+#grouping BV.2months
+total2$BV.2mths.cat <- ifelse(total2$BV..number.of.episodes.2.months. > 0, 
+                         c("1"), c("0")) 
+#convert UTI.ever from character into factor
+total2$BV.2mths.cat <- factor(total2$BV.2mths.cat) 
+
+#fisher's test for CST
+result <- xtabs(~ BV.2mths.cat + CST, data = total2)
+fisher.test(result)
+assocstats(result)
+
+#t-test for SD
+t.test(Shannon.s.Diversity ~ BV.2mths.cat, data = total2)
+cohen.d(Shannon.s.Diversity ~ BV.2mths.cat, data = total2)
+
+#and do again for only high nugents

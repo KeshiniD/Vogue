@@ -684,3 +684,21 @@ t.test(Pielou.s.Eveness ~study_arm, data=diversity)
 t.test(Chao1 ~study_arm, data=diversity)
 t.test(Species.Richness ~study_arm, data=diversity)
 t.test(Good.s.Coverage ~study_arm, data=diversity)
+
+###
+#aug-16-16
+#redid bv 2 months as a category; and year and lifetime for comparasion
+#grouping BV.2months
+total2$BV.2mths.cat <- ifelse(total2$BV..number.of.episodes.2.months. > 0, 
+                              c("1"), c("0")) 
+#convert UTI.ever from character into factor
+total2$BV.2mths.cat <- factor(total2$BV.2mths.cat) 
+
+result <- xtabs(~ BV.2mths.cat + study_arm, data = total)
+fisher.test(result)
+
+result <- xtabs(~ BV.year.cat + study_arm, data = total)
+fisher.test(result)
+
+result <- xtabs(~ BV.lifetime.cat + study_arm, data = total)
+fisher.test(result)
