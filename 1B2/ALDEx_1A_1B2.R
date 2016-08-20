@@ -456,7 +456,7 @@ min(ald.edu46$kw.eBH)
 #####################################
 #Dean put all variables in one line
 library(ALDEx2)
-meta <- read.csv(file="Aldex_metadata_1A_1B2.csv")
+meta <- read.csv(file="Aldex_metadata_1A_1B2_v2.csv") #edits made below
 bac <- read.csv(file="Aldex_bac_1A_1B2")
 
 #variables need to be factors; maybe? try integer and see
@@ -464,7 +464,10 @@ bac <- read.csv(file="Aldex_bac_1A_1B2")
 row.names(bac) <- bac[, 1]
 bac <- bac[, -1]
 meta$X <- NULL
-
+meta$X.4 <- NULL
+meta$X.3 <- NULL
+meta$X.2 <- NULL
+meta$X.1 <- NULL
 
 
 variables <- colnames(meta)
@@ -642,16 +645,15 @@ meta$Yeast.ever <- ifelse(meta$Yeast..lifetime. > 0,
 #convert Yeast.ever from character into factor
 meta$Yeast.ever <- factor(meta$Yeast.ever) 
 
-#CST
+#Yeast
 cond.eduYeast <- meta$Yeast.ever
 ald.eduYeast <- aldex(reads = bac, conditions = cond.eduYeast, test = "glm", effect = FALSE)
 
 
 #aug-16-16
 #median values to define significant assoications from aldex
-#Dean put all variables in one line
 library(ALDEx2)
-meta <- read.csv(file="Aldex_metadata_1A_1B2.csv")
+meta <- read.csv(file="Aldex_metadata_1A_1B2_v2.csv")
 bac <- read.csv(file="Aldex_bac_1A_1B2")
 
 # set the rownames as the taxa names
@@ -659,6 +661,401 @@ row.names(bac) <- bac[, 1]
 bac <- bac[, -1]
 meta$X <- NULL
 
-#only handles tow levels; not more than one
-x <- aldex.clr(bac, mc.samples=128)
-a <- aldex.effect(x, conditions = meta$Freq.oral.sex.cat, include.sample.summary = TRUE)
+#only handles two levels; not more than one
+clr <- aldex.clr(bac, mc.samples=128)
+# a <- aldex.effect(x, conditions = meta$Freq.oral.sex.cat, include.sample.summary = TRUE)
+
+#put significant variables into 2 levels if not already
+#BV2mths
+#grouping BV.2months
+meta$BV.2mths.cat <- ifelse(meta$BV..number.of.episodes.2.months. > 0, 
+                              c("1"), c("0")) 
+#convert BV.2mths from character into factor
+meta$BV.2mths.cat <- factor(meta$BV.2mths.cat) 
+
+bV.2mths <- aldex.effect(clr, conditions = meta$BV.2mths.cat, include.sample.summary = TRUE)
+
+#cst
+meta$CST.cat[meta$CST=='I'] <- '0'
+meta$CST.cat[meta$CST=='II'] <- '0'
+meta$CST.cat[meta$CST=='III'] <- '1'
+meta$CST.cat[meta$CST=='IVA'] <- '1'
+meta$CST.cat[meta$CST=='IVC'] <- '1'
+meta$CST.cat[meta$CST=='IVD'] <- '1'
+meta$CST.cat[meta$CST=='V'] <- '0'
+
+#convert UTI.ever from character into factor
+meta$CST.cat <- factor(meta$CST.cat)
+
+CST <- aldex.effect(clr, conditions = meta$CST.cat, include.sample.summary = TRUE)
+
+#nug.score
+meta$Nugent.score.cat <- ifelse(meta$Nugent.score > 3, 
+                               c("1"), c("0")) 
+#convert UTI.ever from character into factor
+meta$Nugent.score.cat <- factor(meta$Nugent.score.cat) 
+
+nugent <- aldex.effect(clr, conditions = meta$Nugent.score.cat, include.sample.summary = TRUE)
+
+#study_arm
+study_arm <- aldex.effect(clr, conditions = meta$study_arm, include.sample.summary = TRUE)
+
+#write median values to file
+# write.csv(bV.2mths, "Aldex_median_bv2mths.csv")
+# write.csv(CST, "Aldex_median_cst.csv")
+# write.csv(nugent, "Aldex_median_nugent.csv")
+# write.csv(study_arm, "Aldex_median_studyarm.csv")
+
+##################################################################
+#Aug-18-16
+#noticed coding between 1A and 1B2 did not align, some variables have more than 2 levels (0,1,2); fix
+#split 1A and 1B2, align 1A coding with 1B2 and merge together
+
+metaA <- meta[which(meta$study_arm=="1A"),]
+metaB2 <- meta[which(meta$study_arm=="1B2"),]
+
+#antimicro
+summary(factor(metaA$Antimicrobial.Use..y.1..n.0.))
+summary(factor(metaB2$Antimicrobial.Use..y.1..n.0.))
+
+#convert yes-2, no-1 into yes-1, no-0
+metaA$Antimicrobial.Use..y.1..n.0. <- ifelse(metaA$Antimicrobial.Use..y.1..n.0. > 1, 
+                         c("1"), c("0")) 
+#convert antimicro from character into factor
+metaA$Antimicrobial.Use..y.1..n.0. <- factor(metaA$Antimicrobial.Use..y.1..n.0.) 
+
+###
+#rxdrug
+summary(factor(metaA$X.Non..Prescription..y.1..n.0.))
+summary(factor(metaB2$X.Non..Prescription..y.1..n.0.))
+
+##convert yes-2, no-1 into yes-1, no-0
+metaA$X.Non..Prescription..y.1..n.0. <- ifelse(metaA$X.Non..Prescription..y.1..n.0. > 1, 
+                                             c("1"), c("0")) 
+#convert rxdrug from character into factor
+metaA$X.Non..Prescription..y.1..n.0. <- factor(metaA$X.Non..Prescription..y.1..n.0.) 
+
+###
+#vgint.48h
+summary(factor(metaA$Vaginal.intercourse.in.past.48.hours..y.1..n.0.))
+summary(factor(metaB2$Vaginal.intercourse.in.past.48.hours..y.1..n.0.))
+
+##convert yes-2, no-1 into yes-1, no-0
+metaA$Vaginal.intercourse.in.past.48.hours..y.1..n.0. <- ifelse(metaA$Vaginal.intercourse.in.past.48.hours..y.1..n.0. > 1, 
+                                               c("1"), c("0")) 
+#convert from character into factor
+metaA$Vaginal.intercourse.in.past.48.hours..y.1..n.0. <- factor(metaA$Vaginal.intercourse.in.past.48.hours..y.1..n.0.) 
+
+##
+#abnormdischarge.2wks
+summary(factor(metaA$Abnormal.discharge.2wks))
+summary(factor(metaB2$Abnormal.discharge.2wks))
+
+##convert yes-2, no-1 into yes-1, no-0
+metaA$Abnormal.discharge.2wks <- ifelse(metaA$Abnormal.discharge.2wks > 1, 
+                                                                c("1"), c("0")) 
+#convert from character into factor
+metaA$Abnormal.discharge.2wks <- factor(metaA$Abnormal.discharge.2wks) 
+
+###
+#abnormdischarge.48h
+summary(factor(metaA$Abnormal.discharge.48hrs))
+summary(factor(metaB2$Abnormal.discharge.48hrs))
+
+##convert yes-2, no-1 into yes-1, no-0
+metaA$Abnormal.discharge.48hrs <- ifelse(metaA$Abnormal.discharge.48hrs > 1, 
+                                        c("1"), c("0")) 
+#convert from character into factor
+metaA$Abnormal.discharge.48hrs <- factor(metaA$Abnormal.discharge.48hrs) 
+
+###
+#abnormodor.2wks
+summary(factor(metaA$Abnormal.odor.2wks))
+summary(factor(metaB2$Abnormal.odor.2wks))
+
+##convert yes-2, no-1 into yes-1, no-0
+metaA$Abnormal.odor.2wks <- ifelse(metaA$Abnormal.odor.2wks > 1, 
+                                         c("1"), c("0")) 
+#convert from character into factor
+metaA$Abnormal.odor.2wks <- factor(metaA$Abnormal.odor.2wks) 
+
+#####
+#abnormodor.48h
+summary(factor(metaA$Abnormal.odor.48hrs))
+summary(factor(metaB2$Abnormal.odor.48hrs))
+
+##convert yes-2, no-1 into yes-1, no-0
+metaA$Abnormal.odor.48hrs <- ifelse(metaA$Abnormal.odor.48hrs > 1, 
+                                   c("1"), c("0")) 
+#convert from character into factor
+metaA$Abnormal.odor.48hrs <- factor(metaA$Abnormal.odor.48hrs) 
+
+###
+#irritation/discomfor.2weeks
+summary(factor(metaA$Irritation.Discomfort.2wks))
+summary(factor(metaB2$Irritation.Discomfort.2wks))
+
+##convert yes-2, no-1 into yes-1, no-0
+metaA$Irritation.Discomfort.2wks <- ifelse(metaA$Irritation.Discomfort.2wks > 1, 
+                                   c("1"), c("0")) 
+#convert from character into factor
+metaA$Irritation.Discomfort.2wks <- factor(metaA$Irritation.Discomfort.2wks) 
+
+###
+#irritation/discomfort.48h
+summary(factor(metaA$Irritation.Discomfort.48hrs))
+summary(factor(metaB2$Irritation.Discomfort.48hrs))
+
+##convert yes-2, no-1 into yes-1, no-0
+metaA$Irritation.Discomfort.48hrs <- ifelse(metaA$Irritation.Discomfort.48hrs > 1, 
+                                   c("1"), c("0")) 
+#convert from character into factor
+metaA$Irritation.Discomfort.48hrs <- factor(metaA$Irritation.Discomfort.48hrs) 
+
+###
+#othervag.2weeks
+summary(factor(metaA$Other.Symptoms.2wks))
+summary(factor(metaB2$Other.Symptoms.2wks))
+
+##convert yes-2, no-1 into yes-1, no-0
+metaA$Other.Symptoms.2wks <- ifelse(metaA$Other.Symptoms.2wks > 1, 
+                                   c("1"), c("0")) 
+#convert from character into factor
+metaA$Other.Symptoms.2wks <- factor(metaA$Other.Symptoms.2wks) 
+
+###
+#other.symptoms.48h
+summary(factor(metaA$Other.Symptoms.48hrs))
+summary(factor(metaB2$Other.Symptoms.48hrs))
+
+##convert yes-2, no-1 into yes-1, no-0
+metaA$Other.Symptoms.48hrs <- ifelse(metaA$Other.Symptoms.48hrs > 1, 
+                                   c("1"), c("0")) 
+#convert from character into factor
+metaA$Other.Symptoms.48hrs <- factor(metaA$Other.Symptoms.48hrs) 
+
+###
+#genwarts
+summary(factor(metaA$Genwarts.ever))
+summary(factor(metaB2$Genwarts.ever))
+
+##convert yes-1, no-2 into yes-1, no-0
+metaA$Genwarts.ever <- ifelse(metaA$Genwarts.ever > 1, 
+                                   c("0"), c("1")) 
+#convert from character into factor
+metaA$Genwarts.ever <- factor(metaA$Genwarts.ever) 
+
+###
+#tampon.cat
+summary(factor(metaA$Tampon.Use.cat))
+summary(factor(metaB2$Tampon.Use.cat))
+
+##convert yes-2, no-1 into yes-1, no-0
+metaB2$Tampon.Use.cat <- ifelse(metaB2$Tampon.Use.cat > 1, 
+                                   c("1"), c("0")) 
+#convert from character into factor
+metaB2$Tampon.Use.cat <- factor(metaB2$Tampon.Use.cat) 
+metaA$Tampon.Use.cat <- factor(metaA$Tampon.Use.cat)
+
+###
+#chlamydia
+summary(factor(metaA$Chlamydia.ever))
+summary(factor(metaB2$Chlamydia.ever))
+
+##convert yes-1, no-2 into yes-1, no-0
+metaA$Chlamydia.ever[metaA$Chlamydia.ever >= 2 & metaA$Chlamydia.ever <=2] <- "0" #normal weight
+
+#convert from character into factor
+metaA$Chlamydia.ever <- factor(metaA$Chlamydia.ever) 
+
+###
+#uti
+summary(factor(metaA$UTI.ever))
+summary(factor(metaB2$UTI.ever))
+
+##convert yes-1, no-2 into yes-1, no-0
+metaA$UTI.ever[metaA$UTI.ever >= 2 & metaA$UTI.ever <=2] <- "0" #normal weight
+
+#convert from character into factor
+metaA$UTI.ever <- factor(metaA$UTI.ever) 
+
+#trich
+summary(factor(metaA$Trich.ever))
+summary(factor(metaB2$Trich.ever))
+
+##convert yes-1, no-2 into yes-1, no-0
+metaA$Trich.ever[metaA$Trich.ever >= 2 & metaA$Trich.ever <=2] <- "0" #normal weight
+
+#convert from character into factor
+metaA$Trich.ever <- factor(metaA$Trich.ever) 
+
+#herpes
+summary(factor(metaA$GenHerpes.ever))
+summary(factor(metaB2$GenHerpes.ever))
+
+##convert yes-1, no-2 into yes-1, no-0
+metaA$GenHerpes.ever[metaA$GenHerpes.ever >= 2 & metaA$GenHerpes.ever <=2] <- "0" #normal weight
+
+#convert from character into factor
+metaA$GenHerpes.ever <- factor(metaA$GenHerpes.ever)
+
+###
+#preg.cat
+summary(factor(metaA$Pregnancy.cat))
+summary(factor(metaB2$Pregnancy.cat))
+
+##convert yes-2, no-1 into yes-1, no-0
+metaA$Pregnancy.cat <- ifelse(metaA$Pregnancy.cat > 1, 
+                                c("1"), c("0")) 
+#convert from character into factor
+metaA$Pregnancy.cat <- factor(metaA$Pregnancy.cat) 
+
+###
+#sexual.partners.past.year
+summary(factor(metaA$Number.partners.in.past.year.cat))
+summary(factor(metaB2$Number.partners.in.past.year.cat))
+
+##0-0 1+-1
+metaA$Number.partners.in.past.year.cat <- ifelse(metaA$Number.partners.in.past.year.cat > 0, 
+                              c("1"), c("0")) 
+#convert from character into factor
+metaA$Number.partners.in.past.year.cat <- factor(metaA$Number.partners.in.past.year.cat) 
+
+#mege 1A and 1B2
+metaAB <- join(metaA, metaB2, type="full")
+
+#write to file
+# write.csv(metaAB, "Aldex_metadata_1A_1B2_v2.csv")
+
+#added more categories; gonn and syph
+total <- read.csv("Aldex_metadata_1A_1B2_v2.csv")
+b <- read.csv(file="1A_full_grouped.csv")
+
+#BV ever and Yeast ever.cat
+b$BV.ever <- ifelse(b$bv_infect < 2, 
+                        c("1"), c("0"))
+b$BV.ever <- factor(b$BV.ever)
+
+b$Yeast.ever <- ifelse(b$yeast_infect < 2, 
+                           c("1"), c("0"))
+b$Yeast.ever <- factor(b$Yeast.ever)
+
+b$Gonorrhea.ever <- ifelse(b$gonor_infect < 2, 
+                       c("1"), c("0"))
+b$Gonorrhea.ever <- factor(b$Gonorrhea.ever)
+
+b$Syphillis.ever <- ifelse(b$syph_infect < 2, 
+                           c("1"), c("0"))
+b$Syphillis.ever <- factor(b$Syphillis.ever)
+
+#grab just bv and yeast ever etc, and put into aldex (manually insert 1b2 later)
+b <- b %>% select(study_id, BV.ever, Yeast.ever, Gonorrhea.ever, Syphillis.ever)
+b <- dplyr::rename(b, Participants = study_id)
+
+total <- join(total, b, type="full")
+
+# write.csv(total, "Aldex_metadata_1A_1B2_v2.csv")
+
+#add in oral, anal, and sextoy (were cat wrong in 1A)
+b <- read.csv(file="1A_full_grouped.csv")
+total <- read.csv("Aldex_metadata_1A_1B2_v2.csv")
+
+b$oralsxfrequency.cat <- ifelse(b$oralsxfrequency > 1, 
+                           c("1"), c("0"))
+b$oralsxfrequency.cat <- factor(b$oralsxfrequency.cat)
+
+b$analsxfrequency.cat <- ifelse(b$analsxfrequency > 1, 
+                                c("1"), c("0"))
+b$analsxfrequency.cat <- factor(b$analsxfrequency.cat)
+
+b$sextoyfrequency.cat <- ifelse(b$sextoyfrequency > 1, 
+                                c("1"), c("0"))
+b$sextoyfrequency.cat <- factor(b$sextoyfrequency.cat)
+
+#grab just sex activity cat, and put into aldex
+b <- b %>% select(study_id, sextoyfrequency.cat, oralsxfrequency.cat, analsxfrequency.cat)
+b <- dplyr::rename(b, Participants = study_id, Freq.oral.sex.cat = oralsxfrequency.cat, 
+                   Freq.anal.sex.cat = analsxfrequency.cat, 
+                   Freq.sex.toy.use.cat = sextoyfrequency.cat)
+
+a <- read.csv(file="1B2metabac_condensedv2.csv")
+a2 <- a %>% select(Participants, Freq.oral.sex.cat, Freq.anal.sex.cat, Freq.sex.toy.use.cat)
+
+#make sure cats in total and b are factors before merging
+both <- join(a2, b, type="full")
+
+#I took sexual activity cats from 1B2, and merged with 1A, and now will merge this new data frame
+#with the aldex code, after removing the existing columns
+total <- join(total, both, type="full")
+
+# write.csv(total, "Aldex_metadata_1A_1B2_v2.csv") #manually fixed smoking.current
+
+#redo Aldex for those variables I altered
+#Dean put all variables in one line
+library(ALDEx2)
+meta <- read.csv(file="Aldex_metadata_1A_1B2_v2.csv") #edits made below
+bac <- read.csv(file="Aldex_bac_1A_1B2")
+
+#variables need to be factors; maybe? try integer and see
+# set the rownames as the taxa names
+row.names(bac) <- bac[, 1]
+bac <- bac[, -1]
+meta$X <- NULL
+meta$X.4 <- NULL
+meta$X.3 <- NULL
+meta$X.2 <- NULL
+meta$X.1 <- NULL
+
+meta <- meta %>%
+  select(Participants, Antimicrobial.Use..y.1..n.0., X.Non..Prescription..y.1..n.0., 
+         Vaginal.intercourse.in.past.48.hours..y.1..n.0., Abnormal.discharge.2wks, 
+         Abnormal.discharge.48hrs, Abnormal.odor.2wks, Abnormal.odor.48hrs, 
+         Irritation.Discomfort.2wks, Irritation.Discomfort.48hrs, Other.Symptoms.2wks, 
+         Other.Symptoms.48hrs, Number.partners.in.past.year.cat, Tampon.Use.cat, Pregnancy.cat,
+         Genwarts.ever, GenHerpes.ever, smoking.current, Freq.oral.sex.cat, Freq.anal.sex.cat, 
+         Freq.sex.toy.use.cat, Chlamydia.ever, Nugent.score)
+
+variables <- colnames(meta)
+#variables <- variables[c(2,7,17)]
+notfactors <- c("Nugent.score")
+
+
+mydf <- data.frame(variable = c(), glm.eBH = c(), kw.eBH = c())
+
+lapply(variables, function(var) {
+  
+  if ( var == "Participants" ) {
+    return()
+  }
+  if (!(var %in% notfactors)) {
+    var < as.factor(var)
+  }
+  
+  #make a vector that is the variable labels
+  cond.edu <- meta[[var]]
+  
+  #run ALDEx
+  ald.edu <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
+  #ald.edu <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE, mc.samples = 2, verbose = FALSE)
+  
+  #look at the output
+  #head(ald.edu)
+  cat(var, "\t", min(ald.edu$glm.eBH), "\t", min(ald.edu$kw.eBH), "\n")
+  row <- data.frame(variable = var, glm.eBH = min(ald.edu$glm.eBH), kw.eBH = min(ald.edu$kw.eBH))
+  mydf <<- rbind(mydf, row)
+})
+
+mydf$signif <- mydf$kw.eBH < 0.05
+########################################
+#BV, Yeast, UTI, Trich, Gonorrhea, Syphillis, Substanceuse
+#Gonorrhea; not significant
+cond.eduGon <- meta$Gonorrhea.ever
+ald.eduGon <- aldex(reads = bac, conditions = cond.eduGon, test = "glm", effect = FALSE)
+
+#Syphillis; not significant
+cond.eduSyph <- meta$Syphillis.ever
+ald.eduSyph <- aldex(reads = bac, conditions = cond.eduSyph, test = "glm", effect = FALSE)
+
+
+#those that signficiant look at 
+#none
