@@ -1056,6 +1056,71 @@ ald.eduGon <- aldex(reads = bac, conditions = cond.eduGon, test = "glm", effect 
 cond.eduSyph <- meta$Syphillis.ever
 ald.eduSyph <- aldex(reads = bac, conditions = cond.eduSyph, test = "glm", effect = FALSE)
 
+#add BV and others
+b <- read.csv(file="1A_full_grouped.csv")
 
+#BV ever and Yeast ever.cat etc (BV and Yeast taken from above)
+b$UTI.ever <- ifelse(b$uti_infect < 2, 
+                     c("1"), c("0"))
+b$UTI.ever <- factor(b$UTI.ever)
+
+b$Trich.ever <- ifelse(b$trich_infect < 2, 
+                       c("1"), c("0"))
+b$Trich.ever <- factor(b$Trich.ever)
+
+#grab just genital infection hx, and put into aldex
+b <- b %>% select(study_id, UTI.ever, Trich.ever, BV.ever, Yeast.ever)
+b <- dplyr::rename(b, Participants = study_id)
+
+a <- read.csv(file="Vogue1B2_medhx.csv")
+a2 <- a %>% select(Participants, BV.ever, Yeast.ever, UTI.ever, Trich.ever)
+
+#make sure cats in total and b are factors before merging
+both <- join(a2, b, type="full")
+
+#I took genital infection hx from 1B2, and merged with 1A, and now will merge this new data frame
+#with the aldex code, after removing the existing columns
+total <- join(total, both, type="full")
+
+# write.csv(total, "Aldex_metadata_1A_1B2_v2.csv") #manually fixed smoking.current
+# now look in aldex
+meta <- read.csv("Aldex_metadata_1A_1B2_v2.csv")
+meta <- meta %>%
+  select(Participants, Nugent.score, BV.ever, Yeast.ever, UTI.ever, Trich.ever)
+
+variables <- colnames(meta)
+#variables <- variables[c(2,7,17)]
+notfactors <- c("Nugent.score")
+
+
+mydf <- data.frame(variable = c(), glm.eBH = c(), kw.eBH = c())
+
+lapply(variables, function(var) {
+  
+  if ( var == "Participants" ) {
+    return()
+  }
+  if (!(var %in% notfactors)) {
+    var < as.factor(var)
+  }
+  
+  #make a vector that is the variable labels
+  cond.edu <- meta[[var]]
+  
+  #run ALDEx
+  ald.edu <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
+  #ald.edu <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE, mc.samples = 2, verbose = FALSE)
+  
+  #look at the output
+  #head(ald.edu)
+  cat(var, "\t", min(ald.edu$glm.eBH), "\t", min(ald.edu$kw.eBH), "\n")
+  row <- data.frame(variable = var, glm.eBH = min(ald.edu$glm.eBH), kw.eBH = min(ald.edu$kw.eBH))
+  mydf <<- rbind(mydf, row)
+})
+
+mydf$signif <- mydf$kw.eBH < 0.05
+# write.csv(mydf, "Aldex_1A_1B2_results_v3.csv")
 #those that signficiant look at 
 #none
+
+
