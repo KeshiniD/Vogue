@@ -800,4 +800,55 @@ mydf$signif <- mydf$kw.eBH < 0.05
 #those that signficiant look at 
 #none
 
+##adding substance use
+sub <- read.csv("Vogue_substanceuse_1A.csv")
+b2 <- read.csv("1B2metabac_condensedv2.csv")
 
+#subset 1b2 substance info
+b2_subset <- b2 %>% select(Participants, Substance.Use, smoking.current)
+
+#regroup substanceuse for 1A
+#current alcohol use
+sub$Current.alcohol.Use. <- as.character(sub$Current.alcohol.Use.)
+
+sub$Current.alcohol.Use.[sub$Current.alcohol.Use. == 'N/A'] <- ''
+sub$Current.alcohol.Use.cat[sub$Current.alcohol.Use. == 'None'] <- '0'
+sub$Current.alcohol.Use.cat[sub$Current.alcohol.Use. == 'Daily'] <- '1'
+sub$Current.alcohol.Use.cat[sub$Current.alcohol.Use. == '2-3 Drinks per week'] <- '1'
+sub$Current.alcohol.Use.cat[sub$Current.alcohol.Use. == 'Occasional Drink'] <- '1'
+
+sub$Current.alcohol.Use.cat <- as.integer(sub$Current.alcohol.Use.cat)
+sub$Substance.Use <- ifelse(sub$drug_use == "current" | sub$drug_use == "past" & 
+                                  sub$Current.alcohol.Use.cat >= 1, 
+                                c("1"), c("0")) 
+
+#convert from character into factor
+sub$Substance.Use <- factor(sub$Substance.Use)
+
+#smoking current cat
+sub$Has.the.subject.ever.smoked. <- as.character(sub$Has.the.subject.ever.smoked.)
+
+sub$smoking.current[sub$Has.the.subject.ever.smoked. == 'No'] <- '0'
+sub$smoking.current[sub$Has.the.subject.ever.smoked. == 'Yes (Currently)'] <- '1'
+sub$smoking.current[sub$Has.the.subject.ever.smoked. == 'Yes (Past Smoker)'] <- '0'
+
+sub$smoking.current <- as.factor(sub$smoking.current)
+
+#merge 1A and 1B2 substance.use and smoking together
+a_subset <- sub %>%
+  select(Participants, Substance.Use, smoking.current)
+
+merge <- join(a_subset, b2_subset, type="full")
+
+#write to file and fix the participant names
+# write.csv(merge, "1A_1B2_substance.csv")
+
+#merge with aldex metadata and write to file
+aldex$smoking.current <- NULL
+aldex$Substance.Use <- NULL
+
+aldex2 <- join(aldex, merge, type="full")
+# write.csv(aldex2, "Aldex_metadata_1A_1B2_v2.csv")
+
+#aldex for smoking.current and substance.use
+meta <- meta %>% select(Participants, smoking.current, Substance.Use, Nugent.score)
