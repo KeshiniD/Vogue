@@ -852,3 +852,4 @@ aldex2 <- join(aldex, merge, type="full")
 
 #aldex for smoking.current and substance.use
 meta <- meta %>% select(Participants, smoking.current, Substance.Use, Nugent.score)
+#not significant
