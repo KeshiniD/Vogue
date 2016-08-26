@@ -855,18 +855,23 @@ meta <- meta %>% select(Participants, smoking.current, Substance.Use, Nugent.sco
 #not significant
 
 ####################
+#Aug-26-16; adjusted categories after arianne's email
 #aldex for BV.cats, and nugent cat
 aldex$BV.2mths.cat <- ifelse(aldex$BV..number.of.episodes.2.months. > 0, 
                               c("1"), c("0")) 
-aldex$BV.year.cat <- ifelse(aldex$BV..number.of.episodes.year. > 0, 
-                             c("1"), c("0")) 
-aldex$BV.lifetime.cat <- ifelse(aldex$BV..number.of.episodes.lifetime. > 0, 
-                             c("1"), c("0")) 
+
+aldex$BV.year.cat[aldex$BV..number.of.episodes.year. > 2] <- "2" #3+
+aldex$BV.year.cat[aldex$BV..number.of.episodes.year. > 0 & aldex$BV..number.of.episodes.year. <= 2] <- "1" #1-2
+aldex$BV.year.cat[aldex$BV..number.of.episodes.year. <= 0] <- "0" #0
+
+aldex$BV.life.cat[aldex$BV..number.of.episodes.lifetime. > 9] <- "3" #10+
+aldex$BV.life.cat[aldex$BV..number.of.episodes.lifetime. > 2 & aldex$BV..number.of.episodes.lifetime. <= 9] <- "2" #3-9
+aldex$BV.life.cat[aldex$BV..number.of.episodes.lifetime. > 0 & aldex$BV..number.of.episodes.lifetime. <= 2] <- "1" #1-2
+aldex$BV.life.cat[aldex$BV..number.of.episodes.lifetime. <= 0] <- "0" #0
 
 aldex$Nugent.score.cat[aldex$Nugent.score > 6] <- "2" #positive
 aldex$Nugent.score.cat[aldex$Nugent.score > 3 & aldex$Nugent.score <= 6] <- "1" #intermediate
 aldex$Nugent.score.cat[aldex$Nugent.score <= 3] <- "0" #negative
-
 
 #run in aldex loop
 meta <- aldex %>%
@@ -919,13 +924,13 @@ cond.eduBVyr <- meta$BV.year.cat
 ald.eduGBVyr <- aldex(reads = bac, conditions = cond.eduBVyr, test = "glm", effect = FALSE)
 
 #BV.lifetime.cat
-cond.eduBVlife <- meta$BV.lifetime.cat
-ald.eduGBVlife <- aldex(reads = bac, conditions = cond.eduBVlife, test = "glm", effect = FALSE)
+# cond.eduBVlife <- meta$BV.lifetime.cat
+# ald.eduGBVlife <- aldex(reads = bac, conditions = cond.eduBVlife, test = "glm", effect = FALSE)
 
 #write to file
 # write.csv(ald.eduGNS, "Aldex_1B2_Nugentscorecat.csv")
 # write.csv(ald.eduGBV2, "Aldex_1B2_BV2mthscat.csv")
-# write.csv(ald.eduGBVyr, "Aldex_1B2_BVyearcat.csv")
+# write.csv(ald.eduGBVyr, "Aldex_1B2_BVyearcat_v2.csv")
 # write.csv(ald.eduGBVlife, "Aldex_1B2_BVlifecat.csv")
 
 #get median clr for each variable
@@ -951,3 +956,12 @@ bV.life <- aldex.effect(clr, conditions = meta$BV.lifetime.cat, include.sample.s
 #write to file
 # write.csv(bV.year, "Aldex_median_bvyearcat.csv")
 # write.csv(bV.life, "Aldex_median_bvlifecat.csv")
+
+#quick 1a/b2 compare
+a <- xtabs(~BV.life.cat + study_arm , data = aldex)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~BV.year.cat + study_arm , data = aldex)
+fisher.test(a)
+assocstats(a)

@@ -282,3 +282,51 @@ t.test(Shannon.s.Diversity ~ BV.2mths.cat, data = total2)
 cohen.d(Shannon.s.Diversity ~ BV.2mths.cat, data = total2)
 
 #and do again for only high nugents
+
+#Aug-26-16; new BV cats
+#data
+total <- read.csv(file = "1B2metabac_condensedv2.csv")
+
+total$BV.year.cat[total$BV..number.of.episodes.year. > 2] <- "2" #3+
+total$BV.year.cat[total$BV..number.of.episodes.year. > 0 & total$BV..number.of.episodes.year. <= 2] <- "1" #1-2
+total$BV.year.cat[total$BV..number.of.episodes.year. <= 0] <- "0" #0
+total$BV.year.cat <- factor(total$BV.year.cat)
+
+total$BV.life.cat[total$BV..number.of.episodes.lifetime. > 9] <- "3" #10+
+total$BV.life.cat[total$BV..number.of.episodes.lifetime. > 2 & total$BV..number.of.episodes.lifetime. <= 9] <- "2" #3-9
+total$BV.life.cat[total$BV..number.of.episodes.lifetime. > 0 & total$BV..number.of.episodes.lifetime. <= 2] <- "1" #1-2
+total$BV.life.cat[total$BV..number.of.episodes.lifetime. <= 0] <- "0" #0
+total$BV.life.cat <- factor(total$BV.life.cat)
+
+#SD for all Nugents
+summary(aov(total$Shannon.s.Diversity ~total$BV.year.cat))
+summary(aov(total$Shannon.s.Diversity ~total$BV.life.cat))
+
+#SD for only high Nugents
+newdata <- subset(total, Nugent.score >= 4) 
+
+summary(aov(newdata$Shannon.s.Diversity ~newdata$BV.year.cat))
+summary(aov(newdata$Shannon.s.Diversity ~newdata$BV.life.cat))
+
+#CSTs for all Nugent
+total2 <- total[-c(1),] #remove CSTII
+total2$CST <- droplevels(total2$CST)
+
+a <- xtabs(~BV.year.cat + CST , data = total2)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~BV.life.cat + CST , data = total2)
+fisher.test(a)
+assocstats(a)
+
+#CSTs for high Nugent
+newdata2 <- subset(total2, Nugent.score >= 4) 
+
+a <- xtabs(~BV.year.cat + CST , data = newdata2)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~BV.life.cat + CST , data = newdata2)
+fisher.test(a)
+assocstats(a)
