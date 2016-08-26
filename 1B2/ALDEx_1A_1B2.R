@@ -853,3 +853,101 @@ aldex2 <- join(aldex, merge, type="full")
 #aldex for smoking.current and substance.use
 meta <- meta %>% select(Participants, smoking.current, Substance.Use, Nugent.score)
 #not significant
+
+####################
+#aldex for BV.cats, and nugent cat
+aldex$BV.2mths.cat <- ifelse(aldex$BV..number.of.episodes.2.months. > 0, 
+                              c("1"), c("0")) 
+aldex$BV.year.cat <- ifelse(aldex$BV..number.of.episodes.year. > 0, 
+                             c("1"), c("0")) 
+aldex$BV.lifetime.cat <- ifelse(aldex$BV..number.of.episodes.lifetime. > 0, 
+                             c("1"), c("0")) 
+
+aldex$Nugent.score.cat[aldex$Nugent.score > 6] <- "2" #positive
+aldex$Nugent.score.cat[aldex$Nugent.score > 3 & aldex$Nugent.score <= 6] <- "1" #intermediate
+aldex$Nugent.score.cat[aldex$Nugent.score <= 3] <- "0" #negative
+
+
+#run in aldex loop
+meta <- aldex %>%
+  select(Participants, Nugent.score, Nugent.score.cat, BV.2mths.cat, BV.year.cat, 
+         BV.lifetime.cat)
+
+variables <- colnames(meta)
+#variables <- variables[c(2,7,17)]
+notfactors <- c("Nugent.score")
+
+
+mydf <- data.frame(variable = c(), glm.eBH = c(), kw.eBH = c())
+
+lapply(variables, function(var) {
+  
+  if ( var == "Participants" ) {
+    return()
+  }
+  if (!(var %in% notfactors)) {
+    var < as.factor(var)
+  }
+  
+  #make a vector that is the variable labels
+  cond.edu <- meta[[var]]
+  
+  #run ALDEx
+  ald.edu <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE)
+  #ald.edu <- aldex(reads = bac, conditions = cond.edu, test = "glm", effect = FALSE, mc.samples = 2, verbose = FALSE)
+  
+  #look at the output
+  #head(ald.edu)
+  cat(var, "\t", min(ald.edu$glm.eBH), "\t", min(ald.edu$kw.eBH), "\n")
+  row <- data.frame(variable = var, glm.eBH = min(ald.edu$glm.eBH), kw.eBH = min(ald.edu$kw.eBH))
+  mydf <<- rbind(mydf, row)
+})
+
+mydf$signif <- mydf$kw.eBH < 0.05
+
+###take significant and re-run; write to file
+#nugent.cat
+cond.eduNS <- meta$Nugent.score.cat
+ald.eduGNS <- aldex(reads = bac, conditions = cond.eduNS, test = "glm", effect = FALSE)
+
+#BV.2mths.cat
+cond.eduBV2 <- meta$BV.2mths.cat
+ald.eduGBV2 <- aldex(reads = bac, conditions = cond.eduBV2, test = "glm", effect = FALSE)
+
+#BV.year.cat
+cond.eduBVyr <- meta$BV.year.cat
+ald.eduGBVyr <- aldex(reads = bac, conditions = cond.eduBVyr, test = "glm", effect = FALSE)
+
+#BV.lifetime.cat
+cond.eduBVlife <- meta$BV.lifetime.cat
+ald.eduGBVlife <- aldex(reads = bac, conditions = cond.eduBVlife, test = "glm", effect = FALSE)
+
+#write to file
+# write.csv(ald.eduGNS, "Aldex_1B2_Nugentscorecat.csv")
+# write.csv(ald.eduGBV2, "Aldex_1B2_BV2mthscat.csv")
+# write.csv(ald.eduGBVyr, "Aldex_1B2_BVyearcat.csv")
+# write.csv(ald.eduGBVlife, "Aldex_1B2_BVlifecat.csv")
+
+#get median clr for each variable
+#median values to define significant assoications from aldex
+library(ALDEx2)
+meta <- read.csv(file="Aldex_metadata_1A_1B2_v2.csv")
+bac <- read.csv(file="Aldex_bac_1A_1B2")
+
+# set the rownames as the taxa names
+row.names(bac) <- bac[, 1]
+bac <- bac[, -1]
+
+#only handles two levels; not more than one
+clr <- aldex.clr(bac, mc.samples=128)
+
+#already have nugent and bv.2mths
+meta$BV.year.cat <- factor(meta$BV.year.cat) 
+meta$BV.lifetime.cat <- factor(meta$BV.lifetime.cat)
+
+bV.year <- aldex.effect(clr, conditions = meta$BV.year.cat, include.sample.summary = TRUE)
+bV.life <- aldex.effect(clr, conditions = meta$BV.lifetime.cat, include.sample.summary = TRUE)
+
+#write to file
+# write.csv(bV.year, "Aldex_median_bvyearcat.csv")
+# write.csv(bV.life, "Aldex_median_bvlifecat.csv")
