@@ -126,11 +126,9 @@ find /projects5/kdevakandan/virome/ -name "*.filtered.aligned.fastq" -exec gzip 
 # make links from all the fastq files into one folder, for easier downloading
 find /projects5/kdevakandan/virome/ -name "*.filtered.aligned.fastq.gz" -exec ln -s {} /projects5/kdevakandan/virome/fastqc__filtered_aligned/ \;
 
-
-
-
-
-
+###move files
+inputs=$(find . -name "*_1_cutadpt_val_1.fq"); for f in $inputs; do name=${f%???????????????????}; cp /projects5/kdevakandan/virome/DNA_Viruses/C935CANXX_7_DNA/Vogue1B/${name}/{${name}_1_cutadpt_val_1.fq,${name}_2_cutadpt-val_2.fq}  /home/kdevakandan/virome_kesh/DNA_Viruses/C935CANXX_7_DNA/Vogue1B/${name}/; done
+  
 
 
 
