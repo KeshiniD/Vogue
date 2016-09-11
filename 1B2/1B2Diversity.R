@@ -351,7 +351,7 @@ diversity <- cbind(a,b,c)
 d <- diversity[ -c(3, 5) ]
 
 #write
-write.csv(d, "1B2_individual_all_diversity.csv")
+# write.csv(d, "1B2_individual_all_diversity.csv")
 
 #Chao estimator
 #cohort
