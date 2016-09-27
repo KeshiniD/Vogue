@@ -302,7 +302,7 @@ b2[is.na(b2)] <- 0
 total <- join(a, b, type="full")
 total <- join(total, b2, type="full")
 total[is.na(total)] <- 0
-#write.csv(total, "Viral_family_DNA.csv")
+# write.csv(total, "Viral_family_DNA.csv")
 
 
 
