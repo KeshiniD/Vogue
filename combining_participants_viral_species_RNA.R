@@ -1,4 +1,5 @@
 #re-doing for post-processed files Aug-9-16
+#redone for filtered files Sept26-16
 
 #combine 1A, 1B, 1B2 participants into dataframe
 #viral species
@@ -296,7 +297,7 @@ b2[is.na(b2)] <- 0
 
 #write dataframes to file
 # write.csv(a, "Viral_species_RNA_1A.csv")
-# write.csv(b, "Viral__species_RNA_1B.csv")
+# write.csv(b, "Viral_species_RNA_1B.csv")
 # write.csv(b2, "Viral_species_RNA_1B2.csv")
 
 #join all 3 together and write to file

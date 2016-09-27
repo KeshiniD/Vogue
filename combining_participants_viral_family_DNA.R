@@ -1,4 +1,5 @@
 #re-doing for post-processed files-Aug-11-16
+#and re-done again for filterd files Sept-26-16
 #combine 1A, 1B, 1B2 participants into dataframe
 
 ###############################

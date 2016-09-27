@@ -2,13 +2,12 @@
 "1","Staphylococcus phage phiMR11",2,0,0,0,0,0,0,0
 "2","Bacillus phage SPP1",5,0,0,0,0,0,0,0
 "3","Caudovirales",7,0,0,0,0,0,0,0
-"4","T7likevirus",7,0,0,70,0,0,1,0
-"5","Podoviridae",8,0,0,421,0,0,0,0
-"6","Streptococcus phage CP-7",12,0,0,0,0,0,0,0
-"7","Autographivirinae",30,0,1,78,0,0,0,0
-"8","Streptococcus phage Cp-1",205,0,0,0,0,1,0,0
-"9","Haemophilus phage HP1c1",250,0,0,0,0,0,0,0
-"10","Picovirinae",0,2,1,0,1,2,1,23155
-"11","Streptococcus phage Dp-1",0,0,3,0,0,0,0,0
-"12","Lactobacillus phage mv1",0,0,0,0,0,0,1,0
-"13","Lactobacillus phage LL-H",0,0,0,0,0,0,8,0
+"4","Streptococcus phage CP-7",12,0,0,0,0,0,0,0
+"5","Streptococcus phage Cp-1",205,0,0,0,0,1,0,0
+"6","Haemophilus phage HP1c1",250,0,0,0,0,0,0,0
+"7","Picovirinae",0,1,0,0,1,1,1,19007
+"8","Streptococcus phage Dp-1",0,0,3,0,0,0,0,0
+"9","T7likevirus",0,0,0,1,0,0,0,0
+"10","Podoviridae",0,0,0,9,0,0,0,0
+"11","Lactobacillus phage mv1",0,0,0,0,0,0,1,0
+"12","Lactobacillus phage LL-H",0,0,0,0,0,0,8,0
