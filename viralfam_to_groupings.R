@@ -1,3 +1,4 @@
+#redone for filtered files; Sept28-16
 #load packages
 library(plyr)
 library(dplyr)
@@ -5,10 +6,10 @@ library(ggplot2)
 library(tidyr)
 
 #call data and recode for DNa, RNA and phage
-everyone <- read.csv("DNA_RNA_phage_viral_families_all.csv", stringsAsFactors = FALSE)
-vogueA <- read.csv("DNA_RNA_phage_viral_families_1A.csv", stringsAsFactors = FALSE)
-vogueB <- read.csv("DNA_RNA_phage_viral_families_1B.csv", stringsAsFactors = FALSE)
-vogue1b2 <- read.csv("DNA_RNA_phage_viral_families_1B2.csv", stringsAsFactors = FALSE)
+everyone <- read.csv("DNA_RNA_phage_viral_species_and_family_all.csv", stringsAsFactors = FALSE)
+vogueA <- read.csv("DNA_RNA_phage_viral_species_and_family_1A.csv", stringsAsFactors = FALSE)
+vogueB <- read.csv("DNA_RNA_phage_viral_species_and_family_1B.csv", stringsAsFactors = FALSE)
+vogue1b2 <- read.csv("DNA_RNA_phage_viral_species_and_family_1B2.csv", stringsAsFactors = FALSE)
 
 #omit empty column
 everyone$X <- NULL
@@ -17,7 +18,7 @@ vogueB$X <- NULL
 vogue1b2$X <- NULL
 
 #ref manual
-vref <- read.csv("viral_ref_groups.csv", header=FALSE, stringsAsFactors = FALSE)
+vref <- read.csv("recode_family_to_groupings.csv", header=FALSE, stringsAsFactors = FALSE)
 
 #omit empty rows and columns
 # vref <- vref[c(1:72),]
@@ -51,17 +52,23 @@ vogueA2 <- recoderFunc(vogueA, vref$V1, vref$V2)
 vogueB2 <- recoderFunc(vogueB, vref$V1, vref$V2)
 vogue1b2a <- recoderFunc(vogue1b2, vref$V1, vref$V2)
 
-# #rename column
-everyone2 <- dplyr::rename(everyone2, Virus_Groups = Viral_Families)
-vogueA2 <- dplyr::rename(vogueA2, Virus_Groups = Viral_Families)
-vogueB2 <- dplyr::rename(vogueB2, Virus_Groups = Viral_Families)
-vogue1b2a <- dplyr::rename(vogue1b2a, Virus_Groups = Viral_Families)
+#rename column
+everyone2 <- dplyr::rename(everyone2, Virus_Groups = Viral_Family)
+vogueA2 <- dplyr::rename(vogueA2, Virus_Groups = Viral_Family)
+vogueB2 <- dplyr::rename(vogueB2, Virus_Groups = Viral_Family)
+vogue1b2a <- dplyr::rename(vogue1b2a, Virus_Groups = Viral_Family)
 
 #gathering like types                    
 everyone3 <- ddply(everyone2,c("Virus_Groups"),numcolwise(sum)) #includes all columns
 vogueA3 <- ddply(vogueA2,c("Virus_Groups"),numcolwise(sum)) #includes all columns
 vogueB3 <- ddply(vogueB2,c("Virus_Groups"),numcolwise(sum)) #includes all columns
 vogue1b2b <- ddply(vogue1b2a,c("Virus_Groups"),numcolwise(sum)) #includes all columns
+
+#na to zero
+everyone3[is.na(everyone3)] <- 0
+vogueA3[is.na(vogueA3)] <- 0
+vogueB3[is.na(vogueB3)] <- 0
+vogue1b2b[is.na(vogue1b2b)] <- 0
 
 #write to file
 # write.csv(everyone3, "virus_groupings_all.csv")
