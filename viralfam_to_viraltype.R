@@ -86,7 +86,6 @@ vogueB <- read.csv("virus_types_1B.csv")
 vogue1b2 <- read.csv("virus_types_1B2.csv")
 
 everyone$X <- NULL
-everyone$freq <- NULL
 
 rownames(everyone) <- everyone[,1]
 everyone[,1] <- NULL
@@ -105,8 +104,15 @@ vmb <- tbl_df(data) %>% # finally got the percentages correct
   mutate(Group.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Participants)
 
+#order viral groups by abundance
+abundance_order <- vmb %>% group_by(Viral_Groups) %>% summarize(count = mean(Group.Percentage)) %>% arrange(desc(count)) %>% .[['Viral_Groups']]
+
+#Dean added to order by factor levels
+vmb$Viral_Groups <- factor(vmb$Viral_Groups, 
+                           levels = abundance_order)
+
 #bar plot with custom colors
-jColors <- c('red', 'green', 'blue', 'orange', 'purple', 'yellow')
+jColors <- c('purple', 'green', 'blue', 'orange', 'red', 'yellow')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -117,6 +123,15 @@ ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Grou
 #plot freq
 #1A
 vogueA <- read.csv("virus_types_1A.csv")
+vogueA$X <- NULL
+rownames(vogueA) <- vogueA[,1] #have to make sure dataframe is all numeric for rowsums
+vogueA[,1] <- NULL
+vogueA2 <- vogueA %>%
+  mutate(freq = rowSums(vogueA)) #calculating total sum for each viral type
+vogueA <- read.csv("virus_types_1A.csv")
+vogueA$X <- NULL
+vogueA <- join(vogueA, vogueA2, type="full") #merge with orginal dataframe to keep freq & type col.
+
 vogueA <- dplyr::rename(vogueA, Healthy_Asymptomatic = freq)
 
 vogueA <- vogueA %>%
@@ -130,6 +145,15 @@ vogueA2 <- add_rownames(vogueA2, "Cohort")
 
 #1B
 vogueB <- read.csv("virus_types_1B.csv")
+vogueB$X <- NULL
+rownames(vogueB) <- vogueB[,1]
+vogueB[,1] <- NULL
+vogueB2 <- vogueB %>%
+  mutate(freq = rowSums(vogueB))
+vogueB <- read.csv("virus_types_1B.csv")
+vogueB$X <- NULL
+vogueB <- join(vogueB, vogueB2, type="full")
+
 vogueB <- dplyr::rename(vogueB, HIV_Positive = freq)
 
 vogueB <- vogueB %>%
@@ -143,6 +167,15 @@ vogueB2 <- add_rownames(vogueB2, "Cohort")
 
 #1B2
 vogue1B2 <- read.csv("virus_types_1B2.csv")
+vogue1B2$X <- NULL
+rownames(vogue1B2) <- vogue1B2[,1]
+vogue1B2[,1] <- NULL
+vogue1B2b <- vogue1B2 %>%
+  mutate(freq = rowSums(vogue1B2))
+vogue1B2 <- read.csv("virus_types_1B2.csv")
+vogue1B2$X <- NULL
+vogue1B2 <- join(vogue1B2, vogue1B2b, type="full")
+
 vogue1B2 <- dplyr::rename(vogue1B2, Recurrent_BV = freq)
 
 vogue1B2 <- vogue1B2 %>%
@@ -171,8 +204,15 @@ vmb <- tbl_df(data) %>% # finally got the percentages correct
   mutate(Relative.Abundance = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Cohort)
 
+#order viral groups by abundance
+abundance_order <- vmb %>% group_by(Viral_Groups) %>% summarize(count = mean(Relative.Abundance)) %>% arrange(desc(count)) %>% .[['Viral_Groups']]
+
+#Dean added to order by factor levels
+vmb$Viral_Groups <- factor(vmb$Viral_Groups, 
+                           levels = abundance_order)
+
 #bar plot with custom colors
-jColors <- c('red', 'green', 'blue', 'orange', 'purple', 'yellow')
+jColors <- c('purple', 'green', 'red', 'blue', 'orange', 'yellow')
 
 ggplot(data = vmb, aes(x = Cohort, y = Relative.Abundance, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) + 
@@ -208,8 +248,15 @@ vmb <- tbl_df(data) %>% # finally got the percentages correct
   mutate(Group.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Participants)
 
+#order viral groups by abundance
+abundance_order <- vmb %>% group_by(Viral_Groups) %>% summarize(count = mean(Group.Percentage)) %>% arrange(desc(count)) %>% .[['Viral_Groups']]
+
+#Dean added to order by factor levels
+vmb$Viral_Groups <- factor(vmb$Viral_Groups, 
+                           levels = abundance_order)
+
 #bar plot with custom colors
-jColors <- c('red', 'green', 'blue', 'orange', 'purple', 'yellow')
+jColors <- c('purple', 'red', 'blue', 'orange', 'green', 'yellow')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -242,8 +289,15 @@ vmb <- tbl_df(data) %>% # finally got the percentages correct
   mutate(Group.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Participants)
 
+#order viral groups by abundance
+abundance_order <- vmb %>% group_by(Viral_Groups) %>% summarize(count = mean(Group.Percentage)) %>% arrange(desc(count)) %>% .[['Viral_Groups']]
+
+#Dean added to order by factor levels
+vmb$Viral_Groups <- factor(vmb$Viral_Groups, 
+                           levels = abundance_order)
+
 #bar plot with custom colors
-jColors <- c('red', 'green', 'blue', 'orange', 'purple', 'yellow')
+jColors <- c('purple', 'green', 'red', 'orange', 'blue', 'yellow')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -275,8 +329,15 @@ vmb <- tbl_df(data) %>% # finally got the percentages correct
   mutate(Group.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Participants)
 
+#order viral groups by abundance
+abundance_order <- vmb %>% group_by(Viral_Groups) %>% summarize(count = mean(Group.Percentage)) %>% arrange(desc(count)) %>% .[['Viral_Groups']]
+
+#Dean added to order by factor levels
+vmb$Viral_Groups <- factor(vmb$Viral_Groups, 
+                           levels = abundance_order)
+
 #bar plot with custom colors
-jColors <- c('green', 'blue', 'orange', 'purple', 'yellow')
+jColors <- c('purple', 'green', 'red', 'blue', 'orange')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
