@@ -301,13 +301,19 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   mutate(Group.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Participants)
 
+#order viral groups by abundance
+abundance_order <- vmb %>% group_by(Viral_Groups) %>% summarize(count = mean(Group.Percentage)) %>% arrange(desc(count)) %>% .[['Viral_Groups']]
+
+#Dean added to order by factor levels
+vmb$Viral_Groups <- factor(vmb$Viral_Groups, 
+                           levels = abundance_order)
+
 #bar plot with custom colors
-jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
-             'palegreen', 'darkgoldenrod1', 
-             'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
-             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
-             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
-             'lavender', 'rosybrown2')
+jColors <- c('blue', 'orange', 'green', 'deepskyblue3', 'purple', 
+             'green3', 'black', 'darkgoldenrod1', 'mediumorchid2', 'cornflowerblue', 
+             'lightsalmon', 'forestgreen', 'firebrick1', 'firebrick', 'deeppink', 
+             'plum', 'gray33', 'gray', 'tomato', 'olivedrab2', 'mediumvioletred',
+             'yellow', 'slateblue', 'turquoise')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -336,13 +342,19 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   mutate(Group.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Participants)
 
+#order viral groups by abundance
+abundance_order <- vmb %>% group_by(Viral_Groups) %>% summarize(count = mean(Group.Percentage)) %>% arrange(desc(count)) %>% .[['Viral_Groups']]
+
+#Dean added to order by factor levels
+vmb$Viral_Groups <- factor(vmb$Viral_Groups, 
+                           levels = abundance_order)
+
 #bar plot with custom colors
-jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
-             'palegreen', 'darkgoldenrod1', 
-             'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
-             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
-             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
-             'lavender', 'rosybrown2')
+jColors <- c('blue', 'orange', 'purple', 'black', 'lightsalmon', 
+             'green', 'cornflowerblue', 'darkgoldenrod1', 'plum', 'green3', 
+             'forestgreen', 'deepskyblue3', 'mediumorchid2', 'firebrick1', 'gray', 
+             'firebrick', 'gray33', 'deeppink', 'tomato', 'olivedrab2', 'turquoise',
+             'mediumvioletred', 'yellow', 'slateblue')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -407,12 +419,11 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   arrange(Participants)
 
 #bar plot with custom colors
-jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
-             'forestgreen', 'palegreen', 'darkgoldenrod1', 
-             'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
-             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
-             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
-             'lavender', 'rosybrown2', 'deeppink')
+jColors <- c('forestgreen', 'firebrick1', 'firebrick', 'olivedrab2', 'green', 
+             'black', 'tomato', 'yellow', 'purple', 'deepskyblue3', 'deeppink', 
+             'turquoise', 'plum', 'cornflowerblue', 
+             'blue', 'green3', 'gray', 'lightsalmon', 'mediumorchid2', 'mediumvioletred', 
+             'gray33', 'darkgoldenrod1', 'orange', 'slateblue')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -447,12 +458,12 @@ meta <- dplyr::rename(meta, Participants = study_id)
 meta <- meta[1:21,]
 
 #rename study_ids
-meta$Participants <-
-  paste0("Vogue1A.01.",
-         substring(meta$Participants, nchar("Vogue 1A 01-0")+1))
-
-meta$Participants[meta$Participants=='Vogue1A.01.01'] <- 'Vogue1A.01.101'
-meta$Participants[meta$Participants=='Vogue1A.01.06'] <- 'Vogue1A.01.106'
+# meta$Participants <-
+#   paste0("Vogue1A.01.",
+#          substring(meta$Participants, nchar("Vogue 1A 01-0")+1))
+# 
+# meta$Participants[meta$Participants=='Vogue1A.01.01'] <- 'Vogue1A.01.101'
+# meta$Participants[meta$Participants=='Vogue1A.01.06'] <- 'Vogue1A.01.106'
 
 #merge CST data and 1A data
 total <- join(data, meta, type="full")
@@ -468,7 +479,7 @@ total$Participants <- factor(total$Participants,
 data2 <-
   gather(total, key = 'Viral_Groups', value = 'Counts', Adenoviridae, Anelloviridae, 
          Baculoviridae, Caudovirales, Coccolithovirus, dsDNA, dsDNA_RT, dsRNA, 
-         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae, negative_ssRNA, 
+         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae,  
          Other_Phages, Other_Viruses_unclassified, Papillomaviridae, Phycodnaviridae,
          Picornaviridae, Podoviridae, Polydnaviridae, Polyomaviridae, positive_ssRNA, 
          Retroviridae, Siphoviridae, ssDNA) 
@@ -480,12 +491,11 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   arrange(Participants)
 
 #bar plot with custom colors
-jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
-             'palegreen', 'green', 'darkgoldenrod1', 
-             'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
-             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
-             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
-             'lavender', 'rosybrown2', 'deeppink')
+jColors <- c('forestgreen', 'firebrick1', 'firebrick', 'olivedrab2', 'green', 
+             'black', 'tomato', 'yellow', 'purple', 'deepskyblue3', 'deeppink', 
+             'plum', 'cornflowerblue', 
+             'blue', 'green3', 'gray', 'lightsalmon', 'mediumorchid2', 'mediumvioletred', 
+             'gray33', 'darkgoldenrod1', 'orange', 'slateblue')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -518,9 +528,9 @@ meta <- dplyr::rename(meta, Participants = study_id)
 meta <- meta[30:54,]
 
 #rename study_ids
-meta$Participants <-
-  paste0("Vogue1B.01.",
-         substring(meta$Participants, nchar("Vogue1B.01.0")+1))
+# meta$Participants <-
+#   paste0("Vogue1B.01.",
+#          substring(meta$Participants, nchar("Vogue1B.01.0")+1))
 
 #merge CST data and 1A data
 total <- join(data, meta, type="full")
@@ -548,12 +558,11 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   arrange(Participants)
 
 #bar plot with custom colors
-jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
-             'forestgreen', 'palegreen', 'darkgoldenrod1', 
-             'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
-             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
-             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
-             'lavender', 'rosybrown2', 'deeppink')
+jColors <- c('forestgreen', 'firebrick1', 'firebrick', 'olivedrab2', 'green', 
+             'black', 'tomato', 'yellow', 'purple', 'deepskyblue3', 'deeppink', 
+             'turquoise', 'plum', 'cornflowerblue', 
+             'blue', 'green3', 'gray', 'lightsalmon', 'mediumorchid2', 'mediumvioletred', 
+             'gray33', 'darkgoldenrod1', 'orange', 'slateblue')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -585,9 +594,9 @@ meta <- dplyr::rename(meta, Participants = study_id)
 meta <- meta[22:29,]
 
 #rename study_ids
-meta$Participants <-
-  paste0("Vogue1B2.01.",
-         substring(meta$Participants, nchar("Vogue 1B2 01-")+1))
+# meta$Participants <-
+#   paste0("Vogue1B2.01.",
+#          substring(meta$Participants, nchar("Vogue 1B2 01-")+1))
 
 #merge CST data and 1A data
 total <- join(data, meta, type="full")
@@ -602,8 +611,8 @@ total$Participants <- factor(total$Participants,
 #bac counts
 data2 <-
   gather(total, key = 'Viral_Groups', value = 'Counts', Adenoviridae, Anelloviridae, 
-         Baculoviridae, Caudovirales, Coccolithovirus, dsDNA, dsDNA_RT, dsRNA, 
-         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae, negative_ssRNA, 
+         Baculoviridae, Caudovirales, Coccolithovirus, dsDNA, dsRNA, 
+         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae,  
          Other_Phages, Other_Viruses_unclassified, Papillomaviridae, Phycodnaviridae,
          Picornaviridae, Podoviridae, Polydnaviridae, Polyomaviridae, positive_ssRNA, 
          Retroviridae, Siphoviridae, ssDNA) 
@@ -615,17 +624,72 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   arrange(Participants)
 
 #bar plot with custom colors
-jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
-             'palegreen', 'darkgoldenrod1', 
-             'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
-             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
-             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
-             'lavender', 'rosybrown2')
+jColors <- c('forestgreen', 'firebrick1', 'firebrick', 'olivedrab2', 'green', 
+             'black', 'yellow', 'purple', 'deepskyblue3', 'deeppink', 'plum', 'cornflowerblue', 
+             'blue', 'green3', 'gray', 'lightsalmon', 'mediumorchid2', 'mediumvioletred', 
+             'gray33', 'darkgoldenrod1', 'orange', 'slateblue')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
   ylab("Relative Abundance (%)") 
 
 ####################################################################################
+#all
+#order based on CST
+data <- read.csv("virus_groupings_all.csv")
+
+data$X <- NULL
+data$freq <- NULL
+
+rownames(data) <- data[,1]
+data[,1] <- NULL
+data <- as.data.frame(t(data))
+data[is.na(data)] <- 0
+data <- add_rownames(data, "Participants")
 
 
+#load metadata
+meta <- read.csv("viromeall_metadata_full.csv")
+
+#select sutdy_id and CST
+meta <- meta %>% 
+  select(study_id, CST)
+
+#rename
+meta <- dplyr::rename(meta, Participants = study_id)
+
+#merge CST data and virome data
+total <- join(data, meta, type="full")
+
+#remove NA and replace with zero
+total[is.na(total)] <- 0
+
+#order by factor levels
+total$Participants <- factor(total$Participants, 
+                             levels = total$Participants[order(total$CST)])
+
+#bac counts
+data2 <-
+  gather(total, key = 'Viral_Groups', value = 'Counts', Adenoviridae, Anelloviridae, 
+         Baculoviridae, Caudovirales, Coccolithovirus, dsDNA, dsDNA_RT, dsRNA, 
+         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae,  
+         Other_Phages, Other_Viruses_unclassified, Papillomaviridae, Phycodnaviridae,
+         Picornaviridae, Podoviridae, Polydnaviridae, Polyomaviridae, positive_ssRNA, 
+         Retroviridae, Siphoviridae, ssDNA) 
+
+vmb <- tbl_df(data2) %>% # finally got the percentages correct
+  group_by(Participants) %>%
+  select(Participants, Viral_Groups, Counts, CST) %>%
+  mutate(Group.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
+  arrange(Participants)
+
+#bar plot with custom colors
+jColors <- c('forestgreen', 'firebrick1', 'firebrick', 'olivedrab2', 'green', 
+             'black', 'tomato', 'yellow', 'purple', 'deepskyblue3', 'deeppink', 
+             'plum', 'cornflowerblue', 
+             'blue', 'green3', 'gray', 'lightsalmon', 'mediumorchid2', 'mediumvioletred', 
+             'gray33', 'darkgoldenrod1', 'orange', 'slateblue')
+
+ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
+  geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
+  ylab("Relative Abundance (%)") 
