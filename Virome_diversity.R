@@ -416,3 +416,21 @@ total <- cbind(A, B, B2)
 
 #write data to file (altered headings and called back)
 # write.table(total, "cohort_chao.csv", sep = ",", row.names = FALSE, quote = FALSE)
+
+###################################################################################
+#merge shannon, peilous, good and chao1
+a <- read.csv(file.path("cohort_shannonsdiversity.csv"))
+b <- read.csv(file.path("cohort_pielous.csv"))
+c <- read.csv(file.path("cohort_goodcoverage.csv"))
+d <- read.csv(file.path("cohort_chao.csv"))
+
+#rename header
+c <- dplyr::rename(c, Vogue1A = A2, Vogue1B = B2, Vogue1B2 = B2b)
+
+#merge three folders together
+diversity <- join(a,b, type="full")
+diversity <- join(diversity, c, type="full")
+diversity <- join(diversity, d, type="full")
+
+#write
+# write.csv(diversity, "virome_cohort_diversity.csv")
