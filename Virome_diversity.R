@@ -360,3 +360,59 @@ total <- cbind(A2, B2, B2b)
 
 ###################################################################################
 ###################################################################################
+#Chao1 cohort
+#call for data
+vogueA <- read.csv("DNA_RNA_phage_viral_family_1A_v2.csv")
+vogueB <- read.csv("DNA_RNA_phage_viral_family_1B_v2.csv")
+vogue1B2 <- read.csv("DNA_RNA_phage_viral_family_1B2_v2.csv")
+
+#remove extra column
+vogueA$X <- NULL
+vogueB$X <- NULL
+vogue1B2$X <- NULL
+
+#Na to zero
+vogueA[is.na(vogueA)] <- 0
+vogueB[is.na(vogueB)] <- 0
+vogue1B2[is.na(vogue1B2)] <- 0
+
+########
+#1A
+#format such that columns are viruses, and row names are participants
+rownames(vogueA) <- vogueA[,1]
+vogueA[,1] <- NULL
+vogueA <- as.data.frame(t(vogueA))
+
+#chao
+A <- diversityresult(vogueA, index = 'chao')
+A <- dplyr::rename(A, Vogue1A = chao)
+View(A)
+
+##########
+#1B
+rownames(vogueB) <- vogueB[,1]
+vogueB[,1] <- NULL
+vogueB <- as.data.frame(t(vogueB))
+
+#chao
+B <- diversityresult(vogueB, index = 'chao')
+B <- dplyr::rename(B, Vogue1B = chao)
+View(B)
+
+############
+#1B2
+rownames(vogue1B2) <- vogue1B2[,1]
+vogue1B2[,1] <- NULL
+vogue1B2 <- as.data.frame(t(vogue1B2))
+
+#chao
+B2 <- diversityresult(vogue1B2, index = 'chao')
+B2 <- dplyr::rename(B2, Vogue1B2 = chao)
+View(B2)
+
+########
+#join three cohorts together
+total <- cbind(A, B, B2)
+
+#write data to file (altered headings and called back)
+# write.table(total, "cohort_chao.csv", sep = ",", row.names = FALSE, quote = FALSE)
