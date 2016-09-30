@@ -208,3 +208,46 @@ ald3 <- join(ald, ald2, type="full")
 
 #write to file
 # write.csv(ald3, "Aldex_virome_results_combined.csv")
+
+###################################################################
+#sept29-16
+#want to do for family, type and groups too
+
+##################################
+#family
+#Aldex for DNA_RNA_phage_all
+viral2 <- read.csv("DNA_RNA_phage_viral_family_all_v2.csv")
+
+# set the rownames as the taxa names
+viral2$X.1 <- NULL
+viral2$X <- NULL
+row.names(viral2) <- viral2[, 1]
+viral2 <- viral2[, -1]
+viral2[is.na(viral2)] <- 0
+viral2 <- viral2[,order(colnames(viral2))]
+
+#################################
+#type
+#family
+#Aldex for DNA_RNA_phage_all
+viral2 <- read.csv("virus_types_all.csv")
+
+# set the rownames as the taxa names
+viral2$X <- NULL
+row.names(viral2) <- viral2[, 1]
+viral2 <- viral2[, -1]
+viral2[is.na(viral2)] <- 0
+viral2 <- viral2[,order(colnames(viral2))]
+
+################################
+#groupings
+#family
+#Aldex for DNA_RNA_phage_all
+viral2 <- read.csv("virus_groupings_all.csv")
+
+# set the rownames as the taxa names
+viral2$X <- NULL
+row.names(viral2) <- viral2[, 1]
+viral2 <- viral2[, -1]
+viral2[is.na(viral2)] <- 0
+viral2 <- viral2[,order(colnames(viral2))]
