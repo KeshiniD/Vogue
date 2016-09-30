@@ -324,3 +324,39 @@ total <- cbind(vogueA_P, vogueB_P, vogueB2_P)
 
 #write data to file (altered headings and called back)
 # write.table(total, "cohort_pielous.csv", sep = ",", row.names = FALSE, quote = FALSE)
+
+###################################################################################
+###################################################################################
+#Goods Coverage cohort
+#1A
+#variables taken from above
+#total counts
+# H2 <- data2 %>% 
+#   select (Bacteria, Counts) %>% 
+#   group_by(Bacteria) %>%
+#   summarize(TotalCounts = sum(Counts)) %>%
+#   select (TotalCounts)
+
+A <- H2$TotalCounts
+A2 <- Coverage(A, Estimator = "Turing") #Ns has to be numeric vector
+A2 <- as.data.frame(A2)
+
+#1B
+B <- H2$TotalCounts
+B2 <- Coverage(B, Estimator = "Turing") #Ns has to be numeric vector
+B2 <- as.data.frame(B2)
+
+#1B2
+B2a <- H2$TotalCounts
+B2b <- Coverage(B2a, Estimator = "Turing") #Ns has to be numeric vector
+B2b <- as.data.frame(B2b)
+
+########
+#join three cohorts together
+total <- cbind(A2, B2, B2b)
+
+#write data to file (altered headings and called back)
+# write.table(total, "cohort_goodcoverage.csv", sep = ",", row.names = FALSE, quote = FALSE)
+
+###################################################################################
+###################################################################################
