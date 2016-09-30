@@ -92,12 +92,11 @@ data <- add_rownames(data, "Participants")
 #bac counts
 data2 <-
   gather(data, key = 'Viral_Groups', value = 'Counts', Adenoviridae, Anelloviridae, 
-         Baculoviridae, Caudovirales, Hepadnaviridae, Herpesviridae, Hytrosaviridae, 
-         Lactobacillus_phage, Myoviridae, Pandoraviridae, Papillomaviridae, 
-         Phycodnaviridae, Picornaviridae, Podoviridae, Polydnaviridae, 
-         Polyomaviridae, Retroviridae, Siphoviridae, Streptococcus_phage, 
-         Virgaviridae, ssDNA, dsDNA, dsDNA_RT, dsRNA, negative_ssRNA, positive_ssRNA, 
-         Other_Phages, Other_Viruses_unclassified) 
+         Baculoviridae, Caudovirales, Coccolithovirus, dsDNA, dsDNA_RT, dsRNA, 
+         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae, negative_ssRNA, 
+         Other_Phages, Other_Viruses_unclassified, Papillomaviridae, Phycodnaviridae,
+         Picornaviridae, Podoviridae, Polydnaviridae, Polyomaviridae, positive_ssRNA, 
+         Retroviridae, Siphoviridae, ssDNA) 
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
@@ -105,21 +104,26 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   mutate(Group.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Participants)
 
+#order viral groups by abundance
+abundance_order <- vmb %>% group_by(Viral_Groups) %>% summarize(count = mean(Group.Percentage)) %>% arrange(desc(count)) %>% .[['Viral_Groups']]
+
+#Dean added to order by factor levels
+vmb$Viral_Groups <- factor(vmb$Viral_Groups, 
+                           levels = abundance_order)
+
 #bar plot with custom colors
-jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
-             'forestgreen', 'palegreen', 'green', 'darkgoldenrod1', 
-             'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
-             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
-             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
-             'lavender', 'rosybrown2', 'deeppink')
+jColors <- c('blue', 'orange', 'purple', 'green', 'green3', 
+             'forestgreen', 'deepskyblue3', 'darkgoldenrod1', 
+             'cornflowerblue', 'mediumorchid2', 'plum', 'firebrick', 'deeppink',
+             'firebrick1', 'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
+             'yellow', 'tomato', 'lightsalmon', 'slateblue', 'turquoise')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
-  ylab("Relative Abundance (%)") 
-
-# ggtitle("Metagenomic Characterization of the Vaginal Virome of Women with Recurrent BV") +
-#   theme(axis.title.x = element_text(size=20), axis.title.y =element_text(size=20), 
-#         plot.title =element_text(size=25), legend.background = element_rect(size=200)) 
+  ylab("Relative Abundance (%)") +
+ggtitle("Metagenomic Characterization of the Vaginal Virome of Women") +
+  theme(axis.title.x = element_text(size=20), axis.title.y =element_text(size=20),
+        plot.title =element_text(size=25), legend.background = element_rect(size=200))
 
 ###################################################################################
 #1A
@@ -137,12 +141,11 @@ data <- add_rownames(data, "Participants")
 #bac counts
 data2 <-
   gather(data, key = 'Viral_Groups', value = 'Counts', Adenoviridae, Anelloviridae, 
-         Baculoviridae, Caudovirales, Hepadnaviridae, Herpesviridae, Hytrosaviridae, 
-         Lactobacillus_phage, Myoviridae, Pandoraviridae, Papillomaviridae, 
-         Phycodnaviridae, Picornaviridae, Podoviridae, Polydnaviridae, 
-         Polyomaviridae, Retroviridae, Siphoviridae, Streptococcus_phage, 
-         Virgaviridae, ssDNA, dsDNA, dsRNA, negative_ssRNA, positive_ssRNA, 
-         Other_Phages, Other_Viruses_unclassified) 
+         Baculoviridae, Caudovirales, Coccolithovirus, dsDNA, dsDNA_RT, dsRNA, 
+         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae,  
+         Other_Phages, Other_Viruses_unclassified, Papillomaviridae, Phycodnaviridae,
+         Picornaviridae, Podoviridae, Polydnaviridae, Polyomaviridae, positive_ssRNA, 
+         Retroviridae, Siphoviridae, ssDNA) 
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
@@ -150,13 +153,20 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   mutate(Group.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Participants)
 
+#order viral groups by abundance
+abundance_order <- vmb %>% group_by(Viral_Groups) %>% summarize(count = mean(Group.Percentage)) %>% arrange(desc(count)) %>% .[['Viral_Groups']]
+
+#Dean added to order by factor levels
+vmb$Viral_Groups <- factor(vmb$Viral_Groups, 
+                           levels = abundance_order)
+
 #bar plot with custom colors
-jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
-             'palegreen', 'green', 'darkgoldenrod1', 
-             'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
-             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
-             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
-             'lavender', 'rosybrown2', 'deeppink')
+jColors <- c('blue', 'green', 'orange', 'purple', 'green3', 
+             'forestgreen', 'mediumorchid2', 'firebrick1', 
+             'deeppink', 'plum', 'deepskyblue3', 'cornflowerblue', 'gray33',
+             'darkgoldenrod1', 'gray', 'firebrick', 'olivedrab2', 'yellow', 
+             'black', 'lightsalmon', 'tomato', 'slateblue', 'mediumvioletred')
+
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -178,12 +188,11 @@ data <- add_rownames(data, "Participants")
 #bac counts
 data2 <-
   gather(data, key = 'Viral_Groups', value = 'Counts', Adenoviridae, Anelloviridae, 
-         Baculoviridae, Caudovirales, Herpesviridae, Hytrosaviridae, 
-         Lactobacillus_phage, Myoviridae, Pandoraviridae, Papillomaviridae, 
-         Phycodnaviridae, Picornaviridae, Podoviridae, Polydnaviridae, 
-         Polyomaviridae, Retroviridae, Siphoviridae, Streptococcus_phage, 
-         Virgaviridae, ssDNA, dsDNA, dsDNA_RT, dsRNA, negative_ssRNA, positive_ssRNA, 
-         Other_Phages, Other_Viruses_unclassified) 
+         Baculoviridae, Caudovirales, Coccolithovirus, dsDNA, dsDNA_RT, dsRNA, 
+         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae, negative_ssRNA, 
+         Other_Phages, Other_Viruses_unclassified, Papillomaviridae, Phycodnaviridae,
+         Picornaviridae, Podoviridae, Polydnaviridae, Polyomaviridae, positive_ssRNA, 
+         Retroviridae, Siphoviridae, ssDNA) 
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
@@ -191,13 +200,19 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   mutate(Group.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Participants)
 
+#order viral groups by abundance
+abundance_order <- vmb %>% group_by(Viral_Groups) %>% summarize(count = mean(Group.Percentage)) %>% arrange(desc(count)) %>% .[['Viral_Groups']]
+
+#Dean added to order by factor levels
+vmb$Viral_Groups <- factor(vmb$Viral_Groups, 
+                           levels = abundance_order)
+
 #bar plot with custom colors
-jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
-             'forestgreen', 'palegreen', 'darkgoldenrod1', 
-             'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
-             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
-             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
-             'lavender', 'rosybrown2', 'deeppink')
+jColors <- c('blue', 'orange', 'purple', 'black', 'green', 
+             'lightsalmon', 'green3', 'cornflowerblue', 
+             'deepskyblue3', 'darkgoldenrod1', 'plum', 'forestgreen', 'mediumorchid2',             'firebrick1', 'firebrick', 'deeppink', 
+             'gray', 'gray33', 'tomato', 'olivedrab2', 'mediumvioletred', 'turquoise', 
+             'yellow', 'slateblue')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -218,12 +233,11 @@ data <- add_rownames(data, "Participants")
 #bac counts
 data2 <-
   gather(data, key = 'Viral_Groups', value = 'Counts', Adenoviridae, Anelloviridae, 
-         Baculoviridae, Caudovirales, Herpesviridae, Hytrosaviridae, 
-         Lactobacillus_phage, Myoviridae, Pandoraviridae, Papillomaviridae, 
-         Phycodnaviridae, Picornaviridae, Podoviridae, Polydnaviridae, 
-         Polyomaviridae, Retroviridae, Siphoviridae, Streptococcus_phage, 
-         ssDNA, dsDNA, dsRNA, negative_ssRNA, positive_ssRNA, 
-         Other_Phages, Other_Viruses_unclassified) 
+         Baculoviridae, Caudovirales, Coccolithovirus, dsDNA, dsRNA, 
+         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae,  
+         Other_Phages, Other_Viruses_unclassified, Papillomaviridae, Phycodnaviridae,
+         Picornaviridae, Podoviridae, Polydnaviridae, Polyomaviridae, positive_ssRNA, 
+         Retroviridae, Siphoviridae, ssDNA) 
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
@@ -231,13 +245,17 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   mutate(Group.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Participants)
 
+#order viral groups by abundance
+abundance_order <- vmb %>% group_by(Viral_Groups) %>% summarize(count = mean(Group.Percentage)) %>% arrange(desc(count)) %>% .[['Viral_Groups']]
+
+#Dean added to order by factor levels
+vmb$Viral_Groups <- factor(vmb$Viral_Groups, 
+                           levels = abundance_order)
+
 #bar plot with custom colors
-jColors <- c('blue', 'deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
-             'palegreen', 'darkgoldenrod1', 
-             'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
-             'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
-             'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
-             'lavender', 'rosybrown2')
+jColors <- c('blue', 'lightsalmon', 'orange', 'forestgreen', 'green3', 
+             'purple', 'black', 'green', 
+             'deepskyblue3', 'firebrick1', 'plum', 'mediumorchid2', 'mediumvioletred', 'cornflowerblue', 'deeppink', 'darkgoldenrod1', 'gray', 'gray33', 'firebrick', 'olivedrab2', 'slateblue', 'tomato')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -271,12 +289,11 @@ sup <- add_rownames(sup, "Participants")
 #bac counts
 data2 <-
   gather(sup, key = 'Viral_Groups', value = 'Counts', Adenoviridae, Anelloviridae, 
-         Baculoviridae, Caudovirales, Herpesviridae, Hytrosaviridae, 
-         Lactobacillus_phage, Myoviridae, Pandoraviridae, Papillomaviridae, 
-         Phycodnaviridae, Picornaviridae, Podoviridae, Polydnaviridae, 
-         Polyomaviridae, Retroviridae, Siphoviridae, Streptococcus_phage, 
-         ssDNA, dsDNA, dsRNA, negative_ssRNA, positive_ssRNA, 
-         Other_Phages, Other_Viruses_unclassified) 
+         Baculoviridae, Caudovirales, Coccolithovirus, dsDNA, dsDNA_RT, dsRNA, 
+         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae, negative_ssRNA, 
+         Other_Phages, Other_Viruses_unclassified, Papillomaviridae, Phycodnaviridae,
+         Picornaviridae, Podoviridae, Polydnaviridae, Polyomaviridae, positive_ssRNA, 
+         Retroviridae, Siphoviridae, ssDNA) 
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
@@ -307,12 +324,11 @@ unsup <- add_rownames(unsup, "Participants")
 #bac counts
 data2 <-
   gather(unsup, key = 'Viral_Groups', value = 'Counts', Adenoviridae, Anelloviridae, 
-         Baculoviridae, Caudovirales, Herpesviridae, Hytrosaviridae, 
-         Lactobacillus_phage, Myoviridae, Pandoraviridae, Papillomaviridae, 
-         Phycodnaviridae, Picornaviridae, Podoviridae, Polydnaviridae, 
-         Polyomaviridae, Retroviridae, Siphoviridae, Streptococcus_phage, 
-         ssDNA, dsDNA, dsRNA, negative_ssRNA, positive_ssRNA, 
-         Other_Phages, Other_Viruses_unclassified) 
+         Baculoviridae, Caudovirales, Coccolithovirus, dsDNA, dsDNA_RT, dsRNA, 
+         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae, negative_ssRNA, 
+         Other_Phages, Other_Viruses_unclassified, Papillomaviridae, Phycodnaviridae,
+         Picornaviridae, Podoviridae, Polydnaviridae, Polyomaviridae, positive_ssRNA, 
+         Retroviridae, Siphoviridae, ssDNA) 
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
@@ -378,12 +394,11 @@ total$Participants <- factor(total$Participants,
 #bac counts
 data2 <-
   gather(total, key = 'Viral_Groups', value = 'Counts', Adenoviridae, Anelloviridae, 
-         Baculoviridae, Caudovirales, Herpesviridae, Hytrosaviridae, 
-         Lactobacillus_phage, Myoviridae, Pandoraviridae, Papillomaviridae, 
-         Phycodnaviridae, Picornaviridae, Podoviridae, Polydnaviridae, 
-         Polyomaviridae, Retroviridae, Siphoviridae, Streptococcus_phage, 
-         Virgaviridae, ssDNA, dsDNA, dsDNA_RT, dsRNA, negative_ssRNA, positive_ssRNA, 
-         Other_Phages, Other_Viruses_unclassified) 
+         Baculoviridae, Caudovirales, Coccolithovirus, dsDNA, dsDNA_RT, dsRNA, 
+         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae, negative_ssRNA, 
+         Other_Phages, Other_Viruses_unclassified, Papillomaviridae, Phycodnaviridae,
+         Picornaviridae, Podoviridae, Polydnaviridae, Polyomaviridae, positive_ssRNA, 
+         Retroviridae, Siphoviridae, ssDNA) 
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
@@ -452,12 +467,11 @@ total$Participants <- factor(total$Participants,
 #bac counts
 data2 <-
   gather(total, key = 'Viral_Groups', value = 'Counts', Adenoviridae, Anelloviridae, 
-         Baculoviridae, Caudovirales, Hepadnaviridae, Herpesviridae, Hytrosaviridae, 
-         Lactobacillus_phage, Myoviridae, Pandoraviridae, Papillomaviridae, 
-         Phycodnaviridae, Picornaviridae, Podoviridae, Polydnaviridae, 
-         Polyomaviridae, Retroviridae, Siphoviridae, Streptococcus_phage, 
-         Virgaviridae, ssDNA, dsDNA, dsRNA, negative_ssRNA, positive_ssRNA, 
-         Other_Phages, Other_Viruses_unclassified) 
+         Baculoviridae, Caudovirales, Coccolithovirus, dsDNA, dsDNA_RT, dsRNA, 
+         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae, negative_ssRNA, 
+         Other_Phages, Other_Viruses_unclassified, Papillomaviridae, Phycodnaviridae,
+         Picornaviridae, Podoviridae, Polydnaviridae, Polyomaviridae, positive_ssRNA, 
+         Retroviridae, Siphoviridae, ssDNA) 
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
@@ -521,12 +535,11 @@ total$Participants <- factor(total$Participants,
 #bac counts
 data2 <-
   gather(total, key = 'Viral_Groups', value = 'Counts', Adenoviridae, Anelloviridae, 
-         Baculoviridae, Caudovirales, Herpesviridae, Hytrosaviridae, 
-         Lactobacillus_phage, Myoviridae, Pandoraviridae, Papillomaviridae, 
-         Phycodnaviridae, Picornaviridae, Podoviridae, Polydnaviridae, 
-         Polyomaviridae, Retroviridae, Siphoviridae, Streptococcus_phage, 
-         Virgaviridae, ssDNA, dsDNA, dsDNA_RT, dsRNA, negative_ssRNA, positive_ssRNA, 
-         Other_Phages, Other_Viruses_unclassified) 
+         Baculoviridae, Caudovirales, Coccolithovirus, dsDNA, dsDNA_RT, dsRNA, 
+         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae, negative_ssRNA, 
+         Other_Phages, Other_Viruses_unclassified, Papillomaviridae, Phycodnaviridae,
+         Picornaviridae, Podoviridae, Polydnaviridae, Polyomaviridae, positive_ssRNA, 
+         Retroviridae, Siphoviridae, ssDNA) 
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
@@ -589,12 +602,11 @@ total$Participants <- factor(total$Participants,
 #bac counts
 data2 <-
   gather(total, key = 'Viral_Groups', value = 'Counts', Adenoviridae, Anelloviridae, 
-         Baculoviridae, Caudovirales, Herpesviridae, Hytrosaviridae, 
-         Lactobacillus_phage, Myoviridae, Pandoraviridae, Papillomaviridae, 
-         Phycodnaviridae, Picornaviridae, Podoviridae, Polydnaviridae, 
-         Polyomaviridae, Retroviridae, Siphoviridae, Streptococcus_phage, 
-         ssDNA, dsDNA, dsRNA, negative_ssRNA, positive_ssRNA, 
-         Other_Phages, Other_Viruses_unclassified) 
+         Baculoviridae, Caudovirales, Coccolithovirus, dsDNA, dsDNA_RT, dsRNA, 
+         Herpesviridae, Human_papillomavirus_type_56, Mimiviridae, negative_ssRNA, 
+         Other_Phages, Other_Viruses_unclassified, Papillomaviridae, Phycodnaviridae,
+         Picornaviridae, Podoviridae, Polydnaviridae, Polyomaviridae, positive_ssRNA, 
+         Retroviridae, Siphoviridae, ssDNA) 
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
