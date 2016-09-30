@@ -291,6 +291,7 @@ View(B2)
 #headers
 B2 <- dplyr::rename(B2, Vogue1B2 = B2) #column header
 
+#################################
 #join three cohorts together
 total <- cbind(F2,B,B2)
 
@@ -308,8 +309,18 @@ J2 <- F2/log(specnumber(H2, MARGIN = 2)) #not working for entire cohort
 View(J2)
 
 #1A
-
+#variables taken from above
+vogueA_P <- F2/log(specnumber(H2, MARGIN = 2))
 
 #1B
+vogueB_P <- B/log(specnumber(H2, MARGIN = 2))
 
 #1B2
+vogueB2_P <- B2/log(specnumber(H2, MARGIN = 2))
+
+########
+#join three cohorts together
+total <- cbind(vogueA_P, vogueB_P, vogueB2_P)
+
+#write data to file (altered headings and called back)
+# write.table(total, "cohort_pielous.csv", sep = ",", row.names = FALSE, quote = FALSE)
