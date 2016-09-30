@@ -9,30 +9,31 @@ library(knitr)
 library(entropart)
 library(epitools)
 
+################
+#rarefaction curves for each cohort
 #call for data
-data <- read.csv(file.path("1B2.csv"))
+vogueA <- read.csv("DNA_RNA_phage_viral_family_1A_v2.csv")
+vogueB <- read.csv("DNA_RNA_phage_viral_family_1B_v2.csv")
+vogue1B2 <- read.csv("DNA_RNA_phage_viral_family_1B2_v2.csv")
 
-#plots curve but error in lengths; not as nice as rarecurve()
-source("http://www.jennajacobs.org/R/rarefaction.txt")
-emend.rare<-rarefaction(bac, color=TRUE, legend = TRUE)
+#remove extra column
+vogueA$X <- NULL
+vogueB$X <- NULL
+vogue1B2$X <- NULL
 
+#Na to zero
+vogueA[is.na(vogueA)] <- 0
+vogueB[is.na(vogueB)] <- 0
+vogue1B2[is.na(vogue1B2)] <- 0
+
+########################################
+#1A
 #Plot rarefraction curve
-viral <- data %>%
-  select(Participants, Lactobacillus.crispatus, Lactobacillus.gasseri, 
-         Lactobacillus.iners, Lactobacillus.jensenii, 
-         Gardnerella.vaginalis.Group.A, Gardnerella.vaginalis.Group.B, 
-         Gardnerella.vaginalis.Group.C, Gardnerella.vaginalis.Group.D, 
-         Actinobacteria.sp., Atopobium.vaginae, Clostridia.sp..BVAB2, 
-         Clostridium.genomosp..BVAB3, Escherichia.coli, Eukaryote, 
-         Klebsiella.pneumoniae, Megasphaera.sp..genomosp..type.1, 
-         Prevotella.amnii, Prevotella.timonensis, Streptococcus.devriesei, 
-         Other.Actinobacteria, Other.Bacteria, Other.Bacteroidetes, 
-         Other.Clostridium, Other.Firmicutes, Other.Lactobacillus, 
-         Other.Prevotella, Other.Proteobacteria, Other.Streptococcus)
 
 #want rownames to be participants
-rownames(viral) <- viral[,1]
-viral[,1] <- NULL
+rownames(vogueA) <- vogueA[,1]
+vogueA[,1] <- NULL
+vogueA <- as.data.frame(t(vogueA))
 
 #colours for individuals
 col <- c('deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
@@ -42,22 +43,43 @@ col <- c('deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3',
          'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
          'lavender', 'rosybrown2', 'deeppink')
 
-#step: 1+sample size
-rarecurve(viral, step = 27, sample = min(rowSums(viral)), 
-          xlab = "Sequence Read Counts", ylab = "Number of Different Viral Species", 
-          label = FALSE, col = col, xlim=c(0,17500), lwd = 2)
-#each line is rarefied richness value (higher values more rich than lower values)
-#xaxis:# of indvidual species present in each participant
-#yaxis: bacterial species and amount each participant has
-#need to figure out legend (do not think there is one)
-#can alter x-axis to see some samples more distinctly 
+# #step: 1+sample size
+# rarecurve(vogueA, step = 27, sample = min(rowSums(vogueA)), 
+#           xlab = "Sequence Read Counts", ylab = "Number of Different Viral Species", 
+#           label = FALSE, col = col, xlim=c(0,1100000), lwd = 2)
+# 
+# #section earlier curves to see more indepth
+# rarecurve(vogueA, step = 27, sample = min(rowSums(vogueA)), 
+#           xlab = "Sequence Read Counts", ylab = "Number of Different Viral Species", 
+#           label = FALSE, col = col, xlim=c(0,11000), lwd = 2)
 
-specnumber(viral, MARGIN = 1) #number of species, can use above for cohort
+####################################
+#adding legend
+par(mar=c(5,6,7,2)) #and making space for it; alter margins
 
-#section earlier curves to see more indepth
-rarecurve(viral, step = 27, sample = min(rowSums(viral)), 
-          xlab = "Sequence Read Counts", ylab = "Number of Different Viral Species", 
-          label = FALSE, col = col, xlim=c(0,8500), lwd = 2)
+rarecurve(vogueA, step = 27, sample = min(rowSums(vogueA)), 
+          xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
+          label = FALSE, col = col, xlim=c(0,11000), lwd = 2, cex.lab=1.5) 
+
+rarecurve(vogueA, step = 27, sample = min(rowSums(vogueA)), 
+          xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
+          label = FALSE, col = col, xlim=c(0,1100000), lwd = 2, cex.lab=1.5)
+
+legend(x=0,y=35,legend=paste(c("52", "59", "61", "62", "64", "65", "68", "69", "70", 
+                               "71", "74", "75", "76", "77", "78", "79", "81", 
+                               "84", "85", "92", "101", "106")),
+       pch=16, col = col,
+       bty="n",ncol=11,cex=1,
+       pt.cex=2,xpd=TRUE, text.width = 1, y.intersp = 0.2)
+#pch:type of symbol, bty?, cex:font size of text, pt.cex:size of points
+#xpd:put legend outside of plot, text.width:space between points
+#y.intersp:space between rows, ncol:number of columns, x&y:coord of legend position
+
+
+
+
+
+
 
 #to calculate slope of rarecurve (derivatibe of rarefy) at given sample size
 #sample size, the row sum for each participant (No this creates slope of zero)

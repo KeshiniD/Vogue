@@ -137,56 +137,6 @@ mydf2$signif <- mydf$glm.eBH < 0.05
 #repeat aldex with separated meta data by cohort
 #not suppose to do that
 
-# meta <- meta[c(1:21),] #1A
-# meta <- meta[c(30:54),] #1B
-# meta <- meta[c(22:29),] #1B2
-# 
-# ####
-# #omit columns with only 1 factor level
-# #1A
-# meta$Gonorrhea.ever <- NULL
-# meta$Syphillis.ever <- NULL
-# meta$analsxfrequency.cat <- NULL
-# meta$abnormaldischarge2wk <- NULL
-# meta$abnormaldischarge48 <- NULL
-# meta$abnormalodor2wk <- NULL
-# meta$abnormalodor48 <- NULL
-# meta$vaginalsymptomother2wk <- NULL
-# meta$vaginalsymptomother48 <- NULL
-# meta$antimicrodrug <- NULL
-# meta <- meta[c(1:47)]
-# 
-# #1B
-# meta$Contraception.IUD <- NULL
-# meta$sexpartner <- NULL
-# meta$vaginalsymptomother48 <- NULL
-# meta$study_arm <- NULL
-# meta$t06 <- NULL
-# meta$t11 <- NULL
-# meta$t31 <- NULL
-# meta$t34 <- NULL
-# meta$t39 <- NULL
-# meta$t40 <- NULL
-# meta$t44 <- NULL
-# meta$t58 <- NULL
-# meta$t59 <- NULL
-# meta$t69 <- NULL
-# meta$t82 <- NULL
-# 
-# #1B2
-# meta$Trich.ever <- NULL
-# meta$GenHerpes.ever <- NULL
-# meta$Gonorrhea.ever <- NULL
-# meta$Syphillis.ever <- NULL
-# meta$Presence.Symptoms.2wks <- NULL
-# meta$sexpartner1yr.cat <- NULL
-# meta$Contraception.IUD <- NULL
-# meta$substanceuse <- NULL
-# meta$vaginalsymptomother2wk <- NULL
-# meta$vaginalsymptomother48 <- NULL
-# meta <- meta[c(1:47)]
-
-
 ####################################################################################
 #look at variables which are significant
 meta$study_arm <- factor(meta$study_arm)
@@ -200,14 +150,14 @@ ald.edustudy_arm <- aldex(reads = viral, conditions = cond.edustudy_arm, test = 
 # write.csv(ald.edustudy_arm, "Aldex_virome_studyarm.csv")
 
 #################################################################################
-#merge the two result files
-ald <- read.csv("Aldex_virome_results.csv")
-ald2 <- read.csv("Aldex_virome_results2.csv")
-
-ald3 <- join(ald, ald2, type="full")
-
-#write to file
-# write.csv(ald3, "Aldex_virome_results_combined.csv")
+# #merge the two result files
+# ald <- read.csv("Aldex_virome_results.csv")
+# ald2 <- read.csv("Aldex_virome_results2.csv")
+# 
+# ald3 <- join(ald, ald2, type="full")
+# 
+# #write to file
+# # write.csv(ald3, "Aldex_virome_results_combined.csv")
 
 ###################################################################
 #sept29-16
@@ -251,3 +201,32 @@ row.names(viral2) <- viral2[, 1]
 viral2 <- viral2[, -1]
 viral2[is.na(viral2)] <- 0
 viral2 <- viral2[,order(colnames(viral2))]
+
+#####################################################################################
+#get median clr for each variable
+#median values to define significant assoications from aldex
+library(ALDEx2)
+viral <- read.csv("DNA_RNA_phage_viral_species_all.csv")
+meta <- read.csv("viromeall_metadata_full.csv") #renamed manually to match viral
+
+# set the rownames as the taxa names
+viral$X <- NULL
+row.names(viral) <- viral[, 1]
+viral <- viral[, -1]
+viral[is.na(viral)] <- 0
+viral <- viral[,order(colnames(viral))]
+meta$X <- NULL
+meta$X.1 <- NULL
+meta <- meta %>% 
+  arrange(study_id)
+
+#only handles two levels; not more than one
+clr <- aldex.clr(viral, mc.samples=128)
+
+#already have nugent and bv.2mths
+meta$study_arm <- factor(meta$study_arm) 
+
+study_arm <- aldex.effect(clr, conditions = meta$study_arm, include.sample.summary = TRUE)
+
+#write to file
+# write.csv(study_arm, "Aldex_median_studyarm.csv")
