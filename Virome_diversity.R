@@ -85,6 +85,7 @@ Coverage(Ns)
 #same as above
 #virus counts
 #went into data2, and manually fixed virus names to exlcude spaces
+#but it is all fixed now and do not need to worry
 data3 <-
   gather(data2, key = 'Virus', value = 'Counts', Adenoviridae, Alloherpesviridae,
          Alphaflexiviridae, Ampullaviridae, Anelloviridae, Arteriviridae, 
@@ -164,3 +165,151 @@ diversity <- cbind(a,c,d,e)
 ###################################################################################
 ###################################################################################
 #diversity statistics for 3 cohorts separately; as whole
+#call for data
+vogueA <- read.csv("DNA_RNA_phage_viral_family_1A_v2.csv")
+vogueB <- read.csv("DNA_RNA_phage_viral_family_1B_v2.csv")
+vogue1B2 <- read.csv("DNA_RNA_phage_viral_family_1B2_v2.csv")
+
+#remove extra column
+vogueA$X <- NULL
+vogueB$X <- NULL
+vogue1B2$X <- NULL
+
+#Na to zero
+vogueA[is.na(vogueA)] <- 0
+vogueB[is.na(vogueB)] <- 0
+vogue1B2[is.na(vogue1B2)] <- 0
+
+################
+#ShannonDiversity
+#cohort
+
+#1A
+#move species into headers, and participants into rows
+rownames(vogueA) <- vogueA[,1]
+vogueA[,1] <- NULL
+vogueA2 <- as.data.frame(t(vogueA))
+
+#first need to make new table with total counts for each bacterial species
+#bac counts
+vogueA3 <-
+  gather(vogueA2, key = 'Virus', value = 'Counts', Adenoviridae, Alloherpesviridae,
+         Alphaflexiviridae, Anelloviridae, Ascoviridae, Baculoviridae, 
+         Bicaudaviridae, Caudovirales, Circoviridae, Coronaviridae, 
+         Endornaviridae, Flaviviridae, Fuselloviridae, Hepadnaviridae, 
+         Herpesviridae, Hytrosaviridae, Iridoviridae, 
+         Lipothrixviridae, Luteoviridae, Marseilleviridae, Microviridae, 
+         Mimiviridae, Myoviridae, Nimaviridae, Nudiviridae, Other_dsDNA_viruses, 
+         Other_Phages, Other_ssDNA_viruses,  
+         Other_ssRNA_positive_strand_viruses, Other_Viruses, Papillomaviridae, 
+         Parvoviridae, Phycodnaviridae, Picornaviridae, Podoviridae, 
+         Polydnaviridae, Polyomaviridae, Poxviridae, Reoviridae, 
+         Retroviridae, Siphoviridae, Tombusviridae, Tymoviridae, Virgaviridae)
+
+#then use in diversity
+H2 <- vogueA3 %>% 
+  select (Virus, Counts) %>% #WORKED!!!! for cohort
+  group_by(Virus) %>%
+  summarize(TotalCounts = sum(Counts)) %>%
+  select (TotalCounts) #stay in for diversity,can remove to see bac
+F2 <- diversity(H2)
+F2 <- as.data.frame(F2)
+View(F2)
+
+#headers
+F2 <- dplyr::rename(F2, Vogue1A = F2) #column header
+
+#############
+#1B
+#move species into headers, and participants into rows
+rownames(vogueB) <- vogueB[,1]
+vogueB[,1] <- NULL
+vogueB2 <- as.data.frame(t(vogueB))
+
+#first need to make new table with total counts for each bacterial species
+#bac counts
+vogueB3 <-
+  gather(vogueB2, key = 'Virus', value = 'Counts', Adenoviridae, Alloherpesviridae,
+         Alphaflexiviridae, Ampullaviridae, Anelloviridae,  
+         Ascoviridae, Astroviridae, Baculoviridae, Bicaudaviridae,  
+         Caudovirales, Caulimoviridae, Chrysoviridae, Coronaviridae, 
+         Endornaviridae, Flaviviridae, Fuselloviridae, Hepeviridae,
+         Herpesviridae, Hytrosaviridae, Iflaviridae, Inoviridae, Iridoviridae, 
+         Lipothrixviridae, Luteoviridae, Marseilleviridae,  
+         Mimiviridae, Myoviridae, Nimaviridae, Nudiviridae, Other_dsDNA_viruses, 
+         Other_Phages, Other_ssDNA_viruses, Other_ssRNA_negative_strand_viruses, 
+         Other_ssRNA_positive_strand_viruses, Other_Viruses, Papillomaviridae, 
+         Phycodnaviridae, Picornaviridae, Podoviridae, 
+         Polydnaviridae, Polyomaviridae, Potyviridae, Poxviridae, Reoviridae, 
+         Retroviridae, Secoviridae, Siphoviridae, Totiviridae, 
+         Turriviridae,  Tymoviridae, Virgaviridae)
+
+#then use in diversity
+H2 <- vogueB3 %>% 
+  select (Virus, Counts) %>% #WORKED!!!! for cohort
+  group_by(Virus) %>%
+  summarize(TotalCounts = sum(Counts)) %>%
+  select (TotalCounts) #stay in for diversity,can remove to see bac
+B <- diversity(H2)
+B <- as.data.frame(B)
+View(B)
+
+#headers
+B <- dplyr::rename(B, Vogue1B = B) #column header
+
+####################
+#1B2
+#move species into headers, and participants into rows
+rownames(vogue1B2) <- vogue1B2[,1]
+vogue1B2[,1] <- NULL
+vogue1B2b <- as.data.frame(t(vogue1B2))
+
+#first need to make new table with total counts for each bacterial species
+#bac counts
+vogue1B2c <-
+  gather(vogue1B2b, key = 'Virus', value = 'Counts', Adenoviridae, 
+         Alloherpesviridae, Alphaflexiviridae, Anelloviridae, Arteriviridae, 
+         Ascoviridae, Baculoviridae, Bicaudaviridae, Caliciviridae, 
+         Caudovirales, Chrysoviridae, Circoviridae, Flaviviridae, 
+         Herpesviridae, Iridoviridae, Lipothrixviridae, Luteoviridae,  
+         Mimiviridae, Myoviridae, Nimaviridae, Nudiviridae, Other_dsDNA_viruses, 
+         Other_Phages, Other_Viruses, Papillomaviridae, 
+         Parvoviridae, Phycodnaviridae, Picornaviridae, Podoviridae, 
+         Polydnaviridae, Polyomaviridae, Poxviridae, Reoviridae, 
+         Retroviridae, Siphoviridae)
+
+#then use in diversity
+H2 <- vogue1B2c %>% 
+  select (Virus, Counts) %>% #WORKED!!!! for cohort
+  group_by(Virus) %>%
+  summarize(TotalCounts = sum(Counts)) %>%
+  select (TotalCounts) #stay in for diversity,can remove to see bac
+B2 <- diversity(H2)
+B2 <- as.data.frame(B2)
+View(B2)
+
+#headers
+B2 <- dplyr::rename(B2, Vogue1B2 = B2) #column header
+
+#join three cohorts together
+total <- cbind(F2,B,B2)
+
+#write data to file (altered headings and called back)
+# write.table(total, "cohort_shannonsdiversity.csv", sep = ",", row.names = FALSE, quote = FALSE)
+
+##################################################################################
+#Pielous cohort
+# want to sum up all bacteria in one row, with bacteria as columns
+# can then use this in specnumber() and then pielou for cohort
+J2 <- F2/log(specnumber(H2, MARGIN = 2)) #not working for entire cohort
+#NOV-12-2015: fixed above code; margin set to 2; finds frequencies of species
+#specnumber want number of species and we can manually enter 21 to get J2
+#fixed it with below code, and can be used for diversity
+View(J2)
+
+#1A
+
+
+#1B
+
+#1B2
