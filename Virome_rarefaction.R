@@ -66,7 +66,7 @@ rarecurve(vogueA, step = 27, sample = min(rowSums(vogueA)),
           label = FALSE, col = col, xlim=c(0,1100000), lwd = 2, cex.lab=1.5)
 
 legend(x=0,y=35,legend=paste(c("52", "59", "61", "62", "64", "65", "68", "69", "70", 
-                               "71", "74", "75", "76", "77", "78", "79", "81", 
+                               "71", "74", "75", "76", "77", "78", "81", 
                                "84", "85", "92", "101", "106")),
        pch=16, col = col,
        bty="n",ncol=11,cex=1,
@@ -75,11 +75,68 @@ legend(x=0,y=35,legend=paste(c("52", "59", "61", "62", "64", "65", "68", "69", "
 #xpd:put legend outside of plot, text.width:space between points
 #y.intersp:space between rows, ncol:number of columns, x&y:coord of legend position
 
+###############
+#1B
+rownames(vogueB) <- vogueB[,1]
+vogueB[,1] <- NULL
+vogueB <- as.data.frame(t(vogueB))
 
+#colours for individuals
+col <- c('deepskyblue3', 'cornflowerblue', 'deepskyblue', 'green3', 
+         'forestgreen', 'palegreen', 'green', 'darkgoldenrod1', 
+         'purple', 'mediumorchid2', 'plum', 'firebrick', 'yellow', 'firebrick1', 
+         'gray33', 'gray', 'mediumvioletred', 'black', 'olivedrab2', 
+         'orange3', 'tomato', 'lightsalmon', 'slateblue', 'turquoise', 
+         'lavender', 'rosybrown2', 'deeppink')
 
+#adding legend
+par(mar=c(5,6,7,2)) #and making space for it; alter margins
 
+rarecurve(vogueB, step = 27, sample = min(rowSums(vogueB)), 
+          xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
+          label = FALSE, col = col, xlim=c(0,25000), lwd = 2, cex.lab=1.5) 
 
+rarecurve(vogueB, step = 27, sample = min(rowSums(vogueB)), 
+          xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
+          label = FALSE, col = col, xlim=c(0,1100000), lwd = 2, cex.lab=1.5)
 
+legend(x=0,y=34,legend=paste(c("1", "3", "4", "5", "6", "8", "9", "11", "12", 
+                               "13", "15", "17", "21", "26", "27", "32", 
+                               "34", "36", "37", "38", "40", "43", "48", "51", "52")),
+       pch=16, col = col,
+       bty="n",ncol=12,cex=1,
+       pt.cex=2,xpd=TRUE, text.width = 1, y.intersp = 0.2)
+
+###################
+#1B2
+#want rownames to be participants
+rownames(vogue1B2) <- vogue1B2[,1]
+vogue1B2[,1] <- NULL
+vogue1B2 <- as.data.frame(t(vogue1B2))
+
+#colours for individuals
+col <- c('deepskyblue3', 'green3', 'darkgoldenrod1', 'purple', 'firebrick', 'yellow', 
+         'gray', 'black')
+
+####################################
+#adding legend
+par(mar=c(5,6,7,2)) #and making space for it; alter margins
+
+rarecurve(vogue1B2, step = 27, sample = min(rowSums(vogue1B2)), 
+          xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
+          label = FALSE, col = col, xlim=c(0,3000), lwd = 2, cex.lab=1.5) 
+
+rarecurve(vogue1B2, step = 27, sample = min(rowSums(vogue1B2)), 
+          xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
+          label = FALSE, col = col, xlim=c(0,105000), lwd = 2, cex.lab=1.5)
+
+legend(x=0,y=28,legend=paste(c("1", "6", "7", "8", "9", "10", "11", "12", "15")),
+       pch=16, col = col,
+       bty="n",ncol=11,cex=1,
+       pt.cex=2,xpd=TRUE, text.width = 1, y.intersp = 0.2)
+
+###############################################################################################
+###############################################################################################
 
 #to calculate slope of rarecurve (derivatibe of rarefy) at given sample size
 #sample size, the row sum for each participant (No this creates slope of zero)
