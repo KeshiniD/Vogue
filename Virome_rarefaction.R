@@ -151,17 +151,52 @@ slope <- rareslope(viral, rowSums(viral)) #result is zero
 #looks at diagonal results which this case is relevant results for each participant
 diag(slope) 
 
+###################################################################################
+#call for data
+vogueA <- read.csv("DNA_RNA_phage_viral_family_1A_v2.csv")
+vogueB <- read.csv("DNA_RNA_phage_viral_family_1B_v2.csv")
+vogue1B2 <- read.csv("DNA_RNA_phage_viral_family_1B2_v2.csv")
+
+#remove extra column
+vogueA$X <- NULL
+vogueB$X <- NULL
+vogue1B2$X <- NULL
+
+#Na to zero
+vogueA[is.na(vogueA)] <- 0
+vogueB[is.na(vogueB)] <- 0
+vogue1B2[is.na(vogue1B2)] <- 0
+
+#want rownames to be participants
+rownames(vogueA) <- vogueA[,1]
+vogueA[,1] <- NULL
+vogueA <- as.data.frame(t(vogueA))
+
+rownames(vogueB) <- vogueB[,1]
+vogueB[,1] <- NULL
+vogueB <- as.data.frame(t(vogueB))
+
+rownames(vogue1B2) <- vogue1B2[,1]
+vogue1B2[,1] <- NULL
+vogue1B2 <- as.data.frame(t(vogue1B2))
+
+#################################################
+#1A: rarefaction slopes
+slope <- rareslope(vogueA, rowSums(vogueA)) #result is zero
+#looks at diagonal results which this case is relevant results for each participant
+diag(slope) 
+
 #sample size = total reads minus 1
-slope1 <- rareslope(viral, (rowSums(viral)-1))
+slope1 <- rareslope(vogueA, (rowSums(vogueA)-1))
 diag(slope1)
 #sample size = total reads minus 5
-slope5 <- rareslope(viral, (rowSums(viral)-5))
+slope5 <- rareslope(vogueA, (rowSums(vogueA)-5))
 diag(slope5)
 #sample size = total reads minus 10
-slope10 <- rareslope(viral, (rowSums(viral)-10))
+slope10 <- rareslope(vogueA, (rowSums(vogueA)-10))
 diag(slope10)
 #sample size = total reads minus 100
-slope100 <- rareslope(viral, (rowSums(viral)-100))
+slope100 <- rareslope(vogueA, (rowSums(vogueA)-100))
 diag(slope100)
 
 #make into data.frame, merge, and write to file
@@ -174,34 +209,64 @@ z <- join(slope1_df, slope5_df, type = "full")
 zz <- join(slope10_df, z, type = "full")
 zzz <- join(slope100_df, zz, type = "full")
 
-#write.csv(zzz, "rareslope_virome.csv") #edit made to the excel document
+# write.csv(zzz, "rareslope_virome_1A.csv") #edit made to the excel document
+##################################################################################
+#1B: rarefaction slopes
+slope <- rareslope(vogueB, rowSums(vogueB)) #result is zero
+#looks at diagonal results which this case is relevant results for each participant
+diag(slope) 
 
-#############
-#Aug-5-16
-#adding legend
-par(mar=c(5,6,7,2)) #and making space for it; alter margins
+#sample size = total reads minus 1
+slope1 <- rareslope(vogueB, (rowSums(vogueB)-1))
+diag(slope1)
+#sample size = total reads minus 5
+slope5 <- rareslope(vogueB, (rowSums(vogueB)-5))
+diag(slope5)
+#sample size = total reads minus 10
+slope10 <- rareslope(vogueB, (rowSums(vogueB)-10))
+diag(slope10)
+#sample size = total reads minus 100
+slope100 <- rareslope(vogueB, (rowSums(vogueB)-100))
+diag(slope100)
 
-rarecurve(viral, step = 27, sample = min(rowSums(viral)), 
-          xlab = "Sequence Read Counts", ylab = "Number of Different Viral Species", 
-          label = FALSE, col = col, xlim=c(0,8500), lwd = 2, cex.lab=1.5) 
+#make into data.frame, merge, and write to file
+slope1_df <- data.frame(diag(slope1))
+slope5_df <- data.frame(diag(slope5))
+slope10_df <- data.frame(diag(slope10))
+slope100_df <- data.frame(diag(slope100))
 
-rarecurve(viral, step = 27, sample = min(rowSums(viral)), 
-          xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
-          label = FALSE, col = col, xlim=c(0,17500), lwd = 2, cex.lab=1.5)
+z <- join(slope1_df, slope5_df, type = "full")
+zz <- join(slope10_df, z, type = "full")
+zzz <- join(slope100_df, zz, type = "full")
 
-legend(x=0,y=30,legend=paste(c("A_52", "A_59", "A_61", "A_62", "A_64", "A_65", 
-                               "A_68", "A_69", "A_70", "A_71", "A_74", "A_75", 
-                               "A_76", "A_77", "A_78", "A_81", "A_84", "A_85", 
-                               "A_92", "A_101", "A_106", "B_01", "B_03", "B_04", 
-                               "B_05", "B_06", "B_08", "B_09", "B_11", "B_12", 
-                               "B_13", "B_15", "B_17", "B_21", "B_26", "B_27", 
-                               "B_32", "B_34", "B_36", "B_37", "B_38", "B_40", 
-                               "B_43", "B_48", "B_51", "B_52", "1B2_06", "1B2_07", 
-                               "1B2_08", "1B2_09", "1B2_10", "1B2_11", "1B2_12", 
-                               "1B2_15")),
-       pch=16, col = col,
-       bty="n",ncol=13,cex=1,
-       pt.cex=2,xpd=TRUE, text.width = 1, y.intersp = 0.2)
-#pch:type of symbol, bty?, cex:font size of text, pt.cex:size of points
-#xpd:put legend outside of plot, text.width:space between points
-#y.intersp:space between rows, ncol:number of columns, x&y:coord of legend position
+# write.csv(zzz, "rareslope_virome_1B.csv") #edit made to the excel document
+#####################################################################################
+#1B2: rarefaction slopes
+slope <- rareslope(vogue1B2, rowSums(vogue1B2)) #result is zero
+#looks at diagonal results which this case is relevant results for each participant
+diag(slope) 
+
+#sample size = total reads minus 1
+slope1 <- rareslope(vogue1B2, (rowSums(vogue1B2)-1))
+diag(slope1)
+#sample size = total reads minus 5
+slope5 <- rareslope(vogue1B2, (rowSums(vogue1B2)-5))
+diag(slope5)
+#sample size = total reads minus 10
+slope10 <- rareslope(vogue1B2, (rowSums(vogue1B2)-10))
+diag(slope10)
+#sample size = total reads minus 100
+slope100 <- rareslope(vogue1B2, (rowSums(vogue1B2)-100))
+diag(slope100)
+
+#make into data.frame, merge, and write to file
+slope1_df <- data.frame(diag(slope1))
+slope5_df <- data.frame(diag(slope5))
+slope10_df <- data.frame(diag(slope10))
+slope100_df <- data.frame(diag(slope100))
+
+z <- join(slope1_df, slope5_df, type = "full")
+zz <- join(slope10_df, z, type = "full")
+zzz <- join(slope100_df, zz, type = "full")
+
+# write.csv(zzz, "rareslope_virome_1B2.csv") #edit made to the excel document
