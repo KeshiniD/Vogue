@@ -267,16 +267,14 @@ data <- read.csv("virus_groupings_1B.csv")
 
 #unsuppressed women
 unsup <- data %>%
-  select(Virus_Groups, Vogue1B.01.32, Vogue1B.01.52, Vogue1B.01.43, 
-         Vogue1B.01.11, Vogue1B.01.01, Vogue1B.01.15, Vogue1B.01.37, 
-         Vogue1B.01.05, Vogue1B.01.09, Vogue1B.01.26, Vogue1B.01.36, 
-         Vogue1B.01.48, Vogue1B.01.13, Vogue1B.01.08, Vogue1B.01.04)
+  select(Virus_Groups, Vogue1B.01.11, Vogue1B.01.40, Vogue1B.01.01, Vogue1B.01.43, Vogue1B.01.26, Vogue1B.01.32, Vogue1B.01.12, Vogue1B.01.21, Vogue1B.01.08)
 
 #suppressed women
 sup <- data %>%
-  select(Virus_Groups, Vogue1B.01.03, Vogue1B.01.06, Vogue1B.01.12, 
-         Vogue1B.01.17, Vogue1B.01.21, Vogue1B.01.27, Vogue1B.01.34, 
-         Vogue1B.01.38, Vogue1B.01.40, Vogue1B.01.51)
+  select(Virus_Groups, Vogue1B.01.03, Vogue1B.01.04, Vogue1B.01.05, Vogue1B.01.06, 
+         Vogue1B.01.09, Vogue1B.01.13, Vogue1B.01.15, 
+         Vogue1B.01.17, Vogue1B.01.27, Vogue1B.01.34, Vogue1B.01.36, Vogue1B.01.37, 
+         Vogue1B.01.38, Vogue1B.01.48, Vogue1B.01.51,Vogue1B.01.52)
 
 ####suppressed###
 ###########################
@@ -309,11 +307,11 @@ vmb$Viral_Groups <- factor(vmb$Viral_Groups,
                            levels = abundance_order)
 
 #bar plot with custom colors
-jColors <- c('blue', 'orange', 'green', 'deepskyblue3', 'purple', 
-             'green3', 'black', 'darkgoldenrod1', 'mediumorchid2', 'cornflowerblue', 
-             'lightsalmon', 'forestgreen', 'firebrick1', 'firebrick', 'deeppink', 
-             'plum', 'gray33', 'gray', 'tomato', 'olivedrab2', 'mediumvioletred',
-             'yellow', 'slateblue', 'turquoise')
+jColors <- c('blue', 'orange', 'purple', 'black', 'green', 
+             'lightsalmon', 'green3', 'darkgoldenrod1', 'cornflowerblue', 'forestgreen', 
+             'mediumorchid2', 'deepskyblue3', 'firebrick', 'plum', 'firebrick1', 
+             'gray33', 'gray', 'yellow', 'deeppink', 'olivedrab2',  'turquoise',
+             'tomato', 'mediumvioletred', 'slateblue')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -373,11 +371,11 @@ unsup <- data %>%
          Vogue1B.01.48, Vogue1B.01.13, Vogue1B.01.08, Vogue1B.01.04)
 
 #load Viral Load data
-vl <- read.csv("Vogue1B_VL.csv")
+vl <- read.csv("viromeall_metadata_full.csv")
 
 #omit empty rows and columns
-vl <- vl[c(1:25),]
-vl <- vl[c(1:15),]
+vl <- vl %>% select(study_id, VL..copies.mL..)
+vl <- vl[c(30:54),]
 #rename
 vl2 <- dplyr::rename(vl, Participants = X)
 
