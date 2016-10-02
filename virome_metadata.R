@@ -1067,3 +1067,29 @@ summary(aov(sexp$sexpartner1yr ~ sexp$study_arm))
 # sexp$study_arm  2   2.62   1.311   1.056  0.356
 # Residuals      50  62.10   1.242               
 # 1 observation deleted due to missingness
+
+#####################################################
+#diversity statistics
+#call data
+data <- read.csv("virome_individual_diversity_all.csv")
+data$X <- NULL
+
+#subset for each cohort
+vogueA <- data[c(1:21),]
+vogueB <- data[c(22:46),]
+vogue1B2 <- data[c(47:54),]
+
+#add studyarm
+vogueA$study_arm <- "1A"
+vogue1B2$study_arm <- "1B2"
+vogueB$study_arm <- "1B"
+
+#merge three cohorts together
+total <- join(vogueA, vogueB, type="full")
+total <- join(total, vogue1B2, type="full")
+
+#####################
+summary(aov(total$ShannonsDiversity ~ total$study_arm))
+summary(aov(total$PielousEvenness ~ total$study_arm))
+summary(aov(total$Chao1 ~ total$study_arm))
+summary(aov(total$GoodsCoverage ~ total$study_arm))
