@@ -348,11 +348,11 @@ vmb$Viral_Groups <- factor(vmb$Viral_Groups,
                            levels = abundance_order)
 
 #bar plot with custom colors
-jColors <- c('blue', 'orange', 'purple', 'black', 'lightsalmon', 
-             'green', 'cornflowerblue', 'darkgoldenrod1', 'plum', 'green3', 
-             'forestgreen', 'deepskyblue3', 'mediumorchid2', 'firebrick1', 'gray', 
-             'firebrick', 'gray33', 'deeppink', 'tomato', 'olivedrab2', 'turquoise',
-             'mediumvioletred', 'yellow', 'slateblue')
+jColors <- c('blue', 'orange', 'purple', 'deepskyblue3', 'cornflowerblue', 
+             'black', 'lightsalmon', 'plum', 'green', 'firebrick1', 
+             'deeppink', 'green3', 'forestgreen', 'firebrick', 'mediumorchid2', 
+             'darkgoldenrod1', 'olivedrab2', 'gray', 'mediumvioletred', 'yellow', 
+             'slateblue', 'gray33', 'tomato', 'turquoise')
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Groups)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -360,15 +360,11 @@ ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Grou
 
 #### order based on viral load
 #Dean added to order by factor levels
-#load 1B data
 data <- read.csv("virus_groupings_1B.csv")
 
 #unsuppressed women
 unsup <- data %>%
-  select(Virus_Groups, Vogue1B.01.32, Vogue1B.01.52, Vogue1B.01.43, 
-         Vogue1B.01.11, Vogue1B.01.01, Vogue1B.01.15, Vogue1B.01.37, 
-         Vogue1B.01.05, Vogue1B.01.09, Vogue1B.01.26, Vogue1B.01.36, 
-         Vogue1B.01.48, Vogue1B.01.13, Vogue1B.01.08, Vogue1B.01.04)
+  select(Virus_Groups, Vogue1B.01.11, Vogue1B.01.40, Vogue1B.01.01, Vogue1B.01.43, Vogue1B.01.26, Vogue1B.01.32, Vogue1B.01.12, Vogue1B.01.21, Vogue1B.01.08)
 
 #load Viral Load data
 vl <- read.csv("viromeall_metadata_full.csv")
@@ -376,13 +372,21 @@ vl <- read.csv("viromeall_metadata_full.csv")
 #omit empty rows and columns
 vl <- vl %>% select(study_id, VL..copies.mL..)
 vl <- vl[c(30:54),]
-#rename
-vl2 <- dplyr::rename(vl, Participants = X)
 
-#rename study_ids
-vl2$Participants <-
-  paste0("Vogue1B.0",
-         substring(vl2$Participants, nchar("Vogue1B.")+1))
+rownames(vl) <- vl[,1] #flip dataframe so can select for only unsup women & then flip back
+vl[,1] <- NULL
+vl <- as.data.frame(t(vl))
+
+vl2 <- vl %>%
+  select(Vogue1B.01.11, Vogue1B.01.40, Vogue1B.01.01, Vogue1B.01.43, Vogue1B.01.26, Vogue1B.01.32, Vogue1B.01.12, Vogue1B.01.21, Vogue1B.01.08)
+
+vl2 <- as.data.frame(t(vl2))
+vl2 <- add_rownames(vl2, "Participants")
+
+# #rename study_ids
+# vl2$Participants <-
+#   paste0("Vogue1B.0",
+#          substring(vl2$Participants, nchar("Vogue1B.")+1))
 
 #reorganize dataframe
 rownames(unsup) <- unsup[,1]
@@ -399,7 +403,7 @@ total[is.na(total)] <- 0
 
 #order by factor levels
 total$Participants <- factor(total$Participants, 
-                             levels = total$Participants[order(total$Participants.Sequencing)])
+                             levels = total$Participants[order(total$VL..copies.mL..)])
 
 #bac counts
 data2 <-
@@ -412,7 +416,7 @@ data2 <-
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
-  select(Participants, Viral_Groups, Counts, Participants.Sequencing) %>%
+  select(Participants, Viral_Groups, Counts, VL..copies.mL..) %>%
   mutate(Group.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Participants)
 
