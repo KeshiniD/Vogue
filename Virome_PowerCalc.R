@@ -77,3 +77,14 @@ pwr.chisq.test(df=2,sig.level=0.05, N=54, power=0.8)
 # sig.level = 0.05
 # power = 0.8
 # NOTE: N is the number of observations
+
+#####################
+#using d from 1A/1B2 comparsion, what power do we have to detect these differences
+pwr.chisq.test(w=0.4291349, df=2,sig.level=0.05, N=54)
+# Chi squared power calculation 
+# w = 0.4291349
+# N = 54
+# df = 2
+# sig.level = 0.05
+# power = 0.8131431
+# NOTE: N is the number of observations
