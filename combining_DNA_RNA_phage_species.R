@@ -64,7 +64,7 @@ everyone_3 <- everyone_2[!everyone_2$Viral_Species == "root",]
 #1B
 phageD <- read.csv("Phage__species_DNA_1B.csv")
 vDNA <- read.csv("Viral__species_DNA_1B.csv")
-vRNA <- read.csv("Viral__species_RNA_1B.csv")
+vRNA <- read.csv("Viral_species_RNA_1B.csv")
 
 #omit empty column
 vDNA$X <- NULL
