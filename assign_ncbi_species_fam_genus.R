@@ -285,3 +285,94 @@ vogue1b2b[is.na(vogue1b2b)] <- 0
 # write.csv(vogueA3, "viral_type_1A.csv")
 # write.csv(vogueB3, "viral_type_1B.csv")
 # write.csv(vogue1b2b, "viral_type_1B2.csv")
+
+#######
+#wanted to make groupings but decided to condense family, and add types too
+#viral family to type
+#call data and recode for DNa, RNA and phage
+everyone <- read.csv("DNA_RNA_phage_viral_family_all.csv", stringsAsFactors = FALSE)
+vogueA <- read.csv("DNA_RNA_phage_viral_family_1A.csv", stringsAsFactors = FALSE)
+vogueB <- read.csv("DNA_RNA_phage_viral_family_1B.csv", stringsAsFactors = FALSE)
+vogue1b2 <- read.csv("DNA_RNA_phage_viral_family_1B2.csv", stringsAsFactors = FALSE)
+
+#omit empty column
+everyone$X <- NULL
+vogueA$X <- NULL
+vogueB$X <- NULL
+vogue1b2$X <- NULL
+
+#ref manual
+vref <- read.csv("ref_familyandtype_condensed.csv", header=FALSE, stringsAsFactors = FALSE)
+
+#omit empty rows and columns
+# vref <- vref %>%
+#   select(V1, V2)
+# vref <- vref[c(1:72),]
+
+#recode ncbi code to species
+#recode function
+recoderFunc <- function(data, oldvalue, newvalue) {
+  
+  # convert any factors to characters
+  
+  if (is.factor(data))     data     <- as.character(data)
+  if (is.factor(oldvalue)) oldvalue <- as.character(oldvalue)
+  if (is.factor(newvalue)) newvalue <- as.character(newvalue)
+  
+  # create the return vector
+  
+  newvec <- data
+  
+  # put recoded values into the correct position in the return vector
+  
+  for (i in unique(oldvalue)) newvec[data == i] <- newvalue[oldvalue == i]
+  
+  newvec
+  
+}
+
+#recode dataframes
+#everyone
+everyone2 <- recoderFunc(everyone, vref$V1, vref$V2)
+vogueA2 <- recoderFunc(vogueA, vref$V1, vref$V2)
+vogueB2 <- recoderFunc(vogueB, vref$V1, vref$V2)
+vogue1b2a <- recoderFunc(vogue1b2, vref$V1, vref$V2)
+
+#rename column
+everyone2 <- dplyr::rename(everyone2, Viruses = Viral_Family)
+vogueA2 <- dplyr::rename(vogueA2, Viruses = Viral_Family)
+vogueB2 <- dplyr::rename(vogueB2, Viruses = Viral_Family)
+vogue1b2a <- dplyr::rename(vogue1b2a, Viruses = Viral_Family)
+
+#gathering like types                    
+everyone3 <- ddply(everyone2,c("Viruses"),numcolwise(sum)) #includes all columns
+vogueA3 <- ddply(vogueA2,c("Viruses"),numcolwise(sum)) #includes all columns
+vogueB3 <- ddply(vogueB2,c("Viruses"),numcolwise(sum)) #includes all columns
+vogue1b2b <- ddply(vogue1b2a,c("Viruses"),numcolwise(sum)) #includes all columns
+
+#na to zero
+everyone3[is.na(everyone3)] <- 0
+vogueA3[is.na(vogueA3)] <- 0
+vogueB3[is.na(vogueB3)] <- 0
+vogue1b2b[is.na(vogue1b2b)] <- 0
+
+#write to file
+# write.csv(everyone3, "viral_groups_all.csv")
+# write.csv(vogueA3, "viral_groups_1A.csv")
+# write.csv(vogueB3, "viral_groups_1B.csv")
+# write.csv(vogue1b2b, "viral_groups_1B2.csv")
+
+#####
+#same data set but minus papillomaviridae
+
+everyone4 <- everyone3[!everyone3$Viruses == "Papillomaviridae",]
+vogueA4 <- vogueA3[!vogueA3$Viruses == "Papillomaviridae",]
+vogueB4 <- vogueB3[!vogueB3$Viruses == "Papillomaviridae",]
+vogue1b2c <- vogue1b2b[!vogue1b2b$Viruses == "Papillomaviridae",]
+
+
+#write to file
+# write.csv(everyone4, "viral_groups_minus_papillomaviridae_all.csv")
+# write.csv(vogueA4, "viral_groups_minus_papillomaviridae_1A.csv")
+# write.csv(vogueB4, "viral_groups_minus_papillomaviridae_1B.csv")
+# write.csv(vogue1b2c, "viral_groups_minus_papillomaviridae_1B2.csv")
