@@ -210,3 +210,6 @@ vogue1b2c <- vogue1b2b[!vogue1b2b$Viral_Family == "1",]
 # write.csv(vogueA4, "DNA_RNA_phage_viral_family_1A.csv")
 # write.csv(vogueB4, "DNA_RNA_phage_viral_family_1B.csv")
 # write.csv(vogue1b2c, "DNA_RNA_phage_viral_family_1B2.csv")
+
+#########################
+#viral family to type
