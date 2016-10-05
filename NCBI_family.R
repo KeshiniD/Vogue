@@ -1,4 +1,4 @@
-files <- list.files(pattern = ".csv$")
+files <- list.files(pattern = "viral_ncbi_code.csv$")
 
 invisible <- lapply(files, function(file) {
   if (grepl("_ncbi_family.csv", file) || grepl("_ncbi.csv", file)) {

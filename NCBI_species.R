@@ -1,7 +1,7 @@
 files <- list.files(pattern = "viral_ncbi_code.csv$")
 
 invisible <- lapply(files, function(file) {
-  if (grepl("_genus.csv", file) || grepl("_ncbi.csv", file)) {
+  if (grepl("_classification_species.csv", file) || grepl("_ncbi.csv", file)) {
     return()
   }
   message("doing ", file)
@@ -23,7 +23,7 @@ invisible <- lapply(files, function(file) {
       if(!is.data.frame(x)) {
         -99
       } else {
-        idx <- which(x$rank == "genus")
+        idx <- which(x$rank == "species")
         if (length(idx) == 0) {
           -99
         } else {
@@ -49,7 +49,7 @@ invisible <- lapply(files, function(file) {
   
   merged <- merge(ids, result, all.x = TRUE)
   
-  outfile <- paste0(filename, "_genus.csv")
+  outfile <- paste0(filename, "_classification_species.csv")
   write.table(merged, outfile, quote = FALSE, row.names = FALSE, 
               col.names = FALSE, sep = ",")
 })
