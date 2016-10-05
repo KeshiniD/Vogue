@@ -23,7 +23,7 @@ library(gplots)
 # OTUs are ROWS and SAMPLES are COLUMNS.
 # Frequencies reads must be proporational data (%).
 
-data <- read.csv("DNA_RNA_phage_viral_species_all.csv")
+data <- read.csv("DNA_RNA_phage_viral_species_minus_papillomaviridae_all.csv")
 data[is.na(data)] <- 0
 data$X <- NULL
 row.names(data) <- data[, 1]
