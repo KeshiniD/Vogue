@@ -166,7 +166,7 @@ ald.edustudy_arm <- aldex(reads = viral, conditions = cond.edustudy_arm, test = 
 ##################################
 #family
 #Aldex for DNA_RNA_phage_all
-viral2 <- read.csv("DNA_RNA_phage_viral_family_all_v2.csv")
+viral2 <- read.csv("DNA_RNA_phage_viral_family_all.csv")
 
 # set the rownames as the taxa names
 viral2$X.1 <- NULL
@@ -180,7 +180,7 @@ viral2 <- viral2[,order(colnames(viral2))]
 #type
 #family
 #Aldex for DNA_RNA_phage_all
-viral2 <- read.csv("virus_types_all.csv")
+viral2 <- read.csv("viral_type_all.csv")
 
 # set the rownames as the taxa names
 viral2$X <- NULL
@@ -193,7 +193,7 @@ viral2 <- viral2[,order(colnames(viral2))]
 #groupings
 #family
 #Aldex for DNA_RNA_phage_all
-viral2 <- read.csv("virus_groupings_all.csv")
+viral2 <- read.csv("viral_groups_all.csv")
 
 # set the rownames as the taxa names
 viral2$X <- NULL

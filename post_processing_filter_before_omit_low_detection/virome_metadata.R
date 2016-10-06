@@ -1074,6 +1074,9 @@ summary(aov(sexp$sexpartner1yr ~ sexp$study_arm))
 data <- read.csv("virome_individual_diversity_all.csv")
 data$X <- NULL
 
+#order Participants alphbetically
+data <- data[order(data$Participants),]
+
 #subset for each cohort
 vogueA <- data[c(1:21),]
 vogueB <- data[c(22:46),]

@@ -1,4 +1,4 @@
-#plot, and order based on CSTs (hetero, iners, and lacto)
+#plot
 #call data
 everyone <- read.csv("HPV_HSV_HIV_all.csv")
 vogueA <- read.csv("HPV_HSV_HIV_1A.csv")
@@ -13,63 +13,36 @@ vogue1b2 <- read.csv("HPV_HSV_HIV_1B2.csv")
 everyone <- read.csv("HPV_HSV_HIV_all.csv")
 
 #collapse like species
-everyone <- ddply(everyone,c("Viral_Species"),numcolwise(sum)) 
+everyone <- ddply(everyone,c("Viral_Species"),numcolwise(sum)) #includes all columns
 
 rownames(everyone) <- everyone[,1]
 everyone[,1] <- NULL
-everyone <- as.data.frame(t(everyone))
+everyone <- as.everyone.frame(t(everyone))
 everyone[is.na(everyone)] <- 0
 everyone <- add_rownames(everyone, "Participants")
 
-#load metadata
-meta <- read.csv("viromeall_metadata_full.csv")
-
-#reassign CSTs to L: Lacto CST, H: Hetero CST, I: iners
-meta$CST.cat[meta$CST=='I' | meta$CST == 'II' | meta$CST == "V"] <- 'L'
-meta$CST.cat[meta$CST=='III'] <- 'I'
-meta$CST.cat[meta$CST=='IVA' | meta$CST == 'IVC' | meta$CST == "IVD"] <- 'H'
-
-#select sutdy_id and CST
-meta <- meta %>% 
-  select(study_id, CST, CST.cat)
-
-#rename
-meta <- dplyr::rename(meta, Participants = study_id)
-
-#merge CST data and virome data
-total <- join(data, meta, type="full")
-
-#remove NA and replace with zero
-total[is.na(total)] <- 0
-
-#order by factor levels
-total$Participants <- factor(total$Participants, 
-                             levels = total$Participants[order(total$CST.cat)])
-
 #bac counts
-data2 <-
-  gather(total, key = 'Viruses', value = 'Counts', Papillomaviridae, 
-         Siphoviridae, Other_Viruses, Other_Phages, Myoviridae, Phycodnaviridae, 
-         Podoviridae, Herpesviridae, Other_dsDNA_Viruses, Adenoviridae, Polydnaviridae, 
-         Baculoviridae, Polyomaviridae, Picornaviridae, Retroviridae, Other_ssDNA_Viruses, 
-         Anelloviridae, Other_dsRNA_Viruses, Mimiviridae, Other_Positive_ssRNA_Viruses, 
-         Poxviridae, dsDNA_RT, Negative_ssRNA_Viruses) 
+everyone2 <-
+  gather(everyone, key = 'Viral_Family', value = 'Counts', Herpesviridae, Papillomaviridae, 
+         Retroviridae) 
 
-vmb <- tbl_df(data2) %>% # finally got the percentages correct
+vmb <- tbl_df(everyone2) %>% # finally got the percentages correct
   group_by(Participants) %>%
-  select(Participants, Viruses, Counts, CST.cat) %>%
+  select(Participants, Viral_Family, Counts) %>%
   mutate(Group.Percentage = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Participants)
 
-#bar plot with custom colors
-jColors <- c('deepskyblue3', 'gray33', 'deeppink', 'tomato', 
-             'purple', 'firebrick', 'forestgreen', 'slateblue',
-             'darkgoldenrod1', 'yellow', 'olivedrab2', 'gray',
-             'lightsalmon', 'mediumorchid2', 'blue', 'turquoise', 
-             'mediumvioletred', 'green3', 'plum', 'orange', 
-             'firebrick1', 'black', 'green')
+#order viral groups by abundance
+abundance_order <- vmb %>% group_by(Viral_Family) %>% summarize(count = mean(Group.Percentage)) %>% arrange(desc(count)) %>% .[['Viral_Family']]
 
-ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) + 
+#Dean added to order by factor levels
+vmb$Viral_Family <- factor(vmb$Viral_Family, 
+                           levels = abundance_order)
+
+#bar plot with custom colors
+jColors <- c('purple', 'blue', 'darkgoldenrod1')
+
+ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viral_Family)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
   ylab("Relative Abundance (%)") 
 
