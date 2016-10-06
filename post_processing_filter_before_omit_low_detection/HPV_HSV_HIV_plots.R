@@ -1,16 +1,18 @@
+library(colourpicker)
+
 #plot, and order based on CSTs (hetero, iners, and lacto)
 #call data
-everyone <- read.csv("HPV_HSV_HIV_all.csv")
-vogueA <- read.csv("HPV_HSV_HIV_1A.csv")
-vogueB <- read.csv("HPV_HSV_HIV_1B.csv")
-vogue1b2 <- read.csv("HPV_HSV_HIV_1B2.csv")
+everyone <- read.csv("HPV_HSV_HIV_all_v2.csv")
+vogueA <- read.csv("HPV_HSV_HIV_1A_v2.csv")
+vogueB <- read.csv("HPV_HSV_HIV_1B_v2.csv")
+vogue1b2 <- read.csv("HPV_HSV_HIV_1B2_v2.csv")
 
 #to order alphabetically
 # a <- a[order(a$Viral_Species),]
 
 ##################################################
 #all
-everyone <- read.csv("HPV_HSV_HIV_all.csv")
+everyone <- read.csv("HPV_HSV_HIV_all_v2.csv")
 
 #collapse like species
 everyone <- ddply(everyone,c("Viral_Species"),numcolwise(sum)) 
@@ -50,11 +52,8 @@ total$Participants <- factor(total$Participants,
 data2 <-
   gather(total, key = 'Viruses', value = 'Counts', Alphapapillomavirus, 
          Betapapillomavirus, Gammapapillomavirus, Other_Human_Papillomavirus, 
-         Other_Papillomaviridae, Human_Immunodeficiency_Virus_1, 
-         Human_Herpesvirus_1, Human_Herpesvirus_2, Human_Herpesvirus_4, 
-         Lymphocryptovirus, Human_Herpesvirus_5, Cytomegalovirus, 
-         Human_Herpesvirus_6, Human_Herpesvirus_6A, Human_Herpesvirus_6B, 
-         Roseolovirus, Human_Herpesvirus_8, Other_Herpesviridae) 
+         Human_Immunodeficiency_Virus_1, Simplexvirus, Lymphocryptovirus, 
+         Cytomegalovirus, Roseolovirus, Rhadinovirus) 
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
@@ -63,20 +62,19 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   arrange(Participants)
 
 #bar plot with custom colors
-jColors <- c('purple4', 'purple', 'deeppink', 'mediumorchid2', 
-             'firebrick', 'firebrick1', 'green', 'pink',
-             'darkgoldenrod1', 'orange','yellow', 'blue', 'red',
-             'forestgreen', 'turquoise', 'plum', 
-             'mediumvioletred', 'yellow4')
+jColors <- c("#530994", "#9419E0", "#006400", "#9F79EE", "#FFFF00", "#00CD00", 
+             "#D8BFD8", "#4EEE94", "#008B8B", "#EE1289")
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
   ylab("Relative Abundance (%)") 
 
+# plotHelper(initCols = c("red", "blue", "green"))
+
 ##########################
 #fam
 
-everyone <- read.csv("HPV_HSV_HIV_all.csv")
+everyone <- read.csv("HPV_HSV_HIV_all_v2.csv")
 
 #collapse like species
 everyone <- ddply(everyone,c("Viral_Family"),numcolwise(sum)) 
@@ -123,7 +121,7 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   arrange(Participants)
 
 #bar plot with custom colors
-jColors <- c('purple', 'green', 'orange')
+jColors <- c("#00CD00", "#530994", "#FFFF00")
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -131,7 +129,7 @@ ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) 
 
 ##########################################################################
 ####1A
-vogueA <- read.csv("HPV_HSV_HIV_1A.csv")
+vogueA <- read.csv("HPV_HSV_HIV_1A_v2.csv")
 
 #collapse like species
 vogueA <- ddply(vogueA,c("Viral_Species"),numcolwise(sum)) 
@@ -174,11 +172,8 @@ total$Participants <- factor(total$Participants,
 data2 <-
   gather(total, key = 'Viruses', value = 'Counts', Alphapapillomavirus, 
          Betapapillomavirus, Gammapapillomavirus, Other_Human_Papillomavirus, 
-         Other_Papillomaviridae, Human_Immunodeficiency_Virus_1, 
-         Human_Herpesvirus_4, 
-         Lymphocryptovirus, Human_Herpesvirus_5,  
-         Human_Herpesvirus_6, Human_Herpesvirus_6A, Human_Herpesvirus_6B, 
-         Human_Herpesvirus_8) 
+         Human_Immunodeficiency_Virus_1, Lymphocryptovirus, 
+         Cytomegalovirus, Roseolovirus, Rhadinovirus) 
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
@@ -187,11 +182,8 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   arrange(Participants)
 
 #bar plot with custom colors
-jColors <- c('purple4', 'purple', 'deeppink', 'mediumorchid2', 
-             'firebrick', 'firebrick1', 'green', 'pink',
-             'darkgoldenrod1', 'orange','yellow', 'blue', 'red',
-             'forestgreen', 'turquoise', 'plum', 
-             'mediumvioletred', 'yellow4')
+jColors <- c("#530994", "#9419E0", "#006400", "#9F79EE", "#FFFF00", "#00CD00", 
+             "#D8BFD8", "#4EEE94", "#008B8B", "#EE1289")
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -199,7 +191,7 @@ ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) 
 
 ##########################
 #fam
-everyone <- read.csv("HPV_HSV_HIV_1A.csv")
+everyone <- read.csv("HPV_HSV_HIV_1A_v2.csv")
 
 #collapse like species
 everyone <- ddply(everyone,c("Viral_Family"),numcolwise(sum)) 
@@ -249,7 +241,7 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   arrange(Participants)
 
 #bar plot with custom colors
-jColors <- c('purple', 'green', 'orange')
+jColors <- c("#00CD00", "#530994", "#FFFF00")
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -257,7 +249,7 @@ ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) 
 
 ###################
 #1B
-vogueB <- read.csv("HPV_HSV_HIV_1B.csv")
+vogueB <- read.csv("HPV_HSV_HIV_1B_v2.csv")
 
 #collapse like species
 vogueB <- ddply(vogueB,c("Viral_Species"),numcolwise(sum)) 
@@ -300,11 +292,8 @@ total$Participants <- factor(total$Participants,
 data2 <-
   gather(total, key = 'Viruses', value = 'Counts', Alphapapillomavirus, 
          Betapapillomavirus, Gammapapillomavirus, Other_Human_Papillomavirus, 
-         Other_Papillomaviridae, Human_Immunodeficiency_Virus_1, 
-         Human_Herpesvirus_1, Human_Herpesvirus_2, Human_Herpesvirus_4, 
-         Lymphocryptovirus, Human_Herpesvirus_5, Cytomegalovirus, 
-         Human_Herpesvirus_6A, Human_Herpesvirus_6B, 
-         Roseolovirus, Human_Herpesvirus_8, Other_Herpesviridae) 
+         Human_Immunodeficiency_Virus_1, Simplexvirus, Lymphocryptovirus, 
+         Cytomegalovirus, Roseolovirus, Rhadinovirus) 
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
@@ -313,11 +302,8 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   arrange(Participants)
 
 #bar plot with custom colors
-jColors <- c('purple4', 'purple', 'deeppink', 'mediumorchid2', 
-             'firebrick', 'firebrick1', 'green', 'pink',
-             'darkgoldenrod1', 'orange','yellow', 'blue', 'red',
-             'forestgreen', 'turquoise', 'plum', 
-             'mediumvioletred', 'yellow4')
+jColors <- c("#530994", "#9419E0", "#006400", "#9F79EE", "#FFFF00", "#00CD00", 
+             "#D8BFD8", "#4EEE94", "#008B8B", "#EE1289")
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -326,7 +312,7 @@ ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) 
 ##########################
 #fam
 
-vogueB <- read.csv("HPV_HSV_HIV_1B.csv")
+vogueB <- read.csv("HPV_HSV_HIV_1B_v2.csv")
 
 #collapse like species
 vogueB <- ddply(vogueB,c("Viral_Family"),numcolwise(sum)) 
@@ -376,7 +362,7 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   arrange(Participants)
 
 #bar plot with custom colors
-jColors <- c('purple', 'green', 'orange')
+jColors <- c("#00CD00", "#530994", "#FFFF00")
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -384,7 +370,7 @@ ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) 
 
 #############################################
 #1B2
-vogue1b2 <- read.csv("HPV_HSV_HIV_1B2.csv")
+vogue1b2 <- read.csv("HPV_HSV_HIV_1B2_v2.csv")
 
 #collapse like species
 vogue1b2 <- ddply(vogue1b2,c("Viral_Species"),numcolwise(sum)) 
@@ -427,9 +413,7 @@ total$Participants <- factor(total$Participants,
 data2 <-
   gather(total, key = 'Viruses', value = 'Counts', Alphapapillomavirus, 
          Betapapillomavirus, Gammapapillomavirus, Other_Human_Papillomavirus, 
-         Other_Papillomaviridae, Human_Herpesvirus_4, 
-         Lymphocryptovirus, Human_Herpesvirus_5, 
-         Human_Herpesvirus_6A) 
+         Lymphocryptovirus, Cytomegalovirus, Roseolovirus) 
 
 vmb <- tbl_df(data2) %>% # finally got the percentages correct
   group_by(Participants) %>%
@@ -438,11 +422,8 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   arrange(Participants)
 
 #bar plot with custom colors
-jColors <- c('purple4', 'purple', 'deeppink', 'mediumorchid2', 
-             'firebrick', 'firebrick1', 'green', 'pink',
-             'darkgoldenrod1', 'orange','yellow', 'blue', 'red',
-             'forestgreen', 'turquoise', 'plum', 
-             'mediumvioletred', 'yellow4')
+jColors <- c("#530994", "#9419E0", "#006400", "#9F79EE", "#00CD00", 
+             "#D8BFD8", "#008B8B")
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
@@ -450,7 +431,7 @@ ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) 
 
 ##########################
 #fam
-vogue1b2 <- read.csv("HPV_HSV_HIV_1B2.csv")
+vogue1b2 <- read.csv("HPV_HSV_HIV_1B2_v2.csv")
 
 #collapse like species
 vogue1b2 <- ddply(vogue1b2,c("Viral_Family"),numcolwise(sum)) 
@@ -501,7 +482,7 @@ vmb <- tbl_df(data2) %>% # finally got the percentages correct
   arrange(Participants)
 
 #bar plot with custom colors
-jColors <- c('purple', 'green', 'orange')
+jColors <- c("#00CD00", "#530994", "#FFFF00")
 
 ggplot(data = vmb, aes(x = Participants, y = Group.Percentage, fill = Viruses)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) +
