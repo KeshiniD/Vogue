@@ -130,7 +130,7 @@ rarecurve(vogue1B2, step = 27, sample = min(rowSums(vogue1B2)),
           xlab = "Sequence Read Counts", ylab = "Number of Different Bacterial Species", 
           label = FALSE, col = col, xlim=c(0,105000), lwd = 2, cex.lab=1.5)
 
-legend(x=0,y=28,legend=paste(c("1", "6", "7", "8", "9", "10", "11", "12", "15")),
+legend(x=0,y=150,legend=paste(c("1", "6", "7", "8", "9", "10", "11", "12", "15")),
        pch=16, col = col,
        bty="n",ncol=11,cex=1,
        pt.cex=2,xpd=TRUE, text.width = 1, y.intersp = 0.2)
@@ -153,9 +153,9 @@ diag(slope)
 
 ###################################################################################
 #call for data
-vogueA <- read.csv("DNA_RNA_phage_viral_family_1A_v2.csv")
-vogueB <- read.csv("DNA_RNA_phage_viral_family_1B_v2.csv")
-vogue1B2 <- read.csv("DNA_RNA_phage_viral_family_1B2_v2.csv")
+vogueA <- read.csv("DNA_RNA_phage_viral_species_1A_v3.csv")
+vogueB <- read.csv("DNA_RNA_phage_viral_species_1B_v3.csv")
+vogue1B2 <- read.csv("DNA_RNA_phage_viral_species_1B2_v3.csv")
 
 #remove extra column
 vogueA$X <- NULL
