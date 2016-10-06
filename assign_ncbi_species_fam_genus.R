@@ -376,3 +376,26 @@ vogue1b2c <- vogue1b2b[!vogue1b2b$Viruses == "Papillomaviridae",]
 # write.csv(vogueA4, "viral_groups_minus_papillomaviridae_1A.csv")
 # write.csv(vogueB4, "viral_groups_minus_papillomaviridae_1B.csv")
 # write.csv(vogue1b2c, "viral_groups_minus_papillomaviridae_1B2.csv")
+
+############################################################################################################################################################
+#NTCs and Positive Controls assign ncbi code to species
+
+#call data
+total <- read.csv("DNA_RNA_phage_viral_species_NTCs_PosCtrl.csv")
+
+taxinfo <- taxize::ncbi_get_taxon_summary(total$Var1, rank="family") #assign number to species; assign to species, family and genus and get same answer
+
+#write taxinfo to file
+# write.csv(taxinfo, "viral_ncbi_classification_NTCs_PosCtrl.csv")
+#Now we know what is in NTCs, Adeno and Entero
+
+#merge with "DNA_RNA_phage_species"
+total2 <- dplyr::rename(total, uid = Var1)
+
+#omit extra column
+total2$X <- NULL
+
+#merge
+total3 <- join(total2, taxinfo, type="full")
+#write to file
+# write.csv(total3, "DNA_RNA_phage_viral_species_NTCs_PosCtrl_v2.csv")
