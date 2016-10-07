@@ -1,0 +1,610 @@
+uid,species
+1,1
+10239,Other Viruses
+10258,Orf virus
+10279,Molluscum contagiosum virus
+10280,Molluscum contagiosum virus
+10292,Other Herpesviridae
+10293,Other Herpesviridae
+10298,Human herpesvirus 1
+10310,Human herpesvirus 2
+10317,Cercopithecine herpesvirus 2
+10320,Bovine herpesvirus 1
+10325,Macacine herpesvirus 1
+10345,Suid herpesvirus 1
+10353,Saimiriine herpesvirus 1
+10358,Other Cytomegalovirus
+10359,Human herpesvirus 5
+10360,Human herpesvirus 5
+10362,Human herpesvirus 5
+10366,Murid herpesvirus 1
+10368,Human herpesvirus 6
+10370,Human herpesvirus 6A
+10371,Equid herpesvirus 5
+10374,Other Herpesviridae
+10375,Other Lymphocryptovirus
+10376,Human herpesvirus 4
+10377,Human herpesvirus 4
+10381,Saimiriine herpesvirus 2
+10397,Tupaiid herpesvirus 1
+10398,Ovine herpesvirus 2
+10407,Hepatitis B virus
+10449,Lymantria dispar multiple nucleopolyhedrovirus
+10454,Spodoptera exigua multiple nucleopolyhedrovirus
+10455,Spodoptera frugiperda multiple nucleopolyhedrovirus
+10456,Spodoptera littoralis nucleopolyhedrovirus
+10479,Thermoproteus tenax virus 1
+10492,Other Ranavirus
+10501,Other Phycodnaviridae
+10508,Other Adenoviridae
+10509,Other Mastadenovirus
+10566,Human papillomavirus
+10570,Alphapapillomavirus 12
+10573,Human papillomavirus type 13
+10576,Pygmy chimpanzee papillomavirus type 1
+10579,Human papillomavirus type 8
+10580,Human papillomavirus type 11
+10585,Human papillomavirus type 31
+10586,Human papillomavirus type 33
+10587,Human papillomavirus type 35
+10588,Human papillomavirus type 39
+10590,Human papillomavirus type 42
+10591,Human papillomavirus type 43
+10593,Human papillomavirus type 45
+10594,Human papillomavirus type 47
+10595,Human papillomavirus type 51
+10596,Human papillomavirus type 56
+10598,Human papillomavirus type 58
+10604,Human papillomavirus type 12
+10605,Human papillomavirus type 14
+10606,Human papillomavirus type 15
+10608,Human papillomavirus type 19
+10611,Human papillomavirus type 30
+10614,Human papillomavirus type 3
+10615,Human papillomavirus type 40
+10618,Human papillomavirus type 52
+10632,Human polyomavirus 2
+10663,Other T4likevirus
+10699,Other Siphoviridae
+10724,Bacillus phage SPP1
+10743,Phage 21
+10744,Other Podoviridae
+10747,Streptococcus phage Cp-1
+10748,Streptococcus phage Cp-1
+11095,Other Flaviviridae
+11103,Hepatitis C virus
+11652,Other Lentivirus
+11676,Human immunodeficiency virus 1
+11723,Simian immunodeficiency virus
+11775,Feline leukemia virus
+11786,Murine leukemia virus
+11976,Rabbit hemorrhagic disease virus
+12059,Other Enterovirus
+12062,Enterovirus B
+12067,Enterovirus B
+12071,Enterovirus B
+12072,Enterovirus B
+12234,Other Tobamovirus
+12242,Tobacco mosaic virus
+12253,Tomato mosaic virus
+12333,Other Phages
+12348,Lactobacillus phage LL-H
+12402,Streptococcus phage EJ-1
+12417,Lactobacillus phage phiadh
+12426,Salmonella phage 5
+28278,Human mastadenovirus D
+28358,Corynebacterium phage BFK20
+28883,Other dsDNA Viruses
+29250,Heliothis zea nudivirus
+31535,Pseudomonas phage D3
+31537,Lactococcus phage c2
+31545,Human mastadenovirus D
+31552,Human papillomavirus type 6
+32604,Human herpesvirus 6B
+33706,Caviid herpesvirus 2
+33769,Lactobacillus phage mv1
+35237,Other dsDNA Viruses
+35238,Mycoplasma phage P1
+35244,Bovine herpesvirus 5
+35265,Porcine mastadenovirus A
+35270,Avian sarcoma virus
+35294,Enterovirus B
+35342,Other ssDNA Viruses
+36352,Human herpesvirus 4
+36355,Pseudaletia unipuncta granulovirus
+37105,Lactobacillus phage JCL1032
+37114,Human papillomavirus type 55
+37115,Human papillomavirus type 59
+37116,Human papillomavirus type 61
+37119,Human papillomavirus type 66
+37120,Human papillomavirus type 67
+37957,Human papillomavirus type 36
+37959,Human papillomavirus type 38
+38018,Other Phages
+39457,Human papillomavirus type 70
+39640,Cotesia congregata bracovirus
+39724,Circoviridae
+40272,Other Roseolovirus
+40539,Human papillomavirus type 50
+40631,Enterobacteria phage N15
+44028,Human papillomavirus type 74
+44088,Canarypox virus
+45101,Enterovirus B
+45240,Human papillomavirus type 68
+45455,Macacine herpesvirus 4
+45617,Human endogenous retrovirus K
+46021,Paramecium bursaria Chlorella virus NY2A
+46924,Human mastadenovirus D
+46938,Human mastadenovirus D
+47929,Macacine herpesvirus 3
+50292,Cercopithecine herpesvirus 5
+51033,Human papillomavirus type 73
+51368,Other dsDNA Viruses
+51369,Lactobacillus phage A2
+52979,Lactobacillus phage phig1e
+59241,Streptococcus phage Dp-1
+66261,Common chimpanzee papillomavirus 1
+68887,Torque teno virus
+73422,Streptococcus phage TP-J34
+78219,Mamestra brassicae multiple nucleopolyhedrovirus
+79700,Murid herpesvirus 2
+79890,Bovine herpesvirus 1
+82830,Human herpesvirus 4
+85154,Streptococcus phage O1205
+85618,Ateline herpesvirus 3
+90410,Streptococcus phage DT1
+93678,TTV-like mini virus
+102294,Other dsDNA Viruses
+104664,Indian citrus ringspot virus
+106331,Callitrichine herpesvirus 3
+106332,Papiine herpesvirus 1
+108098,Human mastadenovirus B
+110456,Other T7likevirus
+111469,Human herpesvirus 8
+112023,Streptococcus phage 7201
+120381,Human papillomavirus type 87
+120686,Human papillomavirus type 71
+128706,Other dsDNA Viruses
+129724,Human papillomavirus type 82
+129726,Pseudocowpox virus
+129861,Phage Gifsy-1
+129951,Human mastadenovirus C
+130310,Human mastadenovirus D
+136084,Roseobacter phage SIO1
+136966,SEN virus
+137443,Macropodid herpesvirus 1
+138184,Alcelaphine herpesvirus 2
+138949,Enterovirus B
+139871,Lactobacillus prophage Lj771
+146015,Elephantid herpesvirus 1
+150546,Human papillomavirus type 84
+151340,Papillomaviridae
+151599,Pseudomonas phage B3
+153135,Other Gammaretrovirus
+157924,Streptococcus phage SM1
+158683,Diadromus pulchellus ascovirus 4a
+161494,Antheraea pernyi nucleopolyhedrovirus
+170325,Canid herpesvirus 1
+171370,Human papillomavirus type 86
+172667,Yersinia phage PY54
+173087,Human papillomavirus types
+180230,Cyprinid herpesvirus 3
+181083,Other Chlorovirus
+181212,Emiliania huxleyi virus 203
+181216,Emiliania huxleyi virus 84
+182851,Saccharomonospora phage PIS 136
+186616,Other Viruses
+186617,uncultured marine virus
+186764,Other L5likevirus
+187397,Emiliania huxleyi virus 99B1
+192584,Phthorimaea operculella granulovirus
+196894,Other Siphoviridae
+196895,Other Podoviridae
+196896,Other Myoviridae
+202250,Human papillomavirus type 89
+202252,Human papillomavirus type 91
+212035,Acanthamoeba polyphaga mimivirus
+216370,Human mastadenovirus D
+217733,Ambystoma tigrinum virus
+230871,Streptococcus phage C1
+235201,Lactobacillus phage phijl1
+236244,Podovirus GOM
+242527,Burkholderia phage Bcep22
+251749,Phaeocystis globosa virus
+255431,Klebsiella phage phiKO2
+259901,Staphylococcus phage 77
+261726,Vibrio phage VP882
+265522,Hyposoter fugitivus ichnovirus
+278008,Other Phages
+279006,Acinetobacter phage 133
+279280,Burkholderia phage BcepC6B
+294382,Bacillus phage BCJA1c
+298338,Lactobacillus phage LP65
+306323,Streptococcus phage 2972
+306552,Other Phages
+307454,Spodoptera frugiperda granulovirus
+307467,Euproctis pseudoconspersa nucleopolyhedrovirus
+315953,Acidianus two-tailed virus
+317878,Cyprinid herpesvirus 2
+318569,Enterovirus B
+320836,Staphylococcus phage 2638A
+320839,Staphylococcus phage 47
+320840,Staphylococcus phage 37
+320841,Staphylococcus phage EW
+320846,Staphylococcus phage 29
+322019,Acanthocystis turfacea Chlorella virus 1
+329157,Other T7likevirus
+329380,Other T4likevirus
+331278,Yersinia phage phiR1-37
+333750,Alphapapillomavirus
+333753,Human papillomavirus type 57
+333754,Alphapapillomavirus 10
+333757,Alphapapillomavirus 8
+333759,Human papillomavirus type 10
+333760,Human papillomavirus type 16
+333761,Human papillomavirus type 18
+333763,Human papillomavirus type 32
+333764,Human papillomavirus type 34
+333765,Human papillomavirus type 53
+333766,Alphapapillomavirus 13
+333767,Alphapapillomavirus 3
+333769,Human papillomavirus type 90
+333770,Human papillomavirus type 72
+333771,Human papillomavirus type 81
+333772,Human papillomavirus type 83
+333924,Betapapillomavirus 2
+334210,Human papillomavirus type 62
+334211,Pipapillomavirus
+334523,Phage SK137
+337039,Alphapapillomavirus 2
+337041,Alphapapillomavirus 9
+337042,Alphapapillomavirus 7
+337043,Alphapapillomavirus 4
+337044,Alphapapillomavirus 5
+337050,Alphapapillomavirus 6
+337051,Betapapillomavirus 1
+338323,Human papillomavirus type 103
+338326,Human papillomavirus type 106
+338327,Human papillomavirus type 102
+338473,Actinomyces phage Av-1
+340016,Other Viruses
+342409,White spot syndrome virus
+342564,Pasteurella phage F108
+345201,Invertebrate iridescent virus 3
+346673,Other Coccolithovirus
+346932,Paramecium bursaria Chlorella virus A1
+350104,Streptococcus phage 700P1
+359919,Spodoptera litura granulovirus
+360397,Canine papillomavirus 3
+363555,Lactobacillus phage KC5a
+363628,Other Anelloviridae
+364745,Choristoneura occidentalis granulovirus
+368735,Bell pepper mottle virus
+372443,Other Coccolithovirus
+372457,Streptococcus phage M102
+379501,Staphylococcus phage phiMR11
+379529,Glossina hytrovirus
+379891,Autographa californica multiple nucleopolyhedrovirus
+380598,Paramecium bursaria Chlorella virus AR158
+381899,Paramecium bursaria Chlorella virus A1
+384848,Corynebacterium phage P1201
+396034,Bacillus virus 1
+399781,Paramecium bursaria Chlorella virus A1
+413066,Streptococcus phage SMP
+417280,Burkholderia phage BcepF1
+419435,Glypta fumiferanae ichnovirus
+419544,Macaca fascicularis papillomavirus type 1
+423476,Streptococcus phage phi3396
+427343,Human papillomavirus type 107
+431894,Burkholderia phage phiE255
+432261,Torque teno midi virus
+438045,Murine leukemia-related retroviruses
+438780,Lactobacillus phage phiPYB5
+444878,Prochlorococcus phage Syn33
+445684,Synechococcus phage Syn19
+445685,Synechococcus phage S-SSM5
+445688,Prochlorococcus phage P-SSM7
+446529,Microbacterium phage Min1
+447909,Geobacillus virus E2
+458639,Bacillus phage 0305phi8-36
+459845,Streptococcus phage 858
+471183,Macaca fascicularis papillomavirus type 5
+471184,Macaca fascicularis papillomavirus type 6
+471185,Macaca fascicularis papillomavirus type 7
+471186,Macaca fascicularis papillomavirus type 8
+475178,Lactococcus phage 1706
+481851,Other Podoviridae
+482058,Ralstonia phage RSL1
+490711,Orgyia leucostigma NPV
+490892,Ambrosia asymptomatic virus 2 UKM-2007
+493803,Merkel cell polyomavirus
+496874,Lactobacillus phage Lrm1
+508419,Lactobacillus phage c5
+518830,Debaryomyces hansenii virus JB-2008
+523909,Musca hytrovirus
+537874,Streptococcus phage PH15
+540068,Mycobacterium phage Pukovnik
+542836,Other Podoviridae
+549779,Other Mimiviridae
+551790,Ralstonia phage RSB1
+558016,Other Alphabaculovirus
+565537,Human papillomavirus type 108
+566270,Spodoptera litura nucleopolyhedrovirus II
+573173,Vibrio phage helene 12B3
+573174,Vibrio phage henriette 12B8
+573175,Vibrio phage martha 12B12
+573176,Vibrio phage jenny 12G5
+578234,Lactobacillus phage Lv-1
+587348,Human papillomavirus type 99
+632112,Lactobacillus phage Lb338-1
+633135,Streptococcus phage Abc2
+644007,Streptococcus phage PH10
+646413,Streptococcus phage 5093
+654911,Acidianus bottle-shaped virus
+654926,Ectocarpus siliculosus virus 1
+665883,Lactococcus phage CB13
+673376,Clostridium phage phiCP26F
+682370,Streptococcus phage Alq132
+687329,Other Anelloviridae
+687349,Torque teno virus 10
+687350,Torque teno virus 11
+687370,Torque teno mini virus 2
+687375,Torque teno mini virus 7
+691964,Rhodococcus phage ReqiPoco6
+691966,Rhodococcus phage ReqiDocB7
+693272,Cafeteria roenbergensis virus
+696069,Bat mastadenovirus B
+696746,Human papillomavirus type 115
+702718,Chimpanzee stool associated circular ssDNA virus
+735496,Human papillomavirus type 114
+741942,Lactococcus phage 1358
+746832,Human papillomavirus type 127
+749413,Deep-sea thermophilic phage D6E
+753085,Synechococcus phage S-CBS3
+754042,Synechococcus phage S-SKS1
+754048,Psychrobacter phage pOW20-A
+754053,Paenibacillus phage PG1
+754057,Vibrio phage VD1
+754068,Emiliania huxleyi virus PS401
+755164,Lactobacillus phage LBR48
+755272,Micromonas pusilla virus 12T
+755273,Phaeocystis globosa virus 12T
+756282,Cellulophaga phage phiST
+759389,Verticillium dahliae chrysovirus 1
+764030,Pigeon aviadenovirus A
+764561,Brochothrix phage NF5
+764562,Brochothrix phage BL3
+765051,Human papillomavirus type 119
+765052,Human papillomavirus type 120
+765054,Human papillomavirus type 122
+765056,Human papillomavirus type 124
+766178,Ictalurid herpesvirus 1
+768739,Elephant endotheliotropic herpesvirus 6
+857312,Brochothrix phage A9
+870469,Streptococcus phage V22
+870471,Streptococcus phage 34117
+871584,Clostridium phage phiCTP1
+889812,Colobus guereza papillomavirus type 1
+908819,Flavobacterium phage FCL-2
+909331,Human papillomavirus type 132
+909333,Human papillomavirus type 134
+911573,Aggregatibacter phage Aabphi01
+912321,Leuconostoc phage phiMH1
+915425,Human papillomavirus type 101
+915427,Human papillomavirus type 112
+915428,Human papillomavirus 116
+915429,Human papillomavirus type 121
+925984,Erwinia phage phiEt88
+927771,Human papillomavirus type 118
+927810,Tuber aestivum virus 1
+929833,Rhizobium phage RR1-A
+931209,Human papillomavirus type 128
+931210,Human papillomavirus type 129
+931244,Alphapapillomavirus 14
+933845,Bathycoccus sp. RCC1105 virus BpV
+936059,Tursiops truncatus papillomavirus 1
+938082,Organic Lake phycodnavirus 2
+940838,Human papillomavirus type 68b
+942165,Pseudomonas phage phiIBB-PF7A
+944644,Marseilleviridae
+947980,Lactobacillus phage LF1
+947981,Lactobacillus phage Sha1
+980881,Lactobacillus phage EV3
+981323,Gordonia phage GTE2
+985780,Other Mimiviridae
+985782,Moumouvirus
+988656,Pseudomonas phage phi15
+990302,Human papillomavirus type 152
+990303,Papio hamadryas papillomavirus type 1
+990305,Saimiri sciureus papillomavirus 2
+998086,Pseudomonas phage PhiPA3
+1034150,Mycobacterium phage Yoshi
+1034771,Other Anelloviridae
+1034805,Mosquito VEM virus SDBVL G
+1048520,Enhydra lutris papillomavirus 1
+1048524,Human papillomavirus type 121
+1051631,Streptococcus phage YMC-2011
+1052673,Mycobacterium phage Thibault
+1070408,Human papillomavirus type 135
+1070410,Human papillomavirus type 137
+1070415,Human papillomavirus type 142
+1074206,Peromyscus papillomavirus type 1
+1079998,Synechococcus phage ACG-2014c
+1084719,Bacillus phage G
+1109713,Rhodococcus phage REQ2
+1109714,Rhodococcus phage REQ3
+1109715,Rhodococcus phage RER2
+1109716,Rhodococcus phage RGL3
+1114179,Pseudomonas phage tf
+1126885,Thermoanaerobacterium phage THSA-485A
+1127514,Aeromonas phage vB_AsaM-56
+1127516,Pectobacterium phage ZF40
+1128131,Moumouvirus
+1128140,Megavirus chiliensis
+1128424,Heliothis zea nudivirus
+1136534,Bacillus phage BCD7
+1136535,Burkholderia phage DC1
+1141137,Cronobacter phage vB_CsaP_GAP52
+1144381,Tursiops truncatus papillomavirus 5
+1147042,Staphylococcus phage StB12
+1147043,Staphylococcus phage StB20
+1150990,Enterobacter phage Enc34
+1161901,Bacillus phage PBC1
+1161927,Pseudomonas phage Lu11
+1161939,Enterococcus phage vB_Efae230P-4
+1162290,Cronobacter phage CR9
+1165908,Simian adenovirus B
+1165934,Human papillomavirus type 155
+1168837,Environmental Halophage eHP-35
+1168843,Environmental Halophage eHP-40
+1194091,Klebsiella phage NTUH-K2044-K1-1
+1195085,Cronobacter phage CR5
+1195167,Bat betaherpesvirus B7D8
+1195364,Miniopterus schreibersii papillomavirus 1
+1197952,Staphylococcus phage Ipla5
+1204521,Escherichia phage ECML-117
+1204525,Streptomyces phage SV1
+1204538,Pseudomonas phage Phi-S1
+1204539,Pectobacterium phage My1
+1206110,Lactobacillus phage phiAQ113
+1206898,Other Myoviridae
+1208587,Streptococcus phage SPQS1
+1211282,Mycobacterium phage Goose
+1211387,Erwinia phage GR-2012
+1211417,uncultured phage crAssphage
+1219875,Dendrolimus kikuchii nucleopolyhedrovirus
+1235314,Megavirus chiliensis
+1235689,Pseudomonas phage AF
+1239381,Streptococcus phage phiNJ2
+1239386,Streptomyces phage phiCAM
+1247379,Moumouvirus
+1264700,Edwardsiella phage MSW-3
+1273087,Cardioderma polyomavirus
+1273450,Pseudomonas phage PS5
+1277891,Streptococcus phage phiSS12
+1278246,Paramecium bursaria Chlorella virus AP110A
+1278247,Paramecium bursaria Chlorella virus CVB-1
+1278254,Paramecium bursaria Chlorella virus CvsA1
+1278261,Paramecium bursaria Chlorella virus NE-JV-1
+1278270,Acanthocystis turfacea Chlorella virus Canal-1
+1279082,Pseudomonas phage PPpW-3
+1279083,Pseudomonas phage PPpW-4
+1285382,Bacillus phage SIOphi
+1289473,Nile crocodilepox virus
+1289570,Haemophilus phage HP1
+1289595,Streptococcus phage phi20c
+1289596,Streptococcus phage phi30c
+1289597,Streptococcus phage phi5218
+1289600,Streptococcus phage phiD12
+1289601,Streptococcus phage phiS10
+1293539,Choristoneura rosaceana entomopoxvirus 'L'
+1296660,Brevibacillus phage Emery
+1298531,Sulfolobales Mexican fusellovirus 1
+1307956,Leucania separata nucleopolyhedrovirus
+1308863,Bacillus phage vB_BanS-Tsamsa
+1315265,Human papillomavirus type 170
+1325372,Edwardsiella phage PEi2
+1325731,Flavobacterium phage 6H
+1327037,Croceibacter phage P2559Y
+1327985,Cellulophaga phage phi46:3
+1327993,Cellulophaga phage phi39:1
+1328030,Cellulophaga phage phi13:2
+1335230,Pseudomonas phage PaBG
+1340769,Staphylococcus phage phiIBB-SEP1
+1340824,Mycobacterium phage Hamulus
+1349409,Pandoravirus dulcis
+1349410,Pandoravirus salinus
+1352511,Thin paspalum asymptomatic virus
+1354512,Mycobacterium phage PhrostyMug
+1367203,Hemileuca sp. nucleopolyhedrovirus
+1367205,Choristoneura rosaceana alphabaculovirus
+1385385,Streptococcus phage TP-778L
+1391034,Faeces associated gemycircularvirus 5
+1391702,Tomato mottle mosaic virus
+1392231,Streptococcus phage 20617
+1398177,Frog virus 3
+1399941,Lactobacillus phage phiJB
+1401297,Burkholderia phage JG068
+1406780,Acinetobacter phage Presley
+1406792,Bacillus phage Staley
+1412875,Lactococcus phage phiL47
+1416334,Lactobacillus phage phi jlb1
+1421421,Emiliania huxleyi virus 145
+1421422,Emiliania huxleyi virus 156
+1421423,Emiliania huxleyi virus 164
+1421424,Emiliania huxleyi virus 18
+1429768,Erwinia phage Ea35-70
+1434987,Human papillomavirus type 172
+1434988,Human papillomavirus type 173
+1449437,Pseudomonas phage vB_PaeP_Tr60_Ab31
+1450746,Pithovirus sibericum
+1458697,Rhizobium phage vB_RglS_P106B
+1458717,Mycobacterium phage 40AC
+1458842,Geobacillus phage GBK2
+1461100,Acanthamoeba polyphaga mimivirus
+1462581,Pseudomonas phage KPP23
+1472342,Human papillomavirus type 179
+1472717,Enhydra lutris papillomavirus 1
+1472911,Porcine parvovirus 6
+1474867,Aureococcus anophagefferens virus
+1481186,Acinetobacter phage vB_AbaM_Acibel004
+1484571,Baku virus
+1484958,Human papillomavirus type 72b
+1486429,Leuconostoc phage LLC-1
+1486472,Mycobacterium phage Gaia
+1487700,Nilaparvata lugens endogenous nudivirus
+1493511,Synechococcus phage ACG-2014f
+1498168,Enterococcus phage ECP3
+1500386,Staphylococcus phage 6ec
+1500713,Vibrio phage X29
+1500757,Pseudomonas phage phiPSA1
+1500801,Propionibacterium phage PHL041
+1510155,Falconid herpesvirus 1
+1518022,Siphovirus contig89
+1520006,Duck adenovirus 2
+1522092,Clostridium phage phiCDHM19
+1527770,Rhizobium phage vB_RleM_P10VF
+1527771,Mesorhizobium phage vB_MloP_Lo5R7ANS
+1535248,Ball python nidovirus
+1536603,Mycobacterium phage Estave1
+1536605,Leuconostoc phage Ln-9
+1537166,Porcine stool-associated circular virus 7
+1540097,Escherichia phage Pollock
+1552735,Lactobacillus phage Ldl1
+1566990,Streptococcus phage SpSL1
+1567011,Clostridium phage phiCT19406C
+1567012,Clostridium phage phiCT453A
+1567014,Clostridium phage phiCT9441A
+1567453,Lactobacillus phage LfeSau
+1567484,Lactobacillus phage LfeInf
+1567485,Proteus phage pPM_01
+1572704,Staphylococcus phage phiIPLA-C1C
+1572754,Escherichia phage P694
+1574422,Dromedary stool-associated circular ssDNA virus
+1582152,Clostridium phage phiCD211
+1589270,Streptococcus phage Str-PAP-1
+1589274,Mycobacterium phage Sheen
+1589298,Vibrio phage phi 3
+1589751,Bacteriophage Lily
+1592335,Pseudoplusia includens SNPV
+1597976,Enterococcus phage EFDG1
+1605721,Pandoravirus inopinatum
+1608100,Wuhan Ant Virus
+1610831,Staphylococcus virus G1
+1610872,Staphylococcus phage IME-SA4
+1622193,Gordonia phage Gsput1
+1623298,Other Siphoviridae
+1623300,Other Siphoviridae
+1623303,Other Siphoviridae
+1623304,Other Siphoviridae
+1636270,Rhodoferax phage P26218
+1636271,Verrucomicrobia phage P8625
+1636617,Other Myoviridae
+1640885,Enterococcus phage EFLK1
+1640978,Fusobacterium phage Funu2
+1642929,Lambdina fiscellaria nucleopolyhedrovirus
+1647300,Mycobacterium phage Luchador
+1647385,Delftia phage IME-DE1
+1647386,Polaribacter phage P12002L
+1647924,Human papillomavirus KC5
+1654582,Kallithea virus
