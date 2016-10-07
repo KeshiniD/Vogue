@@ -397,5 +397,9 @@ total2$X <- NULL
 
 #merge
 total3 <- join(total2, taxinfo, type="full")
+
+#collapse like ids
+total3 <- ddply(total3,c("name"),numcolwise(sum)) #includes all columns
+
 #write to file
 # write.csv(total3, "DNA_RNA_phage_viral_species_NTCs_PosCtrl_v2.csv")

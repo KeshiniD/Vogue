@@ -1,0 +1,161 @@
+"","name","DNA_Adeno","DNA_KlenNeg_A12","DNA_KlenNeg_A11","DNA_NTC_A9","DNA_NTC_E12","RNA_NTC_B9","RNA_NTC_B11","RNA_KlenNeg_B12","RNA_Entero"
+"1","Acanthocystis turfacea Chlorella virus 1",0,0,0,0,10,21,0,0,0
+"2","Adenoviridae",92,0,0,0,2,0,2,0,0
+"3","Alcelaphine herpesvirus 1 strain C500",1,0,0,0,0,0,0,0,0
+"4","Alphabaculovirus",0,0,0,0,0,1,0,0,0
+"5","Alphapapillomavirus 10",1,0,1,0,0,0,0,0,0
+"6","Alphapapillomavirus 14",2,0,0,0,0,0,0,0,0
+"7","Alphapapillomavirus 3",1,0,1,1,0,0,0,0,0
+"8","Alphapapillomavirus 6",2,1,0,0,0,0,0,0,0
+"9","Anelloviridae",0,0,0,0,37,0,0,0,0
+"10","Autographivirinae",0,0,0,1972,1344,0,0,0,0
+"11","Baku virus",0,0,0,0,0,2,0,0,0
+"12","Bovine papillomavirus type 10",0,0,0,0,8,0,0,0,0
+"13","Cafeteria roenbergensis virus BV-PW1",0,0,0,0,0,1,0,0,0
+"14","Cardioderma polyomavirus",0,0,0,0,2,0,0,0,0
+"15","Caudovirales",0,0,0,0,0,0,0,1,0
+"16","Chlorovirus",0,0,0,11,0,0,0,0,0
+"17","Citrobacter phage CR8",0,0,0,0,1,0,0,0,0
+"18","Coccolithovirus",9,0,0,4,3,0,0,0,0
+"19","Cotesia congregata bracovirus",0,0,0,0,0,1,0,0,0
+"20","Coxsackievirus A9",0,130,0,0,0,1,2,0,11663
+"21","Coxsackievirus B1",0,6,0,0,0,0,0,0,150
+"22","Coxsackievirus B2",0,1,0,0,0,0,0,0,1
+"23","Coxsackievirus B3",0,0,0,0,0,0,0,0,2
+"24","Coxsackievirus B4",0,0,0,0,0,0,0,0,3
+"25","Coxsackievirus B6",0,0,0,0,0,0,0,0,6
+"26","Cronobacter phage CR3",0,0,0,0,1,0,0,0,0
+"27","Cyprinid herpesvirus 3",1,0,0,0,0,0,0,0,0
+"28","Deerpox virus W-848-83",0,0,0,1,0,0,0,0,0
+"29","dsDNA viruses, no RNA stage",0,0,0,0,1,107,0,0,0
+"30","Echovirus E11",0,0,0,0,0,0,0,0,4
+"31","Echovirus E14",0,0,0,0,0,0,0,0,7
+"32","Echovirus E2",0,0,0,0,0,0,0,0,314
+"33","Echovirus E25",0,11,0,0,0,0,0,0,713
+"34","Echovirus E30",0,0,0,0,0,0,0,0,6
+"35","Echovirus E4",0,0,0,0,0,0,0,0,2
+"36","Echovirus E6",0,0,0,0,0,0,0,0,166
+"37","Echovirus E7",0,0,0,0,0,0,0,0,12
+"38","Echovirus E9",0,0,0,0,0,0,0,0,10
+"39","Elephantid herpesvirus 1",1,0,0,0,0,0,0,0,0
+"40","Emiliania huxleyi virus 145",2,0,0,0,1,0,0,0,0
+"41","Emiliania huxleyi virus 156",1,0,0,0,0,0,0,0,0
+"42","Emiliania huxleyi virus 84",1,0,0,0,1,0,0,0,0
+"43","Enterovirus",0,500,0,0,0,3,15,1,69275
+"44","Enterovirus B",0,228,0,0,0,1,4,0,22303
+"45","Enterovirus B73",0,0,0,0,0,0,0,0,11
+"46","Enterovirus B74",0,0,0,0,0,0,0,0,1
+"47","Enterovirus B75",0,0,0,0,0,0,0,0,4
+"48","Enterovirus B78",0,0,0,0,0,0,0,0,1
+"49","Enterovirus B81",0,0,0,0,0,0,0,0,19
+"50","Enterovirus B83",0,0,0,0,0,0,0,0,10
+"51","Enterovirus B85",0,0,0,0,0,0,0,0,1
+"52","Enterovirus B86",0,1,0,0,0,0,0,0,1200
+"53","Enterovirus C",0,0,0,0,0,0,0,0,1
+"54","Enterovirus J",0,0,0,0,0,0,0,0,1
+"55","Epstein-barr virus strain ag876",1,0,0,0,0,0,0,0,0
+"56","Eptesicus serotinus papillomavirus type 3",0,0,0,0,6,0,0,0,0
+"57","Erwinia phage vB_EamP-L1",0,0,0,0,2,0,0,0,0
+"58","Falconid herpesvirus 1",0,0,0,0,1,0,0,0,0
+"59","Faustovirus",0,0,0,0,0,1,0,0,0
+"60","Flavobacterium phage FCL-2",0,0,0,0,3,0,0,0,0
+"61","Gammaretrovirus",0,0,0,0,0,0,148,0,0
+"62","Glypta fumiferanae ichnovirus",5,0,0,2,0,5,3,1,0
+"63","Human adenovirus 15",18,0,0,0,0,0,0,0,0
+"64","Human adenovirus 19",1029,0,0,0,20,0,16,0,0
+"65","Human adenovirus 22",1050,0,0,0,12,0,13,0,0
+"66","Human adenovirus 27",17,0,0,0,0,0,1,0,0
+"67","Human adenovirus 43",38,0,0,0,0,0,0,0,0
+"68","Human adenovirus 8E",65,0,1,0,0,0,2,0,0
+"69","Human adenovirus D8",110,0,0,0,0,0,0,0,0
+"70","Human adenovirus D9",4,0,0,0,1,0,0,0,0
+"71","Human endogenous retrovirus ERV-9",0,0,0,1,0,0,0,0,0
+"72","Human enterovirus 79",0,0,0,0,0,0,0,0,2
+"73","Human herpesvirus 4",21,0,0,3,2,0,1,0,0
+"74","Human herpesvirus 6 (strain Uganda-1102)",1,1,0,0,2,0,0,0,0
+"75","Human immunodeficiency virus 1",0,0,0,0,0,0,7,2,0
+"76","Human mastadenovirus A",4,0,0,0,1,0,0,0,0
+"77","Human mastadenovirus B",20,0,0,0,0,0,0,0,0
+"78","Human mastadenovirus C",1,3,0,0,0,0,0,1,0
+"79","Human mastadenovirus D",16576,0,6,0,214,1,336,0,0
+"80","Human mastadenovirus E",4,0,0,0,0,0,0,0,0
+"81","Human papillomavirus type 115",0,0,0,0,186,0,0,0,0
+"82","Human papillomavirus type 31",3,0,20,0,2,0,0,0,0
+"83","Human papillomavirus type 42",1,0,0,0,0,0,0,0,0
+"84","Human papillomavirus type 51",0,0,0,0,1,0,0,0,0
+"85","Human papillomavirus type 52",1,1,8,0,1,0,0,0,0
+"86","Human papillomavirus type 56",5,0,0,0,0,0,0,0,0
+"87","Human papillomavirus type 59",0,0,0,0,1,0,0,0,0
+"88","Human papillomavirus type 6",0,0,0,1,0,0,0,0,0
+"89","Human papillomavirus type 61",0,0,1,0,1,0,0,0,0
+"90","Human papillomavirus type 62",3,0,0,0,0,0,0,0,0
+"91","Human papillomavirus type 71",2,0,0,1,0,0,0,0,0
+"92","Human papillomavirus type 72",3,0,2,0,0,0,0,0,0
+"93","Human papillomavirus type 72b",3,1,7,0,2,0,0,0,0
+"94","Human papillomavirus type 81",0,0,2,0,0,0,0,0,0
+"95","Human papillomavirus type 82",0,0,0,0,1,0,0,0,0
+"96","Human papillomavirus type 83",1,0,0,0,0,0,0,0,0
+"97","Human papillomavirus type 89",13,0,2,0,2,0,0,0,0
+"98","Human papillomavirus type 90",0,2,1,2,0,0,0,0,0
+"99","Invertebrate iridescent virus 6",0,0,0,0,0,3,0,0,0
+"100","Klebsiella phage NTUH-K2044-K1-1",0,0,0,0,2,0,0,0,0
+"101","Kobuvirus",0,0,0,0,0,1,196,0,0
+"102","Lactobacillus phage phi jlb1",1,0,0,0,0,0,0,0,0
+"103","Lymphocryptovirus",4,0,0,0,1,0,0,0,0
+"104","Macacine herpesvirus 4",1,0,0,0,0,0,0,0,0
+"105","Mastadenovirus",1207,0,0,0,11,0,26,0,0
+"106","Micromonas pusilla virus 12T",0,0,0,0,0,13,0,0,0
+"107","Mimiviridae",0,0,0,0,1,0,0,0,0
+"108","Morganella phage MmP1",0,0,0,0,1,0,0,0,0
+"109","Moumouvirus goulette",0,0,0,11,0,0,0,0,0
+"110","Murid herpesvirus 1",0,0,0,0,0,1,0,0,0
+"111","Murine leukemia virus",0,0,0,0,0,0,1,0,0
+"112","Myoviridae",0,0,0,1,0,166,0,0,0
+"113","Nile crocodilepox virus Zimbabwe/Ume/2001",0,0,0,0,1,0,0,0,0
+"114","Orgyia leucostigma NPV",0,0,0,0,0,0,1,0,0
+"115","Ostreococcus tauri virus RT-2011",0,0,0,0,0,1,0,0,0
+"116","Pandoravirus dulcis",0,0,0,0,1,6,0,0,0
+"117","Pandoravirus inopinatum",1,0,0,0,0,312,0,0,0
+"118","Pandoravirus salinus",1,0,0,0,0,0,1,1,0
+"119","Papillomaviridae",9,1,12,3,4,0,0,0,0
+"120","Paramecium bursaria Chlorella virus A1",0,0,0,0,1,0,0,0,0
+"121","Paramecium bursaria Chlorella virus CvsA1",0,0,0,0,2,0,0,0,0
+"122","Paramecium bursaria Chlorella virus FR483",0,0,0,0,21,0,0,0,0
+"123","Paramecium bursaria chlorella virus MT325",0,0,0,0,2,0,0,0,0
+"124","Phaeocystis globosa virus",2,0,0,9,4,0,0,0,0
+"125","Picovirinae",1,0,0,0,3,0,0,0,0
+"126","Pigeon adenovirus 1",1,0,0,0,0,0,0,0,0
+"127","Podoviridae",0,0,0,4764,13569,0,0,0,0
+"128","Prochlorococcus phage P-HM2",0,0,0,0,1,0,0,0,0
+"129","Prochlorococcus phage P-SSM7",0,0,0,0,34,0,0,0,0
+"130","Prochlorococcus phage Syn33",0,0,0,0,0,4,0,0,0
+"131","Pseudomonas phage PaBG",0,0,0,0,0,1,0,0,0
+"132","Pseudomonas phage Phi-S1",0,0,0,8,100,0,0,0,0
+"133","Pseudomonas phage phi15",0,0,0,1338,4684,0,0,0,0
+"134","Pseudomonas phage phiIBB-PF7A",0,0,0,508,203,0,0,0,0
+"135","Pseudomonas phage PPpW-4",1,0,1,3903,13956,0,0,0,0
+"136","root",4,0,0,1,122,450,0,0,0
+"137","Saimiriine herpesvirus 2",0,0,0,1,0,1,0,0,0
+"138","Simian agent 5",0,0,0,0,0,0,0,0,2
+"139","Simian mastadenovirus A",11,0,0,0,0,0,0,0,0
+"140","Simplexvirus",0,0,0,0,1,0,0,0,0
+"141","Staphylococcus phage IME-SA2",1,0,0,0,0,0,0,0,0
+"142","Streptococcus phage EJ-1",0,1,0,0,0,0,0,0,0
+"143","Streptococcus phage PH10",0,0,0,7,0,0,0,0,0
+"144","Suid herpesvirus 1",0,0,0,0,3,0,0,0,0
+"145","Synechococcus phage S-CBP1",0,0,0,1,0,0,0,0,0
+"146","Synechococcus phage S-IOM18",0,0,0,0,0,1,0,0,0
+"147","T7likevirus",0,0,0,8,214,0,0,0,0
+"148","Thermoproteus tenax virus 1",0,0,0,2,0,0,0,0,0
+"149","Titi monkey adenovirus ECC-2011",1,0,0,0,0,0,0,0,0
+"150","Torque teno midi virus",0,0,0,0,0,1,0,0,0
+"151","Torque teno virus",0,0,0,0,0,1,0,0,0
+"152","Tupaiid herpesvirus 1",0,0,0,0,268,1,0,0,0
+"153","unclassified Coccolithovirus",8,0,0,1,12,0,0,0,0
+"154","unclassified dsDNA viruses",0,0,0,0,0,1,0,0,0
+"155","unclassified Enterovirus",0,0,0,0,0,0,0,0,1
+"156","unclassified Mimiviridae",0,0,0,1,0,0,0,0,0
+"157","unclassified Siphoviridae",0,0,0,0,1,0,0,0,0
+"158","unclassified T7-like viruses",0,0,0,446,1627,0,0,0,0
+"159","Viruses",0,0,0,1,7,1,0,0,0
+"160","White spot syndrome virus",1,0,0,0,0,1,0,0,0
