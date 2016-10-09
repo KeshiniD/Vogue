@@ -195,3 +195,68 @@ df_list_SD_factor_more <- lapply(factors, function(factor)  {
   row
 })  
 df_list_SD_factor_more <- do.call(rbind, df_list_SD_factor_more)
+
+
+####################################################################################
+#new BV cats
+total <- read.csv(file = "viromeall_metadata_full.csv")
+
+total$BV.2mths.cat[total$bv_infecttotal_2mo > 0] <- "1" #1+
+total$BV.2mths.cat[total$bv_infecttotal_2mo <= 0] <- "0" #0
+total$BV.2mths.cat <- factor(total$BV.2mths.cat)
+
+total$BV.year.cat[total$bv_infecttotal_1yr > 2] <- "2" #3+
+total$BV.year.cat[total$bv_infecttotal_1yr > 0 & total$bv_infecttotal_1yr <= 2] <- "1" #1-2
+total$BV.year.cat[total$bv_infecttotal_1yr <= 0] <- "0" #0
+total$BV.year.cat <- factor(total$BV.year.cat)
+
+total$BV.life.cat[total$bv_life > 9] <- "3" #10+
+total$BV.life.cat[total$bv_life > 2 & total$bv_life <= 9] <- "2" #3-9
+total$BV.life.cat[total$bv_life > 0 & total$bv_life <= 2] <- "1" #1-2
+total$BV.life.cat[total$bv_life <= 0] <- "0" #0
+total$BV.life.cat <- factor(total$BV.life.cat)
+
+#SD for 2+ factors
+summary(aov(total$ShannonsDiversity ~total$BV.year.cat))
+summary(aov(total$ShannonsDiversity ~total$BV.life.cat))
+
+#sd for 2 levels
+t.test(ShannonsDiversity~BV.2mths.cat, data = total)
+cohen.d(ShannonsDiversity~BV.2mths.cat, data = total)
+
+#######################
+#Virome Groups for new cats
+a <- xtabs(~BV.year.cat + Group , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~BV.life.cat + Group , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~BV.2mths.cat + Group , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~CST + Group , data = total)
+fisher.test(a)
+assocstats(a)
+
+#####################
+#Virome Groups minus pap for new cats
+a <- xtabs(~BV.year.cat + Group_minus_pap , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~BV.life.cat + Group_minus_pap , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~BV.2mths.cat + Group_minus_pap , data = total)
+fisher.test(a)
+assocstats(a)
+
+a <- xtabs(~CST + Group_minus_pap , data = total)
+fisher.test(a)
+assocstats(a)
+
