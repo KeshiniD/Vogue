@@ -24,11 +24,14 @@ library(gplots)
 # Frequencies reads must be proporational data (%).
 
 data <- read.csv("DNA_RNA_phage_viral_species_minus_papillomaviridae_all.csv")
+
 data[is.na(data)] <- 0
 data$X <- NULL
 row.names(data) <- data[, 1]
 data <- data[, -1]
 
+#need to be proportional data
+data <- prop.table(as.matrix(data), margin= 2) #make into dataframe after
 
 ################################ Basic Heatmap (without clustering)
 
@@ -353,3 +356,5 @@ heatmap.2(t(as.matrix(data_t)),
           margins = c(0.5, 18),
           ColSideColors = metadata$cst
 )
+
+####################################################################################
