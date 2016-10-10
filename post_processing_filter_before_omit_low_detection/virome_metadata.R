@@ -1096,3 +1096,25 @@ summary(aov(total$ShannonsDiversity ~ total$study_arm))
 summary(aov(total$PielousEvenness ~ total$study_arm))
 summary(aov(total$Chao1 ~ total$study_arm))
 summary(aov(total$GoodsCoverage ~ total$study_arm))
+
+###############################
+#compare viralgroups
+data <- read.csv("data_clust_7_v2.csv")
+data <- data[order(data$X),] #order alphatbetically
+
+#subset for each cohort
+vogueA <- data[c(1:21),]
+vogueB <- data[c(22:46),]
+vogue1B2 <- data[c(47:54),]
+
+#add studyarm and merge
+vogueA$study_arm <- "1A"
+vogue1B2$study_arm <- "1B2"
+vogueB$study_arm <- "1B"
+
+#merge three cohorts together
+total <- join(vogueA, vogueB, type="full")
+total <- join(total, vogue1B2, type="full")
+
+#compare
+summary(aov(total$Group ~ total$study_arm))
