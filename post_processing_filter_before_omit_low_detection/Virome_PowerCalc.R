@@ -88,3 +88,16 @@ pwr.chisq.test(w=0.4291349, df=2,sig.level=0.05, N=54)
 # sig.level = 0.05
 # power = 0.8131431
 # NOTE: N is the number of observations
+
+###########
+pwr.chisq.test(w=0.4291349, df=6,sig.level=0.05, N=54)
+#power to detect differences between our clusters in virome
+#assuming want to detect those differences from above
+
+# Chi squared power calculation 
+# w = 0.4291349
+# N = 54
+# df = 6
+# sig.level = 0.05
+# power = 0.6409516
+# NOTE: N is the number of observations
