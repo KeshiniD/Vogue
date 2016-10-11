@@ -194,27 +194,27 @@ total[is.na(total)] <- 0
 
 #bac counts
 data <-
-  gather(total, key = 'Viral_Groups', value = 'Counts', Papillomaviridae, Viral_DNA, Phage, unclassified_viruses, Viral_RNA, ssRNA_RT, dsDNA_RT)
+  gather(total, key = 'Viral_Types', value = 'Counts', Papillomaviridae, Viral_DNA, Phage, unclassified_viruses, Viral_RNA, ssRNA_RT, dsDNA_RT)
 
 vmb <- tbl_df(data) %>% # finally got the percentages correct
   group_by(Cohort) %>%
-  select(Cohort, Viral_Groups, Counts) %>%
+  select(Cohort, Viral_Types, Counts) %>%
   mutate(Relative.Abundance = Counts/(sum(Counts))*100) %>% # can either have % or decimal
   arrange(Cohort)
 
 #order viral groups by abundance
-abundance_order <- vmb %>% group_by(Viral_Groups) %>% summarize(count = mean(Relative.Abundance)) %>% arrange(desc(count)) %>% .[['Viral_Groups']]
+abundance_order <- vmb %>% group_by(Viral_Types) %>% summarize(count = mean(Relative.Abundance)) %>% arrange(desc(count)) %>% .[['Viral_Types']]
 
 #Dean added to order by factor levels
-vmb$Viral_Groups <- factor(vmb$Viral_Groups, 
+vmb$Viral_Types <- factor(vmb$Viral_Types, 
                            levels = abundance_order)
 
 #bar plot with custom colors
 jColors <- c('purple', 'blue', 'green', 'yellow', 'orange', 'red', 'turquoise')
 
-ggplot(data = vmb, aes(x = Cohort, y = Relative.Abundance, fill = Viral_Groups)) + 
+ggplot(data = vmb, aes(x = Cohort, y = Relative.Abundance, fill = Viral_Types)) + 
   geom_bar(stat = "identity") + coord_flip() +  scale_fill_manual(values=jColors) + 
-  ggtitle("Metagenomic Characterization of the Vaginal Virome") + ylab("Relative Abundance (%)") +
+  ggtitle("Viral Types of the Vaginal Virome") + ylab("Relative Abundance (%)") +
   theme(axis.title.x = element_text(size=20), axis.title.y =element_text(size=20), 
         plot.title =element_text(size=25), legend.background = element_rect(size=100), 
         axis.text.y = element_text(size=15)) 
