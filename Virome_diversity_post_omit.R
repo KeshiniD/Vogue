@@ -153,3 +153,5 @@ diversity2 <- diversity[ -c(3,5,7) ]
 #write
 # write.csv(diversity2, "virome_individual_diversity_all.csv")
 
+#######################
+aa <- lapply(total, function(x) sum(x > 0)) #to find out actual number of species present 
