@@ -700,5 +700,25 @@ fisher.test(result)
 result <- xtabs(~ BV.year.cat + study_arm, data = total)
 fisher.test(result)
 
-result <- xtabs(~ BV.lifetime.cat + study_arm, data = total)
+result <- xtabs(~ BV.life.cat + study_arm, data = total)
 fisher.test(result)
+
+##
+#grouping BV.2months
+total$BV.year.cat[total$BV..number.of.episodes.year. == 0] <- "0" #underweight
+total$BV.year.cat[total$BV..number.of.episodes.year. >0 & total$BV..number.of.episodes.year. <=2] <- "1" #normal weight
+total$BV.year.cat[total$BV..number.of.episodes.year. >= 3] <- "2" #overweight/obese 
+#convert UTI.ever from character into factor
+total$BV.year.cat <- factor(total$BV.year.cat)
+
+####
+#grouping BV.2months
+total$BV.life.cat[total$BV..number.of.episodes.lifetime. == 0] <- "0" #underweight
+total$BV.life.cat[total$BV..number.of.episodes.lifetime. >0 & total$BV..number.of.episodes.lifetime. <=2] <- "1" #normal weight
+total$BV.life.cat[total$BV..number.of.episodes.lifetime. >2 & total$BV..number.of.episodes.lifetime. <=9] <- "2" 
+total$BV.life.cat[total$BV..number.of.episodes.lifetime. >=10] <- "3" 
+#convert UTI.ever from character into factor
+total$BV.life.cat <- factor(total$BV.life.cat)
+
+
+
